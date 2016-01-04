@@ -51,3 +51,70 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+body {
+  position: relative;
+}
+
+article {
+  padding-top: 30px;
+}
+
+.container-fluid {
+  max-width: 1400px;
+}
+
+.menu-col {
+  float: left;
+  width: 200px;
+}
+
+.device-col {
+  float: right;
+  width: 400px;
+}
+
+.docs-col {
+  margin: 0 400px 0 200px;
+}
+
+.device {
+  background-image: url("../assets/img/device-sprite.png");
+  background-repeat: no-repeat;
+  width: 395px;
+  height: 813px;
+  background-size: 300%;
+  //background-position: -400px 0;
+  margin-left: 20px;
+}
+
+.device-fixed, .menu-fixed {
+  position: fixed;
+}
+
+.window {
+  position: absolute;
+  top: 117px;
+  left: 37px;
+  width: 321px;
+  height: 569px;
+  overflow: hidden;
+  font-size: .85rem;
+  line-height: 1.05rem;
+  background: #eee;
+}
+
+@media screen and (max-width: 1200px) {
+  .menu-col, .device-col {
+    display: none;
+  }
+
+  .menu-fixed, .device-fixed {
+    position: fixed;
+    top: 20px;
+  }
+
+  .docs-col {
+    margin: 0 20px;
+  }
+}
