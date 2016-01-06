@@ -69,9 +69,13 @@ article {
   max-width: 1400px;
 }
 
+.docs-container {
+  margin-top: 60px;
+}
+
 .menu-col {
   float: left;
-  width: 200px;
+  width: 150px;
 }
 
 .device-col {
@@ -80,7 +84,7 @@ article {
 }
 
 .docs-col {
-  margin: 0 440px 0 200px;
+  margin: -60px 440px 0 150px;
 }
 
 .device {
