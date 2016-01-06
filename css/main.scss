@@ -59,6 +59,9 @@ body {
 article {
   padding-top: 30px;
 }
+.navbar {
+  margin: 0!important;
+}
 
 .container-fluid {
   max-width: 1400px;
@@ -71,11 +74,11 @@ article {
 
 .device-col {
   float: right;
-  width: 400px;
+  width: 440px;
 }
 
 .docs-col {
-  margin: 0 400px 0 200px;
+  margin: 0 440px 0 200px;
 }
 
 .device {
@@ -95,7 +98,7 @@ article {
 
 .window {
   position: absolute;
-  top: 117px;
+  top: 137px;
   left: 37px;
   width: 321px;
   height: 569px;
@@ -103,6 +106,69 @@ article {
   font-size: .85rem;
   line-height: 1.05rem;
   background: #eee;
+}
+
+.status-bar {
+  height: 20px;
+  width: 320px;
+  background: url("../assets/img/status-bar.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  top: 117px;
+  position: absolute;
+  z-index: 99;
+  left: 37px;
+}
+
+.side-nav {
+  margin-left: 0;
+}
+
+.side-nav > li > a {
+  width: 120px;
+  color: #666;
+  background: transparent!important;
+}
+.side-nav > li.active > a {
+  color: $brand-color;
+}
+
+.brand-header {
+  position: relative;
+  padding: 30px 0;
+  color: #cdbfe3;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  background-color: #6f5499;
+  background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+  background-repeat: repeat-x;
+  margin-bottom: 20px;
+
+  font-size: 20px;
+}
+
+footer {
+  font-size: 13px;
+  color: #999;
+  border-top: 1px solid #ccc;
+  background: #f4f4f4;
+  margin: 50px 0 0;
+  padding: 40px;
+  text-align: center;
+}
+
+.docs-col {
+  h2 {
+    color: #325d72;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 1em 0;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  h3 {
+    font-size: 18px;
+    color: #555;
+  }
 }
 
 @media screen and (max-width: 1200px) {

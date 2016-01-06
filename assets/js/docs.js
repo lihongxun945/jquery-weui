@@ -24,6 +24,8 @@
   device.dockingOffset = (win.height() - device.height()) / 2;
   device.dockingOffset = (device.dockingOffset < -100 ? -100 : device.dockingOffset);
 
+  var baseurl = $("[name='baseurl']").attr("value");
+
   var calculateScroll = function () {
     // if small screen don't worry about this
     if (windowWidth <= 768) {
@@ -51,10 +53,10 @@
 
     if ((menu.initialTop - currentTop) <= 30) {
       top = 30;
-      menu[0].className = 'nav menu-fixed';
+      menu[0].className = 'nav side-nav menu-fixed';
       menu.css({ top: top });
     } else {
-      menu[0].className = 'nav';
+      menu[0].className = 'nav side-nav';
       menu[0].setAttribute('style', '');
     }
 
@@ -89,7 +91,7 @@
         }
         if (!contentSectionItem.hasClass('informational')) {
           if(contentSectionItem.data("url")) {
-            var url = "/docs-demos/"+contentSectionItem.data("url");
+            var url = baseurl + "/docs-demos/"+contentSectionItem.data("url");
             var $window = $("#window");
             var iframe = $window.find("iframe")[0];
             if(iframe && iframe.src.indexOf(url) !== -1) {

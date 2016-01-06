@@ -3,14 +3,20 @@ layout: default
 ---
 
 <div class="home">
-
+  <div class="brand-header">
+    <div class="container-fluid">
+      <h1>组件库</h1>
+      <p>WeUI 包含了大量常用的组件：按钮，表单，列表，对话框等。</p>
+    </div>
+  </div>
   <div class="container-fluid">
     <div class="menu-col">
       {% include sidenav.html %}
     </div>
     <div class="device-col">
       <div class="device">
-        <div class="window">
+        <div class="status-bar"></div>
+        <div class="window" id="window">
           <iframe src="" frameborder="0"></iframe>
         </div>
       </div>
@@ -20,6 +26,8 @@ layout: default
 
       {% include _components/buttons.html %}
       {% include _components/cell.html %}
+      {% include _components/form.html %}
+      {% include _components/msg.html %}
     </div>
 
   </div>
