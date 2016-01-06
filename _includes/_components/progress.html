@@ -1,0 +1,36 @@
+<article class='component' data-url="progress.html" id='progress'>
+  <h2>进度条</h2>
+  <p>progress用于上传、下载等耗时并且需要显示进度的场景，用户可以随时中断该操作。</p>
+
+{% highlight html %}
+<div class="weui_progress">
+  <div class="weui_progress_bar">
+    <div class="weui_progress_inner_bar js_progress" style="width: 0%;"></div>
+  </div>
+  <a href="javascript:;" class="weui_progress_opr">
+    <i class="weui_icon_cancel"></i>
+  </a>
+</div>
+<br>
+<div class="weui_progress">
+  <div class="weui_progress_bar">
+    <div class="weui_progress_inner_bar js_progress" style="width: 50%;"></div>
+  </div>
+  <a href="javascript:;" class="weui_progress_opr">
+    <i class="weui_icon_cancel"></i>
+  </a>
+</div>
+<br>
+<div class="weui_progress">
+  <div class="weui_progress_bar">
+    <div class="weui_progress_inner_bar js_progress" style="width: 80%;"></div>
+  </div>
+  <a href="javascript:;" class="weui_progress_opr">
+    <i class="weui_icon_cancel"></i>
+  </a>
+</div>
+<div class="weui_btn_area">
+  <a href="javascript:;" class="weui_btn weui_btn_primary" id="btnStartProgress">上传</a>
+</div>
+{% endhighlight %}
+</article>

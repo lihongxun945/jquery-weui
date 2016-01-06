@@ -1,6 +1,8 @@
 <article id="buttons" class='component' data-url="buttons.html">
   <h2>按钮</h2>
-  <p>按钮</p>
+  <p>按钮可以使用 <code>a</code> 或者 <code>button</code> 标签。wap上要触发按钮的 <code>active</code>态，必须触发 <code>ontouchstart</code>事件，可以在 <code>body</code> 上加上 <code>ontouchstart=""</code> 全局触发。</p>
+
+  <p>按钮常见的操作场景：确定、取消、警示，分别对应class：<code>weui_btn_primary</code>、<code>weui_btn_default</code>、<code>weui_btn_warn</code>，每种场景都有自己的置灰态 <code>weui_btn_disabled</code>，除此外还有一种镂空按钮 <code>weui_btn_plain_xxx</code>，客户端webview里的按钮尺寸有两类，默认宽度100%，小型按钮宽度自适应，两边边框与文本间距0.75em：</p>
 
 {% highlight html %}
 <a href="javascript:;" class="weui_btn weui_btn_primary">按钮</a>
