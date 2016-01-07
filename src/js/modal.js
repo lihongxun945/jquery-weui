@@ -6,7 +6,7 @@
   $.modal = function(params) {
     params = $.extend({}, defaults, params);
 
-    $("<div class='weui_mask'></div>").appendTo(document.body);
+    var mask = $("<div class='weui_mask'></div>").appendTo(document.body);
 
     var buttons = params.buttons;
 
@@ -28,11 +28,20 @@
         });
       }
     });
+
+    mask.show();
+    dialog.show();
+    mask.addClass("weui_mask_visible");
+    dialog.addClass("weui_dialog_visible");
   };
 
   $.closeModal = function() {
-    $(".weui_mask").remove();
-    $(".weui_dialog").remove();
+    $(".weui_mask").removeClass("weui_mask_visible").transitionEnd(function() {
+      $(this).remove();
+    });
+    $(".weui_dialog").removeClass("weui_dialog_visible").transitionEnd(function() {
+      $(this).remove();
+    });
   };
 
   $.alert = function(text, title, callback) {

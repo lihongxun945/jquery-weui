@@ -4,7 +4,12 @@ var connect = require("gulp-connect");
 var less = require("gulp-less");
 
 gulp.task('js', function() {
-  return gulp.src(['./src/js/modal.js'])
+  return gulp.src([
+    './src/js/jquery-extend.js',
+    './src/js/modal.js',
+    './src/js/toast.js',
+    './src/js/action.js'
+  ])
     .pipe(concat({ path: 'weui-jquery.js'}))
     .pipe(gulp.dest('./dist/js/'));
 });
