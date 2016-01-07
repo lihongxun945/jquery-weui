@@ -10,7 +10,7 @@ gulp.task('js', function() {
     './src/js/toast.js',
     './src/js/action.js'
   ])
-    .pipe(concat({ path: 'weui-jquery.js'}))
+    .pipe(concat({ path: 'jquery-weui.js'}))
     .pipe(gulp.dest('./dist/js/'));
 });
 
