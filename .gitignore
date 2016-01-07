@@ -1,7 +1,6 @@
 *.swp
 *.swo
 node_modules
-dist/
 .package/
 .sass-cache/
 .DS_Store

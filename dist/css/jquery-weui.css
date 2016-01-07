@@ -1,0 +1,42 @@
+.weui_dialog,
+.weui_toast {
+  transition-duration: .3s;
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.9);
+  visibility: hidden;
+  margin: 0;
+}
+.weui_dialog .weui_btn_dialog + .weui_btn_dialog,
+.weui_toast .weui_btn_dialog + .weui_btn_dialog {
+  position: relative;
+}
+.weui_dialog .weui_btn_dialog + .weui_btn_dialog:after,
+.weui_toast .weui_btn_dialog + .weui_btn_dialog:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  border-left: 1px solid #D5D5D6;
+  color: #D5D5D6;
+  transform-origin: 0 0;
+  transform: scaleX(0.5);
+}
+.weui_dialog.weui_dialog_visible,
+.weui_toast.weui_dialog_visible,
+.weui_dialog.weui_toast_visible,
+.weui_toast.weui_toast_visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+}
+.weui_mask {
+  opacity: 0;
+  transition-duration: .3s;
+  visibility: hidden;
+}
+.weui_mask.weui_mask_visible {
+  opacity: 1;
+  visibility: visible;
+}
