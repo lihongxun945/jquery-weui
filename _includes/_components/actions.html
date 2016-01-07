@@ -1,0 +1,46 @@
+<article id="actions" class='component' data-url="actions.html">
+  <h2>ActionSheet</h2>
+  <p>ActionSheet用于显示包含一系列可交互的动作集合，包括说明、跳转等。由底部弹出，一般用于响应用户对页面的点击。</p>
+
+  <p>ActionSheet 只能通过 JavaScript 进行调用:</p>
+
+{% highlight js %}
+$.actions({
+  actions: [{
+    text: "编辑",
+    onClick: function() {
+      $.alert("你选择了编辑");
+    }
+  },{
+    text: "删除",
+    onClick: function() {
+      $.alert("你选择了删除");
+    }
+  }]
+});
+{% endhighlight %}
+
+  <h3>参数说明</h3>
+
+  <p>通过 <code>$.actions(params)</code> 方法打开 ActionSheet。其中params参数中的 <code>actions</code> 定义了弹出的菜单。 <code>actions</code> 参数是一个数组，数组中的每一项都是一个菜单。</p>
+  <p>对每一个菜单的可用配置如下：</p>
+
+  <table class='table'>
+    <tr>
+      <th>参数名</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>text</td>
+      <td>菜单显示的文案</td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>菜单上额外追加的class</td>
+    </tr>
+    <tr>
+      <td>onClick</td>
+      <td>点击之后的回调函数</td>
+    </tr>
+  </table>
+</article>

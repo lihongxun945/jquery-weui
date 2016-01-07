@@ -97,7 +97,7 @@
             if(iframe && iframe.src.indexOf(url) !== -1) {
               //已经是了
             } else {
-              $window.html("<iframe src='" + url +"' width='320' height='569' frameBorder='0'></iframe>");
+              $window.html("<iframe src='" + url +"' width='320' height='549' frameBorder='0'></iframe>");
             }
           }
         }

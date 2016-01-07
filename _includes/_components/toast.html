@@ -1,0 +1,17 @@
+<article id="toast" class='component' data-url="toast.html">
+  <h2>Toast</h2>
+  <p>Toast 用于临时显示某些信息，并且会在数秒后自动消失。这些信息通常是轻量级操作的成功、失败或等待状态信息。</p>
+
+  <p>Toast 只能通过 JavaScript 进行调用:</p>
+
+{% highlight js %}
+$.toast();
+$.toast("操作成功");
+{% endhighlight %}
+
+  <p>Toast 目前只有一个成功的模式，后续会加上失败的模式。</p>
+
+  <h3>参数</h3>
+
+  <p>Toast 默认时间是 2000 毫秒，可以通过 <code>$.toast.prototype.defaults.duration</code> 来设置这个值。</p>
+</article>
