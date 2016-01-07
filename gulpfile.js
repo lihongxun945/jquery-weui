@@ -1,9 +1,8 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-var clean = require("gulp-clean");
 
 gulp.task('js', function() {
-  return gulp.src(['./src/js/action-sheet.js'])
+  return gulp.src(['./src/js/modal.js'])
     .pipe(concat({ path: 'weui-jquery.js'}))
     .pipe(gulp.dest('./dist/js/'));
 });
@@ -13,11 +12,6 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('./dist/lib/'));
 });
 
-gulp.task('clean', function () {
-  return gulp.src('./dist', {read: false})
-  .pipe(clean());
-});
-
 gulp.task('watch', function () {
   gulp.watch('src/js/**/*.js', ['js']);
 });
@@ -25,4 +19,4 @@ gulp.task('watch', function () {
 gulp.task('server', function () {
   gulp.start('server');
 });
-gulp.task("default", ['clean', 'js', 'copy']);
+gulp.task("default", ['js', 'copy']);
