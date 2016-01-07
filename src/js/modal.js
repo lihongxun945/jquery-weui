@@ -22,9 +22,9 @@
     var dialog = $(tpl).appendTo(document.body);
 
     dialog.find(".weui_btn_dialog").each(function(i, e) {
-      if(buttons[i].callback) {
+      if(buttons[i].onClick) {
         $(e).click(function() {
-          buttons[i].callback();
+          buttons[i].onClick();
         });
       }
     });
@@ -55,7 +55,7 @@
       buttons: [{
         text: defaults.buttonOK,
         className: "primary close-modal",
-        callback: callback
+        onClick: callback
       }]
     });
   }
@@ -73,12 +73,12 @@
       {
         text: defaults.buttonCancel,
         className: "default close-modal",
-        callback: callbackCancel
+        onClick: callbackCancel
       },
       {
         text: defaults.buttonOK,
         className: "primary close-modal",
-        callback: callbackOK
+        onClick: callbackOK
       }]
     });
   };
