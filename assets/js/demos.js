@@ -6,12 +6,12 @@ $(function() {
       actions: [{
         text: "编辑",
         onClick: function() {
-          $.alert("你选择了编辑");
+          //
         }
       },{
         text: "删除",
         onClick: function() {
-          $.alert("你选择了删除");
+          //
         }
       }]
     });
@@ -36,7 +36,7 @@ $(function() {
       buttons: [
         { text: "支付宝", onClick: function(){ console.log(1)} },
         { text: "微信支付", onClick: function(){ console.log(2)} },
-        { text: "取消", className: "default", onClick: function(){ console.log(3)} },
+        { text: "取消", className: "default close-modal", onClick: function(){ console.log(3)} },
       ]
     });
   });
