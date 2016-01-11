@@ -223,17 +223,23 @@ code {
 }
 
 #qrcode-btn {
-  width: 80px;
-  height: 80px;
-  bottom: 33px;
+  width: 67px;
+  height: 68px;
+  bottom: 39px;
   position: absolute;
   left: 50%;
-  transform: translate3d(-50%,0,0);
+  margin-left: -33.5px;
   cursor: pointer;
   background-image: url("../assets/img/home-btn.png");
   background-size: 100%;
   background-repeat: no-repeat;
-  animation:spin 4s linear infinite;
-
+  animation: spin 4s linear infinite;
+  transform-origin: 50% 50%;
 }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    transform-origin: 50% 50%;
+  }
+}

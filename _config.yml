@@ -20,4 +20,5 @@ github_username:  lihongxun945
 # Build settings
 markdown: kramdown
 
+host: 0.0.0.0
 exclude: [node_modules]
