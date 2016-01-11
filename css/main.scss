@@ -61,8 +61,9 @@ body {
 article {
   padding-top: 30px;
 }
-.navbar {
+.header {
   margin: 0!important;
+  font-size: 16px;
 }
 
 .container-fluid {
@@ -195,3 +196,44 @@ code {
     margin: 0 20px;
   }
 }
+
+.git-buttons {
+  margin-top: 15px;
+  iframe {
+    width: 100px;
+    height: 24px;
+    border: 0;
+    display: inline-block;
+  }
+}
+
+#qrcode {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  z-index: 999;
+  bottom: 0;
+  left: 50%;
+  transform: translate3d(-50%, 100%, 0);
+  transition: .5s;
+
+  &.show {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+#qrcode-btn {
+  width: 80px;
+  height: 80px;
+  bottom: 33px;
+  position: absolute;
+  left: 50%;
+  transform: translate3d(-50%,0,0);
+  cursor: pointer;
+  background-image: url("../assets/img/home-btn.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  animation:spin 4s linear infinite;
+
+}
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

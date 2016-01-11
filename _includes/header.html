@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-inverse navbar-static-top">
+<nav class="navbar header navbar-default navbar-inverse navbar-static-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -7,15 +7,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">jQuery WeUI</a>
+      <a class="navbar-brand" href="{{ "/" | prepend: site.baseurl }}">jQuery WeUI</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="{{ "/" | prepend: site.baseurl }}">首页 <span class="sr-only">(current)</span></a></li>
-        <li><a href="{{ "/components" | prepend: site.baseurl }}">文档</a></li>
+        <li class='link-index'><a href="{{ "/" | prepend: site.baseurl }}">首页 <span class="sr-only">(current)</span></a></li>
+        <li class='link-components'><a href="{{ "/components" | prepend: site.baseurl }}">文档</a></li>
+        <li class='link-about'><a href="{{ "/about" | prepend: site.baseurl }}">关于</a></li>
         <li><a href="https://github.com/lihongxun945/jquery-weui">Github</a></li>
-        <li><a href="{{ "/about" | prepend: site.baseurl }}">关于</a></li>
+        <li><a href="http://light7.org">Light7</a></li>
       </ul>
     </div>
   </div>
