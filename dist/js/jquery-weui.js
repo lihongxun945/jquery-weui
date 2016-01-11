@@ -50,11 +50,16 @@
     var dialog = $(tpl).appendTo(document.body);
 
     dialog.find(".weui_btn_dialog").each(function(i, e) {
-      if(buttons[i].onClick) {
-        $(e).click(function() {
+      var el = $(e);
+      el.click(function() {
+        //先关闭对话框，再调用回调函数
+        if(el.hasClass("close-modal")) {
+          $.closeModal();
+        }
+        if(buttons[i].onClick) {
           buttons[i].onClick();
-        });
-      }
+        }
+      });
     });
 
     mask.show();
@@ -64,10 +69,10 @@
   };
 
   $.closeModal = function() {
-    $(".weui_mask").removeClass("weui_mask_visible").transitionEnd(function() {
+    $(".weui_mask_visible").removeClass("weui_mask_visible").transitionEnd(function() {
       $(this).remove();
     });
-    $(".weui_dialog").removeClass("weui_dialog_visible").transitionEnd(function() {
+    $(".weui_dialog_visible").removeClass("weui_dialog_visible").transitionEnd(function() {
       $(this).remove();
     });
   };
@@ -122,12 +127,6 @@
     }]
   };
 
-  $(function() {
-    $(document).on("click", ".close-modal", function() {
-      $.closeModal();
-    });
-  });
-
 }($);
 
 + function($) {
@@ -144,12 +143,11 @@
 
     dialog.show();
     dialog.addClass("weui_toast_visible");
-
   };
 
   var hide = function() {
     $(".weui_mask_transparent").hide();
-    $(".weui_toast").removeClass("weui_toast_visible").transitionEnd(function() {
+    $(".weui_toast_visible").removeClass("weui_toast_visible").transitionEnd(function() {
       $(this).remove();
     });
   }
@@ -208,11 +206,12 @@
     var dialog = $(tpl).appendTo(document.body);
 
     dialog.find(".weui_actionsheet_menu .weui_actionsheet_cell").each(function(i, e) {
-      if(actions[i].onClick) {
-        $(e).click(function() {
+      $(e).click(function() {
+        $.closeActions();
+        if(actions[i].onClick) {
           actions[i].onClick();
-        });
-      }
+        }
+      })
     });
 
     mask.show();
@@ -239,10 +238,6 @@
     hide();
   }
 
-  $.hideLoading = function() {
-    hide();
-  }
-
   var defaults = $.actions.prototype.defaults = {
     /*actions: [{
       text: "菜单",
@@ -258,11 +253,5 @@
       }
     }]*/
   }
-
-  $(function() {
-    $(document).on("click", ".weui_actionsheet_cell", function() {
-      $.closeActions();
-    });
-  });
 
 }($);

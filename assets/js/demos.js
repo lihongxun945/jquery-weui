@@ -40,9 +40,9 @@ $(function() {
       title: "Hello",
       text: "我是自定义的modal",
       buttons: [
-        { text: "支付宝", onClick: function(){ console.log(1)} },
-        { text: "微信支付", onClick: function(){ console.log(2)} },
-        { text: "取消", className: "default close-modal", onClick: function(){ console.log(3)} },
+        { text: "支付宝", onClick: function(){ $.alert("你选择了支付宝"); } },
+        { text: "微信支付", onClick: function(){ $.alert("你选择了微信支付"); } },
+        { text: "取消", className: "default"},
       ]
     });
   });
