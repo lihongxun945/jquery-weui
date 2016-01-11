@@ -12,12 +12,11 @@
 
     dialog.show();
     dialog.addClass("weui_toast_visible");
-
   };
 
   var hide = function() {
     $(".weui_mask_transparent").hide();
-    $(".weui_toast").removeClass("weui_toast_visible").transitionEnd(function() {
+    $(".weui_toast_visible").removeClass("weui_toast_visible").transitionEnd(function() {
       $(this).remove();
     });
   }
