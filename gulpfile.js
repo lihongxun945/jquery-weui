@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var connect = require("gulp-connect");
 var less = require("gulp-less");
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('js', function() {
   return gulp.src([
@@ -17,6 +18,7 @@ gulp.task('js', function() {
 gulp.task('less', function () {
   return gulp.src(['./src/less/jquery-weui.less'])
   .pipe(less())
+  .pipe(autoprefixer())
   .pipe(gulp.dest('./dist/css/'));
 });
 

@@ -24,11 +24,12 @@
     var dialog = $(tpl).appendTo(document.body);
 
     dialog.find(".weui_actionsheet_menu .weui_actionsheet_cell").each(function(i, e) {
-      if(actions[i].onClick) {
-        $(e).click(function() {
+      $(e).click(function() {
+        $.closeActions();
+        if(actions[i].onClick) {
           actions[i].onClick();
-        });
-      }
+        }
+      })
     });
 
     mask.show();
@@ -55,10 +56,6 @@
     hide();
   }
 
-  $.hideLoading = function() {
-    hide();
-  }
-
   var defaults = $.actions.prototype.defaults = {
     /*actions: [{
       text: "菜单",
@@ -74,11 +71,5 @@
       }
     }]*/
   }
-
-  $(function() {
-    $(document).on("click", ".weui_actionsheet_cell", function() {
-      $.closeActions();
-    });
-  });
 
 }($);

@@ -22,11 +22,14 @@
     var dialog = $(tpl).appendTo(document.body);
 
     dialog.find(".weui_btn_dialog").each(function(i, e) {
-      if(buttons[i].callback) {
-        $(e).click(function() {
-          buttons[i].callback();
-        });
-      }
+      var el = $(e);
+      el.click(function() {
+        //先关闭对话框，再调用回调函数
+        $.closeModal();
+        if(buttons[i].onClick) {
+          buttons[i].onClick();
+        }
+      });
     });
 
     mask.show();
@@ -36,10 +39,10 @@
   };
 
   $.closeModal = function() {
-    $(".weui_mask").removeClass("weui_mask_visible").transitionEnd(function() {
+    $(".weui_mask_visible").removeClass("weui_mask_visible").transitionEnd(function() {
       $(this).remove();
     });
-    $(".weui_dialog").removeClass("weui_dialog_visible").transitionEnd(function() {
+    $(".weui_dialog_visible").removeClass("weui_dialog_visible").transitionEnd(function() {
       $(this).remove();
     });
   };
@@ -54,8 +57,8 @@
       title: title,
       buttons: [{
         text: defaults.buttonOK,
-        className: "primary close-modal",
-        callback: callback
+        className: "primary",
+        onClick: callback
       }]
     });
   }
@@ -72,13 +75,13 @@
       buttons: [
       {
         text: defaults.buttonCancel,
-        className: "default close-modal",
-        callback: callbackCancel
+        className: "defaultl",
+        onClick: callbackCancel
       },
       {
         text: defaults.buttonOK,
-        className: "primary close-modal",
-        callback: callbackOK
+        className: "primary",
+        onClick: callbackOK
       }]
     });
   };
@@ -93,11 +96,5 @@
       className: "primary"
     }]
   };
-
-  $(function() {
-    $(document).on("click", ".close-modal", function() {
-      $.closeModal();
-    });
-  });
 
 }($);
