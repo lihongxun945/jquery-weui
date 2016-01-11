@@ -53,9 +53,7 @@
       var el = $(e);
       el.click(function() {
         //先关闭对话框，再调用回调函数
-        if(el.hasClass("close-modal")) {
-          $.closeModal();
-        }
+        $.closeModal();
         if(buttons[i].onClick) {
           buttons[i].onClick();
         }
@@ -87,7 +85,7 @@
       title: title,
       buttons: [{
         text: defaults.buttonOK,
-        className: "primary close-modal",
+        className: "primary",
         onClick: callback
       }]
     });
@@ -105,12 +103,12 @@
       buttons: [
       {
         text: defaults.buttonCancel,
-        className: "default close-modal",
+        className: "defaultl",
         onClick: callbackCancel
       },
       {
         text: defaults.buttonOK,
-        className: "primary close-modal",
+        className: "primary",
         onClick: callbackOK
       }]
     });

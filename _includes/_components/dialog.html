@@ -46,14 +46,14 @@ $.modal({
   buttons: [
     { text: "支付宝", onClick: function(){ console.log(1)} },
     { text: "微信支付", onClick: function(){ console.log(2)} },
-    { text: "取消", className: "default close-modal", onClick: function(){ console.log(3)} },
+    { text: "取消", className: "default", onClick: function(){ console.log(3)} },
   ]
 });
 {% endhighlight %}
 
 
   <h3>关闭对话框</h3>
-  <p>默认情况下，点击按钮不会关闭对话框，你可以通过 <code>className: "close-modal"</code> 加上一个 <code>close-modal</code> 的类，来使按钮可以关闭对话框。</p>
+  <p>默认情况下，点击对话框的按钮都会先关闭对话框再触发回调函数。</p>
 
   <p>你可以通过JS来关闭任何正在显示的对话框:</p>
 
