@@ -103,7 +103,7 @@
       buttons: [
       {
         text: defaults.buttonCancel,
-        className: "defaultl",
+        className: "default",
         onClick: callbackCancel
       },
       {
