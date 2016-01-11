@@ -6,12 +6,12 @@ $(function() {
       actions: [{
         text: "编辑",
         onClick: function() {
-          //
+          $.alert("你选择了“编辑”");
         }
       },{
         text: "删除",
         onClick: function() {
-          //
+          $.alert("你选择了“删除”");
         }
       }]
     });
@@ -22,11 +22,17 @@ $(function() {
   });
 
   $(document).on("click", "#show-alert", function() {
-    $.alert("这里是提示文案");
+    $.alert("这里是提示文案", function() {
+      $.alert("你点击了确定按钮");
+    });
   });
 
   $(document).on("click", "#show-confirm", function() {
-    $.confirm("我是一个Confirm，我有两个按钮");
+    $.confirm("我是一个Confirm，我有两个按钮", function() {
+      $.alert("你点击了确定按钮");
+    }, function() {
+      $.alert("你点击了取消按钮");
+    });
   });
 
   $(document).on("click", "#show-custom-modal", function() {

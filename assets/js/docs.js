@@ -15,7 +15,7 @@
       width: 200,
       height: 200,
     });
-    coder.makeCode(device.find("iframe")[0].src);
+    coder.makeCode(location.origin+device.find("iframe").attr("src"));
 
     $(document).on("click", "#qrcode-btn", function() {
       $("#qrcode").toggleClass("show");
@@ -108,7 +108,7 @@
                 //已经是了
               } else {
                 iframe.src = url;
-                coder.makeCode(iframe.src);
+                coder.makeCode(location.origin+url);
               }
             }
           }
