@@ -55,10 +55,6 @@
     hide();
   }
 
-  $.hideLoading = function() {
-    hide();
-  }
-
   var defaults = $.actions.prototype.defaults = {
     /*actions: [{
       text: "菜单",
