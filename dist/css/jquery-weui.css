@@ -3,10 +3,12 @@
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
   opacity: 0;
-  -webkit-transform: translate3d(-50%, -50%, 0) scale(0.9);
-          transform: translate3d(-50%, -50%, 0) scale(0.9);
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
   visibility: hidden;
   margin: 0;
+  left: 7.5%;
+  top: 30%;
 }
 .weui_dialog .weui_btn_dialog + .weui_btn_dialog,
 .weui_toast .weui_btn_dialog + .weui_btn_dialog {
@@ -33,8 +35,8 @@
 .weui_toast.weui_toast_visible {
   opacity: 1;
   visibility: visible;
-  -webkit-transform: translate3d(-50%, -50%, 0) scale(1);
-          transform: translate3d(-50%, -50%, 0) scale(1);
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 .weui_mask {
   opacity: 0;
