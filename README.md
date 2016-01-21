@@ -1,4 +1,4 @@
-# jQuery WeUI V0.2.1 - 可能是最好用 WeUI 版本
+# jQuery WeUI V0.2.3 - 可能是最好用 WeUI 版本
 
 [![npm version](https://img.shields.io/npm/v/jquery-weui.svg)](https://www.npmjs.com/package/jquery-weui)
 
