@@ -1,9 +1,11 @@
 .weui_dialog, .weui_toast {
   transition-duration: .3s;
   opacity: 0;
-  transform: translate3d(-50%, -50%, 0) scale(.9);
+  transform: scale(.9);
   visibility: hidden;
   margin: 0;
+  left: 7.5%;
+  top: 30%;
 
   .weui_btn_dialog + .weui_btn_dialog {
     position: relative;
@@ -24,7 +26,7 @@
   &.weui_dialog_visible, &.weui_toast_visible {
     opacity: 1;
     visibility: visible;
-    transform: translate3d(-50%, -50%, 0) scale(1);
+    transform: scale(1);
   }
 }
 
