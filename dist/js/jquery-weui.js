@@ -103,7 +103,7 @@
       buttons: [
       {
         text: defaults.buttonCancel,
-        className: "defaultl",
+        className: "default",
         onClick: callbackCancel
       },
       {
@@ -203,7 +203,7 @@
                 '</div>';
     var dialog = $(tpl).appendTo(document.body);
 
-    dialog.find(".weui_actionsheet_menu .weui_actionsheet_cell").each(function(i, e) {
+    dialog.find(".weui_actionsheet_menu .weui_actionsheet_cell, .weui_actionsheet_action .weui_actionsheet_cell").each(function(i, e) {
       $(e).click(function() {
         $.closeActions();
         if(actions[i].onClick) {
