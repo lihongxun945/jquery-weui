@@ -18,7 +18,31 @@ layout: default
 
   <div class="container">
     <h2>jQuery WeUI</h2>
-    <p><a href="https://github.com/weui/weui">WeUI</a> 是微信官方团队针对微信提供的一个H5 UI库，它只提供了一组CSS组件。jQuery WeUI 中使用的是官方WeUI的CSS代码，并提供了jQuery/Zepto版本的API实现。</p>
+    <p><a href="https://github.com/weui/weui">WeUI</a> 是微信官方团队针对微信提供的一个H5 UI库，它只提供了一组CSS组件。</p>
+    <p>jQuery WeUI 中使用的是官方WeUI的CSS代码，并提供了jQuery/Zepto版本的API实现。因为直接使用了官方的CSS，所以你不用担心跟官方版本的冲突。实际上 jQuery WeUI == WeUI + jQuery插件。</p>
+
+    <h2>简洁强大的API</h2>
+
+    <p>如果你使用过jQuery，那么你使用jQuery WeUI 将没有任何障碍。所有的JS组件都是标准的jQuery插件：</p>
+{% highlight js %}
+//显示一个对话框
+$.alert("我是一个对话框");
+
+//弹出一个actionsheet
+$.actions({
+  actions: [{
+    text: "编辑",
+    onClick: function() {
+      //do something
+    }
+  },{
+    text: "删除",
+    onClick: function() {
+      //do something
+    }
+  }]
+});
+{% endhighlight %}
 
     <h2>立刻试用</h2>
     <p>依次引入如下文件后即可使用：</p>
