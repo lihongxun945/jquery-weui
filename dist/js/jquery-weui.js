@@ -2,28 +2,48 @@
 /* global WebKitCSSMatrix:true */
 
 (function($) {
-    "use strict";
+  "use strict";
 
-    $.fn.transitionEnd = function(callback) {
-        var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'],
-            i, dom = this;
+  $.fn.transitionEnd = function(callback) {
+    var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'],
+      i, dom = this;
 
-        function fireCallBack(e) {
-            /*jshint validthis:true */
-            if (e.target !== this) return;
-            callback.call(this, e);
-            for (i = 0; i < events.length; i++) {
-                dom.off(events[i], fireCallBack);
-            }
-        }
-        if (callback) {
-            for (i = 0; i < events.length; i++) {
-                dom.on(events[i], fireCallBack);
-            }
-        }
-        return this;
-    };
-    
+    function fireCallBack(e) {
+      /*jshint validthis:true */
+      if (e.target !== this) return;
+      callback.call(this, e);
+      for (i = 0; i < events.length; i++) {
+        dom.off(events[i], fireCallBack);
+      }
+    }
+    if (callback) {
+      for (i = 0; i < events.length; i++) {
+        dom.on(events[i], fireCallBack);
+      }
+    }
+    return this;
+  };
+
+  $.touchEvents = {
+    start: $.support.touch ? 'touchstart' : 'mousedown',
+    move: $.support.touch ? 'touchmove' : 'mousemove',
+    end: $.support.touch ? 'touchend' : 'mouseup'
+  };
+  
+  $.getTouchPosition = function(e) {
+    e = e.originalEvent || e; //jquery wrap the originevent
+    if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend') {
+      return {
+        x: e.targetTouches[0].pageX,
+        y: e.targetTouches[0].pageY
+      };
+    } else {
+      return {
+        x: e.pageX,
+        y: e.pageY
+      };
+    }
+  };
 })($);
 
 + function($) {
@@ -206,7 +226,7 @@
     dialog.find(".weui_actionsheet_menu .weui_actionsheet_cell, .weui_actionsheet_action .weui_actionsheet_cell").each(function(i, e) {
       $(e).click(function() {
         $.closeActions();
-        if(actions[i] && actions[i].onClick) {
+        if(actions[i].onClick) {
           actions[i].onClick();
         }
       })
@@ -250,6 +270,88 @@
         console.log(2);
       }
     }]*/
+  }
+
+}($);
+
+/* ===============================================================================
+************   Notification ************
+=============================================================================== */
+/* global $:true */
++function ($) {
+  "use strict";
+
+  var distance = 50;
+  var container, start, diffX, diffY;
+
+  var touchStart = function(e) {
+    if(container.hasClass("refreshing")) return;
+    var p = $.getTouchPosition(e);
+    start = p;
+    diffX = diffY = 0;
+  };
+  var touchMove = function(e) {
+    if(container.hasClass("refreshing")) return;
+    if(!start) return false;
+    if(container.scrollTop() > 0) return;
+    e.preventDefault();
+    e.stopPropagation();
+    container.addClass("touching");
+    var p = $.getTouchPosition(e);
+    diffX = p.x - start.x;
+    diffY = p.y - start.y;
+    diffY = diffY*.38;
+    if(diffY < 0) return;
+    container.css("transform", "translate3d(0, "+diffY+"px, 0)");
+
+    if(diffY < distance) {
+      container.removeClass("pull-up").addClass("pull-down");
+    } else {
+      container.removeClass("pull-down").addClass("pull-up");
+    }
+  };
+  var touchEnd = function() {
+    if(container.hasClass("refreshing")) return;
+    start = false;
+    container.removeClass("touching");
+    container.removeClass("pull-down pull-up");
+    container.css("transform", "");
+    if(Math.abs(diffY) <= distance) {
+    } else {
+      container.addClass("refreshing");
+      container.trigger("pull-to-refresh");
+    }
+
+    
+  };
+
+  var attachEvents = function(el) {
+    el = $(el);
+    el.addClass("pull-to-refresh");
+    container = el;
+    el.on($.touchEvents.start, touchStart);
+    el.on($.touchEvents.move, touchMove);
+    el.on($.touchEvents.end, touchEnd);
+  };
+
+  var pullToRefresh = function(el) {
+    attachEvents(el);
+  };
+
+  var pullToRefreshDone = function(el) {
+    $(el).removeClass("refreshing");
+  }
+
+  $.fn.pullToRefresh = function() {
+    return this.each(function() {
+      pullToRefresh(this);
+    });
+  }
+
+  $.fn.pullToRefreshDone = function() {
+    return this.each(function() {
+      pullToRefreshDone(this);
+    });
   }
 
 }($);

@@ -51,4 +51,9 @@ $(function() {
     $.showLoading();
   });
 
+  //pull to refresh
+  if($(".pull-to-refresh-layer")[0]) {
+    $(document.body).pullToRefresh();
+  }
+
 });

@@ -1,0 +1,50 @@
+<article id="pull-to-refresh" class='component' data-url="pull-to-refresh.html">
+  <h2>下拉刷新</h2>
+  <p>原生滚动实现的下拉刷新。为了使用下拉刷新，首先你需要在body的最顶部加上下拉状态的代码：</p>
+
+
+{% highlight html %}
+<div class="pull-to-refresh-layer">
+  <div class="down">下拉刷新</div><!-- 下拉过程显示 -->
+  <div class="up">释放刷新</div><!-- 下拉超过50px显示 -->
+  <div class="refresh">正在刷新...</div><!-- 正在刷新时显示 -->
+</div>
+{% endhighlight %}
+
+  <p>其中 <code>down</code>, <code>up</code>, <code>refresh</code> 分别是在下拉过程的不同状态下显示的。你可以随意修改其中的内容来定制自己的样式</p>
+
+  <p>然后通过JS初始化下拉刷新：</p>
+
+{% highlight js %}
+$(document.body).pullToRefresh();
+{% endhighlight %}
+
+  <p>当下拉刷新的动作触发的时候，会在容器上触发一个 <code>pull-to-refresh</code> 事件.</p>
+
+{% highlight js %}
+$(document.body).on("pull-to-refresh", function() {
+  //do something
+});
+{% endhighlight %}
+
+  <h3>完成下拉刷新</h3>
+
+  <p>当下拉刷新的工作完成之后，需要重置下拉刷新的状态：</p>
+
+{% highlight js %}
+$(document.body).pullToRefreshDone();
+{% endhighlight %}
+
+  <h3>下拉过程</h3>
+
+  <p>下拉刷新的整个过程分三步:</p>
+
+  <ol>
+    <li>当用户正在拖动，并且未到达50px的时候，会在容器上增加一个 <code>pull-down</code> 类</li>
+    <li>当用户正在拖动，并且已经达到或者超过50px的时候，会在容器上增加一个 <code>pull-up</code> 类</li>
+    <li>当用户拖动超过50px并且释放之后，会在容器上增加一个 <code>refreshing</code> 类</li>
+  </ol>
+
+
+
+</article>
