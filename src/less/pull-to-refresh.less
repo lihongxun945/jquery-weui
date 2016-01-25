@@ -1,0 +1,32 @@
+@distance: 50px;
+.pull-to-refresh {
+  margin-top: -1 * @distance;
+  transition: transform .3s;
+
+  &.refreshing {
+    transform: translate3d(0, @distance, 0);
+  }
+
+  &.touching {
+    transition-duration: 0s;
+  }
+}
+
+.pull-to-refresh-layer {
+  height: @distance;
+  .up, .down, .refresh {
+    display: none;
+  }
+}
+
+.pull-up .pull-to-refresh-layer .up {
+  display: block;
+}
+
+.pull-down .pull-to-refresh-layer .down {
+  display: block;
+}
+
+.refreshing .pull-to-refresh-layer .refresh {
+  display: block;
+}
