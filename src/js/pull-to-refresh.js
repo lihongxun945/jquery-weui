@@ -24,7 +24,7 @@
     var p = $.getTouchPosition(e);
     diffX = p.x - start.x;
     diffY = p.y - start.y;
-    diffY = diffY*.38;
+    diffY = Math.pow(diffY, 0.8);
     if(diffY < 0) return;
     container.css("transform", "translate3d(0, "+diffY+"px, 0)");
 
