@@ -53,7 +53,13 @@ $(function() {
 
   //pull to refresh
   if($(".pull-to-refresh-layer")[0]) {
-    $(document.body).pullToRefresh();
+    $("#time").text(new Date);
+    $(document.body).pullToRefresh().on("pull-to-refresh", function() {
+      setTimeout(function() {
+        $("#time").text(new Date);
+        $(document.body).pullToRefreshDone(); // 重置下拉刷新
+      }, 1500);   //模拟延迟
+    });
   }
 
 });
