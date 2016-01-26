@@ -16,11 +16,14 @@
   <body ontouchstart>
 
     <div class="pull-to-refresh-layer">
-      <div class="down">下拉刷新</div>
+      <div class='pull-to-refresh-arrow'></div>
+      <div class='pull-to-refresh-preloader'></div>
+      <div class="down"> 下拉刷新</div>
       <div class="up">释放刷新</div>
-      <div class="refresh">正在刷新...</div>
+      <div class="refresh">正在刷新</div>
     </div>
 
+    <p>Time: <span id="time"></span></p>
     <p>fhsaf safaf fdasfadsf</p>
     <p>fhsaf safaf fdasfadsf</p>
     <p>fhsaf safaf fdasfadsf</p>
@@ -48,7 +51,14 @@
     <p>fhsaf safaf fdasfadsf</p>
     <script src="/dist/lib/jquery-2.1.4.js"></script>
     <script src="/dist/js/jquery-weui.js"></script>
-    <script>$(document.body).pullToRefresh();</script>
+    <script>
+      $(document.body).pullToRefresh().on("pull-to-refresh", function() {
+        setTimeout(function() {
+          $("#time").text(+new Date);
+          $(document.body).pullToRefreshDone();
+        }, 2000);
+      });
+    </script>
   </body>
 
 </html>

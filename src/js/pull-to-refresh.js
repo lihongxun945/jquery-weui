@@ -18,14 +18,15 @@
     if(container.hasClass("refreshing")) return;
     if(!start) return false;
     if(container.scrollTop() > 0) return;
-    e.preventDefault();
-    e.stopPropagation();
-    container.addClass("touching");
     var p = $.getTouchPosition(e);
     diffX = p.x - start.x;
     diffY = p.y - start.y;
-    diffY = Math.pow(diffY, 0.8);
+    console.log(diffY);
     if(diffY < 0) return;
+    container.addClass("touching");
+    e.preventDefault();
+    e.stopPropagation();
+    diffY = Math.pow(diffY, 0.8);
     container.css("transform", "translate3d(0, "+diffY+"px, 0)");
 
     if(diffY < distance) {
@@ -35,8 +36,8 @@
     }
   };
   var touchEnd = function() {
-    if(container.hasClass("refreshing")) return;
     start = false;
+    if(diffY <= 0 || container.hasClass("refreshing")) return;
     container.removeClass("touching");
     container.removeClass("pull-down pull-up");
     container.css("transform", "");
