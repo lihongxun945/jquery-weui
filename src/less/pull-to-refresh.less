@@ -1,0 +1,92 @@
+@distance: 50px;
+.weui-pull-to-refresh {
+  margin-top: -1 * @distance;
+  transition: transform .4s;
+
+  &.refreshing {
+    transform: translate3d(0, @distance, 0);
+  }
+
+  &.touching {
+    transition-duration: 0s;
+  }
+}
+
+.weui-pull-to-refresh-layer {
+  height: @distance - 20px;
+  line-height: @distance - 20px;
+  padding: 10px;
+  text-align: center;
+  .down {
+    display: inline-block;
+  }
+  .up, .refresh {
+    display: none;
+  }
+  .pull-to-refresh-arrow {
+    display: inline-block;
+    z-index: 10;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    vertical-align: -4px;
+    background: no-repeat center;
+    background-size: 13px 20px;
+    transition-duration: 300ms;
+    transform: rotate(0deg) translate3d(0, 0, 0);
+    .encoded-svg-background("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 40'><polygon points='9,22 9,0 17,0 17,22 26,22 13.5,40 0,22' fill='#8c8c8c'/></svg>");
+  }
+  .pull-to-refresh-preloader {
+    display: none;
+    vertical-align: -4px;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+    transform-origin: 50%;
+    animation: preloader-spin 1s steps(12, end) infinite;
+
+    .preloader;
+  }
+}
+
+.pull-up, .refreshing  {
+  .weui-pull-to-refresh-layer .down {
+    display: none;
+  }
+}
+.pull-up .weui-pull-to-refresh-layer {
+  .pull-to-refresh-arrow {
+    display: inline-block;
+    transform: rotate(180deg) translate3d(0, 0, 0);
+  }
+  .up {
+    display: inline-block;
+  }
+}
+
+.pull-down .weui-pull-to-refresh-layer {
+  .pull-to-refresh-arrow {
+    display: inline-block;
+  }
+  .down {
+    display: inline-block;
+  }
+}
+
+.refreshing .weui-pull-to-refresh-layer {
+  .pull-to-refresh-arrow {
+    display: none;
+  }
+  .pull-to-refresh-preloader {
+    display: inline-block;
+  }
+  .refresh {
+    display: inline-block;
+  }
+}
+
+@keyframes preloader-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

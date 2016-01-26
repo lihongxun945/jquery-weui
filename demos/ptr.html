@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>jQuery WEUI</title>
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+    ">
+
+    <link rel="stylesheet" href="/dist/lib/weui.css">
+    <link rel="stylesheet" href="/dist/css/jquery-weui.css">
+  </head>
+
+  <body ontouchstart>
+
+    <div class="weui-pull-to-refresh-layer">
+      <div class='pull-to-refresh-arrow'></div>
+      <div class='pull-to-refresh-preloader'></div>
+      <div class="down"> 下拉刷新</div>
+      <div class="up">释放刷新</div>
+      <div class="refresh">正在刷新</div>
+    </div>
+
+    <p>Time: <span id="time"></span></p>
+    <div id="list">
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+      <p>fhsaf safaf fdasfadsf</p>
+    </div>
+    <div class="weui-infinite-scroll">
+      <div class="infinite-preloader"></div>
+      正在加载
+    </div>
+    <script src="/dist/lib/jquery-2.1.4.js"></script>
+    <script src="/dist/js/jquery-weui.js"></script>
+    <script>
+      $(document.body).pullToRefresh().on("pull-to-refresh", function() {
+        setTimeout(function() {
+          $("#time").text(new Date);
+          $(document.body).pullToRefreshDone();
+        }, 2000);
+      });
+      var loading = false;
+      $(document.body).infinite().on("infinite", function() {
+        if(loading) return;
+        loading = true;
+        setTimeout(function() {
+          $("#list").append("<p>dsadsaf ig fu uf gogof goigli ggl jlh kh kbgvb</p>");
+          loading = false;
+        }, 2000);
+      });
+    </script>
+  </body>
+
+</html>
