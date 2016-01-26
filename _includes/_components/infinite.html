@@ -40,4 +40,6 @@ $(document.body).infinite().on("infinite", function() {
   <h3>销毁</h3>
 
   <p>如果你不需要滚动加载了，比如已经加载完了所有内容，调用 <code>$(document.body).destroyInfinite()</code> 可以销毁插件。之后你可以再次调用 <code>$(document.body).infinite()</code> 来重新初始化. </p>
+
+  <p>不过即使销毁插件，也不会把加载指示器的HTML代码删除，所以你需要自己来隐藏或者删除它。</p>
 </article>
