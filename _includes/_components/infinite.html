@@ -1,0 +1,39 @@
+<article id="infinite" class='component' data-url="infinite.html">
+  <h2>滚动加载</h2>
+  <p>当用户滚动到页面底部的时候加载更多内容。</p>
+
+  <p>首先你需要把一段显示加载状态的代码放入页面中，加载指示器的代码如下：</p>
+
+{% highlight html %}
+<div class="weui-infinite-scroll">
+  <div class="infinite-preloader"></div><!-- 菊花 -->
+  正在加载... <!-- 文案，可以自行修改 -->
+</div>
+{% endhighlight %}
+
+  <p>然后调用JS初始化滚动加载插件：</p>
+
+{% highlight js %}
+$(document.body).infinite();
+{% endhighlight %}
+
+  <p>同样的，当前只支持在 <code>document.body</code> 上进行滚动加载。</p>
+
+  <h3>事件</h3>
+
+  <p>当用户滚动到页面底部的时候，会在 <code>body</code> 上触发 <code>infinite</code> 事件。监听此事件即可:</p>
+
+{% highlight js %}
+var loading = false;  //状态标记
+$(document.body).infinite().on("infinite", function() {
+  if(loading) return;
+  loading = true;
+  setTimeout(function() {
+    $("#list").append("<p> 我是新加载的内容 </p>");
+    loading = false;
+  }, 1500);   //模拟延迟
+});
+{% endhighlight %}
+
+  <p>注意一点，因为插件并不知道你是否正在加载，所以只要滚动到距离底部 50px 以内都会触发事件。因此 <code>infinite</code> 事件可能会触发多次。需要自己来控制不要同时进行多个加载。可以参考上面的代码通过一个 loading 标记位来控制。</p>
+</article>

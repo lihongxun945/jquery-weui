@@ -51,6 +51,10 @@
       };
     }
   };
+
+  $.fn.scrollHeight = function() {
+    return this[0].scrollHeight;
+  };
 })($);
 
 + function($) {
@@ -304,7 +308,6 @@
     var p = $.getTouchPosition(e);
     diffX = p.x - start.x;
     diffY = p.y - start.y;
-    console.log(diffY);
     if(diffY < 0) return;
     container.addClass("touching");
     e.preventDefault();
@@ -335,7 +338,7 @@
 
   var attachEvents = function(el) {
     el = $(el);
-    el.addClass("pull-to-refresh");
+    el.addClass("weui-pull-to-refresh");
     container = el;
     el.on($.touchEvents.start, touchStart);
     el.on($.touchEvents.move, touchMove);
@@ -359,6 +362,42 @@
   $.fn.pullToRefreshDone = function() {
     return this.each(function() {
       pullToRefreshDone(this);
+    });
+  }
+
+}($);
+
+/* ===============================================================================
+************   Notification ************
+=============================================================================== */
+/* global $:true */
++function ($) {
+  "use strict";
+
+  var distance = 50;
+  var container;
+
+  var scroll = function() {
+    var offset = container.scrollHeight() - ($(window).height() + container.scrollTop());
+    if(offset <= distance) {
+      container.trigger("infinite");
+    }
+  }
+
+  var attachEvents = function(el) {
+    el = $(el);
+    container = el;
+    var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : el);
+    scrollContainer.on("scroll", scroll);
+  };
+
+  var infinite = function(el) {
+    attachEvents(el);
+  }
+
+  $.fn.infinite = function() {
+    return this.each(function() {
+      infinite(this);
     });
   }
 

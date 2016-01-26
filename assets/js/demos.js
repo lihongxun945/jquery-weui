@@ -52,7 +52,7 @@ $(function() {
   });
 
   //pull to refresh
-  if($(".pull-to-refresh-layer")[0]) {
+  if($(".weui-pull-to-refresh-layer")[0]) {
     $("#time").text(new Date);
     $(document.body).pullToRefresh().on("pull-to-refresh", function() {
       setTimeout(function() {
@@ -62,4 +62,17 @@ $(function() {
     });
   }
 
+
+  //infinite scroll
+  if($(".weui-infinite-scroll")[0]) {
+    var loading = false;
+    $(document.body).infinite().on("infinite", function() {
+      if(loading) return;
+      loading = true;
+      setTimeout(function() {
+        $("#list").append("<p>我是新加载的内容</p><p>我是新加载的内容</p><p>我是新加载的内容</p><p>我是新加载的内容</p><p>我是新加载的内容</p>");
+        loading = false;
+      }, 1500);   //模拟延迟
+    });
+  }
 });
