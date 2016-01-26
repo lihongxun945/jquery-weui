@@ -36,4 +36,8 @@ $(document.body).infinite().on("infinite", function() {
 {% endhighlight %}
 
   <p>注意一点，因为插件并不知道你是否正在加载，所以只要滚动到距离底部 50px 以内都会触发事件。因此 <code>infinite</code> 事件可能会触发多次。需要自己来控制不要同时进行多个加载。可以参考上面的代码通过一个 loading 标记位来控制。</p>
+
+  <h3>销毁</h3>
+
+  <p>如果你不需要滚动加载了，比如已经加载完了所有内容，调用 <code>$(document.body).destroyInfinite()</code> 可以销毁插件。之后你可以再次调用 <code>$(document.body).infinite()</code> 来重新初始化. </p>
 </article>
