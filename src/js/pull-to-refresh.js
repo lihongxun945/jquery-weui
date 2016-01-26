@@ -21,7 +21,6 @@
     var p = $.getTouchPosition(e);
     diffX = p.x - start.x;
     diffY = p.y - start.y;
-    console.log(diffY);
     if(diffY < 0) return;
     container.addClass("touching");
     e.preventDefault();
@@ -52,7 +51,7 @@
 
   var attachEvents = function(el) {
     el = $(el);
-    el.addClass("pull-to-refresh");
+    el.addClass("weui-pull-to-refresh");
     container = el;
     el.on($.touchEvents.start, touchStart);
     el.on($.touchEvents.move, touchMove);

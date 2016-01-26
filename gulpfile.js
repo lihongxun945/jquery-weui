@@ -10,7 +10,8 @@ gulp.task('js', function() {
     './src/js/modal.js',
     './src/js/toast.js',
     './src/js/action.js',
-    './src/js/pull-to-refresh.js'
+    './src/js/pull-to-refresh.js',
+    './src/js/infinite.js'
   ])
     .pipe(concat({ path: 'jquery-weui.js'}))
     .pipe(gulp.dest('./dist/js/'));

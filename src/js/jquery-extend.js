@@ -51,4 +51,8 @@
       };
     }
   };
+
+  $.fn.scrollHeight = function() {
+    return this[0].scrollHeight;
+  };
 })($);
