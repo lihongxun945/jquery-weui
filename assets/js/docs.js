@@ -127,11 +127,9 @@
   if(/components/.test(location.href)) {
     $(".navbar .link-components").addClass("active");
     initSideMenu();
-  }
-  if(/extends/.test(location.href)) {
+  } else if(/extends/.test(location.href)) {
     $(".navbar .link-extends").addClass("active");
     initSideMenu();
-  }
-  else if(/about/.test(location.href)) $(".navbar .link-about").addClass("active");
+  } else if(/about/.test(location.href)) $(".navbar .link-about").addClass("active");
   else $(".navbar .link-index").addClass("active");
 }($);
