@@ -1,0 +1,34 @@
+---
+layout: default
+---
+
+<div class="home">
+  <div class="brand-header">
+    <div class="container-fluid">
+      <h1>拓展组件</h1>
+      <p>拓展组件是官方WeUI中暂时没有的组件。这些组件全部都是jQuery WeUI新增的。</p>
+    </div>
+  </div>
+  <div class="container-fluid docs-container">
+    <div class="menu-col">
+      {% include sidenav-extends.html %}
+    </div>
+    <div class="device-col">
+      <div class="device">
+        <div class="status-bar"></div>
+        <div class="window" id="window">
+          <iframe src="{{ "/docs-demos/pull-to-refresh.html" | prepend: site.baseurl }}" width="320" height="549" frameborder="0"></iframe>
+          <div id="qrcode"></div>
+        </div>
+        <div id="qrcode-btn"></div>
+      </div>
+    </div>
+    <div class="docs-col">
+      {% include _components/pull-to-refresh.html %}
+    </div>
+
+  </div>
+
+</div>
+
+<script src="{{ "/assets/js/qrcode.js" | prepend: site.baseurl }}"></script>
