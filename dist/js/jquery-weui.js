@@ -2,28 +2,59 @@
 /* global WebKitCSSMatrix:true */
 
 (function($) {
-    "use strict";
+  "use strict";
 
-    $.fn.transitionEnd = function(callback) {
-        var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'],
-            i, dom = this;
+  $.fn.transitionEnd = function(callback) {
+    var events = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'],
+      i, dom = this;
 
-        function fireCallBack(e) {
-            /*jshint validthis:true */
-            if (e.target !== this) return;
-            callback.call(this, e);
-            for (i = 0; i < events.length; i++) {
-                dom.off(events[i], fireCallBack);
-            }
-        }
-        if (callback) {
-            for (i = 0; i < events.length; i++) {
-                dom.on(events[i], fireCallBack);
-            }
-        }
-        return this;
+    function fireCallBack(e) {
+      /*jshint validthis:true */
+      if (e.target !== this) return;
+      callback.call(this, e);
+      for (i = 0; i < events.length; i++) {
+        dom.off(events[i], fireCallBack);
+      }
+    }
+    if (callback) {
+      for (i = 0; i < events.length; i++) {
+        dom.on(events[i], fireCallBack);
+      }
+    }
+    return this;
+  };
+
+  $.support = (function() {
+    var support = {
+      touch: !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
     };
-    
+    return support;
+  })();
+
+  $.touchEvents = {
+    start: $.support.touch ? 'touchstart' : 'mousedown',
+    move: $.support.touch ? 'touchmove' : 'mousemove',
+    end: $.support.touch ? 'touchend' : 'mouseup'
+  };
+  
+  $.getTouchPosition = function(e) {
+    e = e.originalEvent || e; //jquery wrap the originevent
+    if(e.type === 'touchstart' || e.type === 'touchmove' || e.type === 'touchend') {
+      return {
+        x: e.targetTouches[0].pageX,
+        y: e.targetTouches[0].pageY
+      };
+    } else {
+      return {
+        x: e.pageX,
+        y: e.pageY
+      };
+    }
+  };
+
+  $.fn.scrollHeight = function() {
+    return this[0].scrollHeight;
+  };
 })($);
 
 + function($) {
@@ -250,6 +281,133 @@
         console.log(2);
       }
     }]*/
+  }
+
+}($);
+
+/* ===============================================================================
+************   Notification ************
+=============================================================================== */
+/* global $:true */
++function ($) {
+  "use strict";
+
+  var distance = 50;
+  var container, start, diffX, diffY;
+
+  var touchStart = function(e) {
+    if(container.hasClass("refreshing")) return;
+    var p = $.getTouchPosition(e);
+    start = p;
+    diffX = diffY = 0;
+  };
+  var touchMove = function(e) {
+    if(container.hasClass("refreshing")) return;
+    if(!start) return false;
+    if(container.scrollTop() > 0) return;
+    var p = $.getTouchPosition(e);
+    diffX = p.x - start.x;
+    diffY = p.y - start.y;
+    if(diffY < 0) return;
+    container.addClass("touching");
+    e.preventDefault();
+    e.stopPropagation();
+    diffY = Math.pow(diffY, 0.8);
+    container.css("transform", "translate3d(0, "+diffY+"px, 0)");
+
+    if(diffY < distance) {
+      container.removeClass("pull-up").addClass("pull-down");
+    } else {
+      container.removeClass("pull-down").addClass("pull-up");
+    }
+  };
+  var touchEnd = function() {
+    start = false;
+    if(diffY <= 0 || container.hasClass("refreshing")) return;
+    container.removeClass("touching");
+    container.removeClass("pull-down pull-up");
+    container.css("transform", "");
+    if(Math.abs(diffY) <= distance) {
+    } else {
+      container.addClass("refreshing");
+      container.trigger("pull-to-refresh");
+    }
+
+    
+  };
+
+  var attachEvents = function(el) {
+    el = $(el);
+    el.addClass("weui-pull-to-refresh");
+    container = el;
+    el.on($.touchEvents.start, touchStart);
+    el.on($.touchEvents.move, touchMove);
+    el.on($.touchEvents.end, touchEnd);
+  };
+
+  var pullToRefresh = function(el) {
+    attachEvents(el);
+  };
+
+  var pullToRefreshDone = function(el) {
+    $(el).removeClass("refreshing");
+  }
+
+  $.fn.pullToRefresh = function() {
+    return this.each(function() {
+      pullToRefresh(this);
+    });
+  }
+
+  $.fn.pullToRefreshDone = function() {
+    return this.each(function() {
+      pullToRefreshDone(this);
+    });
+  }
+
+}($);
+
+/* ===============================================================================
+************   Notification ************
+=============================================================================== */
+/* global $:true */
++function ($) {
+  "use strict";
+
+  var distance = 50;
+  var container;
+
+  var scroll = function() {
+    var offset = container.scrollHeight() - ($(window).height() + container.scrollTop());
+    if(offset <= distance) {
+      container.trigger("infinite");
+    }
+  }
+
+  var attachEvents = function(el, off) {
+    el = $(el);
+    container = el;
+    var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : el);
+    scrollContainer[off ? "off" : "on"]("scroll", scroll);
+  };
+
+  var infinite = function(el) {
+    attachEvents(el);
+  }
+
+  var infinite = function(el) {
+    attachEvents(el);
+  }
+
+  $.fn.infinite = function() {
+    return this.each(function() {
+      infinite(this);
+    });
+  }
+  $.fn.destroyInfinite = function() {
+    return this.each(function() {
+      attachEvents(this, true);
+    });
   }
 
 }($);
