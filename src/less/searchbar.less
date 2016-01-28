@@ -1,12 +1,12 @@
 /* === Search Bar === */
 @searchbarBorderColor: #b4b4b4;
 @searchbarSize: 44px;
-.searchbar {
+.weui-searchbar {
   padding: 8px 0;
   height: @searchbarSize;
   .align-items(center);
 
-  .searchbar-cancel {
+  .weui-searchbar-cancel {
     margin-right: -60px;
     width: 44px;  //注意，这里比 2.5rem 要小，因为如果位置刚好一样，可能在动画的过程中出现抖动
     float: right;
@@ -18,7 +18,7 @@
     transform: translate3d(0,0,0);
   }
 
-  .search-input {
+  .weui-search-input {
     transform: translate3d(0,0,0);
     margin-right: 0;
     transition: all .3s;
@@ -29,19 +29,19 @@
     }
   }
 
-  &.searchbar-active {
-    .searchbar-cancel {
+  &.weui-searchbar-active {
+    .weui-searchbar-cancel {
       margin-right: 0;
       opacity: 1;
       
-      + .search-input {
+      + .weui-search-input {
         margin-right: 50px;
       }
     }
   }
 }
 
-.search-input {
+.weui-search-input {
   position: relative;
   input {
     box-sizing: border-box;
