@@ -25,3 +25,93 @@
     transform: rotate(360deg);
   }
 }
+
+.flexbox() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.flexbox-inline() {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+.flex-wrap(@fw) when (@fw = nowrap) {
+  -webkit-box-lines: single;
+  -moz-box-lines: single;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: none;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+.flex-wrap(@fw) when (@fw = wrap) {
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.flex-wrap(@fw) when not (@fw = wrap) and not (@fw = nowrap) {
+  -webkit-flex-wrap: @fw;
+  -ms-flex-wrap: @fw;
+  flex-wrap: @fw;
+}
+.flex-shrink(@fs) {
+  -webkit-flex-shrink: @fs;
+  -ms-flex: 0 @fs auto;
+  flex-shrink: @fs;
+}
+.justify-content(@jc) when (@jc = flex-start) {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+.justify-content(@jc) when (@jc = flex-end) {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+.justify-content(@jc) when (@jc = space-between) {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.justify-content(@jc) when not (@jc = flex-start) and not (@jc = flex-end) and not (@jc = space-between) {
+  -webkit-box-pack: @jc;
+  -ms-flex-pack: @jc;
+  -webkit-justify-content: @jc;
+  justify-content: @jc;
+}
+.align-items(@ai) when (@ai = flex-start) {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+.align-items(@ai) when (@ai = flex-end) {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+.align-items(@ai) when not (@ai = flex-start) and not (@ai = flex-end) {
+  -webkit-box-align: @ai;
+  -ms-flex-align: @ai;
+  -webkit-align-items: @ai;
+  align-items: @ai;
+}
+.align-content(@ai) {
+  -ms-flex-line-pack: @ai;
+  -webkit-align-content: @ai;
+  align-content: @ai;
+}
+.align-self(@as) {
+  -ms-flex-item-align: @as;
+  -webkit-align-self: @as;
+  align-self: @as;
+}
