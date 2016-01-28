@@ -1,0 +1,39 @@
+<article id="col" class='component' data-url="col.html">
+  <h2>栅格</h2>
+
+  <p>20栏栅格.把一行的宽度平均分为20份，可用的列宽度为 <code>5, 10, 15, 20, ..., 50, ...80, 85, 90, 95</code>.</p>
+  <p>另外还有 <code>33, 66</code> 两个宽度可以用。</p>
+
+
+{% highlight html %}
+<div class="weui-row">
+  <div class="weui-col-20">20</div>
+  <div class="weui-col-20">20</div>
+  <div class="weui-col-20">20</div>
+  <div class="weui-col-20">20</div>
+  <div class="weui-col-20">20</div>
+</div>
+
+<div class="weui-row">
+  <div class="weui-col-33">33</div>
+  <div class="weui-col-33">33</div>
+  <div class="weui-col-33">33</div>
+</div>
+
+<div class="weui-row">
+  <div class="weui-col-50">50</div>
+  <div class="weui-col-50">50</div>
+</div>
+{% endhighlight %}
+
+  <p>默认的栅格是有间距的，可以加上 <code>weui-no-gutter</code> 去掉间距</p>
+
+
+{% highlight html %}
+<div class="weui-row weui-no-gutter">
+  <div class="weui-col-50">50</div>
+  <div class="weui-col-50">50</div>
+</div>
+{% endhighlight %}
+
+</article>
