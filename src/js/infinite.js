@@ -26,10 +26,6 @@
     attachEvents(el);
   }
 
-  var infinite = function(el) {
-    attachEvents(el);
-  }
-
   $.fn.infinite = function() {
     return this.each(function() {
       infinite(this);
