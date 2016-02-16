@@ -37,8 +37,8 @@
   };
 
   $.closeModal = function() {
-    $(".weui_mask_visible").remove();
-    $(".weui_dialog_visible").remove();
+    $(".weui_mask").remove();
+    $(".weui_dialog").remove();
    };
 
   $.alert = function(text, title, callback) {
