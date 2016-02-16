@@ -26,7 +26,7 @@
     dialog.find(".weui_actionsheet_menu .weui_actionsheet_cell, .weui_actionsheet_action .weui_actionsheet_cell").each(function(i, e) {
       $(e).click(function() {
         $.closeActions();
-        if(actions[i].onClick) {
+        if(actions[i] && actions[i].onClick) {
           actions[i].onClick();
         }
       })
