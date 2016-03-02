@@ -1,0 +1,30 @@
+<article id="navbar" class='component' data-url="navbar.html">
+  <h2>导航栏</h2>
+  <p>因为微信本身就有一个顶部的标题栏，所以这个导航栏其实是在标题栏之下的二级导航栏，因此它实际上就是一个放在页面顶部的 tabbar 而已。</p>
+
+{% highlight html %}
+<div class="weui_tab">
+  <div class="weui_navbar">
+    <div class="weui_navbar_item weui_bar_item_on">
+      选项一
+    </div>
+    <div class="weui_navbar_item">
+      选项二
+    </div>
+    <div class="weui_navbar_item">
+      选项三
+    </div>
+  </div>
+  <div class="weui_tab_bd">
+    <p>主体内容放这里</p>
+  </div>
+</div>
+{% endhighlight %}
+
+<p><code>.weui_navbar</code> 通常作为 <code>.weui_tab</code> 子元素、<code>.weui_tab_bd</code> 的兄弟元素一起使用。结构为：</p>
+    
+  <p><code>.weui_tab</code> 作为外层容器，高度撑满它的父容器的高度，<code>.weui_tab_bd</code> 作为 <code>tab</code> 的主体内容，占据除了 <code>.weui_tabbar</code> 以外的全部父容器的高度，<code>.weui_tabbar</code> 则为底部的导航栏。而 <code>.weui_tabbar_item</code> 为 <code>.weui_tabbar</code> 的子元素，表示一个导航区，建议不超过 5 个。</p>
+
+  <p>另外，需要给当前激活的 <code>.weui_navbar_item</code> 元素添加 <code>.weui_bar_item_on</code> 类，来标示当前高亮的条目。</p>
+    
+</article>

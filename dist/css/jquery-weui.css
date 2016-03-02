@@ -590,6 +590,11 @@
   -webkit-transform: scale(1);
           transform: scale(1);
 }
+.weui_toast {
+  left: 50%;
+  top: 35%;
+  margin-left: -3.8rem;
+}
 .weui_mask {
   opacity: 0;
   -webkit-transition-duration: .3s;
@@ -728,92 +733,4 @@
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 100%;
-}
-/* === Search Bar === */
-.weui-searchbar {
-  padding: 8px 0;
-  height: 44px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-.weui-searchbar .weui-searchbar-cancel {
-  margin-right: -60px;
-  width: 44px;
-  float: right;
-  height: 28px;
-  line-height: 28px;
-  text-align: center;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-  opacity: 0;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-.weui-searchbar .weui-search-input {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-  margin-right: 0;
-  -webkit-transition: all .3s;
-  transition: all .3s;
-}
-.weui-searchbar .weui-search-input input {
-  margin: 0;
-  height: 28px;
-}
-.weui-searchbar.weui-searchbar-active .weui-searchbar-cancel {
-  margin-right: 0;
-  opacity: 1;
-}
-.weui-searchbar.weui-searchbar-active .weui-searchbar-cancel + .weui-search-input {
-  margin-right: 50px;
-}
-.weui-search-input {
-  position: relative;
-}
-.weui-search-input input {
-  box-sizing: border-box;
-  width: 100%;
-  height: 28px;
-  display: block;
-  border: none;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  border-radius: 5px;
-  font-family: inherit;
-  color: #3d4145;
-  font-size: 14px;
-  font-weight: normal;
-  padding: 0 10px;
-  background-color: #fff;
-  border: 1px solid #b4b4b4;
-}
-.weui-search-input input::-webkit-input-placeholder {
-  color: #ccc;
-  opacity: 1;
-}
-.weui-search-input .icon {
-  position: absolute;
-  font-size: 18px;
-  color: #b4b4b4;
-  top: 50%;
-  left: 6px;
-  -webkit-transform: translate3D(0, -50%, 0);
-          transform: translate3D(0, -50%, 0);
-}
-.weui-search-input label + input {
-  padding-left: 28px;
-}
-.bar .searchbar {
-  margin: 0 -10px;
-  padding: 8px 10px;
-  background: rgba(0, 0, 0, 0.1);
-}
-.bar .searchbar .search-input input {
-  border: 0;
-}
-.bar .searchbar .searchbar-cancel {
-  color: #aaa;
 }

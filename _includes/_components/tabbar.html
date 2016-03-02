@@ -1,0 +1,45 @@
+<article id="tabbar" class='component' data-url="tabbar.html">
+  <h2>Tabbar</h2>
+  <p>tabbar，底部导航，通常用作 Web 应用的主界面底部导航，类似于微信主界面的底部“微信”、“通讯录”、“发现”和“我”的导航区。每个功能包含一个图标和该功能简洁的文字描述。</p>
+
+{% highlight html %}
+<div class="weui_tab">
+  <div class="weui_tab_bd">
+
+  </div>
+  <div class="weui_tabbar">
+    <a href="javascript:;" class="weui_tabbar_item weui_bar_item_on">
+      <div class="weui_tabbar_icon">
+        <img src="path/to/images/icon_nav_button.png" alt="">
+      </div>
+      <p class="weui_tabbar_label">微信</p>
+    </a>
+    <a href="javascript:;" class="weui_tabbar_item">
+      <div class="weui_tabbar_icon">
+        <img src="path/to/images/icon_nav_msg.png" alt="">
+      </div>
+      <p class="weui_tabbar_label">通讯录</p>
+    </a>
+    <a href="javascript:;" class="weui_tabbar_item">
+      <div class="weui_tabbar_icon">
+        <img src="path/to/images/icon_nav_article.png" alt="">
+      </div>
+      <p class="weui_tabbar_label">发现</p>
+    </a>
+    <a href="javascript:;" class="weui_tabbar_item">
+      <div class="weui_tabbar_icon">
+        <img src="path/to/images/icon_nav_cell.png" alt="">
+      </div>
+      <p class="weui_tabbar_label">我</p>
+    </a>
+  </div>
+</div>
+{% endhighlight %}
+
+  <p><code>.weui_tab</code> 作为外层容器，高度撑满它的父容器的高度，<code>.weui_tab_bd</code> 作为 <code>tab</code> 的主体内容，占据除了 <code>.weui_tabbar</code> 以外的全部父容器的高度，<code>.weui_tabbar</code> 则为底部的导航栏。而 <code>.weui_tabbar_item</code> 为 <code>.weui_tabbar</code> 的子元素，表示一个导航区，建议不超过 5 个。</p>
+    
+  <p>图标 <code>.weui_tabbar_icon</code> 约定尺寸为 24px * 24px ，二倍即 48px * 48px。</p>
+
+  <p>关于 active 态，开发者根据需要，给当前激活的 <code>.weui_tabbar_item</code> 添加标示的 <code>.weui_bar_item_on</code> 类名，然后控制文字颜色和图标变化。</p>
+
+</article>
