@@ -1,4 +1,4 @@
-<article id="tabbar" class='component' data-url="tabbar.html">
+<article id="tabbar" class='component' data-url="tabbar2.html">
   <h2>Tabbar</h2>
   <p>tabbar，底部导航，通常用作 Web 应用的主界面底部导航，类似于微信主界面的底部“微信”、“通讯录”、“发现”和“我”的导航区。每个功能包含一个图标和该功能简洁的文字描述。</p>
 
@@ -41,5 +41,62 @@
   <p>图标 <code>.weui_tabbar_icon</code> 约定尺寸为 24px * 24px ，二倍即 48px * 48px。</p>
 
   <p>关于 active 态，开发者根据需要，给当前激活的 <code>.weui_tabbar_item</code> 添加标示的 <code>.weui_bar_item_on</code> 类名，然后控制文字颜色和图标变化。</p>
+
+</article>
+
+<article data-url="tabbar2.html">
+  <h3>Tab 自动切换</h3>
+
+  <p>上面讲了 Tabbar 的基本用法，你可以把每一项都设置为一个新页面的链接。</p>
+  <p>jquery-weui 提供了一个更简单的用法，可以很方便设置 Tab 的自动切换。在 <code>.weui_tabbar_item</code> 上通过 <code>href</code> 属性指定需要显示的 <code>weui_tab_bd_item</code> 的 <code>id</code> 属性。点击之后就会自动切换。</p>
+
+{% highlight html %}
+<div class="weui_tab">
+  <div class="weui_tab_bd">
+    <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active">
+      <h1 class="doc-head">微信</h1>
+    </div>
+    <div id="tab2" class="weui_tab_bd_item">
+      <h1 class="doc-head">通讯录</h1>
+    </div>
+    <div id="tab3" class="weui_tab_bd_item">
+      <h1 class="doc-head">发现</h1>
+    </div>
+    <div id="tab4" class="weui_tab_bd_item">
+      <h1 class="doc-head">我的</h1>
+    </div>
+  </div>
+  <div class="weui_tabbar">
+    <a href="#tab1" class="weui_tabbar_item weui_bar_item_on">
+      <div class="weui_tabbar_icon">
+        <img src="{{ "/images/icon_nav_button.png" | prepend: site.baseurl }}" alt="">
+      </div>
+      <p class="weui_tabbar_label">微信</p>
+    </a>
+    <a href="#tab2" class="weui_tabbar_item">
+      <div class="weui_tabbar_icon">
+        <img src="{{ "/images/icon_nav_cell.png" | prepend: site.baseurl }}" alt="">
+      </div>
+      <p class="weui_tabbar_label">通讯录</p>
+    </a>
+    <a href="#tab3" class="weui_tabbar_item">
+      <div class="weui_tabbar_icon">
+        <img src="{{ "/images/icon_nav_toast.png" | prepend: site.baseurl }}" alt="">
+      </div>
+      <p class="weui_tabbar_label">发现</p>
+    </a>
+    <a href="#tab4" class="weui_tabbar_item">
+      <div class="weui_tabbar_icon">
+        <img src="{{ "/images/icon_nav_dialog.png" | prepend: site.baseurl }}" alt="">
+      </div>
+      <p class="weui_tabbar_label">我</p>
+    </a>
+  </div>
+</div>
+{% endhighlight %}
+
+  <p>注意，初始化的时候需要自己设置 <code>.weui_bar_item_on</code> 和 <code>.weui_tab_bd_item_active</code>.</p>
+
+  <p><code>.weui_tab_bd_item</code> 和 <code>.weui_tab_bd_item_active</code> 这两个类是 jquery weui 新增加的。</p>
 
 </article>

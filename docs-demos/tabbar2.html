@@ -3,27 +3,39 @@ layout: demos
 ---
 <div class="weui_tab">
   <div class="weui_tab_bd">
+    <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active">
+      <h1 class="doc-head">微信</h1>
+    </div>
+    <div id="tab2" class="weui_tab_bd_item">
+      <h1 class="doc-head">通讯录</h1>
+    </div>
+    <div id="tab3" class="weui_tab_bd_item">
+      <h1 class="doc-head">发现</h1>
+    </div>
+    <div id="tab4" class="weui_tab_bd_item">
+      <h1 class="doc-head">我的</h1>
+    </div>
   </div>
   <div class="weui_tabbar">
-    <a href="javascript:;" class="weui_tabbar_item weui_bar_item_on">
+    <a href="#tab1" class="weui_tabbar_item weui_bar_item_on">
       <div class="weui_tabbar_icon">
         <img src="{{ "/images/icon_nav_button.png" | prepend: site.baseurl }}" alt="">
       </div>
       <p class="weui_tabbar_label">微信</p>
     </a>
-    <a href="javascript:;" class="weui_tabbar_item">
+    <a href="#tab2" class="weui_tabbar_item">
       <div class="weui_tabbar_icon">
         <img src="{{ "/images/icon_nav_cell.png" | prepend: site.baseurl }}" alt="">
       </div>
       <p class="weui_tabbar_label">通讯录</p>
     </a>
-    <a href="javascript:;" class="weui_tabbar_item">
+    <a href="#tab3" class="weui_tabbar_item">
       <div class="weui_tabbar_icon">
         <img src="{{ "/images/icon_nav_toast.png" | prepend: site.baseurl }}" alt="">
       </div>
       <p class="weui_tabbar_label">发现</p>
     </a>
-    <a href="javascript:;" class="weui_tabbar_item">
+    <a href="#tab4" class="weui_tabbar_item">
       <div class="weui_tabbar_icon">
         <img src="{{ "/images/icon_nav_dialog.png" | prepend: site.baseurl }}" alt="">
       </div>

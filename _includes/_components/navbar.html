@@ -5,15 +5,15 @@
 {% highlight html %}
 <div class="weui_tab">
   <div class="weui_navbar">
-    <div class="weui_navbar_item weui_bar_item_on">
+    <a class="weui_navbar_item weui_bar_item_on">
       选项一
-    </div>
-    <div class="weui_navbar_item">
+    </a>
+    <a class="weui_navbar_item">
       选项二
-    </div>
-    <div class="weui_navbar_item">
+    </a>
+    <a class="weui_navbar_item">
       选项三
-    </div>
+    </a>
   </div>
   <div class="weui_tab_bd">
     <p>主体内容放这里</p>
@@ -26,5 +26,7 @@
   <p><code>.weui_tab</code> 作为外层容器，高度撑满它的父容器的高度，<code>.weui_tab_bd</code> 作为 <code>tab</code> 的主体内容，占据除了 <code>.weui_tabbar</code> 以外的全部父容器的高度，<code>.weui_tabbar</code> 则为底部的导航栏。而 <code>.weui_tabbar_item</code> 为 <code>.weui_tabbar</code> 的子元素，表示一个导航区，建议不超过 5 个。</p>
 
   <p>另外，需要给当前激活的 <code>.weui_navbar_item</code> 元素添加 <code>.weui_bar_item_on</code> 类，来标示当前高亮的条目。</p>
+
+  <p>导航栏自动切换 Tab 和用法和 Tabbar 完全一样，请参考Tabbar中的文档。</p>
     
 </article>
