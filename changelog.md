@@ -1,3 +1,9 @@
+# v0.4.0
+
+对应 `weui` 的版本为 `v0.4.0`。
+
+- 增加了四个组件：`navbar`, `tabbar`, `searchbar`, `panel`.
+
 # v0.3.1
 
 - 修复了 loading 位置偏左的bug。
