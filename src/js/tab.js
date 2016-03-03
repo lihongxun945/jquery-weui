@@ -11,16 +11,14 @@
 
     if(!/^#/.test(href)) return ;
 
-    var id = href.slice(1);
-
     $a.parent().find("."+ITEM_ON).removeClass(ITEM_ON);
     $a.addClass(ITEM_ON);
 
     var bd = $a.parents(".weui_tab").find(".weui_tab_bd");
 
-    bd.find(".weui_tab_bd_item").removeClass("weui_tab_bd_active");
+    bd.find(".weui_tab_bd_active").removeClass("weui_tab_bd_active");
 
-    $(id).addClass("weui_tab_bd_active");
+    $(href).addClass("weui_tab_bd_active");
   }
 
   $.showTab = showTab;
