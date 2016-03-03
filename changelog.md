@@ -2,7 +2,8 @@
 
 对应 `weui` 的版本为 `v0.4.0`。
 
-- 增加了四个组件：`navbar`, `tabbar`, `searchbar`, `panel`.
+- weui 官方增加了四个组件：`navbar`, `tabbar`, `searchbar`, `panel`.
+- 增加了 jquery weui 独有的 20列 `栅格`
 
 # v0.3.1
 
