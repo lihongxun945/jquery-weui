@@ -707,6 +707,10 @@
             transform: rotate(360deg);
   }
 }
+.weui_tab_bd_item.weui-pull-to-refresh {
+  position: absolute;
+  top: 50px;
+}
 .weui-infinite-scroll {
   height: 24px;
   line-height: 24px;
@@ -742,6 +746,8 @@
 }
 .weui_tab_bd .weui_tab_bd_item {
   display: none;
+  height: 100%;
+  overflow: auto;
 }
 .weui_tab_bd .weui_tab_bd_item.weui_tab_bd_item_active {
   display: block;

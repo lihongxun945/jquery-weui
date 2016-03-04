@@ -64,7 +64,7 @@ $(function() {
 
 
   //infinite scroll
-  if($(".weui-infinite-scroll")[0]) {
+  if($("#infinite-demo-1")[0]) {
     var loading = false;
     $(document.body).infinite().on("infinite", function() {
       if(loading) return;
@@ -84,6 +84,20 @@ $(function() {
       console.log(self);
       setTimeout(function() {
         $(self).pullToRefreshDone(); // 重置下拉刷新
+      }, 2000);   //模拟延迟
+    });
+  }
+
+  //infinite with navbar
+  if($("#page-infinite-navbar")[0]) {
+    $("#tab1, #tab2").infinite().on("infinite", function() {
+      var self = this;
+      if(self.loading) return;
+      self.loading = true;
+      console.log(self);
+      setTimeout(function() {
+        $(self).find(".content-padded").append("<p>我是加载的新内容。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。我是加载的新内容。。。。。</p>");
+        self.loading = false;
       }, 2000);   //模拟延迟
     });
   }

@@ -53,3 +53,45 @@ $(document.body).infinite().on("infinite", function() {
 
   <p>不过即使销毁插件，也不会把加载指示器的HTML代码删除，所以你需要自己来隐藏或者删除它。</p>
 </article>
+
+
+<article class='component' data-url="infinite-with-navbar.html">
+  <h3>滚动加载结合TAB</h3>
+  <p>同样可以在每一个 <code>.weui_tab_bd_item</code> 都初始化一个独立的滚动加载：</p>
+
+{% highlight html %}
+<div class="weui_tab" id='page-infinite-navbar'>
+  <div class="weui_navbar">
+    <a href='#tab1' class="weui_navbar_item weui_bar_item_on">
+      选项一
+    </a>
+    <a href='#tab2' class="weui_navbar_item">
+      选项二
+    </a>
+  </div>
+  <div class="weui_tab_bd">
+    <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active">
+      <h1 class="doc-head">页面一</h1>
+      <div class="content-padded">
+        ...
+      </div>
+      <div class="weui-infinite-scroll">
+        <div class="infinite-preloader"></div>
+        正在加载...
+      </div>
+    </div>
+    <div id="tab2" class="weui_tab_bd_item">
+      <h1 class="doc-head">页面二</h1>
+      <div class="content-padded">
+        ...
+      </div>
+      <div class="weui-infinite-scroll">
+        <div class="infinite-preloader"></div>
+        正在加载...
+      </div>
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
+</article>
