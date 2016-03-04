@@ -738,6 +738,9 @@
   background-position: 50%;
   background-size: 100%;
 }
+.weui_tab {
+  overflow: hidden;
+}
 .weui_navbar_item {
   color: #888;
 }
