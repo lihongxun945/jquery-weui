@@ -66,7 +66,7 @@ $(function() {
   //infinite scroll
   if($(".weui-infinite-scroll")[0]) {
     var loading = false;
-    $(document.body).infinite(1).on("infinite", function() {
+    $(document.body).infinite().on("infinite", function() {
       if(loading) return;
       loading = true;
       setTimeout(function() {
