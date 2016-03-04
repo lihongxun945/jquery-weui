@@ -746,3 +746,6 @@
 .weui_tab_bd .weui_tab_bd_item.weui_tab_bd_item_active {
   display: block;
 }
+.weui_navbar {
+  z-index: 100;
+}
