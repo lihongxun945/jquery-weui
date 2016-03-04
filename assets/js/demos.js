@@ -52,7 +52,7 @@ $(function() {
   });
 
   //pull to refresh
-  if($(".weui-pull-to-refresh-layer")[0]) {
+  if($("#page-ptr")[0]) {
     $("#time").text(new Date);
     $(document.body).pullToRefresh().on("pull-to-refresh", function() {
       setTimeout(function() {
@@ -66,13 +66,25 @@ $(function() {
   //infinite scroll
   if($(".weui-infinite-scroll")[0]) {
     var loading = false;
-    $(document.body).infinite().on("infinite", function() {
+    $(document.body).infinite(1).on("infinite", function() {
       if(loading) return;
       loading = true;
       setTimeout(function() {
         $("#list").append("<p>我是新加载的内容</p><p>我是新加载的内容</p><p>我是新加载的内容</p><p>我是新加载的内容</p><p>我是新加载的内容</p>");
         loading = false;
       }, 1500);   //模拟延迟
+    });
+  }
+
+
+  //pull to refresh with navbar
+  if($("#page-ptr-navbar")[0]) {
+    $("#tab1, #tab2, #tab3").pullToRefresh().on("pull-to-refresh", function() {
+      var self = this;
+      console.log(self);
+      setTimeout(function() {
+        $(self).pullToRefreshDone(); // 重置下拉刷新
+      }, 2000);   //模拟延迟
     });
   }
 });

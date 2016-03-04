@@ -2,7 +2,7 @@
   <h2>滚动加载</h2>
   <p>当用户滚动到页面底部的时候加载更多内容。</p>
 
-  <p>首先你需要把一段显示加载状态的代码放入页面中，加载指示器的代码如下：</p>
+  <p>首先你需要把一段显示加载状态的代码放入需要滚动加载的容器中，这里我们默认是 document.body，加载指示器的代码如下：</p>
 
 {% highlight html %}
 <div class="weui-infinite-scroll">
@@ -17,7 +17,17 @@
 $(document.body).infinite();
 {% endhighlight %}
 
-  <p>同样的，当前只支持在 <code>document.body</code> 上进行滚动加载。</p>
+  <p>从 <code>v0.4.0</code> 版本开始，可以在任何div内初始化滚动加载组件，并且一个页面内可以初始化多个。</p>
+
+  <h3>参数</h3>
+
+  <p><code>infinite</code> 方法接收一个 <code>distance</code> 参数：</p>
+
+{% highlight js %}
+$(document.body).infinite(100);
+{% endhighlight %}
+
+  <p>默认的 <code>distance</code> 值是 <code>50</code>，表示滚动到距离底部 50 px 的时候会触发加载.</p>
 
   <h3>事件</h3>
 
