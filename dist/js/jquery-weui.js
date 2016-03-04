@@ -165,6 +165,7 @@
   
   var show = function(html, className) {
 
+    className = className || "";
     var mask = $("<div class='weui_mask_transparent'></div>").appendTo(document.body);
 
     var tpl = '<div class="weui_toast ' + className + '">' + html + '</div>';
@@ -289,64 +290,66 @@
 ************   Notification ************
 =============================================================================== */
 /* global $:true */
+
 +function ($) {
   "use strict";
 
-  var distance = 50;
-  var container, start, diffX, diffY;
+  var PTR = function(el) {
+    this.container = $(el);
+    this.distance = 50;
+    this.attachEvents();
+  }
 
-  var touchStart = function(e) {
-    if(container.hasClass("refreshing")) return;
+  PTR.prototype.touchStart = function(e) {
+    if(this.container.hasClass("refreshing")) return;
     var p = $.getTouchPosition(e);
-    start = p;
-    diffX = diffY = 0;
+    this.start = p;
+    this.diffX = this.diffY = 0;
   };
-  var touchMove = function(e) {
-    if(container.hasClass("refreshing")) return;
-    if(!start) return false;
-    if(container.scrollTop() > 0) return;
+
+  PTR.prototype.touchMove= function(e) {
+    if(this.container.hasClass("refreshing")) return;
+    if(!this.start) return false;
+    if(this.container.scrollTop() > 0) return;
     var p = $.getTouchPosition(e);
-    diffX = p.x - start.x;
-    diffY = p.y - start.y;
-    if(diffY < 0) return;
-    container.addClass("touching");
+    this.diffX = p.x - this.start.x;
+    this.diffY = p.y - this.start.y;
+    if(this.diffY < 0) return;
+    this.container.addClass("touching");
     e.preventDefault();
     e.stopPropagation();
-    diffY = Math.pow(diffY, 0.8);
-    container.css("transform", "translate3d(0, "+diffY+"px, 0)");
+    this.diffY = Math.pow(this.diffY, 0.8);
+    this.container.css("transform", "translate3d(0, "+this.diffY+"px, 0)");
 
-    if(diffY < distance) {
-      container.removeClass("pull-up").addClass("pull-down");
+    if(this.diffY < this.distance) {
+      this.container.removeClass("pull-up").addClass("pull-down");
     } else {
-      container.removeClass("pull-down").addClass("pull-up");
+      this.container.removeClass("pull-down").addClass("pull-up");
     }
   };
-  var touchEnd = function() {
-    start = false;
-    if(diffY <= 0 || container.hasClass("refreshing")) return;
-    container.removeClass("touching");
-    container.removeClass("pull-down pull-up");
-    container.css("transform", "");
-    if(Math.abs(diffY) <= distance) {
+  PTR.prototype.touchEnd = function() {
+    this.start = false;
+    if(this.diffY <= 0 || this.container.hasClass("refreshing")) return;
+    this.container.removeClass("touching");
+    this.container.removeClass("pull-down pull-up");
+    this.container.css("transform", "");
+    if(Math.abs(this.diffY) <= this.distance) {
     } else {
-      container.addClass("refreshing");
-      container.trigger("pull-to-refresh");
+      this.container.addClass("refreshing");
+      this.container.trigger("pull-to-refresh");
     }
-
-    
   };
 
-  var attachEvents = function(el) {
-    el = $(el);
+  PTR.prototype.attachEvents = function() {
+    var el = this.container;
     el.addClass("weui-pull-to-refresh");
-    container = el;
-    el.on($.touchEvents.start, touchStart);
-    el.on($.touchEvents.move, touchMove);
-    el.on($.touchEvents.end, touchEnd);
+    el.on($.touchEvents.start, $.proxy(this.touchStart, this));
+    el.on($.touchEvents.move, $.proxy(this.touchMove, this));
+    el.on($.touchEvents.end, $.proxy(this.touchEnd, this));
   };
 
   var pullToRefresh = function(el) {
-    attachEvents(el);
+    new PTR(el);
   };
 
   var pullToRefreshDone = function(el) {
@@ -374,40 +377,97 @@
 +function ($) {
   "use strict";
 
-  var distance = 50;
-  var container;
 
-  var scroll = function() {
+  var Infinite = function(el, distance) {
+    this.container = $(el);
+    this.container.data("infinite", this);
+    this.distance = distance || 50;
+    this.attachEvents();
+  }
+
+  Infinite.prototype.scroll = function() {
+    var container = this.container;
     var offset = container.scrollHeight() - ($(window).height() + container.scrollTop());
-    if(offset <= distance) {
+    if(offset <= this.distance) {
       container.trigger("infinite");
     }
   }
 
-  var attachEvents = function(el, off) {
-    el = $(el);
-    container = el;
+  Infinite.prototype.attachEvents = function(off) {
+    var el = this.container;
     var scrollContainer = (el[0].tagName.toUpperCase() === "BODY" ? $(document) : el);
-    scrollContainer[off ? "off" : "on"]("scroll", scroll);
+    scrollContainer[off ? "off" : "on"]("scroll", $.proxy(this.scroll, this));
   };
-
-  var infinite = function(el) {
-    attachEvents(el);
+  Infinite.prototype.detachEvents = function(off) {
+    this.attachEvents(true);
   }
 
   var infinite = function(el) {
     attachEvents(el);
   }
 
-  $.fn.infinite = function() {
+  $.fn.infinite = function(distance) {
     return this.each(function() {
-      infinite(this);
+      new Infinite(this, distance);
     });
   }
   $.fn.destroyInfinite = function() {
     return this.each(function() {
-      attachEvents(this, true);
+      var infinite = $(this).data("infinite");
+      if(infinite && infinite.detachEvents) infinite.detachEvents();
     });
   }
+
+}($);
+
+/* global $:true */
++function ($) {
+  "use strict";
+
+  var ITEM_ON = "weui_bar_item_on";
+
+  var showTab = function(a) {
+    var $a = $(a);
+    if($a.hasClass(ITEM_ON)) return;
+    var href = $a.attr("href");
+
+    if(!/^#/.test(href)) return ;
+
+    $a.parent().find("."+ITEM_ON).removeClass(ITEM_ON);
+    $a.addClass(ITEM_ON);
+
+    var bd = $a.parents(".weui_tab").find(".weui_tab_bd");
+
+    bd.find(".weui_tab_bd_item_active").removeClass("weui_tab_bd_item_active");
+
+    $(href).addClass("weui_tab_bd_item_active");
+  }
+
+  $.showTab = showTab;
+
+  $(document).on("click", ".weui_tabbar_item, .weui_navbar_item", function(e) {
+    var $a = $(e.currentTarget);
+    var href = $a.attr("href");
+    if($a.hasClass(ITEM_ON)) return;
+    if(!/^#/.test(href)) return;
+
+    e.preventDefault();
+
+    showTab($a);
+  });
+
+}($);
+
+
+/* global $:true */
++ function($) {
+  "use strict";
+
+  $(document).on("click", ".weui_search_bar label", function(e) {
+    $(e.target).parents(".weui_search_bar").addClass("weui_search_focusing");
+  }) 
+  .on("blur", ".weui_search_input", function(e) {
+    $(e.target).parents(".weui_search_bar").removeClass("weui_search_focusing");
+  })
 
 }($);
