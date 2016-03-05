@@ -27,6 +27,13 @@ jQuery WeUI 使用官方的CSS组件，加上一系列jQuery插件提供简洁�
 - `gulp` 编译所有的代码
 - `gulp watch` 进入watch 模式
 
+# 分支说明
+
+- `master` 主分支，正式发布的代码才会进入master分支
+- `dev` 开发分支
+- `gh-pages` 文档主分支
+- `gh-pages-dev` 文档的开发分支
+
 # LICENSE
 
 [MIT](https://opensource.org/licenses/MIT)，尽情享受开源代码。

@@ -2,64 +2,66 @@
 ************   Notification ************
 =============================================================================== */
 /* global $:true */
+
 +function ($) {
   "use strict";
 
-  var distance = 50;
-  var container, start, diffX, diffY;
+  var PTR = function(el) {
+    this.container = $(el);
+    this.distance = 50;
+    this.attachEvents();
+  }
 
-  var touchStart = function(e) {
-    if(container.hasClass("refreshing")) return;
+  PTR.prototype.touchStart = function(e) {
+    if(this.container.hasClass("refreshing")) return;
     var p = $.getTouchPosition(e);
-    start = p;
-    diffX = diffY = 0;
+    this.start = p;
+    this.diffX = this.diffY = 0;
   };
-  var touchMove = function(e) {
-    if(container.hasClass("refreshing")) return;
-    if(!start) return false;
-    if(container.scrollTop() > 0) return;
+
+  PTR.prototype.touchMove= function(e) {
+    if(this.container.hasClass("refreshing")) return;
+    if(!this.start) return false;
+    if(this.container.scrollTop() > 0) return;
     var p = $.getTouchPosition(e);
-    diffX = p.x - start.x;
-    diffY = p.y - start.y;
-    if(diffY < 0) return;
-    container.addClass("touching");
+    this.diffX = p.x - this.start.x;
+    this.diffY = p.y - this.start.y;
+    if(this.diffY < 0) return;
+    this.container.addClass("touching");
     e.preventDefault();
     e.stopPropagation();
-    diffY = Math.pow(diffY, 0.8);
-    container.css("transform", "translate3d(0, "+diffY+"px, 0)");
+    this.diffY = Math.pow(this.diffY, 0.8);
+    this.container.css("transform", "translate3d(0, "+this.diffY+"px, 0)");
 
-    if(diffY < distance) {
-      container.removeClass("pull-up").addClass("pull-down");
+    if(this.diffY < this.distance) {
+      this.container.removeClass("pull-up").addClass("pull-down");
     } else {
-      container.removeClass("pull-down").addClass("pull-up");
+      this.container.removeClass("pull-down").addClass("pull-up");
     }
   };
-  var touchEnd = function() {
-    start = false;
-    if(diffY <= 0 || container.hasClass("refreshing")) return;
-    container.removeClass("touching");
-    container.removeClass("pull-down pull-up");
-    container.css("transform", "");
-    if(Math.abs(diffY) <= distance) {
+  PTR.prototype.touchEnd = function() {
+    this.start = false;
+    if(this.diffY <= 0 || this.container.hasClass("refreshing")) return;
+    this.container.removeClass("touching");
+    this.container.removeClass("pull-down pull-up");
+    this.container.css("transform", "");
+    if(Math.abs(this.diffY) <= this.distance) {
     } else {
-      container.addClass("refreshing");
-      container.trigger("pull-to-refresh");
+      this.container.addClass("refreshing");
+      this.container.trigger("pull-to-refresh");
     }
-
-    
   };
 
-  var attachEvents = function(el) {
-    el = $(el);
+  PTR.prototype.attachEvents = function() {
+    var el = this.container;
     el.addClass("weui-pull-to-refresh");
-    container = el;
-    el.on($.touchEvents.start, touchStart);
-    el.on($.touchEvents.move, touchMove);
-    el.on($.touchEvents.end, touchEnd);
+    el.on($.touchEvents.start, $.proxy(this.touchStart, this));
+    el.on($.touchEvents.move, $.proxy(this.touchMove, this));
+    el.on($.touchEvents.end, $.proxy(this.touchEnd, this));
   };
 
   var pullToRefresh = function(el) {
-    attachEvents(el);
+    new PTR(el);
   };
 
   var pullToRefreshDone = function(el) {
