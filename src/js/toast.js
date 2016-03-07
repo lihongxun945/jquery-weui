@@ -22,8 +22,11 @@
     });
   }
 
-  $.toast = function(text) {
-    show('<i class="weui_icon_toast"></i><p class="weui_toast_content">' + (text || "已经完成") + '</p>');
+  $.toast = function(text, status) {
+    if(typeof status === 'undefined' ){
+      status = true;
+    }
+    show('<i class="'+ (status ? 'weui_icon_toast' : 'weui_icon_toast_warn') +'"></i><p class="weui_toast_content">' + (text || "已经完成") + '</p>');
 
     setTimeout(function() {
       hide();
