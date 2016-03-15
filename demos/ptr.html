@@ -1,16 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>jQuery WEUI</title>
-    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-    ">
-
-    <link rel="stylesheet" href="/dist/lib/weui.css">
-    <link rel="stylesheet" href="/dist/css/jquery-weui.css">
+    <title>下拉刷新</title>
+    <% include _head.html %>
   </head>
 
   <body ontouchstart>
@@ -18,7 +10,7 @@
     <div class="weui-pull-to-refresh-layer">
       <div class='pull-to-refresh-arrow'></div>
       <div class='pull-to-refresh-preloader'></div>
-      <div class="down"> 下拉刷新</div>
+      <div class="down">下拉刷新</div>
       <div class="up">释放刷新</div>
       <div class="refresh">正在刷新</div>
     </div>
@@ -83,8 +75,7 @@
       <div class="infinite-preloader"></div>
       正在加载
     </div>
-    <script src="/dist/lib/jquery-2.1.4.js"></script>
-    <script src="/dist/js/jquery-weui.js"></script>
+    <% include _foot.html %>
     <script>
       $(document.body).pullToRefresh().on("pull-to-refresh", function() {
         setTimeout(function() {

@@ -29,6 +29,7 @@
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.3.1",
+    "gulp-ejs": "^2.1.1",
     "gulp-less": "^3.0.5"
   }
 }
