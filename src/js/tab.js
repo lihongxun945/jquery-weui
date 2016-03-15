@@ -16,15 +16,22 @@
 
     var bd = $a.parents(".weui_tab").find(".weui_tab_bd");
 
-    bd.find(".weui_tab_bd_active").removeClass("weui_tab_bd_active");
+    bd.find(".weui_tab_bd_item_active").removeClass("weui_tab_bd_item_active");
 
-    $(href).addClass("weui_tab_bd_active");
+    $(href).addClass("weui_tab_bd_item_active");
   }
 
   $.showTab = showTab;
 
-  $(document).on("click", ".weui_tabbar_item", function(e) {
-    showTab(e.target);
+  $(document).on("click", ".weui_tabbar_item, .weui_navbar_item", function(e) {
+    var $a = $(e.currentTarget);
+    var href = $a.attr("href");
+    if($a.hasClass(ITEM_ON)) return;
+    if(!/^#/.test(href)) return;
+
+    e.preventDefault();
+
+    showTab($a);
   });
 
 }($);
