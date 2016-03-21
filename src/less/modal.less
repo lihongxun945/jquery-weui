@@ -1,5 +1,5 @@
 .weui_dialog, .weui_toast {
-  transition-duration: .3s;
+  transition-duration: .2s;
   opacity: 0;
   transform: scale(.9);
   visibility: hidden;
@@ -34,6 +34,17 @@
   left: 50%;
   top: 35%;
   margin-left: -3.8rem;
+}
+
+.weui_toast_forbidden {
+  color: #F76260;
+}
+.weui_toast_cancel .weui_icon_toast:before {
+  content: "\EA0D";
+}
+.weui_toast_forbidden .weui_icon_toast:before {
+  content: "\EA0B";
+  color: #F76260;
 }
 
 .weui_mask {
