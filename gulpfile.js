@@ -37,7 +37,7 @@ gulp.task('copy', function() {
   gulp.src(['./src/lib/**/*'])
     .pipe(gulp.dest('./dist/lib/'));
 
-  gulp.src(['./demos/images/*.png'])
+  gulp.src(['./demos/images/*.*'])
     .pipe(gulp.dest('./dist/demos/images/'));
 
   gulp.src(['./demos/css/*.css'])
