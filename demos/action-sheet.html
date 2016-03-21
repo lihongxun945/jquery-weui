@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <% include _head.html %>
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">Action Sheet</h1>
+    </header>
+
+    <div class='demos-content-padded'>
+      <a href="javascript:;" id='show-actions' class="weui_btn weui_btn_primary">显示 ActionSheet</a>
+    </div>
+    <% include _foot.html %>
+    <script>
+      $(document).on("click", "#show-actions", function() {
+        $.actions({
+          actions: [{
+            text: "编辑",
+            onClick: function() {
+              $.alert("你选择了“编辑”");
+            }
+          },{
+            text: "删除",
+            onClick: function() {
+              $.alert("你选择了“删除”");
+            }
+          }]
+        });
+      });
+    </script>
+  </body>
+</html>

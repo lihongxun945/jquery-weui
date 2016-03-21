@@ -1,3 +1,7 @@
+body, html {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
 .demos-title {
   text-align: center;
   font-size: 34px;
@@ -18,4 +22,12 @@
 
 .demos-content-padded {
   padding: 15px;
+}
+
+.demos-second-title {
+  text-align: center;
+  font-size: 24px;
+  color: #3cc51f;
+  font-weight: 400;
+  margin: 0 15%;
 }
