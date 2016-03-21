@@ -25,7 +25,9 @@
       var el = $(e);
       el.click(function() {
         //先关闭对话框，再调用回调函数
+
         $.closeModal();
+
         if(buttons[i].onClick) {
           buttons[i].onClick();
         }
@@ -82,6 +84,32 @@
         text: defaults.buttonOK,
         className: "primary",
         onClick: callbackOK
+      }]
+    });
+  };
+
+  $.prompt = function(text, title, callbackOK, callbackCancel) {
+    if (typeof title === 'function') {
+      callbackCancel = arguments[2];
+      callbackOK = arguments[1];
+      title = undefined;
+    }
+
+    return $.modal({
+      text: "<p class='weui-prompt-text'>"+(text || "")+"</p><input type='text' class='weui_input weui-prompt-input' id='weui-prompt-input'/>",
+      title: title,
+      buttons: [
+      {
+        text: defaults.buttonCancel,
+        className: "default",
+        onClick: callbackCancel
+      },
+      {
+        text: defaults.buttonOK,
+        className: "primary",
+        onClick: function() {
+          callbackOK && callbackOK($("#weui-prompt-input").val());
+        }
       }]
     });
   };
