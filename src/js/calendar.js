@@ -790,31 +790,6 @@
       return p;
   };
 
-  $.openPicker = function(tpl) {
-
-    var container = $("<div class='weui-picker-container'></div>").appendTo(document.body);
-    container.show();
-
-    container.addClass("weui-picker-container-visible");
-
-    //关于布局的问题，如果直接放在body上，则做动画的时候会撑开body高度而导致滚动条变化。
-    var dialog = $(tpl).appendTo(container);
-    
-    dialog.show();
-
-    dialog.addClass("weui-picker-modal-visible");
-
-    return dialog;
-  }
-
-
-  $.closePicker = function(container) {
-    $(".weui-picker-modal-visible").removeClass("weui-picker-modal-visible").transitionEnd(function() {
-      $(this).remove();
-      $(".weui-picker-container-visible").remove();
-    }).trigger("close");
-
-  };
 
   $.fn.calendar = function (params) {
       return this.each(function() {

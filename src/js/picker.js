@@ -21,10 +21,12 @@
           onlyInPopover: false,
           toolbar: true,
           toolbarCloseText: 'OK',
-          toolbarTemplate: '<header class="bar bar-nav">\
-          <button class="button button-link pull-right close-picker">OK</button>\
-          <h1 class="title"></h1>\
-          </header>',
+          toolbarTemplate: '<div class="toolbar">\
+          <div class="toolbar-inner">\
+          <a href="javascript:;" class="picker-button close-picker">完成</a>\
+          <h1 class="title">请选择</h1>\
+          </div>\
+          </div>',
       };
       params = params || {};
       for (var def in defaults) {
@@ -428,7 +430,7 @@
               colsHTML += p.columnHTML(p.params.cols[i]);
               p.cols.push(col);
           }
-          pickerClass = 'picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ? ' picker-3d' : '');
+          pickerClass = 'weui-picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ? ' picker-3d' : '');
           pickerHTML =
               '<div class="' + (pickerClass) + '">' +
                   (p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params.toolbarCloseText) : '') +
@@ -472,10 +474,10 @@
       function closeOnHTMLClick(e) {
           if (inPopover()) return;
           if (p.input && p.input.length > 0) {
-              if (e.target !== p.input[0] && $(e.target).parents('.picker-modal').length === 0) p.close();
+              if (e.target !== p.input[0] && $(e.target).parents('.weui-picker-modal').length === 0) p.close();
           }
           else {
-              if ($(e.target).parents('.picker-modal').length === 0) p.close();   
+              if ($(e.target).parents('.weui-picker-modal').length === 0) p.close();   
           }
       }
 
@@ -522,7 +524,7 @@
               if (toPopover) {
                   p.pickerHTML = '<div class="popover popover-picker-columns"><div class="popover-inner">' + p.pickerHTML + '</div></div>';
                   p.popover = $.popover(p.pickerHTML, p.params.input, true);
-                  p.container = $(p.popover).find('.picker-modal');
+                  p.container = $(p.popover).find('.weui-picker-modal');
                   $(p.popover).on('close', function () {
                       onPickerClose();
                   });
@@ -533,7 +535,7 @@
                   $(p.params.container).append(p.container);
               }
               else {
-                  p.container = $($.pickerModal(p.pickerHTML));
+                  p.container = $($.openPicker(p.pickerHTML));
                   $(p.container)
                   .on('close', function () {
                       onPickerClose();
@@ -599,15 +601,9 @@
   };
 
   $(document).on("click", ".close-picker", function() {
-    var pickerToClose = $('.picker-modal.modal-in');
+    var pickerToClose = $('.weui-picker-modal.weui-picker-modal-visible');
     if (pickerToClose.length > 0) {
-      $.closeModal(pickerToClose);
-    }
-    else {
-      pickerToClose = $('.popover.modal-in .picker-modal');
-      if (pickerToClose.length > 0) {
-        $.closeModal(pickerToClose.parents('.popover'));
-      }
+      $.closePicker(pickerToClose);
     }
   });
 
@@ -616,6 +612,32 @@
     e.preventDefault();
   });
 
+
+  $.openPicker = function(tpl) {
+
+    var container = $("<div class='weui-picker-container'></div>").appendTo(document.body);
+    container.show();
+
+    container.addClass("weui-picker-container-visible");
+
+    //关于布局的问题，如果直接放在body上，则做动画的时候会撑开body高度而导致滚动条变化。
+    var dialog = $(tpl).appendTo(container);
+    
+    dialog.show();
+
+    dialog.addClass("weui-picker-modal-visible");
+
+    return dialog;
+  }
+
+
+  $.closePicker = function(container) {
+    $(".weui-picker-modal-visible").removeClass("weui-picker-modal-visible").transitionEnd(function() {
+      $(this).remove();
+      $(".weui-picker-container-visible").remove();
+    }).trigger("close");
+
+  };
   $.fn.picker = function(params) {
     var args = arguments;
     return this.each(function() {
