@@ -6,7 +6,14 @@ var autoprefixer = require('gulp-autoprefixer');
 var ejs = require("gulp-ejs");
 
 gulp.task('js', function() {
-  return gulp.src([
+  gulp.src([
+    './src/js/city-data.js',
+    './src/js/city-picker.js'
+  ])
+    .pipe(concat({ path: 'city-picker.js'}))
+    .pipe(gulp.dest('./dist/js/'));
+
+  gulp.src([
     './src/js/jquery-extend.js',
     './src/js/modal.js',
     './src/js/toast.js',
@@ -17,7 +24,8 @@ gulp.task('js', function() {
     './src/js/search-bar.js',
     './src/js/device.js',
     './src/js/picker.js',
-    './src/js/calendar.js'
+    './src/js/calendar.js',
+    './src/js/datetime-picker.js'
   ])
     .pipe(concat({ path: 'jquery-weui.js'}))
     .pipe(gulp.dest('./dist/js/'));
