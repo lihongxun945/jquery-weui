@@ -6,7 +6,6 @@
   $.modal = function(params) {
     params = $.extend({}, defaults, params);
 
-    var mask = $("<div class='weui_mask'></div>").appendTo(document.body);
 
     var buttons = params.buttons;
 
@@ -19,7 +18,8 @@
                 ( params.text ? '<div class="weui_dialog_bd">'+params.text+'</div>' : '')+
                 '<div class="weui_dialog_ft">' + buttonsHtml + '</div>' +
               '</div>';
-    var dialog = $(tpl).appendTo(document.body);
+    
+    var dialog = $.openModal(tpl);
 
     dialog.find(".weui_btn_dialog").each(function(i, e) {
       var el = $(e);
@@ -33,12 +33,20 @@
         }
       });
     });
+  };
 
+  $.openModal = function(tpl) {
+    var mask = $("<div class='weui_mask'></div>").appendTo(document.body);
     mask.show();
+
+    var dialog = $(tpl).appendTo(document.body);
+    
     dialog.show();
     mask.addClass("weui_mask_visible");
     dialog.addClass("weui_dialog_visible");
-  };
+
+    return dialog;
+  }
 
   $.closeModal = function() {
     $(".weui_mask_visible").removeClass("weui_mask_visible").transitionEnd(function() {
