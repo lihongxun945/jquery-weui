@@ -677,7 +677,8 @@
               
       }
       
-      if (!p.inline) $('html').on('click', closeOnHTMLClick);
+      //iphone 上无法正确触发 click，会导致点击外面无法关闭
+      if (!p.inline) $(document).on('click touchend', closeOnHTMLClick);
 
       // Open
       function onPickerClose() {
