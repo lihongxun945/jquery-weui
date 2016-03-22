@@ -17,14 +17,13 @@
           // Common settings
           scrollToInput: true,
           inputReadOnly: true,
-          convertToPopover: true,
-          onlyInPopover: false,
           toolbar: true,
-          toolbarCloseText: 'OK',
+          toolbarCloseText: '完成',
+          title: '请选择',
           toolbarTemplate: '<div class="toolbar">\
           <div class="toolbar-inner">\
-          <a href="javascript:;" class="picker-button close-picker">完成</a>\
-          <h1 class="title">请选择</h1>\
+          <a href="javascript:;" class="picker-button close-picker">{{closeText}}</a>\
+          <h1 class="title">{{title}}</h1>\
           </div>\
           </div>',
       };
@@ -433,7 +432,7 @@
           pickerClass = 'weui-picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ? ' picker-3d' : '');
           pickerHTML =
               '<div class="' + (pickerClass) + '">' +
-                  (p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params.toolbarCloseText) : '') +
+                  (p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params.toolbarCloseText).replace(/{{title}}/g, p.params.title) : '') +
                   '<div class="picker-modal-inner picker-items">' +
                       colsHTML +
                       '<div class="picker-center-highlight"></div>' +

@@ -14,6 +14,10 @@ html {
   font-size: @baseFont;  //默认当做320px宽度的屏幕来处理
 }
 
+body {
+  font-size: 16px;
+}
+
 @bps: 400px, 414px, 480px; 
 
 .loop(@i: 1) when (@i <= length(@bps)) {  //注意less数组是从1开始的
