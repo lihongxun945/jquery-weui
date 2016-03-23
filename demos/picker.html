@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <% include _head.html %>
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">Picker</h1>
+    </header>
+
+    
+    <div class="weui_cells weui_cells_form">
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="name" class="weui_label">称呼</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="name" type="text" value="">
+        </div>
+      </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="date" class="weui_label">手机</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="mobile" type="text" value="">
+        </div>
+      </div>
+    </div>
+    <% include _foot.html %>
+
+    <script>
+      $("#mobile").picker({
+        title: "请选择您的手机",
+        cols: [
+          {
+            textAlign: 'center',
+            values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
+          }
+        ]
+      });
+      $("#name").picker({
+        title: "怎么称呼您？",
+        cols: [
+          {
+            textAlign: 'center',
+            values: ['Mr', 'Ms']
+          },
+          {
+            textAlign: 'center',
+            values: ['Amy', 'Bob', 'Cat', 'Dog', 'Ella', 'Fox', 'Google']
+          }
+        ]
+      });
+    </script>
+  </body>
+</html>

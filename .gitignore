@@ -6,5 +6,5 @@ dist/
 .package/
 .sass-cache/
 .DS_Store
-_site/*
+_site/
 *.orig
