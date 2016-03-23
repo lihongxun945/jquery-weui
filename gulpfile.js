@@ -22,6 +22,7 @@ gulp.task('js', function() {
 
   gulp.src([
     './src/js/jquery-extend.js',
+    './src/js/template7.js',
     './src/js/modal.js',
     './src/js/toast.js',
     './src/js/action.js',
@@ -32,7 +33,8 @@ gulp.task('js', function() {
     './src/js/device.js',
     './src/js/picker.js',
     './src/js/calendar.js',
-    './src/js/datetime-picker.js'
+    './src/js/datetime-picker.js',
+    './src/js/notification.js'
   ])
     .pipe(concat({ path: 'jquery-weui.js'}))
     .pipe(gulp.dest('./dist/js/'));
