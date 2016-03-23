@@ -2171,10 +2171,10 @@ Device/OS Detection
   };
 
   defaults = $.fn.calendar.prototype.defaults = {
-    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September' , 'October', 'November', 'December'],
-    monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    dayNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+    dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
     firstDay: 1, // First day of the week, Monday
     weekendDays: [0, 6], // Sunday and Saturday
     multiple: false,
@@ -2210,8 +2210,8 @@ Device/OS Detection
     toolbarTemplate: 
         '<div class="toolbar">' +
             '<div class="toolbar-inner">' +
-                '{{monthPicker}}' +
                 '{{yearPicker}}' +
+                '{{monthPicker}}' +
                 // '<a href="#" class="link close-picker">{{closeText}}</a>' +
             '</div>' +
         '</div>',
