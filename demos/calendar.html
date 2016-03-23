@@ -24,7 +24,10 @@
     <% include _foot.html %>
 
     <script>
-      $("#date").calendar();
+      $("#date").calendar({
+        value: ['2017-12-12'],
+        minDate: '2017-12-10'
+      });
     </script>
   </body>
 </html>
