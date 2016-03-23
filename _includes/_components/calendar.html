@@ -1,4 +1,4 @@
-<article class="component" id="calendar" data-url='calendar'>
+<article class="component" id="calendar" data-url='../dist/demos/calendar.html'>
   <h2 class="component-title">日历</h2>
   <p class="component-description">日历组件用来选择年月日，可以代替系统原生的日历组件，提供更统一的视觉和交互以及更好的兼容性。</p>
   <p>日历组件需要初始化才能使用，最简单的方式是通过一下JS代码来初始化，绑定到一个input元素上：</p>
@@ -19,95 +19,77 @@ $("#my-input").calendar();
   <table class="table">
     <thead>
       <tr>
-        <th>Parameter</th>
-        <th>Type</th>
-        <th>Default</th>
-        <th>Description</th>
+        <th>参数名</th>
+        <th>类型</th>
+        <th>默认值</th>
+        <th>说明</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th colspan="4">Common Picker Modal Component Parameters</th>
-      </tr>
-      <tr>
         <td>inputReadOnly</td>
         <td>boolean</td>
         <td>true</td>
-        <td>Sets "readonly" attribute on specified input</td>
-      </tr>
-      <tr>
-        <td>cssClass</td>
-        <td>string</td>
-        <td></td>
-        <td>Additional CSS class name to be set on calendar modal</td>
+        <td>是否自动在 <code>input</code> 元素上加上 <code>readonly</code> 属性</td>
       </tr>
       <tr>
         <td>closeByOutsideClick</td>
         <td>boolean</td>
         <td>true</td>
-        <td>If enabled, picker will be closed by clicking outside of picker or related input element</td>
-      </tr>
-      <tr>
-        <td>toolbar</td>
-        <td>boolean</td>
-        <td>true</td>
-        <td>Enables calendar modal toolbar</td>
+        <td>点击日历外面关闭</td>
       </tr>
       <tr>
         <td>toolbarTemplate</td>
         <td>string</td>
-        <td></td>
-        <td>Toolbar HTML Template </td>
-    </tr>
-    <tr>
-      <th colspan="4">Specific Calendar Parameters</th>
+        <td>参见源码</td>
+        <td>Toolbar 的HTML结构</td>
     </tr>
     <tr>
       <td>value</td>
       <td>array</td>
       <td></td>
-      <td>Array with initial selected dates. Each array item represents selected date</td>
+      <td>默认选择的日期，注意是个数组，比如 <code>["2016-12-12"]</code></td>
     </tr>
     <tr>
       <td>disabled</td>
       <td>Date Range</td>
       <td></td>
-      <td>Additonal disabled dates. Parameter accepts so called <b>Date Range</b> (look below for details)</td>
+      <td>禁止选择的日期范围，这是一个 <code>Date Range</code>，请参考下文的说明</td>
     </tr>
     <tr>
       <td>formatValue</td>
       <td>function (p, values)</td>
       <td></td>
-      <td>Function to format input value, should return new/formatted string value. <b>values</b> is array where each item represents selected date</td>
+      <td>格式化函数. <b>values</b> 是用户选择的日期</td>
     </tr>
     <tr>
       <td>monthNames</td>
       <td>array</td>
       <td>['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August' , 'September' , 'October', 'November', 'December']</td>
-      <td>Array with full month names</td>
+      <td>月名称</td>
     </tr>
     <tr>
       <td>monthNamesShort</td>
       <td>array</td>
       <td>['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']</td>
-      <td>Array with short month names</td>
+      <td>月名称缩写</td>
     </tr>
     <tr>
       <td>dayNames</td>
       <td>array</td>
       <td>['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']</td>
-      <td>Array with week day names</td>
+      <td>周名称</td>
     </tr>
     <tr>
       <td>dayNamesShort</td>
       <td>array</td>
       <td>['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']</td>
-      <td>Array with week day short names</td>
+      <td>周名称缩写</td>
     </tr>
     <tr>
       <td>dateFormat</td>
       <td>'yyyy-mm-dd'</td>
-      <td>格式化日期</td>
+      <td>日期格式</td>
     </tr>
     <tr>
       <td>minDate</td>
@@ -127,8 +109,8 @@ $("#my-input").calendar();
     <tr>
       <td>closeOnSelect</td>
       <td>boolean</td>
-      <td>false</td>
-      <td>Enable and calendar will be closed when user pick a date</td>
+      <td>true</td>
+      <td>用户选择一个时间后就自动关闭</td>
     </tr>
   </tr>
   <tr>
@@ -139,7 +121,7 @@ $("#my-input").calendar();
   </tr>
 </tr>
 <tr>
-  <th colspan="4">Callbacks</th>
+  <th colspan="4">回调函数</th>
 </tr>
 <tr>
   <td>onChange</td>
