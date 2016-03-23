@@ -2,7 +2,7 @@
   <h2>对话框</h2>
   <p>若系统的alert窗体无法满足网页的临时视图内容需求，则可以自定义实现与alert形式相似的dialog，并且在dialog中可以自定义地使用各种控件，来满足需求。</p>
 
-  <p>对话框只能通过 JavaScript 进行调用，我们提供了两种常用的对话框 Alert 和 Confirm. 你也可以通过 <code>$.modal</code> 来自定义对话框</p>
+  <p>对话框只能通过 JavaScript 进行调用，我们提供了三种常用的对话框 Alert, Confirm 和 Prompt. 你也可以通过 <code>$.modal</code> 来自定义对话框</p>
 
   <h3>Alert</h3>
 
@@ -33,10 +33,24 @@ $.confirm("自定义的消息内容", function() {
   });
 {% endhighlight %}
 
+  <h3>Prompt</h3>
+
+  <p>显示一个带有输入框的对话框,可以让用户输入信息</p>
+
+{% highlight js %}
+$.prompt("自定义的消息内容", function(text) {
+  //点击确认后的回调函数
+  //text 是用户输入的内容
+  }, function() {
+  //点击取消后的回调函数
+  });
+{% endhighlight %}
+
+
 
   <h3>自定义对话框</h3>
 
-  <p>上述的两种对话框都是 <code>$.modal</code> 的一种特殊形式。你可以通过 <code>$.modal</code> 来定制对话框:</p>
+  <p>上述的三种对话框都是 <code>$.modal</code> 的一种特殊形式。你可以通过 <code>$.modal</code> 来定制对话框:</p>
 
 
 {% highlight js %}

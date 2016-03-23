@@ -1,0 +1,31 @@
+<article class="component" id="city-picker" data-url='city-picker'>
+  <h2 class="component-title">地址选择器</h2>
+
+  <p class="component-description">地址选择器需要引入额外的JS文件：</p>
+
+{% highlight html %}
+<script type="text/javascript" src="js/city-picker.js" charset="utf-8"></script>
+{% endhighlight %}
+
+
+  <p class="component-description">地址选择器是一个定制的 <a href='#picker'>picker</a>，所以其用法和 Picker 是一样的。</p>
+  <p>同样，在使用省市区组件的时候你不能定制 <code>onChange</code> 和 <code>cols</code> 参数。</p>
+
+
+{% highlight html %}
+<input type="text" id='city-picker'/>
+<script>
+  $("#city-picker").cityPicker({
+    title: "请选择收货地址"
+  });
+</script>
+
+{% endhighlight %}
+
+<p>input 的 <code>value</code> 属性可以设置默认值，以空格分割。</p>
+
+{% highlight html %}
+<input type="text" id='city-picker' value="浙江 杭州 拱墅区" />
+{% endhighlight %}
+
+</article>

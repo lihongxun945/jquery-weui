@@ -1,0 +1,173 @@
+<article class="component" id="picker" data-url='picker'>
+  <h2 class="component-title">picker</h2>
+
+  <p class="component-description">picker是一个JS实现的类似select的组件，他可以代替原生的select组件，并且功能更加强大、样式更加统一。</p>
+
+  <p>picker 需要初始化才能使用，你可以在一个 <code>input </code> 元素上初始化picker，当用户点击input的时候会弹出picker的弹层</p>
+
+  <p>picker 会自动读取 input 的value作为初始值。对于有多个cols的情况，可能初始值无法正确解析，因为picker并不知道该如何进行分割。默认的规则是：多列模式下，会把input中的值以空格分隔作为每一列的值。如果你有多列并且不是以空格分隔的，那么你需要自己通过参数传入这个初始值，而不能通过 input 元素的 value属性设置。</p>
+
+{% highlight html %}
+<input type="text" id='picker'/>
+<script>
+$("#picker").picker({
+  title: "请选择您的手机",
+  cols: [
+    {
+      textAlign: 'center',
+      values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
+    }
+  ]
+});
+</script>
+{% endhighlight %}
+
+  <h3>关闭picker</h3>
+
+  <p>在任何元素上加上一个 <code>.close-picker</code> 类，点击它就会关闭 Picker。</p>
+  <p>你也可以通过调用 <code>$.closePicker()</code> 或者 <code>$("#input").picker("close")</code>来关闭当前弹出的 Picker。</p>
+
+  <h3 class="component-title">picker参数</h3>
+
+  <p class="component-description">你可以通过设置 <code>toolbarTemplate</code> 参数来自定义工具栏模板。在 <code>cols</code> 参数中可以传入多列值。</p>
+
+{% highlight js %}
+$("#picker-name").picker({
+  title: "请选择您的称呼",
+  cols: [
+    {
+      textAlign: 'center',
+      values: ['赵', '钱', '孙', '李', '周', '吴', '郑', '王']
+      //如果你希望显示文案和实际值不同，可以在这里加一个displayValues: [.....]
+    },
+    {
+      textAlign: 'center',
+      values: ['杰伦', '磊', '明', '小鹏', '燕姿', '菲菲', 'Baby']
+    },
+    {
+      textAlign: 'center',
+      values: ['先生', '小姐']
+    }
+  ]
+});
+{% endhighlight %}
+
+  <p>所有可用参数如下：</p>
+
+  <table class='table'>
+    <tr>
+      <th>参数名</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>
+        "请选择"
+      </td>
+      <td>Picker 的标题</td>
+    </tr>
+    <tr>
+      <td>toolbarCloseText</td>
+      <td>
+        完成
+      </td>
+      <td>关闭按钮的文案</td>
+    </tr>
+    <tr>
+      <td>toolbarTemplate</td>
+      <td>
+        请参见源码
+      </td>
+      <td>工具栏的模板，可以自己定义。</td>
+    </tr>
+
+    <tr>
+      <td>value</td>
+      <td></td>
+      <td>Array with initial values. Each array item represents value of related column. Picker will auto read value from input if not set.</td>
+    </tr>
+
+    <tr>
+      <td>rotateEffect</td>
+      <td>false</td>
+      <td>是否启用3D效果，启用3D可能会影响性能</td>
+    </tr>
+    <tr>
+      <td>toolbar</td>
+      <td>true</td>
+      <td>是否显示工具栏</td>
+    </tr>
+    <tr>
+      <td>inputReadOnly</td>
+      <td>true</td>
+      <td>是否会在input上添加一个 readonly 属性</td>
+    </tr>
+    <tr>
+      <td>cssClass</td>
+      <td>undefined</td>
+      <td>为 picker 容器增加额外的类，可以用来自定义样式</td>
+    </tr>
+
+  </table>
+
+  <h3 class="component-title">picker方法</h3>
+
+  <p class="component-description">你可以通过 <code>$("#input").picker("method", args1, args2...)</code> 的方式来调用相关的方法。</p>
+
+{% highlight js %}
+$("#picker-name").picker("open");
+$("#picker-name").picker("close");
+$("#picker-name").picker("setValue", ["2012", "12", "12"]);
+{% endhighlight %}
+
+  <p>所有可用方法如下：</p>
+
+  <table class='table'>
+    <tr>
+      <th>方法名</th>
+      <th>参数说明</th>
+      <th>方法说明</th>
+    </tr>
+    <tr>
+      <td>open</td>
+      <td>无</td>
+      <td>打开picker</td>
+    </tr>
+
+    <tr>
+      <td>close</td>
+      <td>无</td>
+      <td>关闭picker</td>
+    </tr>
+    <tr>
+      <td>setValue</td>
+      <td>一个字符串数组，其中每个字符串对应每一列</td>
+      <td>设置值</td>
+    </tr>
+
+  </table>
+</article>
+
+<article class="component" id="datetime-picker" data-url='datetime-picker'>
+  <h2 class="component-title">日期时间选择器</h2>
+
+  <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。</p>
+  <p>datetime-picker 定制了 onChange 和 cols 参数，请不要设置这两个参数。</p>
+  <p>datetime-picker 会自动解析 input 的 value 作为初始值，但是要注意初始值的格式一定是 <code>yyyy-mm-dd HH:MM</code>， 比如 <code>2015-12-12 08:30</code></p>
+
+{% highlight html %}
+<input type="text" id='datetime-picker'/>
+<script>
+  $("#datetime-picker").datetimePicker({
+    toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker">确定</button>\
+    <h1 class="title">选择日期和时间</h1>\
+    </header>'
+  });
+</script>
+{% endhighlight %}
+
+  <p>如果你只想选择日期，请使用 <a href='#calendar'>日历</a></p>
+</article>
+

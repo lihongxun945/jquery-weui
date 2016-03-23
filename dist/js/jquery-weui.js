@@ -1275,11 +1275,11 @@ Device/OS Detection
       p.close = function () {
           if (!p.opened || p.inline) return;
           if (inPopover()) {
-              $.closeModal(p.popover);
+              $.closePicker(p.popover);
               return;
           }
           else {
-              $.closeModal(p.container);
+              $.closePicker(p.container);
               return;
           }
       };

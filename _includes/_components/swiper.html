@@ -1,0 +1,25 @@
+<article class="component active" id="swiper" data-url='swiper'>
+  <h2 class="component-title">Swiper</h2>
+  <p class="component-description">为了使用幻灯片，你必须引用如下的JS文件：</p>
+
+
+{% highlight html %}
+<script type='text/javascript' src='/js/swiper.js' charset='utf-8'></script>
+{% endhighlight %}
+
+<p>在 Swiper 容器上调用 <code>$(".swiper-container").swiper(config)</code> 来初始化.</p>
+
+{% highlight html %}
+<div class="swiper-container" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1n3rZHFXXXXX9XFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i4/TB10rkPGVXXXXXGapXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+    <div class="swiper-slide"><img src="//gqianniu.alicdn.com/bao/uploaded/i4//tfscom/i1/TB1kQI3HpXXXXbSXFXXXXXXXXXX_!!0-item_pic.jpg_320x320q60.jpg" alt=""></div>
+  </div>
+</div>
+{% endhighlight %}
+</article>
+
+  <h3>配置</h3>
+
+  <p>你可以通过 <code>data-xxx</code> 属性的方式在 <code>.swiper-container</code> 上写配置, 也可以通过 <code>$().swiper(config)</code> 的 config 参数来设置。Swiper 是对第三方插件的一个简单封装，更多文档请参阅 <a href='http://www.idangero.us/swiper/api/#.VjtIEK4rLyU' target="_blank">Swiper 官方文档</a></p>
