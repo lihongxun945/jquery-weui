@@ -1,0 +1,74 @@
+<article class="component active" id='notification' data-url="../dist/demos/noti.html">
+  <h2 class="component-title">通知</h2>
+  <p class="component-description">模仿iOS风格的通知。你可以自定义标题，文案和图标。通过滑动手势可以关闭。</p>
+
+  <p>使用JS来打开和关闭通知:</p>
+  
+{% highlight js %}  
+$.notification({
+  title: "Baby",
+  text: "I miss you",
+  media: "<img src='...'>",
+  data: "123",
+  onClick: function(data) {
+    $.alert("Click" + data);
+  },
+  onClose: function(data) {
+    $.alert("Close "+data);
+  }
+});
+
+//close notification
+
+$.closeNotification();
+
+{% endhighlight %}
+  
+  <p>一次只能显示一个通知，如果在前一个通知未消失的情况下显示下一个通知。则下一个通知会直接替换掉前一个通知</p>
+
+
+  <h3>Params</h3>
+
+  <table>
+    <tr>
+      <th>Param</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>undefined</td>
+      <td>通知的标题</td>
+    </tr>
+    <tr>
+      <td>text</td>
+      <td>undefined</td>
+      <td>通知的文案</td>
+    </tr>
+    <tr>
+      <td>media</td>
+      <td>undefined</td>
+      <td>图标</td>
+    </tr>
+    <tr>
+      <td>data</td>
+      <td>undefined</td>
+      <td>点击通知后，这个data参数会传给 <code>onClick</code></td>
+    </tr>
+    <tr>
+      <td>onClick</td>
+      <td>undefined</td>
+      <td>点击回调</td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td>undefined</td>
+      <td>关闭通知的回调</td>
+    </tr>
+    <tr>
+      <td>time</td>
+      <td>4000</td>
+      <td>自动消失的时间</td>
+    </tr>
+  </table>
+</article>
