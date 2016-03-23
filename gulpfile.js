@@ -14,6 +14,13 @@ gulp.task('js', function() {
     .pipe(gulp.dest('./dist/js/'));
 
   gulp.src([
+    './src/js/swiper.jquery.js',
+    './src/js/swiper-wrap.js'
+  ])
+    .pipe(concat({ path: 'swiper.js'}))
+    .pipe(gulp.dest('./dist/js/'));
+
+  gulp.src([
     './src/js/jquery-extend.js',
     './src/js/modal.js',
     './src/js/toast.js',
