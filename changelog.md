@@ -2,8 +2,8 @@
 
 对应 `weui` 版本为 `v0.4.0`。
 
-- 增加了五个新组件：`Picker`, `Calendar`, `City Picker`, `Datetime Picker`, `Swiper`。
-- 增加了一个包含所有组件的 `demos`
+- 增加了六个新组件：`Picker`, `Calendar`, `City Picker`, `Datetime Picker`, `Swiper`, `Notification`。
+- 增加了一个包含所有组件的 `demos`.
 - 对话框中增加了一个 `$.prompt` 功能，可以让用户输入信息。
 - 修复了 搜索栏 `zindex` 过大导致无法被 对话框背景遮罩的bug。
 - Toast 组件增加了两种新的样式：`取消` 和 `禁止`。
