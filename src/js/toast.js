@@ -5,6 +5,7 @@
   
   var show = function(html, className) {
 
+    className = className || "";
     var mask = $("<div class='weui_mask_transparent'></div>").appendTo(document.body);
 
     var tpl = '<div class="weui_toast ' + className + '">' + html + '</div>';
@@ -21,8 +22,14 @@
     });
   }
 
-  $.toast = function(text) {
-    show('<i class="weui_icon_toast"></i><p class="weui_toast_content">' + (text || "已经完成") + '</p>');
+  $.toast = function(text, style) {
+    var className;
+    if(style == "cancel") {
+      className = "weui_toast_cancel";
+    } else if(style == "forbidden") {
+      className = "weui_toast_forbidden";
+    }
+    show('<i class="weui_icon_toast"></i><p class="weui_toast_content">' + (text || "已经完成") + '</p>', className);
 
     setTimeout(function() {
       hide();
