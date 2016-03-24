@@ -12,7 +12,7 @@
   color: @color-text;
   transition-duration: .3s;
   height: 13rem;
-  background: #cfd5da;
+  background: #EFEFF4;
 
   &.weui-picker-modal-visible {
     opacity: 1;
@@ -29,7 +29,7 @@
   .toolbar {
     position: relative;
     width: 100%;
-    border-top: 1px solid #999;
+    .hairline(top, #d9d9d9);
     font-size: .85rem;
     line-height: 1.5;
     color: #3d4145;
@@ -58,7 +58,8 @@
       width: 100%;
       padding: 0;
       text-align: right;
-      font-size: 1.2rem;
+      font-size: 1rem;
+      font-weight: normal;
       -webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
       -webkit-mask-box-image: linear-gradient(to top, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
   }
@@ -92,8 +93,8 @@
       transition-timing-function: ease-out;
   }
   .picker-item {
-      height: 36px;
-      line-height: 36px;
+      height: 32px;
+      line-height: 32px;
       padding: 0 10px;
       white-space: nowrap;
       position: relative;
@@ -122,15 +123,15 @@
       }
   }
   .picker-center-highlight {
-      height: 36px;
+      height: 32px;
       box-sizing: border-box;
       position: absolute;
       left: 0;
       width: 100%;
       top: 50%;
       margin-top: -18px;
-      .hairline(top, #a8abb0);
-      .hairline(bottom, #a8abb0);
+      .hairline(top, @color-hairline);
+      .hairline(bottom, @color-hairline);
       pointer-events: none;
   }
   // 3D Picker
@@ -163,7 +164,7 @@
     width: 100%;
     padding: 0;
     font-size: .85rem;
-    font-weight: 500;
+    font-weight: normal;
     line-height: 2.2rem;
     color: #3d4145;
     text-align: center;
@@ -193,28 +194,6 @@
 
 }
 
-
-i.icon {
-  display: inline-block;
-  vertical-align: middle;
-  background-size: 100% auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-style: normal;
-  position: relative;
-  
-  &.icon-next, &.icon-prev {
-    width: 0.75rem;
-    height: 0.75rem;
-  }
-
-  &.icon-next {
-    .encoded-svg-background("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'><g><path fill='#007aff' d='M1,1.6l11.8,5.8L1,13.4V1.6 M0,0v15l15-7.6L0,0L0,0z'/></g></svg>");
-  }
-  &.icon-prev {
-    .encoded-svg-background("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 15'><g><path fill='#007aff' d='M14,1.6v11.8L2.2,7.6L14,1.6 M15,0L0,7.6L15,15V0L15,0z'/></g></svg>");
-  }
-}
 
 .city-picker {
   .col-province {
