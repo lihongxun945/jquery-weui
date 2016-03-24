@@ -801,6 +801,11 @@
         } else {
           p.container = $this;
         }
+        //默认显示今天
+        if(!params.value) {
+          var today = new Date();
+          params.value = [today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()];
+        }
         new Calendar($.extend(p, params));
       });
   };
