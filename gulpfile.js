@@ -32,6 +32,7 @@ gulp.task('js', function() {
     './src/js/search-bar.js',
     './src/js/device.js',
     './src/js/picker.js',
+    './src/js/select.js',
     './src/js/calendar.js',
     './src/js/datetime-picker.js',
     './src/js/notification.js'
