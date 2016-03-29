@@ -612,9 +612,9 @@
   });
 
 
-  $.openPicker = function(tpl) {
+  $.openPicker = function(tpl, className) {
 
-    var container = $("<div class='weui-picker-container'></div>").appendTo(document.body);
+    var container = $("<div class='weui-picker-container "+ (className || "") + "'></div>").appendTo(document.body);
     container.show();
 
     container.addClass("weui-picker-container-visible");

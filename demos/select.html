@@ -20,6 +20,12 @@
           <input class="weui_input" id="mobile" type="text" value="">
         </div>
       </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="name" class="weui_label">爱好</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="in" type="text" value="">
+        </div>
+      </div>
     </div>
     <% include _foot.html %>
 
@@ -28,14 +34,64 @@
         title: "选择手机",
         items: [
           {
+            title: "iPhone 3GS",
+            value: "iPhone 3GS",
+          },
+          {
             title: "iPhone 5",
             value: "iPhone 5",
-            checked: true
+          },
+          {
+            title: "iPhone 5S",
+            value: "iPhone 5S",
           },
           {
             title: "iPhone 6",
-            value: "iPhone 6"
+            value: "iPhone 6",
+          },
+          {
+            title: "iPhone 6S",
+            value: "iPhone 6S",
+            checked: true
+          },
+          {
+            title: "iPhone 6P",
+            value: "iPhone 6P",
+          },
+          {
+            title: "iPhone 6SP",
+            value: "iPhone 6SP",
+          },
+          {
+            title: "iPhone SE",
+            value: "iPhone SE",
+          },
+          {
+            title: "iPhone 7",
+            value: "iPhone 7"
           }
+        ]
+      });
+      $("#in").select({
+        title: "您的爱好",
+        multi: true,
+        items: [
+          {
+            title: "画画",
+            value: 1
+          },
+          {
+            title: "打球",
+            value: 2
+          },
+          {
+            title: "唱歌",
+            value: 3
+          },
+          {
+            title: "游泳",
+            value: 4
+          },
         ]
       });
     </script>

@@ -8,7 +8,7 @@
     var config = $.extend({}, defaults, params);
     if(!config.items || !config.items.length) return;
 
-    var tpl = $.t7.compile("<div class='weui-picker-modal'>" + config.toolbarTemplate + (config.multi ? config.checkboxTemplate : config.radioTemplate) + "</div>");
+    var tpl = $.t7.compile("<div class='weui-picker-modal weui-select-modal'>" + config.toolbarTemplate + (config.multi ? config.checkboxTemplate : config.radioTemplate) + "</div>");
 
     return this.each(function() {
       var $this = $(this);
@@ -23,7 +23,6 @@
     });
   }
 
- 
   defaults = $.fn.select.prototype.defaults = {
     items: [],
     title: "请选择",
