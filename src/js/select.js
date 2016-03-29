@@ -14,11 +14,13 @@
       var $this = $(this);
       $this.prop("readOnly", true);
       $this.click(function() {
+        if($this.data("opened")) return;
         $.openPicker(tpl({
           items: config.items,
           title: config.title,
           closeText: config.closeText
         }));
+        $this.data("opened", true);
       });
     });
   }
