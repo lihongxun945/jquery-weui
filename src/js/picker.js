@@ -614,6 +614,8 @@
 
   $.openPicker = function(tpl, className) {
 
+    $.closePicker();
+
     var container = $("<div class='weui-picker-container "+ (className || "") + "'></div>").appendTo(document.body);
     container.show();
 
@@ -632,8 +634,7 @@
 
   $.closePicker = function(container) {
     $(".weui-picker-modal-visible").removeClass("weui-picker-modal-visible").transitionEnd(function() {
-      $(this).remove();
-      $(".weui-picker-container-visible").remove();
+      $(this).parent().remove();
     }).trigger("close");
 
   };
