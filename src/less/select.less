@@ -2,7 +2,12 @@
   height: auto;
 
   .weui_cells {
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     max-height: 16rem;
+
+    &:after {
+      display: none;
+    }
   }
 }

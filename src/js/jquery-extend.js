@@ -136,4 +136,8 @@
     }  
   };
 
+  $.fn.join = function(arg) {
+    return this.toArray().join(arg);
+  }
+
 })($);
