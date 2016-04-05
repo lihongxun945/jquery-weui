@@ -25,8 +25,7 @@
       var el = $(e);
       el.click(function() {
         //先关闭对话框，再调用回调函数
-
-        $.closeModal();
+        if(params.autoClose) $.closeModal();
 
         if(buttons[i].onClick) {
           buttons[i].onClick();
@@ -130,7 +129,8 @@
     buttons: [{
       text: "确定",
       className: "primary"
-    }]
+    }],
+    autoClose: true //点击按钮自动关闭对话框，如果你不希望点击按钮就关闭对话框，可以把这个设置为false
   };
 
 }($);
