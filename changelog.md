@@ -6,6 +6,7 @@
 - 修复了 `City Picker` 中设置初始值之后可能导致的bug。
 - 修复了 `Picker` 在 iOS 系统中无法出现弹出动画的bug。
 - 现在打开 `Picker` 时会自动关闭上一个打开的 `Picker`
+- 修复了使用 `weui.min.css` 时由于 `z-index` 压缩问题导致对话框被遮住的Bug。
 - 更新了 demos 中的图标
 - 在JS和CSS文件中加入了版本号等说明
 
