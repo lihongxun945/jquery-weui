@@ -3,6 +3,7 @@
 对应 `weui` 版本为 `0.4.0`
 
 - 新增组件 `Select`、`Popup`
+- 修复了 `Picker` 和 `Canlendar` 在部分安卓手机上无法显示的bug（原因是安卓 4.4 以下不支持 `calc`）。
 - 修复了 `City Picker` 中设置初始值之后可能导致的bug。
 - `City Picker` 增加了一个 `showDistrict` 配置，可以配置是否选择 `区`。
 - 修复了 `Picker` 在 iOS 系统中无法出现弹出动画的bug。
