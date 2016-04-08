@@ -1,11 +1,12 @@
 .weui_dialog, .weui_toast {
-  transition-duration: .3s;
+  transition-duration: .2s;
   opacity: 0;
   transform: scale(.9);
   visibility: hidden;
   margin: 0;
   left: 7.5%;
   top: 30%;
+  z-index: 100;
 
   .weui_btn_dialog + .weui_btn_dialog {
     position: relative;
@@ -33,21 +34,36 @@
 .weui_toast {
   left: 50%;
   top: 35%;
-  margin-left: -3.8rem;
+  margin-left: -3.8em;
+}
+
+.weui_toast_forbidden {
+  color: #F76260;
+}
+.weui_toast_cancel .weui_icon_toast:before {
+  content: "\EA0D";
+}
+.weui_toast_forbidden .weui_icon_toast:before {
+  content: "\EA0B";
+  color: #F76260;
 }
 
 .weui_mask {
   opacity: 0;
   transition-duration: .3s;
   visibility: hidden;
+  z-index: 10;
   &.weui_mask_visible {
     opacity: 1;
     visibility: visible;
   }
 }
 
-.weui_toast {
-  left: 50%;
-  margin-left: -3.8rem;
-  top: 35%;
+.weui-prompt-input {
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height: 2em;
+  width: 80%;
+  margin-top: 10px;
 }

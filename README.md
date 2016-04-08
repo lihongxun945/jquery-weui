@@ -1,4 +1,4 @@
-# jQuery WeUI V0.2.3 - 可能是最好用 WeUI 版本
+# jQuery WeUI - 可能是最好用 WeUI 版本
 
 [![npm version](https://img.shields.io/npm/v/jquery-weui.svg)](https://www.npmjs.com/package/jquery-weui)
 
@@ -26,6 +26,13 @@ jQuery WeUI 使用官方的CSS组件，加上一系列jQuery插件提供简洁�
 
 - `gulp` 编译所有的代码
 - `gulp watch` 进入watch 模式
+
+# 分支说明
+
+- `master` 主分支，正式发布的代码才会进入master分支
+- `dev` 开发分支
+- `gh-pages` 文档主分支
+- `gh-pages-dev` 文档的开发分支
 
 # LICENSE
 

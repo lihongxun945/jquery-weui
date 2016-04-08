@@ -1,0 +1,65 @@
+.notification {
+  position: fixed;
+  width: 100%;
+  min-height: 3.4rem;
+  top: -2rem;
+  padding-top: 2rem;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background-color: rgba(0,0,0,.85);
+  color: white;
+  font-size: .65rem;
+
+  transform: translate3d(0, -100%, 0);
+  transition: .4s;
+
+  &.notification-in {
+    transform: translate3d(0,0,0);
+  }
+
+  &.touching {
+    transition-duration: 0s;
+  }
+
+  .notification-inner {
+    padding: .4rem .6rem 1rem .6rem;
+    .flexbox();
+    .align-items(flex-start);
+  }
+
+
+
+  .notification-content {
+    width: 100%;
+    margin: 0rem .4rem;
+  }
+
+  .notification-title {
+    font-weight: bold;
+  }
+  .notification-text {
+    line-height: 1;
+  }
+
+  .notification-media {
+    height: 1rem;
+    width: 1rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .notification-handle-bar {
+    position: absolute;
+    bottom: .2rem;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    width: 2rem;
+    height: .3rem;
+    border-radius: .15rem;
+    background: white;
+    opacity: .5;
+  }
+}
