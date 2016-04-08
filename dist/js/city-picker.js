@@ -4,68 +4,73 @@
 $.rawCitiesData = [
     {
         "name":"北京",
-        "sub":[
-            {
-                "name":"请选择"
-            },
-            {
-                "name":"东城区"
-            },
-            {
-                "name":"西城区"
-            },
-            {
-                "name":"崇文区"
-            },
-            {
-                "name":"宣武区"
-            },
-            {
-                "name":"朝阳区"
-            },
-            {
-                "name":"海淀区"
-            },
-            {
-                "name":"丰台区"
-            },
-            {
-                "name":"石景山区"
-            },
-            {
-                "name":"房山区"
-            },
-            {
-                "name":"通州区"
-            },
-            {
-                "name":"顺义区"
-            },
-            {
-                "name":"昌平区"
-            },
-            {
-                "name":"大兴区"
-            },
-            {
-                "name":"怀柔区"
-            },
-            {
-                "name":"平谷区"
-            },
-            {
-                "name":"门头沟区"
-            },
-            {
-                "name":"密云县"
-            },
-            {
-                "name":"延庆县"
-            },
-            {
-                "name":"其他"
-            }
-        ],
+        "sub": [
+          {
+          "name": "北京",
+
+          "sub":[
+              {
+                  "name":"请选择"
+              },
+              {
+                  "name":"东城区"
+              },
+              {
+                  "name":"西城区"
+              },
+              {
+                  "name":"崇文区"
+              },
+              {
+                  "name":"宣武区"
+              },
+              {
+                  "name":"朝阳区"
+              },
+              {
+                  "name":"海淀区"
+              },
+              {
+                  "name":"丰台区"
+              },
+              {
+                  "name":"石景山区"
+              },
+              {
+                  "name":"房山区"
+              },
+              {
+                  "name":"通州区"
+              },
+              {
+                  "name":"顺义区"
+              },
+              {
+                  "name":"昌平区"
+              },
+              {
+                  "name":"大兴区"
+              },
+              {
+                  "name":"怀柔区"
+              },
+              {
+                  "name":"平谷区"
+              },
+              {
+                  "name":"门头沟区"
+              },
+              {
+                  "name":"密云县"
+              },
+              {
+                  "name":"延庆县"
+              },
+              {
+                  "name":"其他"
+              }
+          ]
+          }],
         "type":0
     },
     {
@@ -690,269 +695,281 @@ $.rawCitiesData = [
     },
     {
         "name":"上海",
-        "sub":[
-            {
-                "name":"请选择"
-            },
-            {
-                "name":"黄浦区"
-            },
-            {
-                "name":"卢湾区"
-            },
-            {
-                "name":"徐汇区"
-            },
-            {
-                "name":"长宁区"
-            },
-            {
-                "name":"静安区"
-            },
-            {
-                "name":"普陀区"
-            },
-            {
-                "name":"闸北区"
-            },
-            {
-                "name":"虹口区"
-            },
-            {
-                "name":"杨浦区"
-            },
-            {
-                "name":"宝山区"
-            },
-            {
-                "name":"闵行区"
-            },
-            {
-                "name":"嘉定区"
-            },
-            {
-                "name":"松江区"
-            },
-            {
-                "name":"金山区"
-            },
-            {
-                "name":"青浦区"
-            },
-            {
-                "name":"南汇区"
-            },
-            {
-                "name":"奉贤区"
-            },
-            {
-                "name":"浦东新区"
-            },
-            {
-                "name":"崇明县"
-            },
-            {
-                "name":"其他"
-            }
-        ],
+        "sub": [
+          {
+            "name": "上海",
+            "sub":[
+                {
+                    "name":"请选择"
+                },
+                {
+                    "name":"黄浦区"
+                },
+                {
+                    "name":"卢湾区"
+                },
+                {
+                    "name":"徐汇区"
+                },
+                {
+                    "name":"长宁区"
+                },
+                {
+                    "name":"静安区"
+                },
+                {
+                    "name":"普陀区"
+                },
+                {
+                    "name":"闸北区"
+                },
+                {
+                    "name":"虹口区"
+                },
+                {
+                    "name":"杨浦区"
+                },
+                {
+                    "name":"宝山区"
+                },
+                {
+                    "name":"闵行区"
+                },
+                {
+                    "name":"嘉定区"
+                },
+                {
+                    "name":"松江区"
+                },
+                {
+                    "name":"金山区"
+                },
+                {
+                    "name":"青浦区"
+                },
+                {
+                    "name":"南汇区"
+                },
+                {
+                    "name":"奉贤区"
+                },
+                {
+                    "name":"浦东新区"
+                },
+                {
+                    "name":"崇明县"
+                },
+                {
+                    "name":"其他"
+                }
+            ]
+          }],
         "type":0
     },
     {
         "name":"天津",
-        "sub":[
-            {
+        "sub": [
+          {
+            "name": "天津",
+            "sub":[
+              {
                 "name":"请选择"
-            },
-            {
+              },
+              {
                 "name":"和平区"
-            },
-            {
+              },
+              {
                 "name":"河东区"
-            },
-            {
+              },
+              {
                 "name":"河西区"
-            },
-            {
+              },
+              {
                 "name":"南开区"
-            },
-            {
+              },
+              {
                 "name":"河北区"
-            },
-            {
+              },
+              {
                 "name":"红桥区"
-            },
-            {
+              },
+              {
                 "name":"塘沽区"
-            },
-            {
+              },
+              {
                 "name":"汉沽区"
-            },
-            {
+              },
+              {
                 "name":"大港区"
-            },
-            {
+              },
+              {
                 "name":"东丽区"
-            },
-            {
+              },
+              {
                 "name":"西青区"
-            },
-            {
+              },
+              {
                 "name":"北辰区"
-            },
-            {
+              },
+              {
                 "name":"津南区"
-            },
-            {
+              },
+              {
                 "name":"武清区"
-            },
-            {
+              },
+              {
                 "name":"宝坻区"
-            },
-            {
+              },
+              {
                 "name":"静海县"
-            },
-            {
+              },
+              {
                 "name":"宁河县"
-            },
-            {
+              },
+              {
                 "name":"蓟县"
-            },
-            {
+              },
+              {
                 "name":"其他"
-            }
-        ],
+              }
+            ]
+          }],
         "type":0
     },
     {
         "name":"重庆",
-        "sub":[
-            {
-                "name":"请选择"
-            },
-            {
-                "name":"渝中区"
-            },
-            {
-                "name":"大渡口区"
-            },
-            {
-                "name":"江北区"
-            },
-            {
-                "name":"南岸区"
-            },
-            {
-                "name":"北碚区"
-            },
-            {
-                "name":"渝北区"
-            },
-            {
-                "name":"巴南区"
-            },
-            {
-                "name":"长寿区"
-            },
-            {
-                "name":"双桥区"
-            },
-            {
-                "name":"沙坪坝区"
-            },
-            {
-                "name":"万盛区"
-            },
-            {
-                "name":"万州区"
-            },
-            {
-                "name":"涪陵区"
-            },
-            {
-                "name":"黔江区"
-            },
-            {
-                "name":"永川区"
-            },
-            {
-                "name":"合川区"
-            },
-            {
-                "name":"江津区"
-            },
-            {
-                "name":"九龙坡区"
-            },
-            {
-                "name":"南川区"
-            },
-            {
-                "name":"綦江县"
-            },
-            {
-                "name":"潼南县"
-            },
-            {
-                "name":"荣昌县"
-            },
-            {
-                "name":"璧山县"
-            },
-            {
-                "name":"大足县"
-            },
-            {
-                "name":"铜梁县"
-            },
-            {
-                "name":"梁平县"
-            },
-            {
-                "name":"开县"
-            },
-            {
-                "name":"忠县"
-            },
-            {
-                "name":"城口县"
-            },
-            {
-                "name":"垫江县"
-            },
-            {
-                "name":"武隆县"
-            },
-            {
-                "name":"丰都县"
-            },
-            {
-                "name":"奉节县"
-            },
-            {
-                "name":"云阳县"
-            },
-            {
-                "name":"巫溪县"
-            },
-            {
-                "name":"巫山县"
-            },
-            {
-                "name":"石柱土家族自治县"
-            },
-            {
-                "name":"秀山土家族苗族自治县"
-            },
-            {
-                "name":"酉阳土家族苗族自治县"
-            },
-            {
-                "name":"彭水苗族土家族自治县"
-            },
-            {
-                "name":"其他"
-            }
-        ],
+        "sub": [
+          {
+            "name": "重庆",
+            "sub":[
+                {
+                    "name":"请选择"
+                },
+                {
+                    "name":"渝中区"
+                },
+                {
+                    "name":"大渡口区"
+                },
+                {
+                    "name":"江北区"
+                },
+                {
+                    "name":"南岸区"
+                },
+                {
+                    "name":"北碚区"
+                },
+                {
+                    "name":"渝北区"
+                },
+                {
+                    "name":"巴南区"
+                },
+                {
+                    "name":"长寿区"
+                },
+                {
+                    "name":"双桥区"
+                },
+                {
+                    "name":"沙坪坝区"
+                },
+                {
+                    "name":"万盛区"
+                },
+                {
+                    "name":"万州区"
+                },
+                {
+                    "name":"涪陵区"
+                },
+                {
+                    "name":"黔江区"
+                },
+                {
+                    "name":"永川区"
+                },
+                {
+                    "name":"合川区"
+                },
+                {
+                    "name":"江津区"
+                },
+                {
+                    "name":"九龙坡区"
+                },
+                {
+                    "name":"南川区"
+                },
+                {
+                    "name":"綦江县"
+                },
+                {
+                    "name":"潼南县"
+                },
+                {
+                    "name":"荣昌县"
+                },
+                {
+                    "name":"璧山县"
+                },
+                {
+                    "name":"大足县"
+                },
+                {
+                    "name":"铜梁县"
+                },
+                {
+                    "name":"梁平县"
+                },
+                {
+                    "name":"开县"
+                },
+                {
+                    "name":"忠县"
+                },
+                {
+                    "name":"城口县"
+                },
+                {
+                    "name":"垫江县"
+                },
+                {
+                    "name":"武隆县"
+                },
+                {
+                    "name":"丰都县"
+                },
+                {
+                    "name":"奉节县"
+                },
+                {
+                    "name":"云阳县"
+                },
+                {
+                    "name":"巫溪县"
+                },
+                {
+                    "name":"巫山县"
+                },
+                {
+                    "name":"石柱土家族自治县"
+                },
+                {
+                    "name":"秀山土家族苗族自治县"
+                },
+                {
+                    "name":"酉阳土家族苗族自治县"
+                },
+                {
+                    "name":"彭水苗族土家族自治县"
+                },
+                {
+                    "name":"其他"
+                }
+            ]
+          }],
         "type":0
     },
     {
@@ -13285,8 +13302,10 @@ $.rawCitiesData = [
   "use strict";
 
 
+  var defaults;
   
   $.fn.cityPicker = function(params) {
+    params = $.extend({}, defaults, params);
     return this.each(function() {
 
       var format = function(data) {
@@ -13330,13 +13349,29 @@ $.rawCitiesData = [
         return d.name;
       });
       var initCities = sub(raw[0]);
-      var initDistricts = [""];
+      var initDistricts = sub(raw[0].sub[0]);
 
       var currentProvince = provinces[0];
       var currentCity = initCities[0];
       var currentDistrict = initDistricts[0];
 
-      var defaults = {
+      var cols = [
+          {
+            values: provinces,
+            cssClass: "col-province"
+          },
+          {
+            values: initCities,
+            cssClass: "col-city"
+          }
+        ];
+
+        if(params.showDistrict) cols.push({
+          values: initDistricts,
+          cssClass: "col-district"
+        });
+
+      var config = {
 
         cssClass: "city-picker",
         rotateEffect: false,  //为了性能
@@ -13349,53 +13384,50 @@ $.rawCitiesData = [
             newCity = newCities[0];
             var newDistricts = getDistricts(newProvince, newCity);
             picker.cols[1].replaceValues(newCities);
-            picker.cols[2].replaceValues(newDistricts);
+            if(params.showDistrict) picker.cols[2].replaceValues(newDistricts);
             currentProvince = newProvince;
             currentCity = newCity;
             picker.updateValue();
             return;
           }
-          newCity = picker.cols[1].value;
-          if(newCity !== currentCity) {
-            picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
-            currentCity = newCity;
-            picker.updateValue();
+          if(params.showDistrict) {
+            newCity = picker.cols[1].value;
+            if(newCity !== currentCity) {
+              picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
+              currentCity = newCity;
+              picker.updateValue();
+            }
           }
         },
 
-        cols: [
-          {
-            values: provinces,
-            cssClass: "col-province"
-          },
-          {
-            values: initCities,
-            cssClass: "col-city"
-          },
-          {
-            values: initDistricts,
-            cssClass: "col-district"
-          }
-        ]
+        cols: cols
       };
 
       if(!this) return;
-      var p = $.extend(defaults, params);
+      var p = $.extend(config, params);
       //计算value
       var val = $(this).val();
       if(val) {
         p.value = val.split(" ");
         if(p.value[0]) {
+          currentProvince = p.value[0];
           p.cols[1].values = getCities(p.value[0]);
         }
+
         if(p.value[1]) {
-          p.cols[2].values = getDistricts(p.value[0], p.value[1]);
+          currentCity = p.value[1];
+          params.showDistrict && (p.cols[2].values = getDistricts(p.value[0], p.value[1]));
         } else {
-          p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]);
+          currentDistrict = p.value[2];
+          params.showDistrict && (p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]));
         }
       }
       $(this).picker(p);
     });
+  };
+
+  defaults = $.fn.cityPicker.prototype.defaults = {
+    showDistrict: true //是否显示地区选择
   };
 
 }($);

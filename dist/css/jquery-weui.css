@@ -1,3 +1,8 @@
+/** 
+* jQuery WeUI V0.6.0 
+* By 言川
+* http://lihongxun945.github.io/jquery-weui/
+ */
 .preloader {
   width: 20px;
   height: 20px;
@@ -28,118 +33,40 @@
             transform: rotate(360deg);
   }
 }
-/*.hairline(@position, @color) when (@position = top) {
-    &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: auto;
-        right: auto;
-        height: 1px;
-        width: 100%;
-        background-color: @color;
-        display: block;
-        z-index: 15;
-        transform-origin: 50% 0%;
-        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-          transform: scaleY(0.5);
-        }
-        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
-            transform: scaleY(0.33);
-        }
-    }
+/*
+.hairline(@position, @color) when (@position = top) {
+  border-top: 1px solid @color;
 }
 .hairline(@position, @color) when (@position = left) {
-    &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: auto;
-        right: auto;
-        width: 1px;
-        height: 100%;
-        background-color: @color;
-        display: block;
-        z-index: 15;
-        transform-origin: 0% 50%;
-        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-            transform: scaleY(0.5);
-        }
-        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
-            transform: scaleY(0.33);
-        }
-    }
+  border-left: 1px solid @color;
 }
 .hairline(@position, @color) when (@position = bottom) {
-    &:after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        right: auto;
-        top: auto;
-        height: 1px;
-        width: 100%;
-        background-color: @color;
-        display: block;
-        z-index: 15;
-        transform-origin: 50% 100%;
-        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-            transform: scaleY(0.5);
-        }
-        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
-            transform: scaleY(0.33);
-        }
-    }
+  border-bottom: 1px solid @color;
 }
 .hairline(@position, @color) when (@position = right) {
-    &:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 0;
-        left: auto;
-        bottom: auto;
-        width: 1px;
-        height: 100%;
-        background-color: @color;
-        display: block;
-        z-index: 15;
-        transform-origin: 100% 50%;
-        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-            transform: scaleY(0.5);
-        }
-        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
-            transform: scaleY(0.33);
-        }
-    }
+  border-right: 1px solid @color;
 }
 // For right and bottom
 .hairline-remove(@position) when not (@position = left) and not (@position = top) {
-    &:after {
-        display: none;
-    }
+  border-left: 0;
+  border-bottom: 0;
 }
 // For left and top
 .hairline-remove(@position) when not (@position = right) and not (@position = bottom) {
-    &:before {
-        display: none;
-    }
+  border-right: 0;
+  border-top: 0;
 }
 // For right and bottom
 .hairline-color(@position, @color) when not (@position = left) and not (@position = top) {
-    &:after {
-        background-color: @color;
-    }
+  border-right-color: @color;
+  border-bottom-color: @color;
 }
 // For left and top
 .hairline-color(@position, @color) when not (@position = right) and not (@position = bottom) {
-    &:before {
-        background-color: @color;
-    }
-}*/
+  border-left-color: @color;
+  border-top-color: @color;
+}
+*/
 html {
   font-size: 20px;
 }
@@ -694,6 +621,7 @@ body {
   margin: 0;
   left: 7.5%;
   top: 30%;
+  z-index: 100;
 }
 .weui_dialog .weui_btn_dialog + .weui_btn_dialog,
 .weui_toast .weui_btn_dialog + .weui_btn_dialog {
@@ -914,17 +842,17 @@ body {
   text-align: center;
   border-radius: 0;
   opacity: 0.6;
+  color: #3d4145;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  height: 13rem;
+  background: #EFEFF4;
   -webkit-transform: translate3d(0, 100%, 0);
           transform: translate3d(0, 100%, 0);
   -webkit-transition-property: opacity, -webkit-transform;
   transition-property: opacity, -webkit-transform;
   transition-property: transform, opacity;
   transition-property: transform, opacity, -webkit-transform;
-  color: #3d4145;
-  -webkit-transition-duration: .3s;
-          transition-duration: .3s;
-  height: 13rem;
-  background: #cfd5da;
 }
 .weui-picker-modal.weui-picker-modal-visible {
   opacity: 1;
@@ -933,16 +861,42 @@ body {
 }
 .weui-picker-modal .picker-modal-inner {
   position: relative;
-  height: calc(100% - 2.2rem);
+  height: 10.8rem;
 }
 .weui-picker-modal .toolbar {
   position: relative;
   width: 100%;
-  border-top: 1px solid #999;
   font-size: .85rem;
   line-height: 1.5;
   color: #3d4145;
   background: #f7f7f8;
+}
+.weui-picker-modal .toolbar:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #d9d9d9;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .weui-picker-modal .toolbar:before {
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .weui-picker-modal .toolbar:before {
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+  }
 }
 .weui-picker-modal .picker-columns {
   width: 100%;
@@ -973,7 +927,8 @@ body {
   width: 100%;
   padding: 0;
   text-align: right;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: normal;
   -webkit-mask-box-image: -webkit-linear-gradient(bottom, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
   -webkit-mask-box-image: linear-gradient(to top, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
 }
@@ -1012,14 +967,14 @@ body {
   transition-timing-function: ease-out;
 }
 .weui-picker-modal .picker-item {
-  height: 36px;
-  line-height: 36px;
+  height: 32px;
+  line-height: 32px;
   padding: 0 10px;
   white-space: nowrap;
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #999;
+  color: #9b9b9b;
   left: 0;
   top: 0;
   width: 100%;
@@ -1041,16 +996,68 @@ body {
           transform: rotateX(0deg);
 }
 .weui-picker-modal .picker-center-highlight {
-  height: 36px;
+  height: 32px;
   box-sizing: border-box;
   position: absolute;
   left: 0;
   width: 100%;
   top: 50%;
-  margin-top: -18px;
-  border-top: 1px solid #a8abb0;
-  border-bottom: 1px solid #a8abb0;
+  margin-top: -16px;
   pointer-events: none;
+}
+.weui-picker-modal .picker-center-highlight:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #D9D9D9;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .weui-picker-modal .picker-center-highlight:before {
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .weui-picker-modal .picker-center-highlight:before {
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+  }
+}
+.weui-picker-modal .picker-center-highlight:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #D9D9D9;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .weui-picker-modal .picker-center-highlight:after {
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .weui-picker-modal .picker-center-highlight:after {
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+  }
 }
 .weui-picker-modal .picker-3d .picker-items {
   overflow: hidden;
@@ -1080,7 +1087,7 @@ body {
   width: 100%;
   padding: 0;
   font-size: .85rem;
-  font-weight: 500;
+  font-weight: normal;
   line-height: 2.2rem;
   color: #3d4145;
   text-align: center;
@@ -1092,7 +1099,7 @@ body {
   box-sizing: border-box;
   height: 2.2rem;
   line-height: 2.2rem;
-  color: #0894ec;
+  color: #04BE02;
   z-index: 1;
   padding: 0 .5rem;
 }
@@ -1104,27 +1111,6 @@ body {
   right: 0;
   height: 0;
   width: 100%;
-  height: 15rem;
-}
-i.icon {
-  display: inline-block;
-  vertical-align: middle;
-  background-size: 100% auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-style: normal;
-  position: relative;
-}
-i.icon.icon-next,
-i.icon.icon-prev {
-  width: 0.75rem;
-  height: 0.75rem;
-}
-i.icon.icon-next {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2015%2015'%3E%3Cg%3E%3Cpath%20fill%3D'%23007aff'%20d%3D'M1%2C1.6l11.8%2C5.8L1%2C13.4V1.6%20M0%2C0v15l15-7.6L0%2C0L0%2C0z'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-}
-i.icon.icon-prev {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2015%2015'%3E%3Cg%3E%3Cpath%20fill%3D'%23007aff'%20d%3D'M14%2C1.6v11.8L2.2%2C7.6L14%2C1.6%20M15%2C0L0%2C7.6L15%2C15V0L15%2C0z'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
 .city-picker .col-province {
   width: 5rem;
@@ -1134,6 +1120,21 @@ i.icon.icon-prev {
 }
 .city-picker .col-district {
   width: 5rem;
+}
+.weui-picker-container .weui_cells {
+  margin: 0;
+  text-align: left;
+}
+.weui-select-modal {
+  height: auto;
+}
+.weui-select-modal .weui_cells {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 16rem;
+}
+.weui-select-modal .weui_cells:after {
+  display: none;
 }
 /* === Calendar === */
 .weui-picker-calendar {
@@ -1149,18 +1150,45 @@ i.icon.icon-prev {
 }
 .weui-picker-calendar .picker-modal-inner {
   overflow: hidden;
+  height: 12.8rem;
 }
 .picker-calendar-week-days {
-  height: 18px;
+  height: .9rem;
   background: #f7f7f8;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  border-bottom: 1px solid #c4c4c4;
   font-size: 11px;
   box-sizing: border-box;
   position: relative;
+}
+.picker-calendar-week-days:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #c4c4c4;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .picker-calendar-week-days:after {
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .picker-calendar-week-days:after {
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+  }
 }
 .picker-calendar-week-days .picker-calendar-week-day {
   -webkit-flex-shrink: 1;
@@ -1174,7 +1202,7 @@ i.icon.icon-prev {
   text-align: center;
 }
 .picker-calendar-week-days + .picker-calendar-months {
-  height: calc(100% - 18px);
+  height: 11.9rem;
 }
 .picker-calendar-months {
   width: 100%;
@@ -1218,11 +1246,36 @@ i.icon.icon-prev {
           flex-shrink: 1;
   width: 100%;
   position: relative;
-  border-bottom: 1px solid #ccc;
 }
-.picker-calendar-row:last-child {
-  border-left: 0;
-  border-bottom: 0;
+.picker-calendar-row:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #ccc;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .picker-calendar-row:after {
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .picker-calendar-row:after {
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+  }
+}
+.picker-calendar-row:last-child:after {
+  display: none;
 }
 .picker-calendar-day {
   -webkit-flex-shrink: 1;
@@ -1262,7 +1315,7 @@ i.icon.icon-prev {
   background: #e3e3e3;
 }
 .picker-calendar-day.picker-calendar-day-selected span {
-  background: #0894ec;
+  background: #04BE02;
   color: #fff;
 }
 .picker-calendar-day span {
@@ -1313,20 +1366,53 @@ i.icon.icon-prev {
 .picker-calendar.picker-modal-inline .picker-calendar-week-days {
   background: none;
 }
-.popover .picker-calendar .toolbar,
-.picker-calendar.picker-modal-inline .toolbar,
-.popover .picker-calendar .picker-calendar-week-days,
-.picker-calendar.picker-modal-inline .picker-calendar-week-days {
-  border-right: 0;
-  border-top: 0;
-  border-left: 0;
-  border-bottom: 0;
+.popover .picker-calendar .toolbar:before,
+.picker-calendar.picker-modal-inline .toolbar:before,
+.popover .picker-calendar .picker-calendar-week-days:before,
+.picker-calendar.picker-modal-inline .picker-calendar-week-days:before {
+  display: none;
 }
-.popover .picker-calendar .toolbar ~ .picker-modal-inner .picker-calendar-months,
-.picker-calendar.picker-modal-inline .toolbar ~ .picker-modal-inner .picker-calendar-months,
-.popover .picker-calendar .picker-calendar-week-days ~ .picker-calendar-months,
-.picker-calendar.picker-modal-inline .picker-calendar-week-days ~ .picker-calendar-months {
-  border-top: 1px solid #c4c4c4;
+.popover .picker-calendar .toolbar:after,
+.picker-calendar.picker-modal-inline .toolbar:after,
+.popover .picker-calendar .picker-calendar-week-days:after,
+.picker-calendar.picker-modal-inline .picker-calendar-week-days:after {
+  display: none;
+}
+.popover .picker-calendar .toolbar ~ .picker-modal-inner .picker-calendar-months:before,
+.picker-calendar.picker-modal-inline .toolbar ~ .picker-modal-inner .picker-calendar-months:before,
+.popover .picker-calendar .picker-calendar-week-days ~ .picker-calendar-months:before,
+.picker-calendar.picker-modal-inline .picker-calendar-week-days ~ .picker-calendar-months:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #c4c4c4;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .popover .picker-calendar .toolbar ~ .picker-modal-inner .picker-calendar-months:before,
+  .picker-calendar.picker-modal-inline .toolbar ~ .picker-modal-inner .picker-calendar-months:before,
+  .popover .picker-calendar .picker-calendar-week-days ~ .picker-calendar-months:before,
+  .picker-calendar.picker-modal-inline .picker-calendar-week-days ~ .picker-calendar-months:before {
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .popover .picker-calendar .toolbar ~ .picker-modal-inner .picker-calendar-months:before,
+  .picker-calendar.picker-modal-inline .toolbar ~ .picker-modal-inner .picker-calendar-months:before,
+  .popover .picker-calendar .picker-calendar-week-days ~ .picker-calendar-months:before,
+  .picker-calendar.picker-modal-inline .picker-calendar-week-days ~ .picker-calendar-months:before {
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+  }
 }
 .weui-picker-modal .toolbar-inner {
   height: 2.2rem;
@@ -1355,6 +1441,26 @@ i.icon.icon-prev {
   float: left;
   width: 50%;
   height: 2.2rem;
+}
+i.icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-style: normal;
+  position: relative;
+}
+i.icon.icon-next,
+i.icon.icon-prev {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+i.icon.icon-next {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2015%2015'%3E%3Cg%3E%3Cpath%20fill%3D'%2304BE02'%20d%3D'M1%2C1.6l11.8%2C5.8L1%2C13.4V1.6%20M0%2C0v15l15-7.6L0%2C0L0%2C0z'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+i.icon.icon-prev {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2015%2015'%3E%3Cg%3E%3Cpath%20fill%3D'%2304BE02'%20d%3D'M14%2C1.6v11.8L2.2%2C7.6L14%2C1.6%20M15%2C0L0%2C7.6L15%2C15V0L15%2C0z'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
 /**
  * Swiper 3.3.1
@@ -1558,7 +1664,7 @@ button.swiper-pagination-bullet {
 }
 .swiper-pagination-bullet-active {
   opacity: 1;
-  background: #007aff;
+  background: #04BE02;
 }
 .swiper-pagination-white .swiper-pagination-bullet-active {
   background: #fff;
@@ -1853,6 +1959,52 @@ button.swiper-pagination-bullet {
 }
 .weui_actionsheet {
   z-index: 100;
+}
+.weui-popup-modal {
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  border-radius: 0;
+  opacity: 0.6;
+  color: #3d4145;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  height: 100%;
+  background: #EFEFF4;
+  -webkit-transform: translate3d(0, 100%, 0);
+          transform: translate3d(0, 100%, 0);
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.weui-popup-modal.weui-popup-modal-visible {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.weui-popup-overlay,
+.weui-popup-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  width: 100%;
+  height: 100%;
+}
+.weui-popup-container {
+  display: none;
+}
+.weui-popup-container.weui-popup-container-visible {
+  display: block;
+}
+.weui-popup-container .weui_cells {
+  margin: 0;
+  text-align: left;
 }
 .notification {
   position: fixed;

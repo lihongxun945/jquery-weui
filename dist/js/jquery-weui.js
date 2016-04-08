@@ -1,3 +1,8 @@
+/** 
+* jQuery WeUI V0.6.0 
+* By 言川
+* http://lihongxun945.github.io/jquery-weui/
+ */
 /* global $:true */
 /* global WebKitCSSMatrix:true */
 
@@ -135,6 +140,10 @@
       return window.clearTimeout(id);
     }  
   };
+
+  $.fn.join = function(arg) {
+    return this.toArray().join(arg);
+  }
 
 })($);
 
@@ -588,8 +597,7 @@
       var el = $(e);
       el.click(function() {
         //先关闭对话框，再调用回调函数
-
-        $.closeModal();
+        if(params.autoClose) $.closeModal();
 
         if(buttons[i].onClick) {
           buttons[i].onClick();
@@ -693,7 +701,8 @@
     buttons: [{
       text: "确定",
       className: "primary"
-    }]
+    }],
+    autoClose: true //点击按钮自动关闭对话框，如果你不希望点击按钮就关闭对话框，可以把这个设置为false
   };
 
 }($);
@@ -763,7 +772,7 @@
   
   var show = function(params) {
 
-    var mask = $("<div class='weui_mask'></div>").appendTo(document.body);
+    var mask = $("<div class='weui_mask weui_actions_mask'></div>").appendTo(document.body);
 
     var actions = params.actions || [];
 
@@ -813,6 +822,10 @@
   $.closeActions = function() {
     hide();
   }
+
+  $(document).on("click", ".weui_actions_mask", function() {
+    $.closeActions();
+  });
 
   var defaults = $.actions.prototype.defaults = {
     /*actions: [{
@@ -1013,8 +1026,15 @@
     $(e.target).parents(".weui_search_bar").addClass("weui_search_focusing");
   }) 
   .on("blur", ".weui_search_input", function(e) {
-    $(e.target).parents(".weui_search_bar").removeClass("weui_search_focusing");
+    var $input = $(e.target);
+    if(!$input.val()) $input.parents(".weui_search_bar").removeClass("weui_search_focusing");
   })
+  .on("click", ".weui_search_cancel", function(e) {
+    var $input = $(e.target).parents(".weui_search_bar").find(".weui_search_input").val("").blur();
+  })
+  .on("click", ".weui_icon_clear", function(e) {
+    var $input = $(e.target).parents(".weui_search_bar").find(".weui_search_input").val("").focus();
+  });
 
 }($);
 
@@ -1737,9 +1757,11 @@ Device/OS Detection
   });
 
 
-  $.openPicker = function(tpl) {
+  $.openPicker = function(tpl, className) {
 
-    var container = $("<div class='weui-picker-container'></div>").appendTo(document.body);
+    $.closePicker();
+
+    var container = $("<div class='weui-picker-container "+ (className || "") + "'></div>").appendTo(document.body);
     container.show();
 
     container.addClass("weui-picker-container-visible");
@@ -1747,7 +1769,7 @@ Device/OS Detection
     //关于布局的问题，如果直接放在body上，则做动画的时候会撑开body高度而导致滚动条变化。
     var dialog = $(tpl).appendTo(container);
     
-    dialog.show();
+    dialog.width(); //通过取一次CSS值，强制浏览器不能把上下两行代码合并执行，因为合并之后会导致无法出现动画。
 
     dialog.addClass("weui-picker-modal-visible");
 
@@ -1757,8 +1779,7 @@ Device/OS Detection
 
   $.closePicker = function(container) {
     $(".weui-picker-modal-visible").removeClass("weui-picker-modal-visible").transitionEnd(function() {
-      $(this).remove();
-      $(".weui-picker-container-visible").remove();
+      $(this).parent().remove();
     }).trigger("close");
 
   };
@@ -1784,6 +1805,151 @@ Device/OS Detection
       }
     });
   };
+}($);
+
+/* global $:true */
++ function($) {
+  "use strict";
+
+  var defaults;
+
+  var Select = function(input, config) {
+
+    var self = this;
+    this.config = config;
+
+    this.$input = $(input);
+    var tpl = $.t7.compile("<div class='weui-picker-modal weui-select-modal'>" + config.toolbarTemplate + (config.multi ? config.checkboxTemplate : config.radioTemplate) + "</div>");
+    this.$input.prop("readOnly", true);
+    
+
+    this.$input.click(function() {
+      self.parseInitValue();
+      var dialog = self.dialog = $.openPicker(tpl({
+        items: config.items,
+        title: config.title,
+        closeText: config.closeText
+      }));
+
+      dialog.on("change", function(e) {
+        var checked = dialog.find("input:checked");
+        var values = checked.map(function() {
+          return $(this).val();
+        });
+        var titles = checked.map(function() {
+          return $(this).data("title");
+        });
+        self.updateInputValue(values, titles);
+
+        if(config.autoClose && !config.multi) $.closePicker();
+      });
+
+    });
+
+    $(document).on("click", function() {
+    });
+
+  }
+
+  Select.prototype.updateInputValue = function(values, titles) {
+    var v, t;
+    if(this.config.multi) {
+      v = values.join(this.config.split);
+      t = titles.join(this.config.split);
+    } else {
+      v = values[0];
+      t = titles[0];
+    }
+
+    this.$input.val(t).data("values", v);
+    this.$input.attr("value", t).attr("data-values", v);
+  }
+
+  Select.prototype.parseInitValue = function() {
+    var value = this.$input.val();
+    var items = this.config.items;
+    if(value === undefined || value == null || value === "") return;
+
+    var titles = this.config.multi ? value.split(this.config.split) : [value];
+    for(var i=0;i<items.length;i++) {
+      items[i].checked = false;
+      for(var j=0;j<titles.length;j++) {
+        if(items[i].title === titles[j]) {
+          items[i].checked = true;
+        }
+      }
+    }
+  }
+
+  $.fn.select = function(params) {
+    var config = $.extend({}, defaults, params);
+    if(!config.items || !config.items.length) return;
+
+    config.items = config.items.map(function(d, i) {
+      if(typeof d == typeof "a") {
+        return {
+          title: d,
+          value: d
+        };
+      }
+
+      return d;
+    });
+
+
+    return this.each(function() {
+      var $this = $(this);
+      if(!$this.data("weui-select")) $this.data("weui-select", new Select(this, config));
+
+      var select = $this.data("weui-select");
+
+      return select;
+    });
+  }
+
+  defaults = $.fn.select.prototype.defaults = {
+    items: [],
+    title: "请选择",
+    multi: false,
+    closeText: "关闭",
+    autoClose: true, //是否选择完成后自动关闭，只有单选模式下才有效
+    split: ",",  //多选模式下的分隔符
+    toolbarTemplate: '<div class="toolbar">\
+      <div class="toolbar-inner">\
+      <a href="javascript:;" class="picker-button close-picker">{{closeText}}</a>\
+      <h1 class="title">{{title}}</h1>\
+      </div>\
+      </div>',
+    radioTemplate:
+      '<div class="weui_cells weui_cells_radio">\
+        {{#items}}\
+        <label class="weui_cell weui_check_label" for="weui-select-id-{{this.title}}">\
+          <div class="weui_cell_bd weui_cell_primary">\
+            <p>{{this.title}}</p>\
+          </div>\
+          <div class="weui_cell_ft">\
+            <input type="radio" class="weui_check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}">\
+            <span class="weui_icon_checked"></span>\
+          </div>\
+        </label>\
+        {{/items}}\
+      </div>',
+    checkboxTemplate:
+      '<div class="weui_cells weui_cells_checkbox">\
+        {{#items}}\
+        <label class="weui_cell weui_check_label" for="weui-select-id-{{this.title}}">\
+          <div class="weui_cell_bd weui_cell_primary">\
+            <p>{{this.title}}</p>\
+          </div>\
+          <div class="weui_cell_ft">\
+            <input type="checkbox" class="weui_check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}" >\
+            <span class="weui_icon_checked"></span>\
+          </div>\
+        </label>\
+        {{/items}}\
+      </div>',
+  }
+
 }($);
 
 /*======================================================
@@ -2580,6 +2746,7 @@ Device/OS Detection
 
 
   $.fn.calendar = function (params) {
+      params = params || {};
       return this.each(function() {
         var $this = $(this);
         if(!$this[0]) return;
@@ -2588,6 +2755,11 @@ Device/OS Detection
           p.input = $this;
         } else {
           p.container = $this;
+        }
+        //默认显示今天
+        if(!params.value) {
+          var today = new Date();
+          params.value = [today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()];
         }
         new Calendar($.extend(p, params));
       });
@@ -2658,7 +2830,10 @@ Device/OS Detection
   "use strict";
 
 
+  var defaults;
+
   $.fn.datetimePicker = function(params) {
+    params = $.extend({}, defaults, params);
     return this.each(function() {
 
 
@@ -2684,6 +2859,10 @@ Device/OS Detection
         return n < 10 ? "0" + n : n;
       };
 
+      var formatValue = function(values, displayValues) {
+        return values[0] + params.dateSplit + values[1] + params.dateSplit + values[2] + ' ' + values[3] + params.timeSplit + values[4];
+      }
+
       var initMonthes = ('01 02 03 04 05 06 07 08 09 10 11 12').split(' ');
 
       var initYears = (function () {
@@ -2693,21 +2872,47 @@ Device/OS Detection
       })();
 
 
-      var defaults = {
+      var lastValidValues;
+
+      var config = {
 
         rotateEffect: false,  //为了性能
 
-        value: [today.getFullYear(), formatNumber(today.getMonth()+1), today.getDate(), formatNumber(today.getHours()), formatNumber(today.getMinutes())],
+        value: [today.getFullYear(), formatNumber(today.getMonth()+1), formatNumber(today.getDate()), formatNumber(today.getHours()), formatNumber(today.getMinutes())],
 
         onChange: function (picker, values, displayValues) {
-          var days = getDaysByMonthAndYear(picker.cols[1].value, picker.cols[0].value);
+          var cols = picker.cols;
+          var days = getDaysByMonthAndYear(cols[1].value, cols[0].value);
           var currentValue = picker.cols[2].value;
           if(currentValue > days.length) currentValue = days.length;
           picker.cols[2].setValue(currentValue);
+
+          //check min and max
+          
+          var current = + new Date(formatValue(values, displayValues));
+          var valid = true;
+          if(params.min) {
+            var min = + new Date(params.min);
+
+            if(current < min) {
+              picker.setValue(lastValidValues);
+              valid = false;
+            } 
+          }
+          if(params.max) {
+            var max = + new Date(params.max);
+
+            if(current > max) {
+              picker.setValue(lastValidValues);
+              valid = false;
+            } 
+          }
+
+          valid && (lastValidValues = values);
         },
 
         formatValue: function (p, values, displayValues) {
-          return displayValues[0] + '-' + values[1] + '-' + values[2] + ' ' + values[3] + ':' + values[4];
+          return formatValue(values, displayValues);
         },
 
         cols: [
@@ -2754,21 +2959,74 @@ Device/OS Detection
       };
 
 
-      params = params || {};
       var inputValue = $(this).val();
       if(params.value === undefined && inputValue !== "") {
-        params.value = [].concat(inputValue.split(" ")[0].split("-"), inputValue.split(" ")[1].split(":"));
+        params.value = [].concat(inputValue.split(" ")[0].split(params.dateSplit), inputValue.split(" ")[1].split(params.timeSplit));
       }
 
-      var p = $.extend(defaults, params);
+      var p = $.extend(config, params);
       $(this).picker(p);
     });
   };
 
-  $.fn.datetimePicker.prototype.defaults = {
-    date: true,
-    time: true
+  defaults = $.fn.datetimePicker.prototype.defaults = {
+    dateSplit: "/",
+    timeSplit: ":",
+    min: undefined,
+    max: undefined
   }
+
+}($);
+
+/*======================================================
+************   Picker   ************
+======================================================*/
+/* global $:true */
+
++ function($) {
+  "use strict";
+
+
+  //Popup 和 picker 之类的不要共用一个弹出方法，因为这样会导致 在 popup 中再弹出 picker 的时候会有问题。
+
+  $.openPopup = function(popup, className) {
+
+    $.closePopup();
+
+    popup = $(popup);
+
+    popup.addClass("weui-popup-container-visible");
+
+    var modal = popup.find(".weui-popup-modal");
+
+    modal.width();
+
+    modal.addClass("weui-popup-modal-visible");
+
+  }
+
+
+  $.closePopup = function(container, remove) {
+    $(".weui-popup-modal-visible").removeClass("weui-popup-modal-visible").transitionEnd(function() {
+      $(this).parent().removeClass("weui-popup-container-visible");
+      remove && $(this).parent().remove();
+    }).trigger("close");
+  };
+
+
+  $(document).on("click", ".close-popup", function() {
+    $.closePopup();
+  });
+
+  $(document).on("click", ".open-popup", function() {
+    $($(this).data("target")).popup();
+  });
+
+  $.fn.popup = function() {
+    return this.each(function() {
+      $.openPopup(this);
+    });
+  };
 
 }($);
 
