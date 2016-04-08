@@ -145,7 +145,7 @@
   };
 
   defaults = $.fn.datetimePicker.prototype.defaults = {
-    dateSplit: "/",
+    dateSplit: "-",
     timeSplit: ":",
     min: undefined,
     max: undefined
