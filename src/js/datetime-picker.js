@@ -5,7 +5,10 @@
   "use strict";
 
 
+  var defaults;
+
   $.fn.datetimePicker = function(params) {
+    params = $.extend({}, defaults, params);
     return this.each(function() {
 
 
@@ -31,6 +34,10 @@
         return n < 10 ? "0" + n : n;
       };
 
+      var formatValue = function(values, displayValues) {
+        return values[0] + params.dateSplit + values[1] + params.dateSplit + values[2] + ' ' + values[3] + params.timeSplit + values[4];
+      }
+
       var initMonthes = ('01 02 03 04 05 06 07 08 09 10 11 12').split(' ');
 
       var initYears = (function () {
@@ -40,21 +47,47 @@
       })();
 
 
-      var defaults = {
+      var lastValidValues;
+
+      var config = {
 
         rotateEffect: false,  //为了性能
 
-        value: [today.getFullYear(), formatNumber(today.getMonth()+1), today.getDate(), formatNumber(today.getHours()), formatNumber(today.getMinutes())],
+        value: [today.getFullYear(), formatNumber(today.getMonth()+1), formatNumber(today.getDate()), formatNumber(today.getHours()), formatNumber(today.getMinutes())],
 
         onChange: function (picker, values, displayValues) {
-          var days = getDaysByMonthAndYear(picker.cols[1].value, picker.cols[0].value);
+          var cols = picker.cols;
+          var days = getDaysByMonthAndYear(cols[1].value, cols[0].value);
           var currentValue = picker.cols[2].value;
           if(currentValue > days.length) currentValue = days.length;
           picker.cols[2].setValue(currentValue);
+
+          //check min and max
+          
+          var current = + new Date(formatValue(values, displayValues));
+          var valid = true;
+          if(params.min) {
+            var min = + new Date(typeof params.min === "function" ? params.min() : params.min);
+
+            if(current < min) {
+              picker.setValue(lastValidValues);
+              valid = false;
+            } 
+          }
+          if(params.max) {
+            var max = + new Date(typeof params.max === "function" ? params.max(): params.max);
+
+            if(current > max) {
+              picker.setValue(lastValidValues);
+              valid = false;
+            } 
+          }
+
+          valid && (lastValidValues = values);
         },
 
         formatValue: function (p, values, displayValues) {
-          return displayValues[0] + '-' + values[1] + '-' + values[2] + ' ' + values[3] + ':' + values[4];
+          return formatValue(values, displayValues);
         },
 
         cols: [
@@ -101,20 +134,21 @@
       };
 
 
-      params = params || {};
       var inputValue = $(this).val();
       if(params.value === undefined && inputValue !== "") {
-        params.value = [].concat(inputValue.split(" ")[0].split("-"), inputValue.split(" ")[1].split(":"));
+        params.value = [].concat(inputValue.split(" ")[0].split(params.dateSplit), inputValue.split(" ")[1].split(params.timeSplit));
       }
 
-      var p = $.extend(defaults, params);
+      var p = $.extend(config, params);
       $(this).picker(p);
     });
   };
 
-  $.fn.datetimePicker.prototype.defaults = {
-    date: true,
-    time: true
+  defaults = $.fn.datetimePicker.prototype.defaults = {
+    dateSplit: "-",
+    timeSplit: ":",
+    min: undefined,
+    max: undefined
   }
 
 }($);

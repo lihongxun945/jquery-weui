@@ -1,9 +1,19 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var header = require('gulp-header');
 var connect = require("gulp-connect");
 var less = require("gulp-less");
 var autoprefixer = require('gulp-autoprefixer');
 var ejs = require("gulp-ejs");
+
+var pkg = require("./package.json");
+
+var banner = 
+"/** \n\
+* jQuery WeUI V" + pkg.version + " \n\
+* By 言川\n\
+* http://lihongxun945.github.io/jquery-weui/\n \
+*/\n";
 
 gulp.task('js', function() {
   gulp.src([
@@ -32,11 +42,14 @@ gulp.task('js', function() {
     './src/js/search-bar.js',
     './src/js/device.js',
     './src/js/picker.js',
+    './src/js/select.js',
     './src/js/calendar.js',
     './src/js/datetime-picker.js',
+    './src/js/popup.js',
     './src/js/notification.js'
   ])
     .pipe(concat({ path: 'jquery-weui.js'}))
+    .pipe(header(banner))
     .pipe(gulp.dest('./dist/js/'));
 });
 
@@ -44,6 +57,7 @@ gulp.task('less', function () {
   return gulp.src(['./src/less/jquery-weui.less'])
   .pipe(less())
   .pipe(autoprefixer())
+  .pipe(header(banner))
   .pipe(gulp.dest('./dist/css/'));
 });
 

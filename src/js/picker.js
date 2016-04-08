@@ -612,9 +612,11 @@
   });
 
 
-  $.openPicker = function(tpl) {
+  $.openPicker = function(tpl, className) {
 
-    var container = $("<div class='weui-picker-container'></div>").appendTo(document.body);
+    $.closePicker();
+
+    var container = $("<div class='weui-picker-container "+ (className || "") + "'></div>").appendTo(document.body);
     container.show();
 
     container.addClass("weui-picker-container-visible");
@@ -622,7 +624,7 @@
     //关于布局的问题，如果直接放在body上，则做动画的时候会撑开body高度而导致滚动条变化。
     var dialog = $(tpl).appendTo(container);
     
-    dialog.show();
+    dialog.width(); //通过取一次CSS值，强制浏览器不能把上下两行代码合并执行，因为合并之后会导致无法出现动画。
 
     dialog.addClass("weui-picker-modal-visible");
 
@@ -632,8 +634,7 @@
 
   $.closePicker = function(container) {
     $(".weui-picker-modal-visible").removeClass("weui-picker-modal-visible").transitionEnd(function() {
-      $(this).remove();
-      $(".weui-picker-container-visible").remove();
+      $(this).parent().remove();
     }).trigger("close");
 
   };

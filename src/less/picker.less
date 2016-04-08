@@ -7,12 +7,15 @@
   text-align: center;
   border-radius: 0;
   opacity: 0.6;
-  transform: translate3d(0, 100%, 0);
-  transition-property: transform, opacity;
+  
   color: @color-text;
   transition-duration: .3s;
   height: 13rem;
   background: #EFEFF4;
+
+  transform: translate3d(0, 100%, 0);
+  transition-property: transform, opacity;
+
 
   &.weui-picker-modal-visible {
     opacity: 1;
@@ -21,9 +24,7 @@
 
   .picker-modal-inner {
     position: relative;
-    height: ~"-webkit-calc(100% - 2.2rem)";
-    height: ~"-moz-calc(100% - 2.2rem)";
-    height: ~"calc(100% - 2.2rem)";    
+    height: 10.8rem;
   }
 
   .toolbar {
@@ -129,7 +130,7 @@
       left: 0;
       width: 100%;
       top: 50%;
-      margin-top: -18px;
+      margin-top: -16px;
       .hairline(top, @color-hairline);
       .hairline(bottom, @color-hairline);
       pointer-events: none;
@@ -190,8 +191,6 @@
   right: 0;
   height: 0;
   width: 100%;
-  height: 15rem;
-
 }
 
 
@@ -204,5 +203,12 @@
   }
   .col-district {
     width: 5rem;
+  }
+}
+
+.weui-picker-container {
+  .weui_cells {
+    margin: 0;
+    text-align: left;
   }
 }

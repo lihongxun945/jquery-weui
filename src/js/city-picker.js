@@ -5,8 +5,10 @@
   "use strict";
 
 
+  var defaults;
   
   $.fn.cityPicker = function(params) {
+    params = $.extend({}, defaults, params);
     return this.each(function() {
 
       var format = function(data) {
@@ -50,13 +52,29 @@
         return d.name;
       });
       var initCities = sub(raw[0]);
-      var initDistricts = [""];
+      var initDistricts = sub(raw[0].sub[0]);
 
       var currentProvince = provinces[0];
       var currentCity = initCities[0];
       var currentDistrict = initDistricts[0];
 
-      var defaults = {
+      var cols = [
+          {
+            values: provinces,
+            cssClass: "col-province"
+          },
+          {
+            values: initCities,
+            cssClass: "col-city"
+          }
+        ];
+
+        if(params.showDistrict) cols.push({
+          values: initDistricts,
+          cssClass: "col-district"
+        });
+
+      var config = {
 
         cssClass: "city-picker",
         rotateEffect: false,  //为了性能
@@ -69,53 +87,50 @@
             newCity = newCities[0];
             var newDistricts = getDistricts(newProvince, newCity);
             picker.cols[1].replaceValues(newCities);
-            picker.cols[2].replaceValues(newDistricts);
+            if(params.showDistrict) picker.cols[2].replaceValues(newDistricts);
             currentProvince = newProvince;
             currentCity = newCity;
             picker.updateValue();
             return;
           }
-          newCity = picker.cols[1].value;
-          if(newCity !== currentCity) {
-            picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
-            currentCity = newCity;
-            picker.updateValue();
+          if(params.showDistrict) {
+            newCity = picker.cols[1].value;
+            if(newCity !== currentCity) {
+              picker.cols[2].replaceValues(getDistricts(newProvince, newCity));
+              currentCity = newCity;
+              picker.updateValue();
+            }
           }
         },
 
-        cols: [
-          {
-            values: provinces,
-            cssClass: "col-province"
-          },
-          {
-            values: initCities,
-            cssClass: "col-city"
-          },
-          {
-            values: initDistricts,
-            cssClass: "col-district"
-          }
-        ]
+        cols: cols
       };
 
       if(!this) return;
-      var p = $.extend(defaults, params);
+      var p = $.extend(config, params);
       //计算value
       var val = $(this).val();
       if(val) {
         p.value = val.split(" ");
         if(p.value[0]) {
+          currentProvince = p.value[0];
           p.cols[1].values = getCities(p.value[0]);
         }
+
         if(p.value[1]) {
-          p.cols[2].values = getDistricts(p.value[0], p.value[1]);
+          currentCity = p.value[1];
+          params.showDistrict && (p.cols[2].values = getDistricts(p.value[0], p.value[1]));
         } else {
-          p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]);
+          currentDistrict = p.value[2];
+          params.showDistrict && (p.cols[2].values = getDistricts(p.value[0], p.cols[1].values[0]));
         }
       }
       $(this).picker(p);
     });
+  };
+
+  defaults = $.fn.cityPicker.prototype.defaults = {
+    showDistrict: true //是否显示地区选择
   };
 
 }($);

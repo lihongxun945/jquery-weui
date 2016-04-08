@@ -21,6 +21,14 @@
           Button
         </p>
       </a>
+      <a href="cell.html" class="weui_grid js_grid" data-id="cell">
+        <div class="weui_grid_icon">
+          <img src="images/icon_nav_cell.png" alt="">
+        </div>
+        <p class="weui_grid_label">
+          Cell
+        </p>
+      </a>
       <a href="form.html" class="weui_grid js_grid" data-id="cell">
         <div class="weui_grid_icon">
           <img src="images/icon_nav_cell.png" alt="">
@@ -183,13 +191,69 @@
       </a>
       <a href="noti.html" class="weui_grid js_grid">
         <div class="weui_grid_icon">
-          <img src="images/icon_nav_noti.png" alt="">
+          <i class="weui_icon_info_circle"></i>
         </div>
         <p class="weui_grid_label">
           Notification
         </p>
       </a>
+      <a href="select.html" class="weui_grid js_grid">
+        <div class="weui_grid_icon">
+          <img src="images/icon_nav_select.png" alt="">
+        </div>
+        <p class="weui_grid_label">
+          Select
+        </p>
+      </a>
+      <a href="javascript:;" class="weui_grid js_grid open-popup" data-target="#about">
+        <div class="weui_grid_icon">
+          <img src="images/icon_nav_panel.png" alt="">
+        </div>
+        <p class="weui_grid_label">
+          Popup
+        </p>
+      </a>
     </div>
+    </div>
+
+    <style>
+      .weui_icon_info_circle:before {
+        font-size: 28px;
+        color: #09BB07;
+      }
+    </style>
+
+    <div id="about" class='weui-popup-container'>
+      <div class="weui-popup-modal">
+        <header class='demos-header'>
+          <h2 class="demos-second-title">关于 jQuery WeUI</h2>
+          <p class="demos-sub-title">By 言川 @2016/03/30</p>
+        </header>
+
+        <article class="weui_article">
+          <h1>大标题</h1>
+          <section>
+            <h2 class="title">章标题</h2>
+            <section>
+              <h3>1.1 节标题</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute</p>
+            </section>
+            <section>
+              <h3>1.2 节标题</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </section>
+          </section>
+          <section>
+            <a href="javascript:;" class="weui_btn weui_btn_plain_primary close-popup">关闭</a>
+          </section>
+        </article>
+      </div>
     </div>
 
     <% include _foot.html %>

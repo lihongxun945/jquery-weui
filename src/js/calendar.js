@@ -792,6 +792,7 @@
 
 
   $.fn.calendar = function (params) {
+      params = params || {};
       return this.each(function() {
         var $this = $(this);
         if(!$this[0]) return;
