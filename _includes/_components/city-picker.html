@@ -28,4 +28,31 @@
 <input type="text" id='city-picker' value="浙江 杭州 拱墅区" />
 {% endhighlight %}
 
+  <h3>参数</h3>
+
+  <p>除了 `Picker` 的全部参数可用之外，`city-picker` 还有如下参数可以配置:</p>
+
+  <table class="table">
+    <tr>
+      <th>参数名</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>showDistrict</td>
+      <td>true</td>
+      <td>是否显示地区</td>
+    </tr>
+  </table>
+  <p>比如如下设置可以不显示地区（只选择省市):</p>
+
+{% highlight js %}
+//禁用地区选择
+$("#city-picker").cityPicker({
+  showDistrict: false
+});
+{% endhighlight %}
+
+  <p>你可以通过 <code>$.fn.cityPicker.prototype.defaults</code> 来改变默认值。</p>
+
 </article>

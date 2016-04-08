@@ -1,0 +1,135 @@
+<article id="select" class='component' data-url="../dist/demos/select.html">
+  <h2>Select</h2>
+  <p>Select 是一种支持单选或者多选的弹出层，它可以用来代替原生的 select 元素提供更好更一致的用户体验。Select 是一个JS组件，只能通过JS方法来调用.</p>
+
+  <h3>简单用法</h3>
+
+  <p>基本用法如下：</p>
+
+{% highlight js %}
+$("#job").select({
+  title: "选择职业",
+  items: ["法官", "医生", "猎人", "学生", "记者", "其他"]
+});
+{% endhighlight %}
+
+  <h3>设置不同的显示值和实际值</h3>
+
+  <p>Select 可以设置不用的显示值和实际值，很多时候显示给用户看的字符串和实际提交值是不同的，比如：</p>
+
+{% highlight js %}
+$("#mobile").select({
+  title: "选择手机",
+  items: [
+    {
+      title: "iPhone 3GS",
+      value: "001",
+    },
+    {
+      title: "iPhone 5",
+      value: "002",
+    },
+    {
+      title: "iPhone 5S",
+      value: "003",
+    },
+    {
+      title: "iPhone 6",
+      value: "004",
+    },
+    {
+      title: "iPhone 6S",
+      value: "005",
+    },
+    {
+      title: "iPhone 6P",
+      value: "006",
+    },
+    {
+      title: "iPhone 6SP",
+      value: "007",
+    },
+    {
+      title: "iPhone SE",
+      value: "008",
+    },
+    {
+      title: "iPhone 7",
+      value: "009"
+    }
+  ]
+});
+{% endhighlight %}
+
+  <p>当设置了不同的显示值和实际值时请注意，这个时候 <code>input</code> 的 <code>value</code> 依然是显示值，而实际值存储在 <code>data-values</code> 属性中。如果你设置了初始值，请保证同时设置了 <code>value</code> 和 <code>data-values</code> 两个值。</p>
+
+
+  <h3>多选</h3>
+
+  <p>增加一个 <code>multi: true</code> 参数，就可以设置为多选:</p>
+
+{% highlight js %}
+$("#in").select({
+  title: "您的爱好",
+  multi: true,
+  items: [
+    {
+      title: "画画",
+      value: 1
+    },
+    {
+      title: "打球",
+      value: 2
+    },
+    {
+      title: "唱歌",
+      value: 3
+    },
+    {
+      title: "游泳",
+      value: 4
+    },
+  ]
+});
+{% endhighlight %}
+
+  <h4>默认配置</h4>
+
+  <p>Select 的默认配置是 <code>$.fn.select.prototype.defaults</code>:</p>
+
+  <table class="table">
+    <tr>
+      <th>参数名</th>
+      <th>默认值</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>autoClose</td>
+      <td>true</td>
+      <td>自动关闭，只有在单选模式下才可用，选择完成之后自动关闭弹窗</td>
+    </tr>
+    <tr>
+      <td>closeText</td>
+      <td>"关闭"</td>
+      <td>关闭按钮的文案</td>
+    </tr>
+    <tr>
+      <td>multi</td>
+      <td>false</td>
+      <td>是否多选</td>
+    </tr>
+    <tr>
+      <td>split</td>
+      <td>","</td>
+      <td>分隔符</td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>"请选择"</td>
+      <td>弹窗的标题</td>
+    </tr>
+  </table>
+
+  <p>你可以直接修改默认配置，但是建议通过 <code>$().select(config)</code> 的方式来配置。</p>
+
+</article>

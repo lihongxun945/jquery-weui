@@ -1,0 +1,33 @@
+<article id="popup" class='component' data-url="popup.html">
+  <h2>Popup</h2>
+  <p>Popup 是一个覆盖式的弹出层，可以完全盖住当前页面。</p>
+
+  <p>Popup 需要一个模板，简单的模板如下:</p>
+
+{% highlight html %}
+<div id="{{id}}" class="weui-popup-container">
+  <div class="weui-popup-modal">
+    你的内容放在这里...
+  </div>
+</div>
+{% endhighlight %}
+
+  <p>然后可以通过设置一个链接，当点击的时候就会打开这个模板:</p>
+
+{% highlight html %}
+<a href="javascript:;" class="open-popup" data-target="{{selector}}">About</a>
+{% endhighlight %}
+
+  <p>其中 <code>class='open-popup'</code> 和 <code>data-target="{{selector}}"</code> 两个属性不可缺少，前者表示点击链接需要打开一个 popup，后者是这个popup的选择器</p>
+
+  <p>当然，你也可以通过调用 JS 方法来打开一个 popup：</p>
+
+{% highlight js %}
+$("#about").popup();
+{% endhighlight %}
+
+  <h3>关闭 Popup</h3>
+
+  <p>给任何链接加上 <code>class='close-popup'</code> 则点击之后可以关闭当前打开的 popup. 你也可以通过 <code>$.closePopup()</code> 来关闭。</p>
+
+</article>
