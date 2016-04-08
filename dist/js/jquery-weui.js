@@ -2892,7 +2892,7 @@ Device/OS Detection
           var current = + new Date(formatValue(values, displayValues));
           var valid = true;
           if(params.min) {
-            var min = + new Date(params.min ? params.min : params.min());
+            var min = + new Date(typeof params.min === "function" ? params.min() : params.min);
 
             if(current < min) {
               picker.setValue(lastValidValues);
@@ -2900,7 +2900,7 @@ Device/OS Detection
             } 
           }
           if(params.max) {
-            var max = + new Date(params.max ? params.max: params.max());
+            var max = + new Date(typeof params.max === "function" ? params.max(): params.max);
 
             if(current > max) {
               picker.setValue(lastValidValues);
