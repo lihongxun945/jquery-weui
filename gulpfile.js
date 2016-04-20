@@ -88,6 +88,7 @@ gulp.task('less', function () {
 gulp.task('cssmin', ["less"], function () {
   gulp.src(['./dist/css/*.css', '!./dist/css/*.min.css'])
     .pipe(cssmin())
+    .pipe(header(banner))
     .pipe(ext_replace('.min.css'))
     .pipe(gulp.dest('./dist/css/'));
 });
