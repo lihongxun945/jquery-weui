@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.6.0 
+* jQuery WeUI V0.6.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -650,6 +650,11 @@ body {
   visibility: visible;
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+@media screen and (min-width: 1024px) {
+  .weui_dialog {
+    left: 32.5%;
+  }
 }
 .weui_toast {
   left: 50%;
