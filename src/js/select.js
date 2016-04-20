@@ -37,8 +37,7 @@
 
     });
 
-    $(document).on("click", function() {
-    });
+    $(document).on("click", function() {});
 
   }
 
@@ -54,6 +53,13 @@
 
     this.$input.val(t).data("values", v);
     this.$input.attr("value", t).attr("data-values", v);
+
+    var data = {
+      values: v,
+      titles: t
+    };
+    this.$input.trigger("change", data);
+    this.config.onChange && this.config.onChange.call(this, data);
   }
 
   Select.prototype.parseInitValue = function() {
@@ -104,6 +110,7 @@
     multi: false,
     closeText: "关闭",
     autoClose: true, //是否选择完成后自动关闭，只有单选模式下才有效
+    onChange: undefined, //function
     split: ",",  //多选模式下的分隔符
     toolbarTemplate: '<div class="toolbar">\
       <div class="toolbar-inner">\
