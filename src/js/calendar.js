@@ -764,6 +764,7 @@
       // Close
       p.close = function () {
           if (!p.opened || p.inline) return;
+          p.animating = false;  //有可能还有动画没做完，因此animating设置还没改。
           if (inPopover()) {
               $.closePicker(p.popover);
               return;
