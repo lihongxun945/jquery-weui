@@ -51,7 +51,10 @@
     <script>
       $("#job").select({
         title: "选择职业",
-        items: ["法官", "医生", "猎人", "学生", "记者", "其他"]
+        items: ["法官", "医生", "猎人", "学生", "记者", "其他"],
+        onChange: function(d) {
+          console.log(this, d);
+        }
       });
       $("#mobile").select({
         title: "选择手机",
@@ -114,7 +117,10 @@
             title: "游泳",
             value: 4
           },
-        ]
+        ],
+        onChange: function(d) {
+          console.log(this, d);
+        }
       });
     </script>
   </body>

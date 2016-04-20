@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.6.0 
+* jQuery WeUI V0.6.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -930,7 +930,7 @@
 }($);
 
 /* ===============================================================================
-************   Notification ************
+************   Infinite ************
 =============================================================================== */
 /* global $:true */
 +function ($) {
@@ -1846,8 +1846,7 @@ Device/OS Detection
 
     });
 
-    $(document).on("click", function() {
-    });
+    $(document).on("click", function() {});
 
   }
 
@@ -1863,6 +1862,13 @@ Device/OS Detection
 
     this.$input.val(t).data("values", v);
     this.$input.attr("value", t).attr("data-values", v);
+
+    var data = {
+      values: v,
+      titles: t
+    };
+    this.$input.trigger("change", data);
+    this.config.onChange && this.config.onChange.call(this, data);
   }
 
   Select.prototype.parseInitValue = function() {
@@ -1913,6 +1919,7 @@ Device/OS Detection
     multi: false,
     closeText: "关闭",
     autoClose: true, //是否选择完成后自动关闭，只有单选模式下才有效
+    onChange: undefined, //function
     split: ",",  //多选模式下的分隔符
     toolbarTemplate: '<div class="toolbar">\
       <div class="toolbar-inner">\
@@ -2646,7 +2653,7 @@ Device/OS Detection
 
       p.opened = false;
       p.open = function () {
-          var toPopover = isPopover();
+          var toPopover = isPopover() && false;
           var updateValue = false;
           if (!p.opened) {
               // Set date value
@@ -2718,6 +2725,7 @@ Device/OS Detection
       // Close
       p.close = function () {
           if (!p.opened || p.inline) return;
+          p.animating = false;  //有可能还有动画没做完，因此animating设置还没改。
           if (inPopover()) {
               $.closePicker(p.popover);
               return;
@@ -2783,16 +2791,16 @@ Device/OS Detection
     monthPicker: true,
     monthPickerTemplate: 
         '<div class="picker-calendar-month-picker">' +
-            '<a href="#" class="link icon-only picker-calendar-prev-month"><i class="icon icon-prev"></i></a>' +
+            '<a href="javascript:;" class="link icon-only picker-calendar-prev-month"><i class="icon icon-prev"></i></a>' +
             '<div class="current-month-value"></div>' +
-            '<a href="#" class="link icon-only picker-calendar-next-month"><i class="icon icon-next"></i></a>' +
+            '<a href="javascript:;" class="link icon-only picker-calendar-next-month"><i class="icon icon-next"></i></a>' +
         '</div>',
     yearPicker: true,
     yearPickerTemplate: 
         '<div class="picker-calendar-year-picker">' +
-            '<a href="#" class="link icon-only picker-calendar-prev-year"><i class="icon icon-prev"></i></a>' +
+            '<a href="javascript:;" class="link icon-only picker-calendar-prev-year"><i class="icon icon-prev"></i></a>' +
             '<span class="current-year-value"></span>' +
-            '<a href="#" class="link icon-only picker-calendar-next-year"><i class="icon icon-next"></i></a>' +
+            '<a href="javascript:;" class="link icon-only picker-calendar-next-year"><i class="icon icon-next"></i></a>' +
         '</div>',
     weekHeader: true,
     // Common settings
