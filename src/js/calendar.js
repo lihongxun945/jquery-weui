@@ -692,7 +692,7 @@
 
       p.opened = false;
       p.open = function () {
-          var toPopover = isPopover();
+          var toPopover = isPopover() && false;
           var updateValue = false;
           if (!p.opened) {
               // Set date value
@@ -764,6 +764,7 @@
       // Close
       p.close = function () {
           if (!p.opened || p.inline) return;
+          p.animating = false;  //有可能还有动画没做完，因此animating设置还没改。
           if (inPopover()) {
               $.closePicker(p.popover);
               return;
@@ -829,16 +830,16 @@
     monthPicker: true,
     monthPickerTemplate: 
         '<div class="picker-calendar-month-picker">' +
-            '<a href="#" class="link icon-only picker-calendar-prev-month"><i class="icon icon-prev"></i></a>' +
+            '<a href="javascript:;" class="link icon-only picker-calendar-prev-month"><i class="icon icon-prev"></i></a>' +
             '<div class="current-month-value"></div>' +
-            '<a href="#" class="link icon-only picker-calendar-next-month"><i class="icon icon-next"></i></a>' +
+            '<a href="javascript:;" class="link icon-only picker-calendar-next-month"><i class="icon icon-next"></i></a>' +
         '</div>',
     yearPicker: true,
     yearPickerTemplate: 
         '<div class="picker-calendar-year-picker">' +
-            '<a href="#" class="link icon-only picker-calendar-prev-year"><i class="icon icon-prev"></i></a>' +
+            '<a href="javascript:;" class="link icon-only picker-calendar-prev-year"><i class="icon icon-prev"></i></a>' +
             '<span class="current-year-value"></span>' +
-            '<a href="#" class="link icon-only picker-calendar-next-year"><i class="icon icon-next"></i></a>' +
+            '<a href="javascript:;" class="link icon-only picker-calendar-next-year"><i class="icon icon-next"></i></a>' +
         '</div>',
     weekHeader: true,
     // Common settings
