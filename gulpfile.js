@@ -11,7 +11,7 @@ var cssmin = require('gulp-cssmin');
 
 var pkg = require("./package.json");
 
-var banner = 
+var banner =
 "/** \n\
 * jQuery WeUI V" + pkg.version + " \n\
 * By 言川\n\
@@ -58,14 +58,15 @@ gulp.task('js', function(cb) {
     './src/js/calendar.js',
     './src/js/datetime-picker.js',
     './src/js/popup.js',
-    './src/js/notification.js'
+    './src/js/notification.js',
+    './src/js/orient-tip.js'
   ])
     .pipe(concat({ path: 'jquery-weui.js'}))
     .pipe(header(banner))
     .pipe(gulp.dest('./dist/js/'))
     .on("end", end);
 
-  
+
 });
 
 gulp.task('uglify', ["js"], function() {
