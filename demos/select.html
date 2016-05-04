@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <% include _head.html %>
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">Select</h1>
+    </header>
+
+    
+    <div class="weui_cells weui_cells_form">
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="name" class="weui_label">职业</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="job" type="text" value="">
+        </div>
+      </div>
+
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="name" class="weui_label">手机</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="mobile" type="text" value="">
+        </div>
+      </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="name" class="weui_label">爱好</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="in" type="text" value="">
+        </div>
+      </div>
+    </div>
+    <% include _foot.html %>
+
+    <script>
+      $("#job").select({
+        title: "选择职业",
+        items: ["法官", "医生", "猎人", "学生", "记者", "其他"],
+        onChange: function(d) {
+          console.log(this, d);
+        }
+      });
+      $("#mobile").select({
+        title: "选择手机",
+        items: [
+          {
+            title: "iPhone 3GS",
+            value: "001",
+          },
+          {
+            title: "iPhone 5",
+            value: "002",
+          },
+          {
+            title: "iPhone 5S",
+            value: "003",
+          },
+          {
+            title: "iPhone 6",
+            value: "004",
+          },
+          {
+            title: "iPhone 6S",
+            value: "005",
+          },
+          {
+            title: "iPhone 6P",
+            value: "006",
+          },
+          {
+            title: "iPhone 6SP",
+            value: "007",
+          },
+          {
+            title: "iPhone SE",
+            value: "008",
+          },
+          {
+            title: "iPhone 7",
+            value: "009"
+          }
+        ]
+      });
+      $("#in").select({
+        title: "您的爱好",
+        multi: true,
+        items: [
+          {
+            title: "画画",
+            value: 1
+          },
+          {
+            title: "打球",
+            value: 2
+          },
+          {
+            title: "唱歌",
+            value: 3
+          },
+          {
+            title: "游泳",
+            value: 4
+          },
+        ],
+        onChange: function(d) {
+          console.log(this, d);
+        }
+      });
+    </script>
+  </body>
+</html>

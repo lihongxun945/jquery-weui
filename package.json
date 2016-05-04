@@ -1,8 +1,9 @@
 {
   "name": "jquery-weui",
-  "version": "0.4.0",
+  "version": "0.6.1",
   "description": "为微信 Web 服务量身设计",
   "keywords": [
+    "jQuery WeUI",
     "weui",
     "wechat",
     "weixin",
@@ -13,7 +14,7 @@
     "Zepto"
   ],
   "scripts": {},
-  "author": "任行",
+  "author": "言川",
   "repository": {
     "type": "git",
     "url": "https://github.com/lihongxun945/jquery-weui"
@@ -29,6 +30,11 @@
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.3.1",
-    "gulp-less": "^3.0.5"
+    "gulp-cssmin": "^0.1.7",
+    "gulp-ejs": "^2.1.1",
+    "gulp-ext-replace": "^0.3.0",
+    "gulp-header": "^1.7.1",
+    "gulp-less": "^3.0.5",
+    "gulp-uglify": "^1.5.3"
   }
 }

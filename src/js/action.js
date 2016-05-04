@@ -5,7 +5,7 @@
   
   var show = function(params) {
 
-    var mask = $("<div class='weui_mask'></div>").appendTo(document.body);
+    var mask = $("<div class='weui_mask weui_actions_mask'></div>").appendTo(document.body);
 
     var actions = params.actions || [];
 
@@ -55,6 +55,10 @@
   $.closeActions = function() {
     hide();
   }
+
+  $(document).on("click", ".weui_actions_mask", function() {
+    $.closeActions();
+  });
 
   var defaults = $.actions.prototype.defaults = {
     /*actions: [{
