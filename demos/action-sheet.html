@@ -14,6 +14,7 @@
 
     <div class='demos-content-padded'>
       <a href="javascript:;" id='show-actions' class="weui_btn weui_btn_primary">显示 ActionSheet</a>
+      <a href="javascript:;" id='show-actions-bg' class="weui_btn weui_btn_primary">自定义背景色</a>
     </div>
     <% include _foot.html %>
     <script>
@@ -27,7 +28,7 @@
               text: "发布",
               className: "color-primary",
               onClick: function() {
-                $.alert("你选择了“编辑”");
+                $.alert("发布成功");
               }
             },
             {
@@ -43,6 +44,25 @@
               onClick: function() {
                 $.alert("你选择了“删除”");
               }
+            }
+          ]
+        });
+      });
+
+      $(document).on("click", "#show-actions-bg", function() {
+        $.actions({
+          actions: [
+            {
+              text: "发布",
+              className: "bg-primary",
+            },
+            {
+              text: "编辑",
+              className: "bg-warning",
+            },
+            {
+              text: "删除",
+              className: 'bg-danger',
             }
           ]
         });
