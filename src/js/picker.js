@@ -612,7 +612,12 @@
   });
 
 
-  $.openPicker = function(tpl, className) {
+  $.openPicker = function(tpl, className, callback) {
+
+    if(typeof className === "function") {
+      callback = className;
+      className = undefined;
+    }
 
     $.closePicker();
 
@@ -628,16 +633,32 @@
 
     dialog.addClass("weui-picker-modal-visible");
 
+    callback && container.on("close", callback);
+
     return dialog;
   }
 
+  $.updatePicker = function(tpl) {
+    var container = $(".weui-picker-container-visible");
+    if(!container[0]) return false;
 
-  $.closePicker = function(container) {
+    container.html("");
+
+    var dialog = $(tpl).appendTo(container);
+
+    dialog.addClass("weui-picker-modal-visible");
+
+    return dialog;
+  }
+
+  $.closePicker = function(container, callback) {
+    if(typeof container === "function") callback = container;
     $(".weui-picker-modal-visible").removeClass("weui-picker-modal-visible").transitionEnd(function() {
       $(this).parent().remove();
+      callback && callback();
     }).trigger("close");
-
   };
+
   $.fn.picker = function(params) {
     var args = arguments;
     return this.each(function() {
