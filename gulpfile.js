@@ -36,7 +36,8 @@ gulp.task('js', function(cb) {
 
   gulp.src([
     './src/js/swiper.jquery.js',
-    './src/js/swiper-wrap.js'
+    './src/js/swiper-wrap.js',
+    './src/js/photo-browser.js'
   ])
     .pipe(concat({ path: 'swiper.js'}))
     .pipe(gulp.dest('./dist/js/'))
@@ -58,7 +59,8 @@ gulp.task('js', function(cb) {
     './src/js/calendar.js',
     './src/js/datetime-picker.js',
     './src/js/popup.js',
-    './src/js/notification.js'
+    './src/js/notification.js',
+    './src/js/photo-browser.js'
   ])
     .pipe(concat({ path: 'jquery-weui.js'}))
     .pipe(header(banner))

@@ -11,7 +11,10 @@
   $.fn.swiper = function(params) {
     return this.each(function() {
       if(!this) return;
-      return new Swiper(this, $.extend({}, defaults, params)); 
+      var $this = $(this);
+      var swiper = $this.data("swiper");
+      if(!swiper) $this.data("swiper", new Swiper(this, $.extend({}, defaults, params))); 
+      return swiper;
     });
   }
 

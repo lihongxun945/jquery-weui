@@ -1,8 +1,10 @@
-# V0.6.2
+# V0.7.0
 
 对应的 `weui` 版本更新为 `0.4.2`
 
-- 增强 `Select` 组件，现在可以在初始化之后通过 `$(xx).select("update", config)` 动态修改任何配置。
+- `weui` 版本更新到 `0.4.2`
+- 大幅增强 `Select` 组件，增加了 `update, open, close` 方法，现在可以在初始化之后通过 `$(xx).select("update", config)` 动态修改任何配置。
+- 增加了新组件 `Photo Browser`
 
 # V0.6.1 - 2016/04/20
 

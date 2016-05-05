@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <% include _head.html %>
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">Photo Browser</h1>
+    </header>
+
+    <div class='demos-content-padded'>
+      <a href="javascript:;" class="weui_btn weui_btn_primary" id="pb1">只有图片</a>
+      <a href="javascript:;" class="weui_btn weui_btn_primary" id="pb2">带说明文案</a>
+    </div>
+
+    <% include _foot.html %>
+    <script src="../js/swiper.js"></script>
+
+    <script>
+
+      var pb1 = $.photoBrowser({
+        items: [
+          "./images/swiper-1.jpg",
+          "./images/swiper-2.jpg",
+          "./images/swiper-3.jpg"
+        ]
+      });
+      $("#pb1").click(function() {
+        pb1.open();
+      });
+      var pb2 = $.photoBrowser({
+        items: [
+          {
+            image: "./images/swiper-1.jpg",
+            caption: "苍井空全集苍井空全集苍井空全集苍井空全集苍井空全集苍井空全集苍井空全集"
+          },
+          {
+            image: "./images/swiper-2.jpg",
+            caption: "小泽玛利亚全集小泽玛利亚全集小泽玛利亚全集"
+          },
+          {
+            image: "./images/swiper-3.jpg",
+            caption: "色戒高清无码版"
+          }
+        ]
+      });
+      $("#pb2").click(function() {
+        pb2.open();
+      });
+    </script>
+  </body>
+</html>

@@ -119,6 +119,7 @@
     });
 
     this._open = true;
+    if(config.onOpen) config.onOpen();
   }
   Select.prototype.close = function(callback) {
     var self = this;
@@ -130,6 +131,7 @@
 
   Select.prototype.onClose = function() {
     this._open = false;
+    if(config.onClose) config.onClose();
   }
 
   Select.prototype.getHTML = function(callback) {
@@ -164,6 +166,8 @@
     closeText: "关闭",
     autoClose: true, //是否选择完成后自动关闭，只有单选模式下才有效
     onChange: undefined, //function
+    onClose: undefined, //function
+    onOpen: undefined, //function
     split: ",",  //多选模式下的分隔符
     toolbarTemplate: '<div class="toolbar">\
       <div class="toolbar-inner">\
