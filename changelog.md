@@ -3,9 +3,11 @@
 对应的 `weui` 版本更新为 `0.4.2`
 
 - `weui` 版本更新到 `0.4.2`
-- 大幅增强 `Select` 组件，增加了 `update, open, close` 方法，现在可以在初始化之后通过 `$(xx).select("update", config)` 动态修改任何配置。
-- 增加了新组件 `Photo Browser`
-- `Action Sheet` 增加了 `color-primary, color-danger, color-warning, color-success` 四种不同颜色
+- 大幅增强 `Select` 组件:
+  - 增加了 `update, open, close` 方法，现在可以在初始化之后通过 `$(xx).select("update", config)` 动态修改任何配置。
+  - 增加了 `onOpen, onClose` 回调
+- 增加了新组件 `Photo Browser`,暂时还不支持手势缩放
+- `Action Sheet` 增加了 `color-primary, color-danger, color-warning, color-success` 四种不同颜色，增加了 `onClose` 回调函数。
 
 # V0.6.1 - 2016/04/20
 

@@ -119,7 +119,7 @@
     });
 
     this._open = true;
-    if(config.onOpen) config.onOpen();
+    if(config.onOpen) config.onOpen(this);
   }
   Select.prototype.close = function(callback) {
     var self = this;
@@ -131,7 +131,7 @@
 
   Select.prototype.onClose = function() {
     this._open = false;
-    if(config.onClose) config.onClose();
+    if(this.config.onClose) this.config.onClose(this);
   }
 
   Select.prototype.getHTML = function(callback) {

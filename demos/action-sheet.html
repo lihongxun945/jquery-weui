@@ -19,6 +19,9 @@
     <script>
       $(document).on("click", "#show-actions", function() {
         $.actions({
+          onClose: function() {
+            console.log("close");
+          },
           actions: [
             {
               text: "发布",
