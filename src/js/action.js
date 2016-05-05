@@ -63,13 +63,13 @@
   var defaults = $.actions.prototype.defaults = {
     /*actions: [{
       text: "菜单",
-      className: "danger",
+      className: "color-danger",
       onClick: function() {
         console.log(1);
       }
     },{
       text: "菜单2",
-      className: "danger",
+      className: "color-success",
       onClick: function() {
         console.log(2);
       }

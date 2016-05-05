@@ -19,17 +19,29 @@
     <script>
       $(document).on("click", "#show-actions", function() {
         $.actions({
-          actions: [{
-            text: "编辑",
-            onClick: function() {
-              $.alert("你选择了“编辑”");
+          actions: [
+            {
+              text: "发布",
+              className: "color-primary",
+              onClick: function() {
+                $.alert("你选择了“编辑”");
+              }
+            },
+            {
+              text: "编辑",
+              className: "color-warning",
+              onClick: function() {
+                $.alert("你选择了“编辑”");
+              }
+            },
+            {
+              text: "删除",
+              className: 'color-danger',
+              onClick: function() {
+                $.alert("你选择了“删除”");
+              }
             }
-          },{
-            text: "删除",
-            onClick: function() {
-              $.alert("你选择了“删除”");
-            }
-          }]
+          ]
         });
       });
     </script>
