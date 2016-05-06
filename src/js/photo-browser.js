@@ -32,37 +32,39 @@
     if(this._open) return false;
     if(!this.modal) {
       this.modal = $(this.getHTML()).appendTo(document.body);
-      this.swiper = this.modal.find(".swiper-container");
+      this.swiperContainer = this.modal.find(".swiper-container");
       this.modal.click($.proxy(function() {
         this.close();
       }, this));
     }
-    var swiper = this.swiper;
+    var swiperContainer = this.swiperContainer;
     this.modal.show();
     this.modal.height();
     this.modal.addClass("weui-photo-browser-modal-visible");
-    swiper.transitionEnd($.proxy(function() {
-      swiper.swiper({
+    swiperContainer.transitionEnd($.proxy(function() {
+      swiperContainer.swiper({
         onSlideChangeEnd: this.onSlideChangeEnd
       });
-      swiper.find(".caption-item-0").show().addClass("active");
+      this.onSlideChangeEnd(swiperContainer.data("swiper"));
     }, this));
 
-    swiper.addClass("swiper-container-visible");
+    swiperContainer.addClass("swiper-container-visible");
   }
 
   PhotoBrowser.prototype.close = function() {
-    this.swiper.transitionEnd($.proxy(function() {
+    this.swiperContainer.transitionEnd($.proxy(function() {
       this.modal.hide();
       this._open = false;
     }, this));
-    this.swiper.removeClass("swiper-container-visible");
+    this.swiperContainer.removeClass("swiper-container-visible");
     this.modal.removeClass("weui-photo-browser-modal-visible");
   }
 
   PhotoBrowser.prototype.onSlideChangeEnd = function(swiper) {
     var index = swiper.snapIndex;
     var next = swiper.container.find(".caption-item-"+index);
+
+    if(next.hasClass("active")) return;
 
     var current = swiper.container.find(".caption-item.active").transitionEnd(function() {
       current.hide();
