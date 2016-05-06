@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.6.0 
+* jQuery WeUI V0.6.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -650,6 +650,11 @@ body {
   visibility: visible;
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+@media screen and (min-width: 1024px) {
+  .weui_dialog {
+    left: 32.5%;
+  }
 }
 .weui_toast {
   left: 50%;
@@ -1960,6 +1965,36 @@ button.swiper-pagination-bullet {
 .weui_actionsheet {
   z-index: 100;
 }
+.weui_actionsheet .color-primary {
+  color: #04BE02;
+}
+.weui_actionsheet .color-danger {
+  color: #f6383a;
+}
+.weui_actionsheet .color-warning {
+  color: #f60;
+}
+.weui_actionsheet .color-success {
+  color: #4cd964;
+}
+.weui_actionsheet .bg-primary,
+.weui_actionsheet .bg-success,
+.weui_actionsheet .bg-danger,
+.weui_actionsheet .bg-warning {
+  color: white;
+}
+.weui_actionsheet .bg-primary {
+  background-color: #04BE02;
+}
+.weui_actionsheet .bg-danger {
+  background-color: #f6383a;
+}
+.weui_actionsheet .bg-warning {
+  background-color: #f60;
+}
+.weui_actionsheet .bg-success {
+  background-color: #4cd964;
+}
 .weui-popup-modal {
   width: 100%;
   position: absolute;
@@ -2070,4 +2105,80 @@ button.swiper-pagination-bullet {
   border-radius: .15rem;
   background: white;
   opacity: .5;
+}
+.weui-photo-browser-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  display: none;
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+.weui-photo-browser-modal.weui-photo-browser-modal-visible {
+  opacity: 1;
+}
+.weui-photo-browser-modal .swiper-container {
+  height: 100%;
+  -webkit-transform: scale(0.2);
+          transform: scale(0.2);
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+.weui-photo-browser-modal .swiper-container .swiper-pagination-bullet {
+  background: white;
+  visibility: hidden;
+}
+.weui-photo-browser-modal .swiper-container.swiper-container-visible {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.weui-photo-browser-modal .swiper-container.swiper-container-visible .swiper-pagination-bullet {
+  visibility: visible;
+  -webkit-transition-property: visibility;
+  transition-property: visibility;
+  -webkit-transition-delay: .5s;
+          transition-delay: .5s;
+}
+.weui-photo-browser-modal .photo-container {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.weui-photo-browser-modal .photo-container img {
+  max-width: 100%;
+  margin-top: -30px;
+}
+.weui-photo-browser-modal .caption {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  color: white;
+  text-align: center;
+  padding: 0 12px;
+  min-height: 3rem;
+  font-size: 14px;
+  z-index: 10;
+}
+.weui-photo-browser-modal .caption .caption-item {
+  display: none;
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+.weui-photo-browser-modal .caption .caption-item.active {
+  display: block;
+  opacity: 1;
 }
