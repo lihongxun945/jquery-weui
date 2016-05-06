@@ -8,6 +8,7 @@
   - 增加了 `onOpen, onClose` 回调
 - 增加了新组件 `Photo Browser`,暂时还不支持手势缩放
 - `Action Sheet` 增加了 `color-*, bg-*` 可以配置不同的颜色和背景色，增加了 `onClose` 回调函数。
+- 修复了 `datetime picker` 在 ios 上设置最大最小值无效的问题
 
 # V0.6.1 - 2016/04/20
 

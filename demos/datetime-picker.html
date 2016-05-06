@@ -24,7 +24,10 @@
     <% include _foot.html %>
 
     <script>
-      $("#time").datetimePicker();
+      $("#time").datetimePicker({
+        min: "2012-12-12",
+        max: "2022-12-12 12:12"
+      });
     </script>
   </body>
 </html>
