@@ -34,9 +34,9 @@
         return n < 10 ? "0" + n : n;
       };
 
-      var formatValue = function(values, displayValues) {
-        return values[0] + params.dateSplit + values[1] + params.dateSplit + values[2] + ' ' + values[3] + params.timeSplit + values[4];
-      }
+      var formatValue = function(values, displayValues, sep) {
+        return values[0] + params.dateSplit + values[1] + params.dateSplit + values[2] + sep + values[3] + params.timeSplit + values[4];
+      };
 
       var initMonthes = ('01 02 03 04 05 06 07 08 09 10 11 12').split(' ');
 
@@ -64,10 +64,10 @@
 
           //check min and max
           
-          var current = + new Date(formatValue(values, displayValues));
+          var current = + new Date(formatValue(values, displayValues, 'T'));
           var valid = true;
           if(params.min) {
-            var min = + new Date(typeof params.min === "function" ? params.min() : params.min);
+            var min = + new Date(typeof params.min === "function" ? params.min() : params.min.replace(' ','T'));
 
             if(current < min) {
               picker.setValue(lastValidValues);
@@ -75,7 +75,7 @@
             } 
           }
           if(params.max) {
-            var max = + new Date(typeof params.max === "function" ? params.max(): params.max);
+            var max = + new Date(typeof params.max === "function" ? params.max(): params.max.replace(' ','T'));
 
             if(current > max) {
               picker.setValue(lastValidValues);
@@ -87,7 +87,7 @@
         },
 
         formatValue: function (p, values, displayValues) {
-          return formatValue(values, displayValues);
+          return formatValue(values, displayValues, ' ');
         },
 
         cols: [
