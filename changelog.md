@@ -1,4 +1,17 @@
-# V0.6.1
+# V0.7.0
+
+对应的 `weui` 版本更新为 `0.4.2`
+
+- `weui` 版本更新到 `0.4.2`, `weui` 官方的更新日志请参考 [https://github.com/weui/weui/blob/master/CHANGELOG.md](https://github.com/weui/weui/blob/master/CHANGELOG.md).
+- 大幅增强 `Select` 组件:
+  - 增加了 `update, open, close` 方法，现在可以在初始化之后通过 `$(xx).select("update", config)` 动态修改任何配置。
+  - 增加了 `onOpen, onClose` 回调.
+- 增加了新组件 `Photo Browser`,暂时还不支持手势缩放.
+- `Action Sheet` 增加了 `color-*, bg-*` 可以配置不同的颜色和背景色，增加了 `onClose` 回调函数。
+- 修复了 `datetime picker` 在 ios 上设置最大最小值无效的问题。
+- 修复了 `popup` 会被 `select` 和 `navbar` 挡住的问题。
+
+# V0.6.1 - 2016/04/20
 
 对应 `weui` 版本为 `0.4.1`
 
@@ -11,7 +24,7 @@
 - 修复了 `Dialog` 在PC等宽屏设备上不居中的bug。
 - 增加了JS和CSS的压缩文件，压缩文件以 `.min.js` 和 `.min.css` 结尾命名。
 
-# V0.6.0
+# V0.6.0 - 2016/04/08
 
 对应 `weui` 版本为 `0.4.0`
 

@@ -1,0 +1,73 @@
+.weui-photo-browser-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  display: none;
+  opacity: 0;
+  transition: opacity .3s;
+
+
+  &.weui-photo-browser-modal-visible {
+    opacity: 1;
+  }
+
+  .swiper-container {
+    height: 100%;
+    transform: scale(.2);
+    transition: transform .5s;
+
+    .swiper-pagination-bullet {
+      background: white;
+      visibility: hidden;
+    }
+
+    &.swiper-container-visible {
+      transform: scale(1);
+
+      .swiper-pagination-bullet {
+        visibility: visible;
+        transition-property: visibility;
+        transition-delay: .5s;
+      }
+    }
+
+  }
+
+  .photo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      margin-top: -30px;
+    }
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    color: white;
+    text-align: center;
+    padding: 0 12px;
+    min-height: 3rem;
+    font-size: 14px;
+    z-index: 10;
+
+    .caption-item {
+      display: none;
+      opacity: 0;
+      transition: opacity .15s;
+
+      &.active {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+}

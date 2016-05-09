@@ -26,6 +26,7 @@
     dialog.find(".weui_actionsheet_menu .weui_actionsheet_cell, .weui_actionsheet_action .weui_actionsheet_cell").each(function(i, e) {
       $(e).click(function() {
         $.closeActions();
+        params.onClose && params.onClose();
         if(actions[i] && actions[i].onClick) {
           actions[i].onClick();
         }
@@ -61,15 +62,16 @@
   });
 
   var defaults = $.actions.prototype.defaults = {
+    onClose: undefined,
     /*actions: [{
       text: "菜单",
-      className: "danger",
+      className: "color-danger",
       onClick: function() {
         console.log(1);
       }
     },{
       text: "菜单2",
-      className: "danger",
+      className: "color-success",
       onClick: function() {
         console.log(2);
       }
