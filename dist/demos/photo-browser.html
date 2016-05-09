@@ -40,7 +40,18 @@
           "./images/swiper-2.jpg",
           "./images/swiper-3.jpg",
           "./images/swiper-4.jpg"
-        ]
+        ],
+
+        onSlideChange: function(index) {
+          console.log(this, index);
+        },
+
+        onOpen: function() {
+          console.log("onOpen", this);
+        },
+        onClose: function() {
+          console.log("onClose", this);
+        }
       });
       $("#pb1").click(function() {
         pb1.open();

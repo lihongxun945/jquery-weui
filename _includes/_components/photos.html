@@ -38,9 +38,40 @@ var pb2 = $.photoBrowser({
   <p><code>$.photoBrowser</code> 方法会返回一个实例，这个实例可以调用方法打开和关闭弹层：</p>
 
 {% highlight js %}
-pb.open();
-pb.close();
+pb.open();  //打开
+pb.close(); //关闭
 {% endhighlight %}
+
+  <h3>参数配置</h3>
+  <p>`$.photoBrowser(config)` 有如下配置可用：</p>
+
+  <table class="table">
+    <tr>
+      <th>参数名</th>
+      <th>说明</th>
+      <th>示例</th>
+    </tr>
+    <tr>
+      <td>items</td>
+      <td>需要展示的图片</td>
+      <td><code>items: ["./images/swiper-1.jpg", "./images/swiper-2.jpg", ...]</code></td>
+    </tr>
+    <tr>
+      <td>onSlideChange</td>
+      <td>左右翻页的回调函数</td>
+      <td><code>onSlideChange: function(index) { console.log(index); }</code></td>
+    </tr>
+    <tr>
+      <td>onOpen</td>
+      <td>每次打开之后执行回调</td>
+      <td><code>onOpen: function() { console.log(this); }</code></td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td>每次关闭之后执行回调</td>
+      <td><code>onClose: function() { console.log(this); }</code></td>
+    </tr>
+  </table>
 
   <p> <strong>注意，从 <code>V0.7.0</code> 开始才支持此插件</strong>，目前功能较弱，下一个版本会支持 图片缩放以及滑动回调等。</p>
 
