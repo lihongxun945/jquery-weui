@@ -52,12 +52,15 @@
     swiperContainer.addClass("swiper-container-visible");
 
     this._open = true;
+
+    if(this.config.onOpen) this.config.onOpen.call(this);
   }
 
   PhotoBrowser.prototype.close = function() {
     this.swiperContainer.transitionEnd($.proxy(function() {
       this.modal.hide();
       this._open = false;
+      if(this.config.onClose) this.config.onClose.call(this);
     }, this));
     this.swiperContainer.removeClass("swiper-container-visible");
     this.modal.removeClass("weui-photo-browser-modal-visible");
