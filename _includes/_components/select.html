@@ -93,7 +93,7 @@ $("#in").select({
 });
 {% endhighlight %}
 
-  <h4>默认配置</h4>
+  <h3>默认配置</h3>
 
   <p>Select 的默认配置是 <code>$.fn.select.prototype.defaults</code>:</p>
 
@@ -102,6 +102,11 @@ $("#in").select({
       <th>参数名</th>
       <th>默认值</th>
       <th>说明</th>
+    </tr>
+    <tr>
+      <td>input</td>
+      <td><code>undefined</code></td>
+      <td>输入框的初始值，如果设置了这个值，那么他会覆盖 <code>input</code> 本身的 <code>value</code> 值。 从 <code>V0.7.0</code> 开始支持此配置。</td>
     </tr>
     <tr>
       <td>autoClose</td>
@@ -133,8 +138,49 @@ $("#in").select({
       <td><code>undefined</code></td>
       <td>用户选择之后的回调，注意从 <code>V0.6.1</code> 版本之后才支持。你也可以在 <code>input</code> 上监听 `change` 事件。</td>
     </tr>
+    <tr>
+      <td>onOpen</td>
+      <td><code>undefined</code></td>
+      <td>弹层打开之后执行此回调函数。 <code>V0.7.0</code> 开始支持此配置</td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td><code>undefined</code></td>
+      <td>弹层关闭之后执行此回调函数。 <code>V0.7.0</code> 开始支持此配置</td>
+    </tr>
   </table>
 
   <p>你可以直接修改默认配置，但是建议通过 <code>$().select(config)</code> 的方式来配置。</p>
+
+
+  <h3>方法</h3>
+
+  <p>通过 <code>$(xxx).select("method", args)</code> 方式可以调用 <strong>已经初始化完成</strong> 的select组件的方法。</p>
+  <p>全部可用方法如下:</p>
+
+  <table class="table">
+    <tr>
+      <th>方法名</th>
+      <th>示例</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>update</td>
+      <td><code>$("input").select("update", { items: ["法官", "猎人", ...] })</code></td>
+      <td>动态更新配置，传入的参数是一个 config 对象，初始化时候设定的任何参数都可以通过这种方式进行修改。</td>
+    </tr>
+    <tr>
+      <td>open</td>
+      <td><code>$("input").select("open")</code></td>
+      <td>打开弹层</td>
+    </tr>
+    <tr>
+      <td>close</td>
+      <td><code>$("input").select("close")</code></td>
+      <td>关闭弹层</td>
+    </tr>
+  </table>
+
+  <p><strong>再次强调一点，必须是通过 <code>$(input).select(config)</code> 初始化之后才能调用对应的方法，否则请先初始化。</strong></p>
 
 </article>

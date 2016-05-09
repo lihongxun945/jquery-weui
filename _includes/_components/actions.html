@@ -1,4 +1,4 @@
-<article id="actions" class='component' data-url="actions.html">
+<article id="actions" class='component' data-url="../dist/demos/action-sheet.html">
   <h2>ActionSheet</h2>
   <p>ActionSheet用于显示包含一系列可交互的动作集合，包括说明、跳转等。由底部弹出，一般用于响应用户对页面的点击。</p>
 
@@ -43,4 +43,37 @@ $.actions({
       <td>点击之后的回调函数</td>
     </tr>
   </table>
+
+  <h3>颜色配置</h3>
+
+  <p>从 <code>V0.7.0</code> 开始， 可以通过 <code>className</code> 参数配置不同的颜色或者背景，可以参考右侧的demo用法如下：</p>
+
+{% highlight js %}
+$.actions({
+  actions: [
+    {
+      text: "发布",
+      className: "color-primary",
+    },
+  ...
+});
+{% endhighlight %}
+
+<p>所有可用配置如下：</p>
+
+  <table class="table">
+    <tr>
+      <td>color-primary</td>
+      <td>color-success</td>
+      <td>color-danger</td>
+      <td>color-warning</td>
+    </tr>
+    <tr>
+      <td>bg-primary</td>
+      <td>bg-success</td>
+      <td>bg-danger</td>
+      <td>bg-warning</td>
+    </tr>
+  </table>
+
 </article>
