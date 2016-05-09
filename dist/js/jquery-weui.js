@@ -1,9 +1,5 @@
 /** 
-<<<<<<< HEAD
-* jQuery WeUI V0.6.1 
-=======
 * jQuery WeUI V0.7.0 
->>>>>>> gh-pages-dev
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -1852,9 +1848,6 @@ Device/OS Detection
 
     config = this.config;
 
-<<<<<<< HEAD
-    $(document).on("click", function() {});
-=======
     this.$input.click($.proxy(this.open, this));
 
   }
@@ -1876,7 +1869,6 @@ Device/OS Detection
 
       return d;
     });
->>>>>>> gh-pages-dev
 
 
     this.tpl = $.t7.compile("<div class='weui-picker-modal weui-select-modal'>" + config.toolbarTemplate + (config.multi ? config.checkboxTemplate : config.radioTemplate) + "</div>");
@@ -2006,11 +1998,8 @@ Device/OS Detection
     closeText: "关闭",
     autoClose: true, //是否选择完成后自动关闭，只有单选模式下才有效
     onChange: undefined, //function
-<<<<<<< HEAD
-=======
     onClose: undefined, //function
     onOpen: undefined, //function
->>>>>>> gh-pages-dev
     split: ",",  //多选模式下的分隔符
     toolbarTemplate: '<div class="toolbar">\
       <div class="toolbar-inner">\
@@ -3010,11 +2999,7 @@ Device/OS Detection
           var current = self.arrayToDate(values);
           var valid = true;
           if(params.min) {
-<<<<<<< HEAD
-            var min = + new Date(typeof params.min === "function" ? params.min() : params.min);
-=======
             var min = self.arrayToDate(self.stringToArray(typeof params.min === "function" ? params.min() : params.min));
->>>>>>> gh-pages-dev
 
             if(current < +min) {
               picker.setValue(lastValidValues);
@@ -3022,14 +3007,8 @@ Device/OS Detection
             } 
           }
           if(params.max) {
-<<<<<<< HEAD
-            var max = + new Date(typeof params.max === "function" ? params.max(): params.max);
-
-            if(current > max) {
-=======
             var max = self.arrayToDate(self.stringToArray(typeof params.max === "function" ? params.max() : params.max));
             if(current > +max) {
->>>>>>> gh-pages-dev
               picker.setValue(lastValidValues);
               valid = false;
             } 
