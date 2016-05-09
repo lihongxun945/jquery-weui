@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.6.1 
+* jQuery WeUI V0.7.0 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -87,6 +87,16 @@ body {
   html {
     font-size: 25.6px !important;
   }
+}
+.weui_navbar {
+  z-index: 10;
+}
+.weui-popup-overlay,
+.weui-popup-container {
+  z-index: 50;
+}
+.weui_mask {
+  z-index: 100;
 }
 /* === Grid === */
 .weui-row {
@@ -676,7 +686,6 @@ body {
   -webkit-transition-duration: .3s;
           transition-duration: .3s;
   visibility: hidden;
-  z-index: 10;
 }
 .weui_mask.weui_mask_visible {
   opacity: 1;
@@ -834,9 +843,6 @@ body {
 }
 .weui_tab_bd .weui_tab_bd_item.weui_tab_bd_item_active {
   display: block;
-}
-.weui_navbar {
-  z-index: 100;
 }
 /* === Columns Picker === */
 .weui-picker-modal {
@@ -2030,6 +2036,7 @@ button.swiper-pagination-bullet {
   height: 0;
   width: 100%;
   height: 100%;
+  z-index: 10;
 }
 .weui-popup-container {
   display: none;

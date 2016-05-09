@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.6.1 
+* jQuery WeUI V0.7.0 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
