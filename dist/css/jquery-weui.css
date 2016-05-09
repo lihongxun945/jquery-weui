@@ -2182,8 +2182,8 @@ button.swiper-pagination-bullet {
 .weui-photo-browser-modal .caption .caption-item {
   display: none;
   opacity: 0;
-  -webkit-transition: opacity .3s;
-  transition: opacity .3s;
+  -webkit-transition: opacity .15s;
+  transition: opacity .15s;
 }
 .weui-photo-browser-modal .caption .caption-item.active {
   display: block;
