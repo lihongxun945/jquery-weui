@@ -23,6 +23,9 @@
     <script>
 
       var pb1 = $.photoBrowser({
+        onSlideChange: function(index) {
+          console.log(this, index);
+        },
         items: [
           "./images/swiper-1.jpg",
           "./images/swiper-2.jpg",

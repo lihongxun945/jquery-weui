@@ -5,6 +5,7 @@
 
   var PhotoBrowser = function(config) {
     this.initConfig(config);
+    this.index = 0;
   }
 
   PhotoBrowser.prototype.initConfig = function(config) {
@@ -43,12 +44,14 @@
     this.modal.addClass("weui-photo-browser-modal-visible");
     swiperContainer.transitionEnd($.proxy(function() {
       swiperContainer.swiper({
-        onSlideChangeEnd: this.onSlideChangeEnd
+        onSlideChangeEnd: $.proxy(this.onSlideChangeEnd, this)
       });
       this.onSlideChangeEnd(swiperContainer.data("swiper"));
     }, this));
 
     swiperContainer.addClass("swiper-container-visible");
+
+    this._open = true;
   }
 
   PhotoBrowser.prototype.close = function() {
@@ -61,7 +64,7 @@
   }
 
   PhotoBrowser.prototype.onSlideChangeEnd = function(swiper) {
-    var index = swiper.snapIndex;
+    var index = this.index = swiper.snapIndex;
     var next = swiper.container.find(".caption-item-"+index);
 
     if(next.hasClass("active")) return;
@@ -76,6 +79,9 @@
     if(!current[0]) {
       next.show().addClass('active');
     }
+
+    if(this.config.onSlideChange) this.config.onSlideChange.call(this, index);
+
   }
 
   defaults = PhotoBrowser.prototype.defaults = {
