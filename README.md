@@ -40,12 +40,22 @@ jQuery WeUI 使用官方的CSS组件，加上一系列jQuery插件提供简洁�
 
 # 组件展示
 
+![grid](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/grid.png)
+
 ![buttons](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/buttons.png)
+
 ![cell](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/cell.png)
+
 ![form](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/form.png)
+
 ![dialog](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/dialog.png)
+
 ![select](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/select.png)
+
 ![calendar](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/calendar.png)
+
 ![address](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/address.png)
+
 ![actions](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/actions.png)
+
 ![photos](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/photos.png)
