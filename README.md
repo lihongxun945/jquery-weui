@@ -6,7 +6,11 @@ WeUI的jQuery版本，兼容jQuery和Zepto。
 
 jQuery WeUI 使用官方的CSS组件，加上一系列jQuery插件提供简洁强大的API。如果你使用过jQuery/Zepto，那么jQuery WeUI 没有任何上手难度。
 
-官网地址： [http://lihongxun945.github.io/jquery-weui/](http://lihongxun945.github.io/jquery-weui/)
+更多文档请参阅官网： [http://lihongxun945.github.io/jquery-weui/](http://lihongxun945.github.io/jquery-weui/)
+
+微信扫描二维码立刻体验：
+
+![code](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/code.png)
 
 # 下载
 
