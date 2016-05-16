@@ -108,9 +108,6 @@
               var valueDate = new Date(p.value[i]);
               p.wrapper.find('.picker-calendar-day[data-date="' + valueDate.getFullYear() + '-' + valueDate.getMonth() + '-' + valueDate.getDate() + '"]').addClass('picker-calendar-day-selected');
           }
-          if (p.params.onChange) {
-              p.params.onChange(p, p.value, p.value.map(formatDate));
-          }
           if (p.input && p.input.length > 0) {
               if (p.params.formatValue) inputValue = p.params.formatValue(p, p.value);
               else {
@@ -122,6 +119,9 @@
               } 
               $(p.input).val(inputValue);
               $(p.input).trigger('change');
+          }
+          if (p.params.onChange) {
+              p.params.onChange(p, p.value, p.value.map(formatDate));
           }
       };
 
