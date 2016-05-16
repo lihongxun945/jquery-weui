@@ -678,7 +678,7 @@
       }
       
       //iphone 上无法正确触发 click，会导致点击外面无法关闭
-      if (!p.inline) $(document).on('click touchend', closeOnHTMLClick);
+      if (!p.inline && p.params.closeByOutsideClick) $(document).on('click touchend', closeOnHTMLClick);
 
       // Open
       function onPickerClose() {
@@ -827,6 +827,7 @@
     touchMove: true,
     animate: true,
     closeOnSelect: true,
+    closeByOutsideClick: true,
     monthPicker: true,
     monthPickerTemplate: 
         '<div class="picker-calendar-month-picker">' +
