@@ -1,8 +1,12 @@
 # V0.7.0 - 2016/05/09
 
-- `toast` 增加了纯文本模式, 增加了关闭回调函数。
-- `popup` 增加了类似picker的非全屏模式。
-- `picker` 增加了 `onChange` 和 `onClose` 参数。
+- `Toast` 增加了纯文本模式, 增加了关闭回调函数。
+- `Popup` 增加了类似picker的非全屏模式。
+- `Picker` 增加了 `onChange` 和 `onClose` 参数。
+- `Calendar`
+  - 修复了在 iOS 上如果没有设置日期会显示 `NAN` 的bug。
+  - 增加了 `open`,`close`,`destroy` 等方法，可以通过 `$("xx").calendar("method")` 调用。
+
 
 # V0.7.0 - 2016/05/09
 
