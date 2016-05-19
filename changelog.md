@@ -2,6 +2,7 @@
 
 - `toast` 增加了纯文本模式, 增加了关闭回调函数。
 - `popup` 增加了类似picker的非全屏模式。
+- `picker` 增加了 `onChange` 和 `onClose` 参数。
 
 # V0.7.0 - 2016/05/09
 
