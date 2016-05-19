@@ -1,5 +1,9 @@
 # V0.7.0 - 2016/05/09
 
+- `toast` 增加了纯文本模式, 增加了关闭回调函数。
+
+# V0.7.0 - 2016/05/09
+
 对应的 `weui` 版本更新为 `0.4.2`
 
 - `weui` 版本更新到 `0.4.2`, `weui` 官方的更新日志请参考 [https://github.com/weui/weui/blob/master/CHANGELOG.md](https://github.com/weui/weui/blob/master/CHANGELOG.md).

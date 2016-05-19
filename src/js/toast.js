@@ -15,24 +15,31 @@
     dialog.addClass("weui_toast_visible");
   };
 
-  var hide = function() {
-    $(".weui_mask_transparent").hide();
+  var hide = function(callback) {
+    $(".weui_mask_transparent").remove();
     $(".weui_toast_visible").removeClass("weui_toast_visible").transitionEnd(function() {
-      $(this).remove();
+      var $this = $(this);
+      $this.remove();
+      callback && callback($this);
     });
   }
 
-  $.toast = function(text, style) {
+  $.toast = function(text, style, callback) {
+    if(typeof style === "function") {
+      callback = style;
+    }
     var className;
     if(style == "cancel") {
       className = "weui_toast_cancel";
     } else if(style == "forbidden") {
       className = "weui_toast_forbidden";
+    } else if(style == "text") {
+      className = "weui_toast_text";
     }
     show('<i class="weui_icon_toast"></i><p class="weui_toast_content">' + (text || "已经完成") + '</p>', className);
 
     setTimeout(function() {
-      hide();
+      hide(callback);
     }, toastDefaults.duration);
   }
 
