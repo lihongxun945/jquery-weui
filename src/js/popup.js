@@ -14,15 +14,10 @@
     $.closePopup();
 
     popup = $(popup);
-
     popup.addClass("weui-popup-container-visible");
-
     var modal = popup.find(".weui-popup-modal");
-
     modal.width();
-
     modal.addClass("weui-popup-modal-visible");
-
   }
 
 
@@ -36,11 +31,13 @@
 
   $(document).on("click", ".close-popup", function() {
     $.closePopup();
-  });
-
-  $(document).on("click", ".open-popup", function() {
+  })
+  .on("click", ".open-popup", function() {
     $($(this).data("target")).popup();
-  });
+  })
+  .on("click", ".weui-popup-container", function(e) {
+    if($(e.target).hasClass("weui-popup-container")) $.closePopup();
+  })
 
   $.fn.popup = function() {
     return this.each(function() {
