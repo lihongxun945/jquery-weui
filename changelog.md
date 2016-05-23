@@ -7,6 +7,7 @@
   - 修复了在 iOS 上如果没有设置日期会显示 `NAN` 的bug。
   - 增加了 `open`,`close`,`destroy` 等方法，可以通过 `$("xx").calendar("method")` 调用。
 - `Select` 在 `onChange` 回调中增加了 `origins` 数据，表示未经修改的原始值。
+- `Photo Browser` 增加了一个 `initIndex` 参数，可以指定打开时候默认展示第几张图片。
 
 
 # V0.7.0 - 2016/05/09

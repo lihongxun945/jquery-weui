@@ -42,12 +42,11 @@
     this.modal.show();
     this.modal.height();
     this.modal.addClass("weui-photo-browser-modal-visible");
-    swiperContainer.transitionEnd($.proxy(function() {
-      swiperContainer.swiper({
-        onSlideChangeEnd: $.proxy(this.onSlideChangeEnd, this)
-      });
-      this.onSlideChangeEnd(swiperContainer.data("swiper"));
-    }, this));
+    swiperContainer.swiper({
+      onSlideChangeEnd: $.proxy(this.onSlideChangeEnd, this),
+      initialSlide: this.config.initIndex
+    });
+    this.onSlideChangeEnd(swiperContainer.data("swiper"));
 
     swiperContainer.addClass("swiper-container-visible");
 
@@ -92,6 +91,7 @@
     autoOpen: false, //初始化完成之后立刻打开
     onOpen: undefined,
     onClose: undefined,
+    initIndex: 0, //打开时默认显示第几张
     tpl: '<div class="weui-photo-browser-modal">\
             <div class="swiper-container">\
               <div class="swiper-wrapper">\
