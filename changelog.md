@@ -8,7 +8,7 @@
   - 增加了 `open`,`close`,`destroy` 等方法，可以通过 `$("xx").calendar("method")` 调用。
 - `Select` 在 `onChange` 回调中增加了 `origins` 数据，表示未经修改的原始值。
 - `Photo Browser` 增加了一个 `initIndex` 参数，可以指定打开时候默认展示第几张图片。
-- 修复了使用 Zepto 的一些bug。
+- 修复了使用 Zepto 时 `$.fn.data` 方法存储对象导致的报错。
 
 
 # V0.7.0 - 2016/05/09
