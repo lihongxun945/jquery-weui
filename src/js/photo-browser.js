@@ -37,6 +37,13 @@
       this.modal.click($.proxy(function() {
         this.close();
       }, this));
+
+      this.modal.on("gesturestart", $.proxy(this.onGestureStart, this));
+      this.modal.on("gesturechange", $.proxy(this.onGestureChange, this));
+      this.modal.on("gestureend", $.proxy(this.onGestureEnd, this));
+      this.modal.on($.touchEvents.start, $.proxy(this.onTouchStart, this));
+      this.modal.on($.touchEvents.move, $.proxy(this.onTouchMove, this));
+      this.modal.on($.touchEvents.end, $.proxy(this.onTouchEnd, this));
     }
     var swiperContainer = this.swiperContainer;
     this.modal.show();
@@ -46,6 +53,7 @@
       onSlideChangeEnd: $.proxy(this.onSlideChangeEnd, this),
       initialSlide: this.config.initIndex
     });
+    this.swiper = swiperContainer.data("swiper");
     this.onSlideChangeEnd(swiperContainer.data("swiper"));
 
     swiperContainer.addClass("swiper-container-visible");
@@ -86,12 +94,79 @@
 
   }
 
+  var gestureImg, currentScale = 1;
+
+  PhotoBrowser.prototype.onGestureStart = function(e) {
+    this.swiper.detachEvents();
+    this.scaling = true;
+    gestureImg = this.swiperContainer.find(".swiper-slide-active img");
+    gestureImg.transition(0);
+  }
+
+  PhotoBrowser.prototype.onGestureChange = function(e) {
+    if (!gestureImg || gestureImg.length === 0) return;
+    scale = e.scale * currentScale;
+    if (scale > this.config.maxScale) {
+      scale = this.config.maxScale - 1 + Math.pow((scale - this.config.maxScale + 1), 0.5);
+    }
+    if (scale < 1) {
+      scale = 2 - Math.pow((1 - scale + 1), 0.5);
+    }
+    gestureImg.transform('translate3d(0,0,0) scale(' + scale + ')');
+  }
+
+  PhotoBrowser.prototype.onGestureEnd = function() {
+    if(scale > this.config.maxScale) scale = this.config.maxScale;
+    if(scale < 1) scale = 1;
+
+    if(scale === 1) {
+      this.swiper.attachEvents();
+    }
+
+    gestureImg.transition(200);
+    gestureImg.transform('translate3d(0,0,0) scale(' + scale + ')');
+
+    currentScale = scale;
+    this.scaling = false;
+
+    this.scaled = (scale !== 1);
+  }
+
+  var start, diffX, diffY, currentDiff;
+  PhotoBrowser.prototype.onTouchStart = function(e) {
+    if(this.scaling || !this.scaled) return;
+    var p = $.getTouchPosition(e);
+    start = p;
+    diffX = diffY = 0;
+    gestureImg.transition(0);
+  }
+
+  PhotoBrowser.prototype.onTouchMove = function(e) {
+    if(!start) return;
+    var p = $.getTouchPosition(e);
+    _currentTouch = p;
+    e.preventDefault();
+    e.stopPropagation();
+    var p = $.getTouchPosition(e);
+    diffX = p.x - start.x;
+    diffY = p.y - start.y;
+
+    gestureImg.transform("translate3d("+ (currentDiff[0] + diffX) + "px, " + (currentDiff[1] + diffY) + "px, 0) scale(" + currentScale + ")");
+  }
+
+  PhotoBrowser.prototype.onTouchEnd = function(e) {
+    start = false;
+    currentDiff = [diffX, diffY];
+  }
+
   defaults = PhotoBrowser.prototype.defaults = {
     items: [],
     autoOpen: false, //初始化完成之后立刻打开
     onOpen: undefined,
     onClose: undefined,
     initIndex: 0, //打开时默认显示第几张
+    scale: true,
+    maxScale: 3,
     tpl: '<div class="weui-photo-browser-modal">\
             <div class="swiper-container">\
               <div class="swiper-wrapper">\
