@@ -10,13 +10,28 @@ $.toast("操作成功");
 {% endhighlight %}
 
   <p>Toast 有三种模式可以选择，默认是 <code>成功</code> 模式，还有 <code>取消</code> 和 <code>禁止</code> 两种模式:</p>
+  <p>从 <code>V0.7.1</code> 版本开始，新增了一个纯文本模式。</p>
 
 {% highlight js %}
 $.toast("取消操作", "cancel");
 $.toast("禁止操作", "forbidden");
+$.toast("纯文本", "text");
 {% endhighlight %}
 
   <h3>参数</h3>
 
   <p>Toast 默认时间是 2000 毫秒，可以通过 <code>$.toast.prototype.defaults.duration</code> 来设置这个值。</p>
+
+  <h3>回调函数</h3>
+
+  <p>toast可以指定一个回调函数，当toast关闭的时候会调用此函数。</p>
+
+{% highlight js %}
+$.toast("取消操作", function() {
+  console.log("cancel");
+});
+$.toast("禁止操作", "forbidden", function() {
+  //do something
+});
+{% endhighlight %}
 </article>
