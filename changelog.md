@@ -1,10 +1,11 @@
-# V0.7.1
+# V0.7.1 - 2016-05-30
 
 - `Toast` 增加了纯文本模式, 增加了关闭回调函数。
 - `Popup` 增加了类似picker的非全屏模式。
 - `Picker` 增加了 `onChange` 和 `onClose` 参数。
 - `Calendar`
   - 修复了在 iOS 上如果没有设置日期会显示 `NAN` 的bug。
+  - 修复了 input `value` 属性设置初始值无效的bug。
   - 增加了 `open`,`close`,`destroy` 等方法，可以通过 `$("xx").calendar("method")` 调用。
 - `Select` 在 `onChange` 回调中增加了 `origins` 数据，表示未经修改的原始值。
 - `Photo Browser` 增加了一个 `initIndex` 参数，可以指定打开时候默认展示第几张图片。

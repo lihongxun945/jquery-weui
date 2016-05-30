@@ -812,16 +812,13 @@
         var calendar = $this.data("calendar");
 
         if(!calendar) {
-          if(typeof params === typeof "a") {
-            calendar = new Calendar($.extend(p, params));
-          } else {
-            //默认显示今天
-            if(!params.value) {
-              var today = new Date();
-              params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
-            }
-            calendar = $this.data("calendar", new Calendar($.extend(p, params)));
+          params.value = params.value || [$this.val()];
+          //默认显示今天
+          if(!params.value) {
+            var today = new Date();
+            params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
           }
+          calendar = $this.data("calendar", new Calendar($.extend(p, params)));
         }
 
         if(typeof params === typeof "a") {
