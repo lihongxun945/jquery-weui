@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.7.0 
+* jQuery WeUI V0.7.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -681,6 +681,27 @@ body {
   content: "\EA0B";
   color: #F76260;
 }
+.weui_toast_text {
+  min-height: 1em;
+  width: auto;
+  height: 45px;
+  border-radius: 25px;
+  margin-left: 0;
+  -webkit-transform: scale(0.9) translate3d(-50%, 0, 0);
+          transform: scale(0.9) translate3d(-50%, 0, 0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+.weui_toast_text.weui_toast_visible {
+  -webkit-transform: scale(1) translate3d(-50%, 0, 0);
+          transform: scale(1) translate3d(-50%, 0, 0);
+}
+.weui_toast_text .weui_icon_toast {
+  display: none;
+}
+.weui_toast_text .weui_toast_content {
+  margin: 10px 15px;
+}
 .weui_mask {
   opacity: 0;
   -webkit-transition-duration: .3s;
@@ -844,6 +865,71 @@ body {
 .weui_tab_bd .weui_tab_bd_item.weui_tab_bd_item_active {
   display: block;
 }
+.toolbar {
+  position: relative;
+  width: 100%;
+  font-size: .85rem;
+  line-height: 1.5;
+  color: #3d4145;
+  background: #f7f7f8;
+}
+.toolbar:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+  height: 1px;
+  width: 100%;
+  background-color: #d9d9d9;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .toolbar:before {
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .toolbar:before {
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33);
+  }
+}
+.toolbar .toolbar-inner {
+  height: 2.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  text-align: center;
+}
+.toolbar .title {
+  position: absolute;
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: .85rem;
+  font-weight: normal;
+  line-height: 2.2rem;
+  color: #3d4145;
+  text-align: center;
+  white-space: nowrap;
+}
+.toolbar .picker-button {
+  position: absolute;
+  right: 0;
+  box-sizing: border-box;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  color: #04BE02;
+  z-index: 1;
+  padding: 0 .5rem;
+}
 /* === Columns Picker === */
 .weui-picker-modal {
   width: 100%;
@@ -873,41 +959,6 @@ body {
 .weui-picker-modal .picker-modal-inner {
   position: relative;
   height: 10.8rem;
-}
-.weui-picker-modal .toolbar {
-  position: relative;
-  width: 100%;
-  font-size: .85rem;
-  line-height: 1.5;
-  color: #3d4145;
-  background: #f7f7f8;
-}
-.weui-picker-modal .toolbar:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: auto;
-  right: auto;
-  height: 1px;
-  width: 100%;
-  background-color: #d9d9d9;
-  display: block;
-  z-index: 15;
-  -webkit-transform-origin: 50% 0%;
-          transform-origin: 50% 0%;
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .weui-picker-modal .toolbar:before {
-    -webkit-transform: scaleY(0.5);
-            transform: scaleY(0.5);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-  .weui-picker-modal .toolbar:before {
-    -webkit-transform: scaleY(0.33);
-            transform: scaleY(0.33);
-  }
 }
 .weui-picker-modal .picker-columns {
   width: 100%;
@@ -1091,28 +1142,6 @@ body {
   backface-visibility: hidden;
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
-}
-.weui-picker-modal .title {
-  position: absolute;
-  display: block;
-  width: 100%;
-  padding: 0;
-  font-size: .85rem;
-  font-weight: normal;
-  line-height: 2.2rem;
-  color: #3d4145;
-  text-align: center;
-  white-space: nowrap;
-}
-.weui-picker-modal .picker-button {
-  position: absolute;
-  right: 0;
-  box-sizing: border-box;
-  height: 2.2rem;
-  line-height: 2.2rem;
-  color: #04BE02;
-  z-index: 1;
-  padding: 0 .5rem;
 }
 .weui-picker-overlay,
 .weui-picker-container {
@@ -1424,14 +1453,6 @@ body {
     -webkit-transform: scaleY(0.33);
             transform: scaleY(0.33);
   }
-}
-.weui-picker-modal .toolbar-inner {
-  height: 2.2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  text-align: center;
 }
 .picker-calendar-month-picker,
 .picker-calendar-year-picker {
@@ -2022,10 +2043,26 @@ button.swiper-pagination-bullet {
   overflow-x: hidden;
   overflow-y: auto;
 }
+.popup-bottom .weui-popup-modal {
+  height: auto;
+}
 .weui-popup-modal.weui-popup-modal-visible {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+}
+.weui-popup-modal .toolbar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+.weui-popup-modal .modal-content {
+  height: 100%;
+  padding-top: 2.2rem;
+  overflow: auto;
+  box-sizing: border-box;
 }
 .weui-popup-overlay,
 .weui-popup-container {

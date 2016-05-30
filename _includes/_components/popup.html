@@ -26,6 +26,18 @@
 $("#about").popup();
 {% endhighlight %}
 
+  <h3>非全屏模式</h3>
+
+  <p>在容器上增加一个类 <code>popup-bottom</code> 即可：</p>
+
+{% highlight html %}
+<div id="{{id}}" class="weui-popup-container popup-bottom">
+  <div class="weui-popup-modal">
+    你的内容放在这里...
+  </div>
+</div>
+{% endhighlight %}
+
   <h3>关闭 Popup</h3>
 
   <p>给任何链接加上 <code>class='close-popup'</code> 则点击之后可以关闭当前打开的 popup. 你也可以通过 <code>$.closePopup()</code> 来关闭。</p>

@@ -43,120 +43,132 @@ $("#my-input").calendar();
         <td>string</td>
         <td>参见源码</td>
         <td>Toolbar 的HTML结构</td>
+      </tr>
+      <tr>
+        <td>value</td>
+        <td>array</td>
+        <td></td>
+        <td>默认选择的日期，注意是个数组，比如 <code>["2016-12-12"]</code></td>
+      </tr>
+      <tr>
+        <td>disabled</td>
+        <td>Date Range</td>
+        <td></td>
+        <td>禁止选择的日期范围，这是一个 <code>Date Range</code>，请参考下文的说明</td>
+      </tr>
+      <tr>
+        <td>formatValue</td>
+        <td>function (p, values)</td>
+        <td></td>
+        <td>格式化函数. <b>values</b> 是用户选择的日期</td>
+      </tr>
+      <tr>
+        <td>monthNames</td>
+        <td>array</td>
+        <td>['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']</td>
+        <td>月名称</td>
+      </tr>
+      <tr>
+        <td>monthNamesShort</td>
+        <td>array</td>
+        <td>['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']</td>
+        <td>月名称缩写</td>
+      </tr>
+      <tr>
+        <td>dayNames</td>
+        <td>array</td>
+        <td>['周日', '周一', '周二', '周三', '周四', '周五', '周六']</td>
+        <td>周名称</td>
+      </tr>
+      <tr>
+        <td>dayNamesShort</td>
+        <td>array</td>
+        <td>['周日', '周一', '周二', '周三', '周四', '周五', '周六']</td>
+        <td>周名称缩写</td>
+      </tr>
+      <tr>
+        <td>dateFormat</td>
+        <td>'yyyy-mm-dd'</td>
+        <td>日期格式</td>
+      </tr>
+      <tr>
+        <td>minDate</td>
+        <td>undefined</td>
+        <td>最小可选日期，比如 <code>2015-06-01</code></td>
+      </tr>
+      <tr>
+        <td>maxDate</td>
+        <td>undefined</td>
+        <td>最大可选日期，比如 <code>2015-08-01</code></td>
+      </tr>
+      <tr>
+        <td>onChange</td>
+        <td>function(p, values, displayValues){}</td>
+        <td>当用户选择日期时触发</td>
+      </tr>
+      <tr>
+        <td>closeOnSelect</td>
+        <td>boolean</td>
+        <td>true</td>
+        <td>用户选择一个时间后就自动关闭</td>
+      </tr>
     </tr>
     <tr>
-      <td>value</td>
-      <td>array</td>
-      <td></td>
-      <td>默认选择的日期，注意是个数组，比如 <code>["2016-12-12"]</code></td>
+      <td>yearPicker</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Enable year picker in toolbar</td>
     </tr>
     <tr>
-      <td>disabled</td>
-      <td>Date Range</td>
-      <td></td>
-      <td>禁止选择的日期范围，这是一个 <code>Date Range</code>，请参考下文的说明</td>
-    </tr>
-    <tr>
-      <td>formatValue</td>
-      <td>function (p, values)</td>
-      <td></td>
-      <td>格式化函数. <b>values</b> 是用户选择的日期</td>
-    </tr>
-    <tr>
-      <td>monthNames</td>
-      <td>array</td>
-      <td>['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']</td>
-      <td>月名称</td>
-    </tr>
-    <tr>
-      <td>monthNamesShort</td>
-      <td>array</td>
-      <td>['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']</td>
-      <td>月名称缩写</td>
-    </tr>
-    <tr>
-      <td>dayNames</td>
-      <td>array</td>
-      <td>['周日', '周一', '周二', '周三', '周四', '周五', '周六']</td>
-      <td>周名称</td>
-    </tr>
-    <tr>
-      <td>dayNamesShort</td>
-      <td>array</td>
-      <td>['周日', '周一', '周二', '周三', '周四', '周五', '周六']</td>
-      <td>周名称缩写</td>
-    </tr>
-    <tr>
-      <td>dateFormat</td>
-      <td>'yyyy-mm-dd'</td>
-      <td>日期格式</td>
-    </tr>
-    <tr>
-      <td>minDate</td>
-      <td>undefined</td>
-      <td>最小可选日期，比如 <code>2015-06-01</code></td>
-    </tr>
-    <tr>
-      <td>maxDate</td>
-      <td>undefined</td>
-      <td>最大可选日期，比如 <code>2015-08-01</code></td>
+      <th colspan="4">回调函数</th>
     </tr>
     <tr>
       <td>onChange</td>
-      <td>function(p, values, displayValues){}</td>
-      <td>当用户选择日期时触发</td>
+      <td>function (p, values, displayValues)</td>
+      <td></td>
+      <td>Callback function that will be executed when picker value changed. <b>values</b> and <b>displayValues</b> are arrays where each item represents value/display value of related column</td>
     </tr>
     <tr>
-      <td>closeOnSelect</td>
-      <td>boolean</td>
-      <td>true</td>
-      <td>用户选择一个时间后就自动关闭</td>
+      <td>onMonthAdd</td>
+      <td>function (p, monthContainer)</td>
+      <td></td>
+      <td>Callback function that will be executed when newly generated month HTML element will be added to calendar.</td>
     </tr>
-  </tr>
-  <tr>
-    <td>yearPicker</td>
-    <td>boolean</td>
-    <td>true</td>
-    <td>Enable year picker in toolbar</td>
-  </tr>
-</tr>
-<tr>
-  <th colspan="4">回调函数</th>
-</tr>
-<tr>
-  <td>onChange</td>
-  <td>function (p, values, displayValues)</td>
-  <td></td>
-  <td>Callback function that will be executed when picker value changed. <b>values</b> and <b>displayValues</b> are arrays where each item represents value/display value of related column</td>
-</tr>
-<tr>
-  <td>onMonthAdd</td>
-  <td>function (p, monthContainer)</td>
-  <td></td>
-  <td>Callback function that will be executed when newly generated month HTML element will be added to calendar.</td>
-</tr>
-<tr>
-  <td>onDayClick</td>
-  <td>function (p, dayContainer, year, month, day)</td>
-  <td></td>
-  <td>Callback function that will be executed when user clicks/select any date</td>
-</tr>
-<tr>
-  <td>onOpen</td>
-  <td>function (p)</td>
-  <td></td>
-  <td>Callback function that will be executed when picker is opened</td>
-</tr>
-<tr>
-  <td>onClose</td>
-  <td>function (p)</td>
-  <td></td>
-  <td>Callback function that will be executed when picker is closed</td>
-</tr>
-</tbody>
+    <tr>
+      <td>onDayClick</td>
+      <td>function (p, dayContainer, year, month, day)</td>
+      <td></td>
+      <td>Callback function that will be executed when user clicks/select any date</td>
+    </tr>
+    <tr>
+      <td>onOpen</td>
+      <td>function (p)</td>
+      <td></td>
+      <td>Callback function that will be executed when picker is opened</td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td>function (p)</td>
+      <td></td>
+      <td>Callback function that will be executed when picker is closed</td>
+    </tr>
+  </tbody>
 </table>
 
-  <p>当用户选择完日期之后，会在 input 上触发 <code>change</code> 事件，你可以监听此事件。</p>
+<p>当用户选择完日期之后，会在 input 上触发 <code>change</code> 事件，你可以监听此事件。</p>
 
-  <p>如果你只同时选择日期和时间，请使用 <a href='#datetime-picker'>日期时间选择器</a></p>
+<p>如果你只同时选择日期和时间，请使用 <a href='#datetime-picker'>日期时间选择器</a></p>
+
+  <h3>方法</h3>
+
+  <p>通过 <code>$("xxx").calendar("methodname", args)</code> 可以调用method的方法，目前有如下方法可以调用：</p>
+
+{% highlight js %}
+$("#input").calendar("close");  //关闭弹窗
+$("#input").calendar("open");  //打开弹窗
+$("#input").calendar("setValue", ["2012-12-12"]);  //设置日期
+$("#input").calendar("destroy");  //销毁
+{% endhighlight %}
+
+
 </article>
