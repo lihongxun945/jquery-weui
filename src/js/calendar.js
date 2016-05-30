@@ -780,6 +780,7 @@
           p.close();
           if (p.params.input && p.input.length > 0) {
               p.input.off('click focus', openOnInput);
+              p.input.data("calendar", null);
           }
           $('html').off('click', closeOnHTMLClick);
       };
@@ -791,8 +792,12 @@
       return p;
   };
 
+  var format = function(d) {
+    return d < 10 ? "0"+d : d;
+  }
 
-  $.fn.calendar = function (params) {
+
+  $.fn.calendar = function (params, args) {
       params = params || {};
       return this.each(function() {
         var $this = $(this);
@@ -803,12 +808,22 @@
         } else {
           p.container = $this;
         }
-        //默认显示今天
-        if(!params.value) {
-          var today = new Date();
-          params.value = [today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()];
+
+        var calendar = $this.data("calendar");
+
+        if(!calendar) {
+          params.value = params.value || [$this.val()];
+          //默认显示今天
+          if(!params.value) {
+            var today = new Date();
+            params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+          }
+          calendar = $this.data("calendar", new Calendar($.extend(p, params)));
         }
-        new Calendar($.extend(p, params));
+
+        if(typeof params === typeof "a") {
+          calendar[params].call(calendar, args);
+        }
       });
   };
 

@@ -10,7 +10,7 @@
     if(!$input.val()) $input.parents(".weui_search_bar").removeClass("weui_search_focusing");
   })
   .on("click", ".weui_search_cancel", function(e) {
-    var $input = $(e.target).parents(".weui_search_bar").find(".weui_search_input").val("").blur();
+    var $input = $(e.target).parents(".weui_search_bar").removeClass("weui_search_focusing").find(".weui_search_input").val("").blur();
   })
   .on("click", ".weui_icon_clear", function(e) {
     var $input = $(e.target).parents(".weui_search_bar").find(".weui_search_input").val("").focus();

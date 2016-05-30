@@ -56,12 +56,24 @@
       t = titles[0];
     }
 
+    //caculate origin data
+    var origins = [];
+
+    this.config.items.forEach(function(d) {
+      values.each(function(i, dd) {
+        if(d.value == dd) origins.push(d);
+      });
+    });
+
+    console.log(origins);
+
     this.$input.val(t).data("values", v);
     this.$input.attr("value", t).attr("data-values", v);
 
     var data = {
       values: v,
-      titles: t
+      titles: t,
+      origins: origins
     };
     this.$input.trigger("change", data);
     this.config.onChange && this.config.onChange.call(this, data);

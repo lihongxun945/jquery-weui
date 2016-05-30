@@ -17,12 +17,29 @@
   overflow-x: hidden;
   overflow-y: auto;
 
+  .popup-bottom & {
+    height: auto;
+  }
 
   &.weui-popup-modal-visible {
     opacity: 1;
     transform: translate3d(0,0,0);
   }
 
+  .toolbar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .modal-content {
+    height: 100%;
+    padding-top: 2.2rem;
+    overflow: auto;
+    box-sizing: border-box;
+  }
 }
 
 .weui-popup-overlay, .weui-popup-container {
@@ -42,9 +59,7 @@
   &.weui-popup-container-visible {
     display: block;
   }
-}
 
-.weui-popup-container {
   .weui_cells {
     margin: 0;
     text-align: left;

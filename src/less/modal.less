@@ -53,6 +53,27 @@
   content: "\EA0B";
   color: #F76260;
 }
+.weui_toast_text {
+  min-height: 1em;
+  width: auto;
+  height: 45px;
+  border-radius: 25px;
+  margin-left: 0;
+  transform: scale(0.9) translate3d(-50%, 0, 0);
+  transform-origin: left;
+
+  &.weui_toast_visible {
+    transform: scale(1) translate3d(-50%, 0, 0);
+  }
+
+  .weui_icon_toast {
+    display: none;
+  }
+
+  .weui_toast_content {
+    margin: 10px 15px;
+  }
+}
 
 .weui_mask {
   opacity: 0;

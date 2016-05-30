@@ -6,7 +6,11 @@ WeUI的jQuery版本，兼容jQuery和Zepto。
 
 jQuery WeUI 使用官方的CSS组件，加上一系列jQuery插件提供简洁强大的API。如果你使用过jQuery/Zepto，那么jQuery WeUI 没有任何上手难度。
 
-官网地址： [http://lihongxun945.github.io/jquery-weui/](http://lihongxun945.github.io/jquery-weui/)
+更多文档请参阅官网： [http://lihongxun945.github.io/jquery-weui/](http://lihongxun945.github.io/jquery-weui/)
+
+微信扫描二维码立刻体验：
+
+![code](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/code.png)
 
 # 下载
 
@@ -37,3 +41,25 @@ jQuery WeUI 使用官方的CSS组件，加上一系列jQuery插件提供简洁�
 # LICENSE
 
 [MIT](https://opensource.org/licenses/MIT)，尽情享受开源代码。
+
+# 组件展示
+
+![grid](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/grid.png)
+
+![buttons](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/buttons.png)
+
+![cell](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/cell.png)
+
+![form](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/form.png)
+
+![dialog](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/dialog.png)
+
+![select](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/select.png)
+
+![calendar](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/calendar.png)
+
+![address](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/address.png)
+
+![actions](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/actions.png)
+
+![photos](https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/photos.png)
