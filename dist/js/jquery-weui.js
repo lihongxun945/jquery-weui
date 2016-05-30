@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.7.0 
+* jQuery WeUI V0.7.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -144,6 +144,35 @@
   $.fn.join = function(arg) {
     return this.toArray().join(arg);
   }
+
+  $.fn.data = function(key, value) {
+    if (typeof value === 'undefined') {
+      // Get value
+      if (this[0] && this[0].getAttribute) {
+        var dataKey = this[0].getAttribute('data-' + key);
+
+        if (dataKey) {
+          return dataKey;
+        } else if (this[0].elementDataStorage && (key in this[0].elementDataStorage)) {
+
+
+          return this[0].elementDataStorage[key];
+
+        } else {
+          return undefined;
+        }
+      } else return undefined;
+
+    } else {
+      // Set value
+      for (var i = 0; i < this.length; i++) {
+        var el = this[i];
+        if (!el.elementDataStorage) el.elementDataStorage = {};
+        el.elementDataStorage[key] = value;
+      }
+      return this;
+    }
+  };
 
 })($);
 
@@ -724,24 +753,31 @@
     dialog.addClass("weui_toast_visible");
   };
 
-  var hide = function() {
-    $(".weui_mask_transparent").hide();
+  var hide = function(callback) {
+    $(".weui_mask_transparent").remove();
     $(".weui_toast_visible").removeClass("weui_toast_visible").transitionEnd(function() {
-      $(this).remove();
+      var $this = $(this);
+      $this.remove();
+      callback && callback($this);
     });
   }
 
-  $.toast = function(text, style) {
+  $.toast = function(text, style, callback) {
+    if(typeof style === "function") {
+      callback = style;
+    }
     var className;
     if(style == "cancel") {
       className = "weui_toast_cancel";
     } else if(style == "forbidden") {
       className = "weui_toast_forbidden";
+    } else if(style == "text") {
+      className = "weui_toast_text";
     }
     show('<i class="weui_icon_toast"></i><p class="weui_toast_content">' + (text || "已经完成") + '</p>', className);
 
     setTimeout(function() {
-      hide();
+      hide(callback);
     }, toastDefaults.duration);
   }
 
@@ -1032,7 +1068,7 @@
     if(!$input.val()) $input.parents(".weui_search_bar").removeClass("weui_search_focusing");
   })
   .on("click", ".weui_search_cancel", function(e) {
-    var $input = $(e.target).parents(".weui_search_bar").find(".weui_search_input").val("").blur();
+    var $input = $(e.target).parents(".weui_search_bar").removeClass("weui_search_focusing").find(".weui_search_input").val("").blur();
   })
   .on("click", ".weui_icon_clear", function(e) {
     var $input = $(e.target).parents(".weui_search_bar").find(".weui_search_input").val("").focus();
@@ -1888,12 +1924,24 @@ Device/OS Detection
       t = titles[0];
     }
 
+    //caculate origin data
+    var origins = [];
+
+    this.config.items.forEach(function(d) {
+      values.each(function(i, dd) {
+        if(d.value == dd) origins.push(d);
+      });
+    });
+
+    console.log(origins);
+
     this.$input.val(t).data("values", v);
     this.$input.attr("value", t).attr("data-values", v);
 
     var data = {
       values: v,
-      titles: t
+      titles: t,
+      origins: origins
     };
     this.$input.trigger("change", data);
     this.config.onChange && this.config.onChange.call(this, data);
@@ -2821,6 +2869,7 @@ Device/OS Detection
           p.close();
           if (p.params.input && p.input.length > 0) {
               p.input.off('click focus', openOnInput);
+              p.input.data("calendar", null);
           }
           $('html').off('click', closeOnHTMLClick);
       };
@@ -2832,8 +2881,12 @@ Device/OS Detection
       return p;
   };
 
+  var format = function(d) {
+    return d < 10 ? "0"+d : d;
+  }
 
-  $.fn.calendar = function (params) {
+
+  $.fn.calendar = function (params, args) {
       params = params || {};
       return this.each(function() {
         var $this = $(this);
@@ -2844,12 +2897,22 @@ Device/OS Detection
         } else {
           p.container = $this;
         }
-        //默认显示今天
-        if(!params.value) {
-          var today = new Date();
-          params.value = [today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()];
+
+        var calendar = $this.data("calendar");
+
+        if(!calendar) {
+          params.value = params.value || [$this.val()];
+          //默认显示今天
+          if(!params.value) {
+            var today = new Date();
+            params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+          }
+          calendar = $this.data("calendar", new Calendar($.extend(p, params)));
         }
-        new Calendar($.extend(p, params));
+
+        if(typeof params === typeof "a") {
+          calendar[params].call(calendar, args);
+        }
       });
   };
 
@@ -3108,15 +3171,10 @@ Device/OS Detection
     $.closePopup();
 
     popup = $(popup);
-
     popup.addClass("weui-popup-container-visible");
-
     var modal = popup.find(".weui-popup-modal");
-
     modal.width();
-
     modal.addClass("weui-popup-modal-visible");
-
   }
 
 
@@ -3130,11 +3188,13 @@ Device/OS Detection
 
   $(document).on("click", ".close-popup", function() {
     $.closePopup();
-  });
-
-  $(document).on("click", ".open-popup", function() {
+  })
+  .on("click", ".open-popup", function() {
     $($(this).data("target")).popup();
-  });
+  })
+  .on("click", ".weui-popup-container", function(e) {
+    if($(e.target).hasClass("weui-popup-container")) $.closePopup();
+  })
 
   $.fn.popup = function() {
     return this.each(function() {
@@ -3263,126 +3323,5 @@ Device/OS Detection
             '<div class="notification-handle-bar"></div>' +
           '</div>'
   };
-
-}($);
-
-/* global $:true */
-+ function($) {
-
-  var defaults;
-
-  var PhotoBrowser = function(config) {
-    this.initConfig(config);
-    this.index = 0;
-  }
-
-  PhotoBrowser.prototype.initConfig = function(config) {
-    this.config = $.extend({}, defaults, config);
-
-    this.config.items = this.config.items.map(function(d, i) {
-      if(typeof d === typeof "a") {
-        return {
-          image: d,
-          caption: ""
-        }
-      }
-      return d;
-    });
-
-    this.tpl = $.t7.compile(this.config.tpl);
-    if(this.config.autoOpen) this.open();
-  }
-
-  PhotoBrowser.prototype.getHTML = function() {
-    return this.tpl(this.config);
-  }
-
-  PhotoBrowser.prototype.open = function() {
-    if(this._open) return false;
-    if(!this.modal) {
-      this.modal = $(this.getHTML()).appendTo(document.body);
-      this.swiperContainer = this.modal.find(".swiper-container");
-      this.modal.click($.proxy(function() {
-        this.close();
-      }, this));
-    }
-    var swiperContainer = this.swiperContainer;
-    this.modal.show();
-    this.modal.height();
-    this.modal.addClass("weui-photo-browser-modal-visible");
-    swiperContainer.transitionEnd($.proxy(function() {
-      swiperContainer.swiper({
-        onSlideChangeEnd: $.proxy(this.onSlideChangeEnd, this)
-      });
-      this.onSlideChangeEnd(swiperContainer.data("swiper"));
-    }, this));
-
-    swiperContainer.addClass("swiper-container-visible");
-
-    this._open = true;
-
-    if(this.config.onOpen) this.config.onOpen.call(this);
-  }
-
-  PhotoBrowser.prototype.close = function() {
-    this.swiperContainer.transitionEnd($.proxy(function() {
-      this.modal.hide();
-      this._open = false;
-      if(this.config.onClose) this.config.onClose.call(this);
-    }, this));
-    this.swiperContainer.removeClass("swiper-container-visible");
-    this.modal.removeClass("weui-photo-browser-modal-visible");
-  }
-
-  PhotoBrowser.prototype.onSlideChangeEnd = function(swiper) {
-    var index = this.index = swiper.snapIndex;
-    var next = swiper.container.find(".caption-item-"+index);
-
-    if(next.hasClass("active")) return;
-
-    var current = swiper.container.find(".caption-item.active").transitionEnd(function() {
-      current.hide();
-      next.show().addClass('active');
-    });
-
-    current.removeClass('active')
-
-    if(!current[0]) {
-      next.show().addClass('active');
-    }
-
-    if(this.config.onSlideChange) this.config.onSlideChange.call(this, index);
-
-  }
-
-  defaults = PhotoBrowser.prototype.defaults = {
-    items: [],
-    autoOpen: false, //初始化完成之后立刻打开
-    onOpen: undefined,
-    onClose: undefined,
-    tpl: '<div class="weui-photo-browser-modal">\
-            <div class="swiper-container">\
-              <div class="swiper-wrapper">\
-                {{#items}}\
-                <div class="swiper-slide">\
-                  <div class="photo-container">\
-                    <img src="{{image}}" />\
-                  </div>\
-                </div>\
-                {{/items}}\
-              </div>\
-              <div class="caption">\
-                {{#items}}\
-                <div class="caption-item caption-item-{{@index}}">{{caption}}</div>\
-                {{/items}}\
-              </div>\
-              <div class="swiper-pagination"></div>\
-            </div>\
-          </div>'
-  }
-
-  $.photoBrowser = function(params) {
-    return new PhotoBrowser(params);
-  }
 
 }($);
