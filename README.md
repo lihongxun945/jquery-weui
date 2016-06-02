@@ -62,13 +62,13 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 
 # 组件展示
 
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/grid.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/buttons.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/cell.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/form.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/dialog.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/select.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/calendar.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/address.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/actions.png" style="width: 320px" />
-<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/photos.png" style="width: 320px" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/grid.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/buttons.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/cell.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/form.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/dialog.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/select.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/calendar.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/address.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/actions.png" width="320" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/screenshot/photos.png" width="320" />
