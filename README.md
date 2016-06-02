@@ -29,7 +29,9 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 
 # 搭配框架
 
-如果不是很复杂的项目，基本只用 `jQuery WeUI` 即可满足需求。如果项目比较复杂，或者希望实现单页应用，推荐使用 [Vue](https://github.com/vuejs/vue/)
+如果不是很复杂的项目，基本只用 `jQuery WeUI` 即可满足需求。如果项目比较复杂，或者希望实现单页应用，推荐使用 [Vue](https://github.com/vuejs/vue/)。
+
+`jQuery WeUI` 搭配 `Vue` 使用非常简单，只需要在组件 `ready` 方法中初始化一下即可。
 
 # gulp
 
