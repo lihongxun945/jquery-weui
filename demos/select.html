@@ -94,6 +94,8 @@
       $("#in").select({
         title: "您的爱好",
         multi: true,
+        min: 2,
+        max: 3,
         items: [
           {
             title: "画画",
@@ -115,7 +117,24 @@
             value: 4,
             description: "额外的数据4"
           },
+          {
+            title: "健身",
+            value: 5,
+            description: "额外的数据5"
+          },
+          {
+            title: "撸管",
+            value: 6,
+            description: "额外的数据6"
+          },
         ],
+        beforeClose: function(values, titles) {
+          if(values.indexOf("5") !== -1) {
+            $.toast("不能选撸管", "cancel");
+            return false;
+          }
+          return true;
+        },
         onChange: function(d) {
           console.log(this, d);
         }

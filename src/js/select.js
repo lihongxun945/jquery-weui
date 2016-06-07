@@ -67,16 +67,16 @@
       });
     });
 
-    console.log(origins);
-
     this.$input.val(t).data("values", v);
     this.$input.attr("value", t).attr("data-values", v);
 
     var data = {
       values: v,
       titles: t,
-      origins: origins
+      origins: origins,
+      length: origins.length
     };
+    this.data = data;
     this.$input.trigger("change", data);
     this.config.onChange && this.config.onChange.call(this, data);
   }
@@ -132,13 +132,37 @@
       self.updateInputValue(values, titles);
 
       if(config.autoClose && !config.multi) $.closePicker();
+    })
+    .on("click", ".close-select", function() {
+      self.close();
     });
 
     this._open = true;
     if(config.onOpen) config.onOpen(this);
   }
-  Select.prototype.close = function(callback) {
-    var self = this;
+
+  Select.prototype.close = function(callback, force) {
+    var self = this,
+        beforeClose = this.config.beforeClose;
+
+    if(typeof callback === typeof true) {
+      force === callback;
+    }
+    if(!force) {
+      if(beforeClose && typeof beforeClose === 'function' && beforeClose.call(this, this.data.values, this.data.titles) === false) {
+        return false
+      }
+      if(this.config.multi) {
+        if(this.config.min !== undefined && this.data.length < this.config.min) {
+          $.toast("请至少选择"+this.config.min+"个", "text");
+          return false
+        }
+        if(this.config.max !== undefined && this.data.length > this.config.max) {
+          $.toast("最多只能选择"+this.config.max+"个", "text");
+          return false
+        }
+      }
+    }
     $.closePicker(function() {
       self.onClose();
       callback && callback();
@@ -179,15 +203,18 @@
     input: undefined, //输入框的初始值
     title: "请选择",
     multi: false,
-    closeText: "关闭",
+    closeText: "确定",
     autoClose: true, //是否选择完成后自动关闭，只有单选模式下才有效
     onChange: undefined, //function
+    beforeClose: undefined, // function 关闭之前，如果返回false则阻止关闭
     onClose: undefined, //function
     onOpen: undefined, //function
     split: ",",  //多选模式下的分隔符
+    min: undefined, //多选模式下可用，最少选择数
+    max: undefined, //单选模式下可用，最多选择数
     toolbarTemplate: '<div class="toolbar">\
       <div class="toolbar-inner">\
-      <a href="javascript:;" class="picker-button close-picker">{{closeText}}</a>\
+      <a href="javascript:;" class="picker-button close-select">{{closeText}}</a>\
       <h1 class="title">{{title}}</h1>\
       </div>\
       </div>',
