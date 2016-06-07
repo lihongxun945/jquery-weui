@@ -61,6 +61,8 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 - [WeUI](http://weui.github.io/weui/#/)
 - [Framework7](http://framework7.io/)
 - [MSUI](http://m.sui.taobao.org/)
+- [Jekyll](http://jekyllrb.com/)
+- [gulp](http://gulpjs.com/)
 
 # 组件展示
 
