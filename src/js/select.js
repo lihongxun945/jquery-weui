@@ -44,6 +44,8 @@
     if(config.input !== undefined) this.$input.val(config.input);
 
     this.parseInitValue();
+
+    this._init = true;
   }
 
   Select.prototype.updateInputValue = function(values, titles) {
@@ -82,7 +84,9 @@
   Select.prototype.parseInitValue = function() {
     var value = this.$input.val();
     var items = this.config.items;
-    if(value === undefined || value == null || value === "") return;
+
+    //如果input为空，只有在第一次初始化的时候才保留默认选择。因为后来就是用户自己取消了全部选择，不能再为他选中默认值。
+    if( !this._init && (value === undefined || value == null || value === "")) return;
 
     var titles = this.config.multi ? value.split(this.config.split) : [value];
     for(var i=0;i<items.length;i++) {
