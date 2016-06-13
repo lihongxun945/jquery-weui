@@ -66,6 +66,13 @@ article {
   font-size: 16px;
 }
 
+.navbar-brand {
+  padding: 11px;
+  img {
+    width: 32px;
+  }
+}
+
 .container-fluid {
   max-width: 1400px;
 }
@@ -145,14 +152,22 @@ article {
 .brand-header {
   position: relative;
   padding: 60px 0;
-  color: #cdbfe3;
+  color: #555;
   text-shadow: 0 1px 0 rgba(0,0,0,.1);
-  background-color: #6f5499;
-  background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+  background-color: #f4f4f4;
+  //background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
   background-repeat: repeat-x;
   margin-bottom: 20px;
 
   font-size: 20px;
+}
+
+.logo {
+  float: left;
+
+  img {
+    width: 250px;
+  }
 }
 
 footer {
@@ -180,6 +195,17 @@ h3 {
 
 code {
   border: 0;
+}
+
+.home {
+  .brand-header .container {
+    padding-top: 30px;
+
+    .logo {
+      margin-top: -30px;
+      margin-right: 40px;
+    }
+  }
 }
 
 
