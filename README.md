@@ -1,10 +1,10 @@
+# jQuery WeUI - 可能是最好用 WeUI 版本
+
 <p align="center">
   <a href="http://lihongxun945.github.io/jquery-weui/">
-    <img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/logo.png" width="200" />
+    <img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/logo.png" width="250" />
   </a>
 </p>
-
-# jQuery WeUI - 可能是最好用 WeUI 版本
 
 [![npm version](https://img.shields.io/npm/v/jquery-weui.svg)](https://www.npmjs.com/package/jquery-weui)
 
