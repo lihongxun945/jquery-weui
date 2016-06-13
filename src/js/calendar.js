@@ -600,7 +600,8 @@
               }
               weekHeaderHTML = '<div class="picker-calendar-week-days">' + weekHeaderHTML + '</div>';
           }
-          pickerClass = 'weui-picker-modal weui-picker-calendar ' + (p.params.cssClass || '');
+          pickerClass = 'weui-picker-calendar ' + (p.params.cssClass || '');
+          if(!p.inline) pickerClass = 'weui-picker-modal ' + pickerClass;
           var toolbarHTML = p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params.toolbarCloseText) : '';
           if (p.params.toolbar) {
               toolbarHTML = p.params.toolbarTemplate
@@ -812,7 +813,7 @@
         var calendar = $this.data("calendar");
 
         if(!calendar) {
-          params.value = params.value || [$this.val()];
+          if(!params.value && $this.val()) params.value = [$this.val()];
           //默认显示今天
           if(!params.value) {
             var today = new Date();

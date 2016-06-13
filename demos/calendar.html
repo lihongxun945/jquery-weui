@@ -17,14 +17,39 @@
       <div class="weui_cell">
         <div class="weui_cell_hd"><label for="date" class="weui_label">日期</label></div>
         <div class="weui_cell_bd weui_cell_primary">
-          <input class="weui_input" id="date" type="text" value="2016-05-03">
+          <input class="weui_input" id="date" type="text">
+        </div>
+      </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="date2" class="weui_label">日期</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="date2" type="text" value="2016-12-12">
         </div>
       </div>
     </div>
+
+    <div class="demos-header">
+      <h2 class="demos-second-title">内联日历</h2>
+    </div>
+
+    <div class="weui_cells weui_cells_form">
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="date3" class="weui_label">日期</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="date3" type="text">
+        </div>
+      </div>
+    </div>
+    <div id="inline-calendar"></div>
     <% include _foot.html %>
 
     <script>
       $("#date").calendar();
+      $("#date2").calendar();
+      $("#inline-calendar").calendar({
+        container: "#inline-calendar",
+        input: "#date3"
+      });
     </script>
   </body>
 </html>

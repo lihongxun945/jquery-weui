@@ -4,11 +4,6 @@
     height: 15rem;
     width: 100%;
     overflow: hidden;
-    @media (orientation: landscape) and (max-height: 415px) {
-        &:not(.picker-modal-inline) {
-            height: 11rem;
-        }
-    }
     .picker-modal-inner {
         overflow: hidden;
         height: 12.8rem;
@@ -71,9 +66,10 @@
     width: 100%;
     position: relative;
     .hairline(bottom, #ccc);
-    &:last-child {
-        .hairline-remove(bottom);
-    }
+    
+}
+.weui-picker-modal .picker-calendar-row:last-child {
+  .hairline-remove(bottom);
 }
 .picker-calendar-day {
     .flex-shrink(1);

@@ -2,6 +2,9 @@
 
 - `Select` 增加了 `min`, `max`, `beforeClose` 三个配置参数，修复了在多选模式下取消全部选择后导致的Bug。
 - `ActionSheet` 增加了 `title` 参数，可以设置一个标题。
+- `Calendar` 再次修复了会导致 `NAN` 的bug，增加了 `container` 参数可以指定内联到某一个容器。
+- `Piker`, `Select` 的 `z-index` 全部设置为 `100`，如果发现有不满足要求的地方可自行修改。
+- `City Picker` 中直辖市名称由格式 `北京 北京 东城区` 改为更友好的 `北京 北京市 东城区`
 
 
 # V0.7.1 - 2016-05-30
