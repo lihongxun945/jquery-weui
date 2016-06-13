@@ -1,8 +1,7 @@
 # V0.7.2 -
 
-- 修复了 `Select` 组件在多选模式下取消全部选择后导致的Bug。
-- `Select` 增加了 `min`, `max`, `beforeClose` 三个配置参数
-
+- `Select` 增加了 `min`, `max`, `beforeClose` 三个配置参数，修复了在多选模式下取消全部选择后导致的Bug。
+- `ActionSheet` 增加了 `title` 参数，可以设置一个标题。
 
 
 # V0.7.1 - 2016-05-30
