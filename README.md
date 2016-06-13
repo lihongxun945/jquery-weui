@@ -25,6 +25,12 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 - 详尽完善的官方文档
 - 标准稳定的API，基本可以保证版本透明更新
 
+# 搭配框架
+
+`jQuery WeUI` 的定位正如 `jQuery` 的定位：做一把锋利的小刀，而不是做一个笨重的大炮。
+
+`jQuery WeUI` 只是提供一些常用的UI控件，如果不是很复杂的项目，基本只用 `jQuery WeUI` 即可满足需求。如果项目比较复杂，或者希望实现单页应用，推荐使用 [Vue](https://github.com/vuejs/vue/) 或者 [Angular](https://angular.io/)。
+
 # 下载
 
 推荐通过npm来安装 `npm install jquery-weui`
@@ -32,12 +38,6 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 或者你可以 clone 这个仓库，自行编译，关于如何进行编译请参见下面的gulp章节。
 
 所有编译后的代码都在 `dist` 目录下，为了减少垃圾文件，master默认忽略了这个目录，你可以自行编译或者切换到 `build` 分支就可以看到这个目录。
-
-# 搭配框架
-
-如果不是很复杂的项目，基本只用 `jQuery WeUI` 即可满足需求。如果项目比较复杂，或者希望实现单页应用，推荐使用 [Vue](https://github.com/vuejs/vue/)。
-
-`jQuery WeUI` 搭配 `Vue` 使用非常简单，只需要在组件 `ready` 方法中初始化一下即可。
 
 # gulp
 
@@ -57,6 +57,12 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 - `dev` 开发分支
 - `gh-pages` 文档主分支
 - `gh-pages-dev` 文档的开发分支
+
+# 联系和讨论
+
+QQ 群：478234996
+
+群里更适合聊天，如果是发现bug或者有功能上的建议，推荐通过 `issue` 来讨论。
 
 # LICENSE
 
