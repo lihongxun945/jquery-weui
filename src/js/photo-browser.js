@@ -38,9 +38,12 @@
         this.close();
       }, this));
 
-      this.modal.on("gesturestart", $.proxy(this.onGestureStart, this));
-      this.modal.on("gesturechange", $.proxy(this.onGestureChange, this));
-      this.modal.on("gestureend", $.proxy(this.onGestureEnd, this));
+      var hammer = new Hammer(this.swiperContainer[0]);
+      hammer.get('pinch').set({ enable: true });
+
+      hammer.on("pinchstart", $.proxy(this.onGestureStart, this));
+      hammer.on("pinchmove", $.proxy(this.onGestureChange, this));
+      hammer.on("pinchend", $.proxy(this.onGestureEnd, this));
       this.modal.on($.touchEvents.start, $.proxy(this.onTouchStart, this));
       this.modal.on($.touchEvents.move, $.proxy(this.onTouchMove, this));
       this.modal.on($.touchEvents.end, $.proxy(this.onTouchEnd, this));
@@ -59,8 +62,6 @@
     swiperContainer.addClass("swiper-container-visible");
 
     this._open = true;
-
-    this.swiper.detachEvents();
 
     if(this.config.onOpen) this.config.onOpen.call(this);
   }
@@ -92,15 +93,18 @@
       next.show().addClass('active');
     }
 
-    next.find("img").transform("translate3d(0,0,0) scale(0)");
+    swiper.container.find("img").transition(0).transform("translate3d(0,0,0) scale(1)");
+    currentScale = 1, translate = "", scale = 1, currentDiff = [0, 0];
 
     if(this.config.onSlideChange) this.config.onSlideChange.call(this, index);
 
   }
 
   var gestureImg, currentScale = 1, translate = "", scale;
+  var win;
 
   PhotoBrowser.prototype.onGestureStart = function(e) {
+    win = [$(this.swiperContainer).width(), $(this.swiperContainer).height()];
     this.swiper.detachEvents();
     this.scaling = true;
     gestureImg = this.swiperContainer.find(".swiper-slide-active img");
@@ -109,7 +113,6 @@
 
   PhotoBrowser.prototype.onGestureChange = function(e) {
     if (!gestureImg || gestureImg.length === 0) return;
-    e = e.originalEvent;
     scale = e.scale * currentScale;
     if (scale > this.config.maxScale) {
       scale = this.config.maxScale - 1 + Math.pow((scale - this.config.maxScale + 1), 0.5);
@@ -136,12 +139,14 @@
     this.scaling = false;
 
     this.scaled = (scale !== 1);
+    this.adjust();
   }
 
   var start, diffX=0, diffY=0, currentDiff = [0, 0];
   PhotoBrowser.prototype.onTouchStart = function(e) {
-    if(this.scaling || !this.scaled) return;
+    win = [$(this.swiperContainer).width(), $(this.swiperContainer).height()];
     gestureImg = this.swiperContainer.find(".swiper-slide-active img");
+    if(this.scaling || !this.scaled) return;
     var p = $.getTouchPosition(e);
     start = p;
     diffX = diffY = 0;
@@ -156,14 +161,50 @@
     diffX = p.x - start.x;
     diffY = p.y - start.y;
 
-    translate = "translate3d("+ (currentDiff[0] + diffX) + "px, " + (currentDiff[1] + diffY) + "px, 0)";
+    var x = currentDiff[0] + diffX;
+    var y = currentDiff[1] + diffY;
+
+    translate = "translate3d("+ x + "px, " + y + "px, 0)";
 
     gestureImg.transform(translate + " scale(" + currentScale + ")");
+
+    var rect = gestureImg[0].getBoundingClientRect();
+
+    if(rect.left > 0) {
+    } else if(rect.right <= win[0]) {
+      var translateX = - (this.swiper.activeIndex * win[0] + win[0] - rect.right);
+      $(".swiper-wrapper").transform("translate3d("+translateX+"px, 0, 0)");
+    }
   }
 
   PhotoBrowser.prototype.onTouchEnd = function(e) {
     start = false;
     currentDiff = [currentDiff[0] + diffX, currentDiff[1] + diffY];
+    this.adjust();
+  }
+
+  PhotoBrowser.prototype.adjust = function(e) {
+    gestureImg.transition(200);
+    if(currentScale === 1) {
+      currentDiff = [0, 0, 0];
+      translate = "translate3d("+ currentDiff[0] + "px, " + currentDiff[1] + "px, 0)";
+      gestureImg.transform(translate + " scale(" + currentScale + ")");
+      return;
+    }
+    var rect = gestureImg[0].getBoundingClientRect();
+
+    //调整左右
+    if(rect.left > 0) currentDiff[0] = currentDiff[0] - rect.left;
+    else if(rect.right < win[0]) currentDiff[0] = currentDiff[0] + win[0] - rect.right;
+
+    //调整上下
+    if(rect.height < win[1]) {  // 如果高度没容器高，则自动居中
+      currentDiff[1] = 0;
+    } else {  //如果比容器高，那么要保证上下不能有空隙
+      if(rect.top > 0) currentDiff[1] = currentDiff[1] - rect.top;
+      else if(rect.bottom < win[1]) currentDiff[1] = currentDiff[1] + win[1] - rect.bottom;
+    }
+    
     translate = "translate3d("+ currentDiff[0] + "px, " + currentDiff[1] + "px, 0)";
     gestureImg.transform(translate + " scale(" + currentScale + ")");
   }
