@@ -1,5 +1,6 @@
 # V0.7.2 -
 
+- 新组件 `toptip`.
 - `Select` 增加了 `min`, `max`, `beforeClose` 三个配置参数，修复了在多选模式下取消全部选择后导致的Bug。
 - `ActionSheet` 增加了 `title` 参数，可以设置一个标题。
 - `Calendar` 再次修复了会导致 `NAN` 的bug，增加了 `container` 参数可以指定内联到某一个容器。

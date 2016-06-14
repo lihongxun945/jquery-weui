@@ -60,6 +60,8 @@
 
     this._open = true;
 
+    this.swiper.detachEvents();
+
     if(this.config.onOpen) this.config.onOpen.call(this);
   }
 
@@ -90,11 +92,13 @@
       next.show().addClass('active');
     }
 
+    next.find("img").transform("translate3d(0,0,0) scale(0)");
+
     if(this.config.onSlideChange) this.config.onSlideChange.call(this, index);
 
   }
 
-  var gestureImg, currentScale = 1;
+  var gestureImg, currentScale = 1, translate = "", scale;
 
   PhotoBrowser.prototype.onGestureStart = function(e) {
     this.swiper.detachEvents();
@@ -105,6 +109,7 @@
 
   PhotoBrowser.prototype.onGestureChange = function(e) {
     if (!gestureImg || gestureImg.length === 0) return;
+    e = e.originalEvent;
     scale = e.scale * currentScale;
     if (scale > this.config.maxScale) {
       scale = this.config.maxScale - 1 + Math.pow((scale - this.config.maxScale + 1), 0.5);
@@ -112,7 +117,8 @@
     if (scale < 1) {
       scale = 2 - Math.pow((1 - scale + 1), 0.5);
     }
-    gestureImg.transform('translate3d(0,0,0) scale(' + scale + ')');
+    gestureImg.transform(translate + ' scale(' + scale + ')');
+    console.log(scale);
   }
 
   PhotoBrowser.prototype.onGestureEnd = function() {
@@ -124,7 +130,7 @@
     }
 
     gestureImg.transition(200);
-    gestureImg.transform('translate3d(0,0,0) scale(' + scale + ')');
+    gestureImg.transform(translate + ' scale(' + scale + ')');
 
     currentScale = scale;
     this.scaling = false;
@@ -132,9 +138,10 @@
     this.scaled = (scale !== 1);
   }
 
-  var start, diffX, diffY, currentDiff;
+  var start, diffX=0, diffY=0, currentDiff = [0, 0];
   PhotoBrowser.prototype.onTouchStart = function(e) {
     if(this.scaling || !this.scaled) return;
+    gestureImg = this.swiperContainer.find(".swiper-slide-active img");
     var p = $.getTouchPosition(e);
     start = p;
     diffX = diffY = 0;
@@ -142,21 +149,23 @@
   }
 
   PhotoBrowser.prototype.onTouchMove = function(e) {
-    if(!start) return;
+    if(!start || this.scaling || !this.scaled) return;
     var p = $.getTouchPosition(e);
     _currentTouch = p;
-    e.preventDefault();
-    e.stopPropagation();
     var p = $.getTouchPosition(e);
     diffX = p.x - start.x;
     diffY = p.y - start.y;
 
-    gestureImg.transform("translate3d("+ (currentDiff[0] + diffX) + "px, " + (currentDiff[1] + diffY) + "px, 0) scale(" + currentScale + ")");
+    translate = "translate3d("+ (currentDiff[0] + diffX) + "px, " + (currentDiff[1] + diffY) + "px, 0)";
+
+    gestureImg.transform(translate + " scale(" + currentScale + ")");
   }
 
   PhotoBrowser.prototype.onTouchEnd = function(e) {
     start = false;
-    currentDiff = [diffX, diffY];
+    currentDiff = [currentDiff[0] + diffX, currentDiff[1] + diffY];
+    translate = "translate3d("+ currentDiff[0] + "px, " + currentDiff[1] + "px, 0)";
+    gestureImg.transform(translate + " scale(" + currentScale + ")");
   }
 
   defaults = PhotoBrowser.prototype.defaults = {

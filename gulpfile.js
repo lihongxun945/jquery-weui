@@ -46,6 +46,7 @@ gulp.task('js', function(cb) {
   gulp.src([
     './src/js/jquery-extend.js',
     './src/js/template7.js',
+    './src/js/hammer.js',
     './src/js/modal.js',
     './src/js/toast.js',
     './src/js/action.js',
@@ -59,7 +60,8 @@ gulp.task('js', function(cb) {
     './src/js/calendar.js',
     './src/js/datetime-picker.js',
     './src/js/popup.js',
-    './src/js/notification.js'
+    './src/js/notification.js',
+    './src/js/toptip.js'
   ])
     .pipe(concat({ path: 'jquery-weui.js'}))
     .pipe(header(banner))
