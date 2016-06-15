@@ -1,4 +1,4 @@
-# jQuery WeUI - 可能是最好用 WeUI 版本
+# jQuery WeUI - 打造微信公众号开发的瑞士军刀
 
 <p align="center">
   <a href="http://lihongxun945.github.io/jquery-weui/">
@@ -23,7 +23,7 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 - 轻量，无限制，可以结合任何主流JS框架使用，比如 `Vue, Angular, React` 等
 - 高性能的 CSS3 动画，低端手机上依然可以较流畅运行
 - 详尽完善的官方文档
-- 标准稳定的API，基本可以保证版本透明更新
+- 稳定的API，不间断的更新迭代
 
 # 搭配框架
 
