@@ -1,0 +1,68 @@
+.weui-num-keyboard {
+	width:100%;
+	position: fixed;
+	bottom: 0;
+	z-index:100000;
+	-webkit-user-select:none;
+}
+.weui-num-keyboard table{
+	width:100%;
+	border: 1px solid #ddd;
+	border-left:0;
+	border-right:0;
+	
+}
+.weui-num-keyboard table td{
+	width:25%;
+	text-align: center;
+	vertical-align:middle;
+	border: 1px solid #eee;
+    border-right: 0;
+    border-top: 0;
+    color:#000;
+    background:#fff;
+    font-size: 1.4em;
+    font-weight:bold;
+    padding:0.4em 0;
+    -webkit-tap-highlight-color:none
+}
+.weui-num-keyboard table td.hover{
+	color:#ccc;
+    background:#efefef;
+    
+}
+.weui-num-keyboard table td:first-child{
+	border-left:0;
+}
+.weui-num-keyboard table td:last-child{
+	border-right:0;
+}
+.weui-num-keyboard .weui-num-kb-ok{
+	background: @color-primary;
+	color:#ececec
+}
+.weui_navbar+.weui_tab_bd{
+	padding-top:0;
+	margin-top:50px;
+}
+
+.weui-input-mask:after{
+	content:'';
+	display:inline-block;
+	width:2px;
+	margin-left:2px;
+	height:100%;
+	background:@color-primary;
+	position:absolute;
+	top:0;
+	-webkit-animation:twinkling 1s infinite ease-in-out;
+}
+@-webkit-keyframes twinkling{
+	0%{
+	 opacity:0;
+	}
+	
+	100%{
+	  opacity:1;
+	}
+}
