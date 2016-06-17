@@ -37,7 +37,7 @@ gulp.task('js', function(cb) {
   gulp.src([
     './src/js/swiper.jquery.js',
     './src/js/swiper-wrap.js',
-    './src/js/photo-browser.js'
+    './src/js/photos.js'
   ])
     .pipe(concat({ path: 'swiper.js'}))
     .pipe(gulp.dest('./dist/js/'))
