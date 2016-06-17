@@ -1,0 +1,268 @@
+//num keyboard
++function($) {
+	"use strict";
+
+	var defaults;
+	
+	var NumKeyboard = function(params) {
+		this.params = params;
+		var that=this;
+		$(document).on(params.triggerEvent,params.bindClass,function(){
+			that._$input=$(this);
+			$(this).attr('readonly',true);
+			
+			if($(this).data('currency')!='true'){
+				that.params.currency=false;
+			}else{
+				that.params.currency=true;
+			}
+			that.show();
+		});
+	}
+	
+	NumKeyboard.prototype = {
+		_$input:null,
+		_$inputMask:null,
+		_$doc:$(document),
+		_$this:$('.weui-num-keyboard'),
+		_$kb:null,
+		_REGEXP_MONEY : new RegExp(/^((\d{1,3}(\,\d{3})*)|\d*)?(\.\d*)?$/),
+		_numsContent : [ '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' ],
+		_keysContent : {
+			NaN : null,
+			dot : '.',
+			ok : '确定',
+			del : '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAgCAYAAACcuBHKAAAAAXNSR0IArs4c6QAAAe1JREFUWAntlksrhFEYx8clQlEWLimWRElioUQpt2ShlFJWVuJDWPgAvoCFy85CkoUoZSOytFQSua7YuCV+f3knb9553jOOKYt56mc81/nPmXPOvIlE1rIr8A9XIMdBUwk1HdANFQ71VskTyX3YhZugME5EG4WbcArbcAU+VkRzF+gDzcI8mKZPfwvDZtXvkpW0nUG/1S61dzBkFXnmRuk/TDWjh4QE9KUq+KN4IXPeomb1EpQACYmzMgry4orIlxs12qghG8CTAG0aFxujaAUsIdpP68awkIhBCiWg02iISk0RTCVEAragOKrxK5YUUUNApyBdAcHsKCEuAtSfFLGMM6uIh30X4ipAb5cUcY7T4CEgaJWQe9gB6ysI6vX6KSKXf7SxXhXxtAv6S+EBntOZJREHoCX0MfXPQAnoel8E69SQDls9rk5GYzjs7EXtge97xBqU3BMqmoBLaJKThkUJCNpdhIREqFFC9CvZLMfBdLnF3QMSsmTM+iFCteNwDS1yYqyWvMspsE5epAi9r67jG2iVk2F7tObrZ1a3qB5qMmXtDNaBMG2ErIS4fDXmoIhkHbETmFQuX39S2Brxd9iDXdgAXUg+VkCzNv40zMECJOKeMVVTBXrOENXgYy80H8MqHPkMyvZmVyDjK/AB3K1SaTLHaMkAAAAASUVORK5CYII=" />',
+			hide : '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA5xJREFUWAntVU1oFFkQruruMWMmWf//Rl0MTLon/kRFknFRFn92/QleFCKKsNdVwdOyehAUvKi4Cznq0dsKe5KFFWEl7rJoRncFITLdJiR60ICgm9UwyXT3K6vavNjBzDiGqJcUvK56VfWqvq73Xj2AaZquwGeuAMbzNzc3p4rF5BZEqovrp0o2CIfISNx03b9f6pgxAO2mY/ffA8A12viRuLskXbu6s7MzkPiWTrIy058NJTnSvwziD62fSo4EXxNAbmCguJbj/iOxxwAEBlpRORT85T7MH5/KxDpW1s6dBaAcBpDQujEAWqG5bbd+x4g3DhXNH5JJlTCRzhNSp+fdueI4Lfu5Stt8PzxRV+cHI8XkT4hwu+DlL2cbW/aRgTtKJTw9d27w/NVLqwOJ7hce5i/p2HFuxCdxGQHbAOFIIqG+MAw1n+XDSLgj8iH8Fgi+R5yxYHg4NVtsRLAnsiFsE5tphunBQWsm//FRLvveeOy4XBZAqOAMGrCrr6/rWTqdesxnYzeacF4Ws/4CgWpbvrym3/OWDYgtJDwtNj+0OsQG8N8Dmb+Pym5BT0+XBIiC8IlVLF/TwQqFvMey58mXyXXf2np7b/WwSgZkMvNqhFeisgAcu/UcLxwtHfa6XldbtrF1DyH8DKh+dN27V7N2629c3qTr5b9xnNxWILoIiCddt+tXx879QkAbKiUXW1kAbEvzsMWJSSoAZNAsILSJjNkyZ2rgURtJENYDGGxTc2SOQCuYZUQGA0oRr/ThU7+W/5qcxpaOmJ+cERmxhhXNtYvoK9nGrZdrKDmaMrmNOkDZCjjOpnrLKqW6u+8MiHNT04YlSql4Mh1jQu66956wgRoacotME4p8pv6fyLEsACL/UuDjwUxm/ULLqkmpUPUBmBPFmFDHFV2XSAz1Bj7xD+Dv7MQ3410qC4DB3+eFi02zdlipYUI0b3JjqroCVhC+GFEjvmmkbrxp7+8mF01ZANzx5BbIEJLXa4sIk6DtldaMAUB+g/kasS9mudUeqrRosjZOsIq7JASSa5TGAFjWq0Lgpx5xkXfyVdupHT4Cf1osIm/vGxq3p3JiZ1jqAFcjusvaaao4N5NBRP/K6A2Jwo4DUG0i227ZziDbtT+/doGZsE51d996rnXVcmkUH0z19epP3ktbXj0ZCrAwmeSSeFIVkIVrvtw8p5Qs3ebTdN3z8sdE98nJtr9aCtBefXf65AinE05XoIoKvAY+WzSNCj5nmgAAAABJRU5ErkJggg==" />'
+		},
+		
+		_renderContent: function(){
+			if(this._$this.length>0){
+				return;
+			}
+			this._$kb=$('<div class=\"weui-num-keyboard\"></div>')
+			 
+			var $table=$('<table border="0" cellspacing="0" cellpadding="0"></table>');
+			
+			var numberAry=this._numsContent;
+			if(this.params.randomKeys){numberAry = this._shuffle(this._numsContent)};
+			
+			numberAry.splice(3, 0, this._keysContent.del);
+			numberAry.splice(7, 0, this._keysContent.NaN);//添加占位（删除按钮占用两行）
+			
+			numberAry.splice(11, 0, this._keysContent.ok);
+			numberAry.splice(12, 0, this._keysContent.dot);
+			numberAry.push(this._keysContent.hide);
+			numberAry.push(this._keysContent.NaN);//添加占位（确定按钮占用两行）
+		
+			
+			var rows=4;//四行布局
+			var maxCols=4;//最大列数
+			
+			var index=0;
+			for(var row=0;row<rows;row++){
+				var $tr=$('<tr></tr>');
+				for(var col=0;col<maxCols;col++){
+					var keyContent=numberAry[index];
+					if(keyContent!=this._keysContent.NaN){
+						var $td=$('<td></td>');
+						$td.html(keyContent);
+					}
+					
+					if(index==3||index==11){
+						$td.attr('rowspan',2);
+					}
+					
+					if(keyContent==this._keysContent.ok){
+						$td.addClass('weui-num-kb-ok');
+					}
+					else if(keyContent==this._keysContent.del){
+						$td.addClass('weui-num-kb-del');
+					}
+					else if(keyContent==this._keysContent.dot){
+						$td.addClass('weui-num-kb-dot');
+					}
+					else if(keyContent==this._keysContent.hide){
+						$td.addClass('weui-num-kb-hide');
+					}
+					else{
+						$td.addClass('weui-num-kb-num');
+					}
+					
+					$tr.append($td);
+					
+					index++;
+				}
+				
+				$table.append($tr);
+			}
+			this._$kb.append($table)
+			this._$kb.appendTo(document.body);
+			
+			this._$this=$('.weui-num-keyboard');
+			
+			this._bindEvent();
+		},
+		_bindEvent:function(){
+			var that=this;
+			
+			this._$doc.on(this.params.triggerEvent, '.weui-num-kb-num',
+					function(e) {
+				        var key=$(this).text();
+				        that._$input.trigger('keyboard.input',{key:key});
+				       // that._$input.val(that._$input.val()+key);
+					});
+			this._$doc.on(this.params.triggerEvent, '.weui-num-kb-dot',
+					function(e) {
+				        that._$input.trigger('keyboard.input',{key:'.'});
+					});
+			this._$doc.on(this.params.triggerEvent, '.weui-num-kb-ok',
+					function(e) {
+				       that.hide();
+					});
+			this._$doc.on(this.params.triggerEvent, '.weui-num-kb-del',
+					function(e) {
+				        var value=that._$input.val();
+				        if(value&&value!=''){
+				        	value=value.substr(0, value.length - 1);
+				        	that._$input.val(value);
+				        	that._$inputMask.text(value);
+				        	that._$input.trigger('input');
+				        }
+					});
+			this._$doc.on(this.params.triggerEvent, '.weui-num-kb-hide',
+					function(e) {
+				         that.hide();
+					});
+			this._$doc.on($.touchEvents.start, 'td', function() {
+				$(this).addClass('hover')
+			});
+
+			this._$doc.on($.touchEvents.end, 'td', function() {
+				$(this).removeClass('hover')
+			});
+			
+		    if(this._$input){
+		    	this._$input.on('keyboard.input',function(e,data){
+		    		
+		    		var value=that._$input.val();
+		    		
+		    		var newValue=value+(data.key||'');
+		    		
+		    		if(that.params.currency){
+		    			if(that._isMoney(newValue)){
+		    				value=newValue;
+		    			}
+			    	}else{
+			    		value=newValue;
+			    	}
+		    		
+		    		if(value.length>that.params.maxLength){
+		    			return;
+		    		}
+		    		that._$input.val(value);
+		    		that._$inputMask.text(value);
+		    		
+		    		that._$input.trigger('input');
+		    	})
+		    	
+				this._$doc.on($.touchEvents.start,function(e){
+					var $this=$(this);
+					var ev = e || window.event;
+					var clickEl = ev.element || ev.target;
+					
+					var $clickEl=$(clickEl);
+					if($clickEl.closest('.weui-num-keyboard').length>0||$clickEl.hasClass('weui-num-keyboard')){
+						return;
+					}
+					if(!$clickEl.is(that._$input)){
+						that.hide();
+						that._$input.attr('readonly',true);
+					}
+				})	
+		    }
+		},
+		/*
+		* 隐藏键盘
+		* */
+		hide:function(){
+			this._$this.hide();
+			this._$inputMask.hide();
+			this._$input.show();
+			$(document).trigger('keyboard.hide');
+		},
+		show:function(){
+			this._renderMask();
+			this._renderContent();
+			this._$this.show();
+			$(document).trigger('keyboard.show',{width:this._$this.width(),height:this._$this.height()});
+		},
+		_renderMask:function(){
+			var width=this._$input.width();
+			var height=this._$input.height();
+			var value=this._$input.val();
+			
+			this._$input.hide();
+			var $parentCell=this._$input.parent();
+			this._$inputMask=$parentCell.find('.weui-input-mask');
+			if(this._$inputMask.length==0){
+				this._$inputMask=$('<div class="weui-input-mask"></div>');
+				this._$inputMask.css({width:width,height:height});
+				
+				$parentCell.append(this._$inputMask);
+				
+			}else{
+				this._$inputMask.show();
+			}
+			this._$inputMask.text(value);
+			
+			
+		},
+		_isMoney:function(money){
+			if(this._REGEXP_MONEY.test(money))
+			{
+			  var dotIndex = money.indexOf('.');
+			  if(dotIndex<0){
+				  return true;
+			  }
+			  if(money.length-dotIndex<=3){
+				  return true;
+			  }
+			  return false;
+			}
+			return false;
+		},
+		// 乱序方法
+		_shuffle: function (inputArr) {
+			var valArr = [], k;
+
+			for (k in inputArr) { // Get key and value arrays
+				if (inputArr.hasOwnProperty(k)) {
+					valArr.push(inputArr[k]);
+				}
+			}
+			valArr.sort(function () {
+				return 0.5 - Math.random();
+			});
+
+			return valArr;
+		},
+	}
+
+	
+	
+	$.num_keyboard = function(params) {
+		params = $.extend({}, defaults, params);
+
+		return new NumKeyboard(params)
+	};
+	defaults = $.num_keyboard.prototype.defaults = {
+			bindClass : '.num_keyboard',
+			triggerEvent : 'click',
+			placeholder : "",
+			maxLength : 12, // 限制输入的字数
+			randomKeys : false,// 是否要随机布局
+			currency:true
+		
+	};
+}($);
