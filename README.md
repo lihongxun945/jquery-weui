@@ -1,4 +1,6 @@
 # jQuery WeUI - 可能是最好用 WeUI 版本
+##修改添加select组件，虚拟数字键盘，信用卡有效期输入控件
+
 
 [![npm version](https://img.shields.io/npm/v/jquery-weui.svg)](https://www.npmjs.com/package/jquery-weui)
 
