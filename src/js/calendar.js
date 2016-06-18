@@ -815,7 +815,7 @@
         if(!calendar) {
           if(!params.value && $this.val()) params.value = [$this.val()];
           //默认显示今天
-          if(!params.value) {
+          if(!params.value || new Date(params.value[0]).toString() == 'Invalid Date') {
             var today = new Date();
             params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
           }
