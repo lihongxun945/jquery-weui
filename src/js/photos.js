@@ -268,8 +268,8 @@
         this.imageDiff = { x: 0, y: 0 };
         this.imageLastDiff = { x: 0, y: 0 };
 
-        if(this.config.onSlideEnd) {
-          this.config.onSlideEnd.call(this, this.activeIndex);
+        if(this.config.onSlideChange) {
+          this.config.onSlideChange.call(this, this.activeIndex);
         }
 
       }, this));
@@ -289,7 +289,7 @@
     onClose: undefined,
     initIndex: 0, //打开时默认显示第几张
     maxScale: 3,
-    onSlideEnd: undefined,
+    onSlideChange: undefined,
     tpl: '<div class="weui-photo-browser-modal">\
             <div class="swiper-container">\
               <div class="swiper-wrapper">\
