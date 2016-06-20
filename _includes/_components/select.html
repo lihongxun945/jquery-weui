@@ -124,6 +124,16 @@ $("#in").select({
       <td>是否多选</td>
     </tr>
     <tr>
+      <td>max</td>
+      <td>undefined</td>
+      <td>多选模式下，最多可选个数, <code>V0.7.2</code></td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>undefined</td>
+      <td>多选模式下，最少可选个数, <code>V0.7.2</code></td>
+    </tr>
+    <tr>
       <td>split</td>
       <td>","</td>
       <td>分隔符</td>
@@ -147,6 +157,11 @@ $("#in").select({
       <td>onClose</td>
       <td><code>undefined</code></td>
       <td>弹层关闭之后执行此回调函数。 <code>V0.7.0</code> 开始支持此配置</td>
+    </tr>
+    <tr>
+      <td>beforeClose</td>
+      <td><code>undefined</code></td>
+      <td>弹层关闭之前执行此回调函数，如果返回 <code>false</code> 则可以阻止关闭。 <code>V0.7.2</code></td>
     </tr>
   </table>
 

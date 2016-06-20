@@ -22,7 +22,28 @@ $.actions({
 
   <h3>参数说明</h3>
 
-  <p>通过 <code>$.actions(params)</code> 方法打开 ActionSheet。其中params参数中的 <code>actions</code> 定义了弹出的菜单。 <code>actions</code> 参数是一个数组，数组中的每一项都是一个菜单。</p>
+  <p>通过 <code>$.actions(params)</code> 方法打开 ActionSheet。可用参数如下：</p>
+
+  <table class='table'>
+    <tr>
+      <th>参数名</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>actions</td>
+      <td>菜单项，关于每一个菜单项的配置请参见下文</td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>可以给弹层设置一个标题，如果不设置则不会显示标题</td>
+    </tr>
+    <tr>
+      <td>onClose</td>
+      <td>关闭弹层的回调函数</td>
+    </tr>
+  </table>
+  
+  <p><code>actions</code> 参数是一个数组，数组中的每一项都是一个菜单。</p>
   <p>对每一个菜单的可用配置如下：</p>
 
   <table class='table'>
