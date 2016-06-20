@@ -176,8 +176,25 @@ footer {
   border-top: 1px solid #ccc;
   background: #f4f4f4;
   margin: 100px 0 0;
-  padding: 40px;
+  padding: 20px;
   text-align: center;
+
+  .links {
+    margin: 20px 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    + li {
+      margin-left: 15px;
+    }
+  }
+
+  a {
+    color: #999;
+  }
+
 }
 
 h2 {

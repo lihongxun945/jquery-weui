@@ -6,7 +6,7 @@ $.rawCitiesData = [
         "name":"北京",
         "sub": [
           {
-          "name": "北京",
+          "name": "北京市",
 
           "sub":[
               {
@@ -697,7 +697,7 @@ $.rawCitiesData = [
         "name":"上海",
         "sub": [
           {
-            "name": "上海",
+            "name": "上海市",
             "sub":[
                 {
                     "name":"请选择"
@@ -770,7 +770,7 @@ $.rawCitiesData = [
         "name":"天津",
         "sub": [
           {
-            "name": "天津",
+            "name": "天津市",
             "sub":[
               {
                 "name":"请选择"
@@ -840,7 +840,7 @@ $.rawCitiesData = [
         "name":"重庆",
         "sub": [
           {
-            "name": "重庆",
+            "name": "重庆市",
             "sub":[
                 {
                     "name":"请选择"

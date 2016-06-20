@@ -126,5 +126,12 @@
     <script src="../lib/jquery-2.1.4.js"></script>
 <script src="../js/jquery-weui.js"></script>
 
+    <script>
+      $(document).on("open", ".weui-popup-modal", function() {
+        console.log("open popup");
+      }).on("close", ".weui-popup-modal", function() {
+        console.log("close popup");
+      });
+    </script>
   </body>
 </html>
