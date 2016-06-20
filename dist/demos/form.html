@@ -114,23 +114,37 @@
       <div class="weui_cell weui_cell_warn">
         <div class="weui_cell_hd"><label class="weui_label">qq</label></div>
         <div class="weui_cell_bd weui_cell_primary">
-          <input class="weui_input" type="tel" placeholder="请输入qq号">
+          <input id='tel' class="weui_input" type="tel" placeholder="请输入qq号">
         </div>
       </div>
       <div class="weui_cell weui_vcode weui_cell_warn">
         <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
         <div class="weui_cell_bd weui_cell_primary">
-          <input class="weui_input" type="number" placeholder="请输入验证码">
+          <input id='code' class="weui_input" type="number" placeholder="请输入验证码">
         </div>
         <div class="weui_cell_ft">
           <i class="weui_icon_warn"></i>
           <img src="images/vcode.jpg">
         </div>
       </div>
+      <div class="weui_cells_tips">底部说明文字底部说明文字</div>
+      <div class="weui_btn_area">
+        <a class="weui_btn weui_btn_primary" href="javascript:" id="showTooltips">确定</a>
+      </div>
     </div>
 
     <script src="../lib/jquery-2.1.4.js"></script>
 <script src="../js/jquery-weui.js"></script>
 
+
+    <script>
+      $("#showTooltips").click(function() {
+        var tel = $('#tel').val();
+        var code = $('#code').val();
+        if(!tel || !/1[3|4|5|7|8]\d{9}/.test(tel)) $.toptip('请输入手机号');
+        else if(!code || !/\d{6}/.test(code)) $.toptip('请输入六位手机验证码');
+        else $.toptip('提交成功', 'success');
+      });
+    </script>
   </body>
 </html>
