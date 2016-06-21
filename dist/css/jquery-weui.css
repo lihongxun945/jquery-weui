@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.7.1 
+* jQuery WeUI V0.7.2 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -934,7 +934,6 @@ body {
 .weui-picker-modal {
   width: 100%;
   position: absolute;
-  z-index: 100;
   bottom: 0;
   text-align: center;
   border-radius: 0;
@@ -1151,6 +1150,7 @@ body {
   right: 0;
   height: 0;
   width: 100%;
+  z-index: 100;
 }
 .city-picker .col-province {
   width: 5rem;
@@ -1182,11 +1182,6 @@ body {
   height: 15rem;
   width: 100%;
   overflow: hidden;
-}
-@media (orientation: landscape) and (max-height: 415px) {
-  .weui-picker-calendar:not(.picker-modal-inline) {
-    height: 11rem;
-  }
 }
 .weui-picker-calendar .picker-modal-inner {
   overflow: hidden;
@@ -1314,7 +1309,7 @@ body {
             transform: scaleY(0.33);
   }
 }
-.picker-calendar-row:last-child:after {
+.weui-picker-modal .picker-calendar-row:last-child:after {
   display: none;
 }
 .picker-calendar-day {
@@ -1992,35 +1987,27 @@ button.swiper-pagination-bullet {
 .weui_actionsheet {
   z-index: 100;
 }
-.weui_actionsheet .color-primary {
-  color: #04BE02;
+.weui_actionsheet .weui_actionsheet_title {
+  padding: 8px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #999;
+  background-color: #f4f4f4;
+  position: relative;
 }
-.weui_actionsheet .color-danger {
-  color: #f6383a;
-}
-.weui_actionsheet .color-warning {
-  color: #f60;
-}
-.weui_actionsheet .color-success {
-  color: #4cd964;
-}
-.weui_actionsheet .bg-primary,
-.weui_actionsheet .bg-success,
-.weui_actionsheet .bg-danger,
-.weui_actionsheet .bg-warning {
-  color: white;
-}
-.weui_actionsheet .bg-primary {
-  background-color: #04BE02;
-}
-.weui_actionsheet .bg-danger {
-  background-color: #f6383a;
-}
-.weui_actionsheet .bg-warning {
-  background-color: #f60;
-}
-.weui_actionsheet .bg-success {
-  background-color: #4cd964;
+.weui_actionsheet .weui_actionsheet_title:after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  border-top: 1px solid #d9d9d9;
+  color: #d9d9d9;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
 }
 .weui-popup-modal {
   width: 100%;
@@ -2189,6 +2176,11 @@ button.swiper-pagination-bullet {
   -webkit-transition-delay: .5s;
           transition-delay: .5s;
 }
+.weui-photo-browser-modal .swiper-container .swiper-pagination {
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+}
 .weui-photo-browser-modal .photo-container {
   height: 100%;
   display: -webkit-box;
@@ -2199,6 +2191,7 @@ button.swiper-pagination-bullet {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
 }
 .weui-photo-browser-modal .photo-container img {
   max-width: 100%;
@@ -2215,6 +2208,11 @@ button.swiper-pagination-bullet {
   min-height: 3rem;
   font-size: 14px;
   z-index: 10;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+  -webkit-transition-delay: .5s;
+          transition-delay: .5s;
+  opacity: 0;
 }
 .weui-photo-browser-modal .caption .caption-item {
   display: none;
@@ -2224,5 +2222,50 @@ button.swiper-pagination-bullet {
 }
 .weui-photo-browser-modal .caption .caption-item.active {
   display: block;
+  opacity: 1;
+}
+.weui-photo-browser-modal .swiper-container-visible .caption {
+  opacity: 1;
+}
+.color-primary {
+  color: #04BE02;
+}
+.color-danger,
+.color-error {
+  color: #f6383a;
+}
+.color-warning {
+  color: #f60;
+}
+.color-success {
+  color: #4cd964;
+}
+.bg-primary,
+.bg-success,
+.bg-danger,
+.bg-error,
+.bg-warning {
+  color: white;
+}
+.bg-primary {
+  background-color: #04BE02;
+}
+.bg-danger,
+.bg-error {
+  background-color: #f6383a;
+}
+.bg-warning {
+  background-color: #f60;
+}
+.bg-success {
+  background-color: #4cd964;
+}
+.weui_toptips {
+  z-index: 100;
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+.weui_toptips.weui_toptips_visible {
   opacity: 1;
 }
