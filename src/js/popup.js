@@ -17,15 +17,20 @@
     popup.addClass("weui-popup-container-visible");
     var modal = popup.find(".weui-popup-modal");
     modal.width();
+    modal.transitionEnd(function() {
+      modal.trigger("open");
+    });
     modal.addClass("weui-popup-modal-visible");
   }
 
 
   $.closePopup = function(container, remove) {
     $(".weui-popup-modal-visible").removeClass("weui-popup-modal-visible").transitionEnd(function() {
-      $(this).parent().removeClass("weui-popup-container-visible");
-      remove && $(this).parent().remove();
-    }).trigger("close");
+      var $this = $(this);
+      $this.parent().removeClass("weui-popup-container-visible");
+      $this.trigger("close");
+      remove && $this.parent().remove();
+    })
   };
 
 

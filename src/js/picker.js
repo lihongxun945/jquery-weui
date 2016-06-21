@@ -570,7 +570,7 @@
       };
 
       // Close
-      p.close = function () {
+      p.close = function (force) {
           if (!p.opened || p.inline) return;
           if (inPopover()) {
               $.closePicker(p.popover);

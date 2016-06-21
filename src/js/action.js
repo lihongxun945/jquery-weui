@@ -13,7 +13,14 @@
       return '<div class="weui_actionsheet_cell ' + (d.className || "") + '">' + d.text + '</div>';
     }).join("");
 
+    var titleHtml = "";
+    
+    if (params.title) {
+      titleHtml = '<div class="weui_actionsheet_title">' + params.title + '</div>';
+    }
+
     var tpl = '<div class="weui_actionsheet " id="weui_actionsheet">'+
+                titleHtml +
                 '<div class="weui_actionsheet_menu">'+
                 actionsHtml +
                 '</div>'+
@@ -62,6 +69,7 @@
   });
 
   var defaults = $.actions.prototype.defaults = {
+    title: undefined,
     onClose: undefined,
     /*actions: [{
       text: "菜单",

@@ -1,43 +1,25 @@
 .weui_actionsheet {
   z-index: 100;
 
+  .weui_actionsheet_title {
+    padding: 8px 0;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+    background-color: #f4f4f4;
+    position: relative;
 
-  .color-primary {
-    color: @color-primary;
-  }
-
-  .color-danger {
-    color: @color-danger;
-  }
-
-  .color-warning {
-    color: @color-warning;
-  }
-
-  .color-success {
-    color: @color-success;
-  }
-
-  .bg-primary,
-  .bg-success,
-  .bg-danger,
-  .bg-warning {
-    color: white;
-  }
-
-  .bg-primary {
-    background-color: @color-primary;
-  }
-
-  .bg-danger {
-    background-color: @color-danger;
-  }
-
-  .bg-warning {
-    background-color: @color-warning;
-  }
-
-  .bg-success {
-    background-color: @color-success;
+    &:after {
+      content: " ";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      border-top: 1px solid #d9d9d9;
+      color: #d9d9d9;
+      transform-origin: 0 100%;
+      transform: scaleY(.5);
+    }
   }
 }

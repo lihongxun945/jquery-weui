@@ -34,12 +34,19 @@
       }
     }
 
+    .swiper-pagination {
+      bottom: 10px;
+      left: 0;
+      width: 100%;
+    }
+
   }
 
   .photo-container {
     height: 100%;
     display: flex;
     align-items: center;
+    overflow: hidden;
 
     img {
       max-width: 100%;
@@ -58,6 +65,9 @@
     min-height: 3rem;
     font-size: 14px;
     z-index: 10;
+    transition: opacity .3s;
+    transition-delay: .5s;
+    opacity: 0;
 
     .caption-item {
       display: none;
@@ -69,5 +79,9 @@
         opacity: 1;
       }
     }
+  }
+
+  .swiper-container-visible .caption {
+    opacity: 1;
   }
 }

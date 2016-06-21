@@ -31,3 +31,14 @@ body, html {
   font-weight: 400;
   margin: 0 15%;
 }
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 20px;
+}
+
+footer a {
+  color: #999;
+  text-decoration: none;
+}
