@@ -44,8 +44,6 @@
         this.modal.on($.touchEvents.move, $.proxy(this.onTouchMove, this));
         this.modal.on($.touchEvents.end, $.proxy(this.onTouchEnd, this));
 
-        this.modal.click($.proxy(this.close, this));
-
         //init index
         this.wrapper.transition(0);
         this.wrapper.transform('translate3d(-' + $(window).width()*this.config.initIndex + 'px,0,0)');
@@ -111,6 +109,8 @@
     onTouchMove: function (e) {
       if(!this.touching || this.scaling) return false;
 
+      e.preventDefault();
+
       if(this.gestureImage) {
         var rect = this.gestureImage[0].getBoundingClientRect();
         if (rect.left >= 0 || rect.right <= this.windowWidth) {
@@ -156,6 +156,11 @@
       this.touching = false;
       if(this.scaling) return false;
       var duration = (+ new Date) - this.touchStartTime;
+
+      if(duration < 300 && Math.abs(this.wrapperDiff) <= 2) {
+        this.close();
+        return;
+      }
       if(this.wrapperDiff > 0) {
         if(this.wrapperDiff > this.containerWidth/2 || (this.wrapperDiff > 20 && duration < 300)) {
           this.slidePrev();
