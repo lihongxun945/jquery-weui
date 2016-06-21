@@ -2230,7 +2230,8 @@ button.swiper-pagination-bullet {
 .color-primary {
   color: #04BE02;
 }
-.color-danger {
+.color-danger,
+.color-error {
   color: #f6383a;
 }
 .color-warning {
@@ -2242,13 +2243,15 @@ button.swiper-pagination-bullet {
 .bg-primary,
 .bg-success,
 .bg-danger,
+.bg-error,
 .bg-warning {
   color: white;
 }
 .bg-primary {
   background-color: #04BE02;
 }
-.bg-danger {
+.bg-danger,
+.bg-error {
   background-color: #f6383a;
 }
 .bg-warning {

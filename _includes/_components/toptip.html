@@ -1,0 +1,24 @@
+<article id="toptip" class='component' data-url="../dist/demos/toptip.html">
+  <h2>Toptip</h2>
+
+  <p>显示在页面顶部的轻量级提示，一般用来反馈用户的操作结果，比如表单校验失败等。</p>
+
+  <p>JS方法定义如下：</p>
+
+{% highlight js %}
+$.toptip(text, [duration, type]);
+{% endhighlight %}
+
+  <p>示例：</p>
+
+{% highlight js %}
+$.toptip('操作成功', 'success');
+$.toptip('操作失败', 'error');
+$.toptip('警告', 'warning');
+
+$.toptip('操作成功', 2000, 'success');  //设置显示时间
+{% endhighlight %}
+
+  <p>注意，此组件从 <code>V0.7.2</code> 版本开始才可以使用。</p>
+
+</article>

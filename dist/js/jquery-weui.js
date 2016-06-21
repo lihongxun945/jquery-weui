@@ -6033,11 +6033,12 @@ Device/OS Detection
     $t.html(text);
     $t[0].className = 'weui_toptips ' + className
 
-    $t.show().width();
-
-    $t.addClass('weui_toptips_visible');
-
     clearTimeout(timeout);
+
+    if(!$t.hasClass('weui_toptips_visible')) {
+      $t.show().width();
+      $t.addClass('weui_toptips_visible');
+    }
 
     timeout = setTimeout(function() {
       $t.removeClass('weui_toptips_visible').transitionEnd(function() {
