@@ -172,8 +172,6 @@
 
     if(rect.left > 0) {
     } else if(rect.right <= win[0]) {
-      var translateX = - (this.swiper.activeIndex * win[0] + win[0] - rect.right);
-      $(".swiper-wrapper").transform("translate3d("+translateX+"px, 0, 0)");
     }
   }
 
