@@ -89,6 +89,11 @@
             var min = self.arrayToDate(self.stringToArray(typeof params.min === "function" ? params.min() : params.min));
 
             if(current < +min) {
+			  if (!lastValidValues) {
+                var minDate = [min.getFullYear(), self.formatNumber(min.getMonth() + 1), self.formatNumber(min.getDate()), 
+				self.formatNumber(min.getHours()), self.formatNumber(min.getMinutes())];
+                lastValidValues = minDate;
+              }
               picker.setValue(lastValidValues);
               valid = false;
             } 
@@ -96,6 +101,11 @@
           if(params.max) {
             var max = self.arrayToDate(self.stringToArray(typeof params.max === "function" ? params.max() : params.max));
             if(current > +max) {
+			  if (!lastValidValues) {
+                var maxDate = [max.getFullYear(), self.formatNumber(max.getMonth() + 1), self.formatNumber(max.getDate()), 
+				self.formatNumber(max.getHours()), self.formatNumber(max.getMinutes())];
+                lastValidValues = maxDate;
+              }
               picker.setValue(lastValidValues);
               valid = false;
             } 
@@ -152,7 +162,23 @@
       };
 
       var inputValue = this.input.val();
-      if(inputValue) config.value = this.stringToArray(inputValue);
+      if (inputValue) {
+          config.value = this.stringToArray(inputValue);
+      }
+      else {
+          if (params.min) {
+              var min = this.arrayToDate(self.stringToArray(typeof params.min === "function" ? params.min() : params.min));
+              if (min >= this.arrayToDate(config.value)) {
+                  config.value = [min.getFullYear(), this.formatNumber(min.getMonth() + 1), this.formatNumber(min.getDate()), this.formatNumber(min.getHours()), this.formatNumber(min.getMinutes())];
+              }
+          }
+          if (params.max) {
+              var max = this.arrayToDate(self.stringToArray(typeof params.max === "function" ? params.max() : params.max));
+              if (max <= this.arrayToDate(config.value)) {
+                  config.value = [max.getFullYear(), this.formatNumber(max.getMonth() + 1), this.formatNumber(max.getDate()), this.formatNumber(max.getHours()), this.formatNumber(max.getMinutes())];
+              }
+          }
+      }
 
       return config;
     }
