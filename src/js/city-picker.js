@@ -101,6 +101,10 @@
               picker.updateValue();
             }
           }
+
+          if (params.onChange) {
+            params.onChange(picker, values, displayValues);
+          }
         },
 
         cols: cols
