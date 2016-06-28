@@ -7,6 +7,7 @@
   "use strict";
 
   var PTR = function(el) {
+    this.body = $('body');
     this.container = $(el);
     this.distance = 50;
     this.attachEvents();
@@ -22,7 +23,7 @@
   PTR.prototype.touchMove= function(e) {
     if(this.container.hasClass("refreshing")) return;
     if(!this.start) return false;
-    if(this.container.scrollTop() > 0) return;
+    if(this.container.scrollTop() > 0 || this.body.scrollTop() > 0) return;
     var p = $.getTouchPosition(e);
     this.diffX = p.x - this.start.x;
     this.diffY = p.y - this.start.y;
