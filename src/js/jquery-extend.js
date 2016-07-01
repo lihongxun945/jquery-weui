@@ -24,11 +24,8 @@
     return this;
   };
 
-  $.support = (function() {
-    var support = {
-      touch: !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
-    };
-    return support;
+  $.support.touch = (function() {
+    return !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch);
   })();
 
   $.touchEvents = {
