@@ -28,7 +28,7 @@
       if(this.config.autoOpen) this.open();
     },
 
-    open: function () {
+    open: function (index) {
       if(this._open) return false;
       if(!this.modal) {
         this.modal = $(this.tpl(this.config)).appendTo(document.body);
@@ -62,7 +62,9 @@
       });
 
       this._open = true;
-
+      if(index !== undefined) {
+        this.slideTo(index, 0);
+      }
     },
 
     close: function() {
