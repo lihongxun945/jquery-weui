@@ -1,6 +1,7 @@
 # V0.7.3
 
-- fix bug: `data` function rewrite the default jquery implement, will break some jquery plugin.
+- 去掉了对 `$.fn.data` 方法的重写，因为这样会导致部分依赖 `data` 方法的jquery插件出错。
+- 修复了 `update` 方法在 Select 组件处在打开状态下调用时会导致绑定事件失效而无法操作的问题。
 
 # V0.7.2 - 2016/06/21
 
