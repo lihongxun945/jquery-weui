@@ -139,34 +139,4 @@
   $.fn.join = function(arg) {
     return this.toArray().join(arg);
   }
-
-  $.fn.data = function(key, value) {
-    if (typeof value === 'undefined') {
-      // Get value
-      if (this[0] && this[0].getAttribute) {
-        var dataKey = this[0].getAttribute('data-' + key);
-
-        if (dataKey) {
-          return dataKey;
-        } else if (this[0].elementDataStorage && (key in this[0].elementDataStorage)) {
-
-
-          return this[0].elementDataStorage[key];
-
-        } else {
-          return undefined;
-        }
-      } else return undefined;
-
-    } else {
-      // Set value
-      for (var i = 0; i < this.length; i++) {
-        var el = this[i];
-        if (!el.elementDataStorage) el.elementDataStorage = {};
-        el.elementDataStorage[key] = value;
-      }
-      return this;
-    }
-  };
-
 })($);

@@ -1,3 +1,7 @@
+# V0.7.3
+
+- fix bug: `data` function rewrite the default jquery implement, will break some jquery plugin.
+
 # V0.7.2 - 2016/06/21
 
 - 重写了 `Photos`，增加了手势缩放功能。
