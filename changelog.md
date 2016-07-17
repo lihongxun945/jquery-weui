@@ -1,5 +1,8 @@
 # V0.7.3
 
+- 增加了CDN:
+  - https://npmcdn.com/jquery-weui@0.7.2/dist/js/jquery-weui.min.js
+  - https://npmcdn.com/jquery-weui@0.7.2/dist/css/jquery-weui.min.css
 - 去掉了对 `$.fn.data` 方法的重写，因为这样会导致部分依赖 `data` 方法的jquery插件出错。
 - 修复了 `update` 方法在 Select 组件处在打开状态下调用时会导致绑定事件失效而无法操作的问题。
 - `Photos` 更新 `open` 方法，支持传入一个 `index` 参数设置打开时默认显示的图片。
