@@ -28,7 +28,7 @@
         if(params.autoClose) $.closeModal();
 
         if(buttons[i].onClick) {
-          buttons[i].onClick();
+          buttons[i].onClick.call(dialog);
         }
       });
     });
@@ -134,6 +134,7 @@
       config = text;
     } else {
       if (typeof title === 'function') {
+        input = arguments[3];
         onCancel = arguments[2];
         onOK = arguments[1];
         title = undefined;
@@ -143,28 +144,101 @@
         title: title,
         input: input,
         onOK: onOK,
-        onCancel: onCancel
+        onCancel: onCancel,
+        empty: false  //allow empty
       }
     }
 
     var modal = $.modal({
       text: '<p class="weui-prompt-text">'+(config.text || '')+'</p><input type="text" class="weui_input weui-prompt-input" id="weui-prompt-input" value="' + (config.input || '') + '" />',
       title: config.title,
+      autoClose: false,
       buttons: [
       {
         text: defaults.buttonCancel,
         className: "default",
-        onClick: config.onCancel
+        onClick: function () {
+          $.closeModal();
+          config.onCancel && config.onCancel.call(modal);
+        }
       },
       {
         text: defaults.buttonOK,
         className: "primary",
         onClick: function() {
-          config.onOK && config.onOK($("#weui-prompt-input").val());
+          var input = $("#weui-prompt-input").val();
+          if (!config.empty && (input === "" || input === null)) {
+            modal.find('.weui-prompt-input').focus()[0].select();
+            return false;
+          }
+          $.closeModal();
+          config.onOK && config.onOK.call(modal, input);
         }
       }]
     }, function () {
       this.find('.weui-prompt-input').focus()[0].select();
+    });
+
+    return modal;
+  };
+
+  //如果参数过多，建议通过 config 对象进行配置，而不是传入多个参数。
+  $.login = function(text, title, onOK, onCancel, username, password) {
+    var config;
+    if (typeof text === 'object') {
+      config = text;
+    } else {
+      if (typeof title === 'function') {
+        password = arguments[4];
+        username = arguments[3];
+        onCancel = arguments[2];
+        onOK = arguments[1];
+        title = undefined;
+      }
+      config = {
+        text: text,
+        title: title,
+        username: username,
+        password: password,
+        onOK: onOK,
+        onCancel: onCancel
+      }
+    }
+
+    var modal = $.modal({
+      text: '<p class="weui-prompt-text">'+(config.text || '')+'</p>' +
+            '<input type="text" class="weui_input weui-prompt-input" id="weui-prompt-username" value="' + (config.username || '') + '" placeholder="输入用户名" />' +
+            '<input type="password" class="weui_input weui-prompt-input" id="weui-prompt-password" value="' + (config.password || '') + '" placeholder="输入密码" />',
+      title: config.title,
+      autoClose: false,
+      buttons: [
+      {
+        text: defaults.buttonCancel,
+        className: "default",
+        onClick: function () {
+          $.closeModal();
+          config.onCancel && config.onCancel.call(modal);
+        }
+      }, {
+        text: defaults.buttonOK,
+        className: "primary",
+        onClick: function() {
+          var username = $("#weui-prompt-username").val();
+          var password = $("#weui-prompt-password").val();
+          if (!config.empty && (username === "" || username === null)) {
+            modal.find('#weui-prompt-username').focus()[0].select();
+            return false;
+          }
+          if (!config.empty && (password === "" || password === null)) {
+            modal.find('#weui-prompt-password').focus()[0].select();
+            return false;
+          }
+          $.closeModal();
+          config.onOK && config.onOK.call(modal, username, password);
+        }
+      }]
+    }, function () {
+      this.find('#weui-prompt-username').focus()[0].select();
     });
 
     return modal;

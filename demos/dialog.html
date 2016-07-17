@@ -16,6 +16,7 @@
       <a href="javascript:;" id='show-alert' class="weui_btn weui_btn_primary">显示 Alert</a>
       <a href="javascript:;" id='show-confirm' class="weui_btn weui_btn_primary">显示 Confirm</a>
       <a href="javascript:;" id='show-prompt' class="weui_btn weui_btn_primary">显示 Prompt</a>
+      <a href="javascript:;" id='show-login' class="weui_btn weui_btn_primary">显示登录弹窗</a>
       <a href="javascript:;" id='show-custom' class="weui_btn weui_btn_primary">显示自定义对话框</a>
     </div>
     <% include _foot.html %>
@@ -52,6 +53,19 @@
             { text: "微信支付", onClick: function(){ $.alert("你选择了微信支付"); } },
             { text: "取消", className: "default"},
           ]
+        });
+      });
+      $(document).on('click', '#show-login', function() {
+        $.login({
+          title: '登录',
+          text: '请输入用户名和密码',
+          onOK: function (username, password) {
+            console.log(username, password);
+            $.toast('登录成功!');
+          },
+          onCancel: function () {
+            $.toast('取消登录!', 'cancel');
+          }
         });
       });
     </script>
