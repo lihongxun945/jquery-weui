@@ -31,10 +31,16 @@
         });
       });
       $(document).on("click", "#show-prompt", function() {
-        $.prompt("名字不能超过6个字符，不得出现不和谐文字", "输入姓名", function(text) {
-          $.alert("您的名字是:"+text, "角色设定成功");
-        }, function() {
-          //取消操作
+        $.prompt({
+          text: "名字不能超过6个字符，不得出现不和谐文字",
+          title: "输入姓名",
+          onOK: function(text) {
+            $.alert("您的名字是:"+text, "角色设定成功");
+          },
+          onCancel: function() {
+            console.log("取消了");
+          },
+          input: 'Mr Noone'
         });
       });
       $(document).on("click", "#show-custom", function() {
