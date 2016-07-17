@@ -6,8 +6,9 @@
 - 更新 `photos` 文档，支持更多的方法。
 - 更新对话框:
   - 增加了一个 `$.login` 可以直接弹出一个登录窗。
-  - 现在在使用 `$.alert`, `$.confirm`, `$.prompt` 都可以传入一个 `Object` 作为参数。
+  - 现在在使用 `$.alert`, `$.confirm`, `$.prompt`, `$.login` 都可以传入一个 `Object` 作为参数。
   - `$.prompt` 现在可以传入一个 `input` 参数设置默认值。
+  - `$.prompt` 和 `$.login` 打开之后都会自动 focus 输入框
   - 统一了对话框的回调函数的`this`。
 
 # V0.7.2 - 2016/06/21
