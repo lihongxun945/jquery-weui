@@ -19,7 +19,7 @@
       return arr;
     })();
 
-    var p = $.extend({}, this.getConfig());
+    var p = $.extend({}, params, this.getConfig());
     $(this.input).picker(p);
   }
 
@@ -72,7 +72,7 @@
       var config = {
         rotateEffect: false,  //为了性能
 
-        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), this.formatNumber(today.getMinutes())],
+        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), (this.params.minutes ? this.formatNumber(today.getMinutes()) : '00')],
 
         onChange: function (picker, values, displayValues) {
           var cols = picker.cols;
@@ -102,6 +102,10 @@
           }
 
           valid && (lastValidValues = values);
+
+          if (self.params.onChange) {
+            self.params.onChange.apply(this, arguments);
+          }
         },
 
         formatValue: function (p, values, displayValues) {
@@ -113,9 +117,18 @@
           {
             values: self.initYears
           },
+          // Divider
+          {
+            divider: true,
+            content: this.params.dateSplit
+          },
           // Months
           {
             values: self.initMonthes
+          },
+          {
+            divider: true,
+            content: this.params.dateSplit
           },
           // Days
           {
@@ -125,7 +138,7 @@
           // Space divider
           {
             divider: true,
-            content: '  '
+            content: this.params.dateTimeSplit
           },
           // Hours
           {
@@ -138,11 +151,14 @@
           // Divider
           {
             divider: true,
-            content: ':'
+            content: this.params.timeSplit
           },
           // Minutes
           {
             values: (function () {
+              if (!self.params.minutes) {
+                return ["00"];
+              }
               var arr = [];
               for (var i = 0; i <= 59; i++) { arr.push(self.formatNumber(i)); }
               return arr;
@@ -173,6 +189,7 @@
     dateSplit: "-",
     timeSplit: ":",
     dateTimeSplit: " ",
+    minutes: true,  // 分钟是否可选
     min: undefined,
     max: undefined
   }
