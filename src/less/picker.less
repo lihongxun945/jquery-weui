@@ -15,6 +15,21 @@
   transform: translate3d(0, 100%, 0);
   transition-property: transform, opacity;
 
+  &.picker-modal-inline {
+    height: 10.8rem;
+    opacity: 1;
+    position: static;
+    transform: translate3d(0, 0, 0);
+    .toolbar {
+      display: none;
+    }
+  }
+
+  &.picker-columns-single {
+    .picker-items-col {
+      width: 100%;
+    }
+  }
 
   &.weui-picker-modal-visible {
     opacity: 1;

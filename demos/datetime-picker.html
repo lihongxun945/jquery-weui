@@ -12,7 +12,6 @@
       <h1 class="demos-title">Picker</h1>
     </header>
 
-    
     <div class="weui_cells weui_cells_form">
       <div class="weui_cell">
         <div class="weui_cell_hd"><label for="time" class="weui_label">精确到分钟</label></div>
@@ -33,6 +32,17 @@
         </div>
       </div>
     </div>
+
+    <div class="weui_cells weui_cells_form">
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="time-inline" class="weui_label">内联显示</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="time-inline" type="text" value="">
+        </div>
+      </div>
+    </div>
+
+    <div id="time-container"></div>
     <% include _foot.html %>
 
     <script>
@@ -61,6 +71,12 @@
           console.log(values);
         }
       });
+      $("#time-inline").datetimePicker({
+        container: '#time-container',
+        onChange: function (picker, values, displayValues) {
+          console.log(values);
+        }
+      })
     </script>
   </body>
 </html>
