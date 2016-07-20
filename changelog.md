@@ -1,6 +1,7 @@
-# V0.7.3
+# V0.8.0
 
-- 增加了CDN:
+- `weui` 版本更新为 `v0.4.3`
+- 增加了npm提供的CDN, 另外 cdnjs 正在申请:
   - https://npmcdn.com/jquery-weui@0.7.2/dist/js/jquery-weui.min.js
   - https://npmcdn.com/jquery-weui@0.7.2/dist/css/jquery-weui.min.css
 - 去掉了对 `$.fn.data` 方法的重写，因为这样会导致部分依赖 `data` 方法的jquery插件出错。
