@@ -9,6 +9,14 @@
     var self = this;
     this.config = config;
 
+    //init empty data
+    this.data = {
+      values: '',
+      titles: '',
+      origins: [],
+      length: 0
+    };
+
     this.$input = $(input);
     this.$input.prop("readOnly", true);
 
@@ -73,6 +81,8 @@
     var data = {
       values: v,
       titles: t,
+      valuesArray: values,
+      titlesArray: titles,
       origins: origins,
       length: origins.length
     };
