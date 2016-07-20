@@ -8,17 +8,16 @@
     this.index = 0;
   }
 
-
   Photos.prototype = {
     initConfig: function (config) {
       this.config = $.extend({}, defaults, config);
       this.activeIndex = this.lastActiveIndex = this.config.initIndex;
 
       this.config.items = this.config.items.map(function(d, i) {
-        if(typeof d === typeof "a") {
+        if(typeof d === typeof 'a') {
           return {
             image: d,
-            caption: ""
+            caption: ''
           }
         }
         return d;
@@ -29,17 +28,17 @@
     },
 
     open: function (index) {
-      if(this._open) return false;
-      if(!this.modal) {
+      if (this._open) return false;
+      if (!this.modal) {
         this.modal = $(this.tpl(this.config)).appendTo(document.body);
-        this.container = this.modal.find(".swiper-container");
-        this.wrapper = this.modal.find(".swiper-wrapper");
+        this.container = this.modal.find('.swiper-container');
+        this.wrapper = this.modal.find('.swiper-wrapper');
 
         var hammer = new Hammer(this.container[0]);
         hammer.get('pinch').set({ enable: true });
-        hammer.on("pinchstart", $.proxy(this.onGestureStart, this));
-        hammer.on("pinchmove", $.proxy(this.onGestureChange, this));
-        hammer.on("pinchend", $.proxy(this.onGestureEnd, this));
+        hammer.on('pinchstart', $.proxy(this.onGestureStart, this));
+        hammer.on('pinchmove', $.proxy(this.onGestureChange, this));
+        hammer.on('pinchend', $.proxy(this.onGestureEnd, this));
         this.modal.on($.touchEvents.start, $.proxy(this.onTouchStart, this));
         this.modal.on($.touchEvents.move, $.proxy(this.onTouchMove, this));
         this.modal.on($.touchEvents.end, $.proxy(this.onTouchEnd, this));
@@ -53,8 +52,8 @@
 
       var self = this;
       this.modal.show().height();
-      this.modal.addClass("weui-photo-browser-modal-visible");
-      this.container.addClass("swiper-container-visible").transitionEnd(function() {
+      this.modal.addClass('weui-photo-browser-modal-visible');
+      this.container.addClass('swiper-container-visible').transitionEnd(function() {
         self.initParams();
         if(self.config.onOpen) {
           self.config.onOpen.call(self);
@@ -73,8 +72,8 @@
         this._open = false;
         if(this.config.onClose) this.config.onClose.call(this);
       }, this));
-      this.container.removeClass("swiper-container-visible");
-      this.modal.removeClass("weui-photo-browser-modal-visible");
+      this.container.removeClass('swiper-container-visible');
+      this.modal.removeClass('weui-photo-browser-modal-visible');
     },
 
     initParams: function () {
@@ -103,6 +102,7 @@
       if(this.scaling) return false;
       this.touching = true;
       this.touchStart = $.getTouchPosition(e);
+      this.touchMove = null;
       this.touchStartTime = + new Date;
       this.wrapperDiff = 0;
       this.breakpointPosition = null;
@@ -123,7 +123,7 @@
       } else {
         this.oveflow = false;
       }
-      var p = $.getTouchPosition(e);
+      var p = this.touchMove = $.getTouchPosition(e);
       if(this.currentScale === 1 || this.overflow) {
         if(this.breakpointPosition) {
           this.wrapperDiff = p.x - this.breakpointPosition.x;
@@ -159,8 +159,9 @@
       if(this.scaling) return false;
       var duration = (+ new Date) - this.touchStartTime;
 
-      if(duration < 300 && Math.abs(this.wrapperDiff) <= 2) {
-        this.close();
+      console.log(duration, this.touchMove);
+      if(duration < 200 && (!this.touchMove || Math.abs(this.touchStart.x - this.touchMove.x) <= 2 && Math.abs(this.touchStart.y - this.touchMove.y) <= 2)) {
+        this.onClick();
         return;
       }
       if(this.wrapperDiff > 0) {
@@ -179,6 +180,26 @@
 
       this.imageLastTransform = this.imageTransform;
 
+      this.adjust();
+    },
+
+    onClick: function () {
+      var self = this;
+      if (this._lastClickTime && ( + new Date - this._lastClickTime < 300)) {
+        this.onDoubleClick();
+        clearTimeout(this._clickTimeout);
+      } else {
+        this._clickTimeout = setTimeout(function () {
+          self.close();
+        }, 300);
+      }
+      this._lastClickTime = + new Date;
+    },
+
+    onDoubleClick: function () {
+      this.gestureImage = this.container.find('.swiper-slide').eq(this.activeIndex).find('img');
+      this.currentScale = this.currentScale > 1 ? 1 : 2;
+      this.doImageTransform(200); 
       this.adjust();
     },
 
