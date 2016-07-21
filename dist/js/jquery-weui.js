@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.7.1 
+* jQuery WeUI V0.8.0 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -144,36 +144,6 @@
   $.fn.join = function(arg) {
     return this.toArray().join(arg);
   }
-
-  $.fn.data = function(key, value) {
-    if (typeof value === 'undefined') {
-      // Get value
-      if (this[0] && this[0].getAttribute) {
-        var dataKey = this[0].getAttribute('data-' + key);
-
-        if (dataKey) {
-          return dataKey;
-        } else if (this[0].elementDataStorage && (key in this[0].elementDataStorage)) {
-
-
-          return this[0].elementDataStorage[key];
-
-        } else {
-          return undefined;
-        }
-      } else return undefined;
-
-    } else {
-      // Set value
-      for (var i = 0; i < this.length; i++) {
-        var el = this[i];
-        if (!el.elementDataStorage) el.elementDataStorage = {};
-        el.elementDataStorage[key] = value;
-      }
-      return this;
-    }
-  };
-
 })($);
 
 /*===========================
@@ -3248,7 +3218,7 @@ if (typeof define === 'function' && define.amd) {
 
   var defaults;
   
-  $.modal = function(params) {
+  $.modal = function(params, onOpen) {
     params = $.extend({}, defaults, params);
 
 
@@ -3264,7 +3234,7 @@ if (typeof define === 'function' && define.amd) {
                 '<div class="weui_dialog_ft">' + buttonsHtml + '</div>' +
               '</div>';
     
-    var dialog = $.openModal(tpl);
+    var dialog = $.openModal(tpl, onOpen);
 
     dialog.find(".weui_btn_dialog").each(function(i, e) {
       var el = $(e);
@@ -3273,21 +3243,30 @@ if (typeof define === 'function' && define.amd) {
         if(params.autoClose) $.closeModal();
 
         if(buttons[i].onClick) {
-          buttons[i].onClick();
+          buttons[i].onClick.call(dialog);
         }
       });
     });
+
+    return dialog;
   };
 
-  $.openModal = function(tpl) {
+  $.openModal = function(tpl, onOpen) {
     var mask = $("<div class='weui_mask'></div>").appendTo(document.body);
     mask.show();
 
     var dialog = $(tpl).appendTo(document.body);
-    
+ 
+    if (onOpen) {
+      dialog.transitionEnd(function () {
+        onOpen.call(dialog);
+      });
+    }   
+
     dialog.show();
     mask.addClass("weui_mask_visible");
     dialog.addClass("weui_dialog_visible");
+
 
     return dialog;
   }
@@ -3301,69 +3280,183 @@ if (typeof define === 'function' && define.amd) {
     });
   };
 
-  $.alert = function(text, title, callback) {
-    if (typeof title === 'function') {
-      callback = arguments[1];
-      title = undefined;
+  $.alert = function(text, title, onOK) {
+    var config;
+    if (typeof text === 'object') {
+      config = text;
+    } else {
+      if (typeof title === 'function') {
+        onOK = arguments[1];
+        title = undefined;
+      }
+
+      config = {
+        text: text,
+        title: title,
+        onOK: onOK
+      }
     }
     return $.modal({
-      text: text,
-      title: title,
+      text: config.text,
+      title: config.title,
       buttons: [{
         text: defaults.buttonOK,
         className: "primary",
-        onClick: callback
+        onClick: config.onOK
       }]
     });
   }
 
-  $.confirm = function(text, title, callbackOK, callbackCancel) {
-    if (typeof title === 'function') {
-      callbackCancel = arguments[2];
-      callbackOK = arguments[1];
-      title = undefined;
+  $.confirm = function(text, title, onOK, onCancel) {
+    var config;
+    if (typeof text === 'object') {
+      config = text
+    } else {
+      if (typeof title === 'function') {
+        onCancel = arguments[2];
+        onOK = arguments[1];
+        title = undefined;
+      }
+
+      config = {
+        text: text,
+        title: title,
+        onOK: onOK,
+        onCancel: onCancel
+      }
     }
     return $.modal({
-      text: text,
-      title: title,
+      text: config.text,
+      title: config.title,
       buttons: [
       {
         text: defaults.buttonCancel,
         className: "default",
-        onClick: callbackCancel
+        onClick: config.onCancel
       },
       {
         text: defaults.buttonOK,
         className: "primary",
-        onClick: callbackOK
+        onClick: config.onOK
       }]
     });
   };
 
-  $.prompt = function(text, title, callbackOK, callbackCancel) {
-    if (typeof title === 'function') {
-      callbackCancel = arguments[2];
-      callbackOK = arguments[1];
-      title = undefined;
+  //如果参数过多，建议通过 config 对象进行配置，而不是传入多个参数。
+  $.prompt = function(text, title, onOK, onCancel, input) {
+    var config;
+    if (typeof text === 'object') {
+      config = text;
+    } else {
+      if (typeof title === 'function') {
+        input = arguments[3];
+        onCancel = arguments[2];
+        onOK = arguments[1];
+        title = undefined;
+      }
+      config = {
+        text: text,
+        title: title,
+        input: input,
+        onOK: onOK,
+        onCancel: onCancel,
+        empty: false  //allow empty
+      }
     }
 
-    return $.modal({
-      text: "<p class='weui-prompt-text'>"+(text || "")+"</p><input type='text' class='weui_input weui-prompt-input' id='weui-prompt-input'/>",
-      title: title,
+    var modal = $.modal({
+      text: '<p class="weui-prompt-text">'+(config.text || '')+'</p><input type="text" class="weui_input weui-prompt-input" id="weui-prompt-input" value="' + (config.input || '') + '" />',
+      title: config.title,
+      autoClose: false,
       buttons: [
       {
         text: defaults.buttonCancel,
         className: "default",
-        onClick: callbackCancel
+        onClick: function () {
+          $.closeModal();
+          config.onCancel && config.onCancel.call(modal);
+        }
       },
       {
         text: defaults.buttonOK,
         className: "primary",
         onClick: function() {
-          callbackOK && callbackOK($("#weui-prompt-input").val());
+          var input = $("#weui-prompt-input").val();
+          if (!config.empty && (input === "" || input === null)) {
+            modal.find('.weui-prompt-input').focus()[0].select();
+            return false;
+          }
+          $.closeModal();
+          config.onOK && config.onOK.call(modal, input);
         }
       }]
+    }, function () {
+      this.find('.weui-prompt-input').focus()[0].select();
     });
+
+    return modal;
+  };
+
+  //如果参数过多，建议通过 config 对象进行配置，而不是传入多个参数。
+  $.login = function(text, title, onOK, onCancel, username, password) {
+    var config;
+    if (typeof text === 'object') {
+      config = text;
+    } else {
+      if (typeof title === 'function') {
+        password = arguments[4];
+        username = arguments[3];
+        onCancel = arguments[2];
+        onOK = arguments[1];
+        title = undefined;
+      }
+      config = {
+        text: text,
+        title: title,
+        username: username,
+        password: password,
+        onOK: onOK,
+        onCancel: onCancel
+      }
+    }
+
+    var modal = $.modal({
+      text: '<p class="weui-prompt-text">'+(config.text || '')+'</p>' +
+            '<input type="text" class="weui_input weui-prompt-input" id="weui-prompt-username" value="' + (config.username || '') + '" placeholder="输入用户名" />' +
+            '<input type="password" class="weui_input weui-prompt-input" id="weui-prompt-password" value="' + (config.password || '') + '" placeholder="输入密码" />',
+      title: config.title,
+      autoClose: false,
+      buttons: [
+      {
+        text: defaults.buttonCancel,
+        className: "default",
+        onClick: function () {
+          $.closeModal();
+          config.onCancel && config.onCancel.call(modal);
+        }
+      }, {
+        text: defaults.buttonOK,
+        className: "primary",
+        onClick: function() {
+          var username = $("#weui-prompt-username").val();
+          var password = $("#weui-prompt-password").val();
+          if (!config.empty && (username === "" || username === null)) {
+            modal.find('#weui-prompt-username').focus()[0].select();
+            return false;
+          }
+          if (!config.empty && (password === "" || password === null)) {
+            modal.find('#weui-prompt-password').focus()[0].select();
+            return false;
+          }
+          $.closeModal();
+          config.onOK && config.onOK.call(modal, username, password);
+        }
+      }]
+    }, function () {
+      this.find('#weui-prompt-username').focus()[0].select();
+    });
+
+    return modal;
   };
 
   defaults = $.modal.prototype.defaults = {
@@ -4264,7 +4357,7 @@ Device/OS Detection
               colsHTML += p.columnHTML(p.params.cols[i]);
               p.cols.push(col);
           }
-          pickerClass = 'weui-picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ? ' picker-3d' : '');
+          pickerClass = 'weui-picker-modal picker-columns ' + (p.params.cssClass || '') + (p.params.rotateEffect ? ' picker-3d' : '') + (p.params.cols.length === 1 ? ' picker-columns-single' : '');
           pickerHTML =
               '<div class="' + (pickerClass) + '">' +
                   (p.params.toolbar ? p.params.toolbarTemplate.replace(/{{closeText}}/g, p.params.toolbarCloseText).replace(/{{title}}/g, p.params.title) : '') +
@@ -4529,6 +4622,14 @@ Device/OS Detection
     var self = this;
     this.config = config;
 
+    //init empty data
+    this.data = {
+      values: '',
+      titles: '',
+      origins: [],
+      length: 0
+    };
+
     this.$input = $(input);
     this.$input.prop("readOnly", true);
 
@@ -4593,6 +4694,8 @@ Device/OS Detection
     var data = {
       values: v,
       titles: t,
+      valuesArray: values,
+      titlesArray: titles,
       origins: origins,
       length: origins.length
     };
@@ -4619,28 +4722,9 @@ Device/OS Detection
     }
   }
 
-
-  //更新数据
-  Select.prototype.update = function(config) {
-    this.config = $.extend({}, this.config, config);
-    this.initConfig();
-    if(this._open) {
-      $.updatePicker(this.getHTML());
-    }
-  }
-  
-  Select.prototype.open = function(values, titles) {
-
-    if(this._open) return;
-
-    this.parseInitValue();
-
-    var config = this.config;
-
-    var dialog = this.dialog = $.openPicker(this.getHTML(), $.proxy(this.onClose, this));
-
-    var self = this;
-
+  Select.prototype._bind = function(dialog) {
+    var self = this,
+        config = this.config;
     dialog.on("change", function(e) {
       var checked = dialog.find("input:checked");
       var values = checked.map(function() {
@@ -4656,6 +4740,28 @@ Device/OS Detection
     .on("click", ".close-select", function() {
       self.close();
     });
+  }
+
+  //更新数据
+  Select.prototype.update = function(config) {
+    this.config = $.extend({}, this.config, config);
+    this.initConfig();
+    if(this._open) {
+      this._bind($.updatePicker(this.getHTML()));
+    }
+  }
+  
+  Select.prototype.open = function(values, titles) {
+
+    if(this._open) return;
+
+    this.parseInitValue();
+
+    var config = this.config;
+
+    var dialog = this.dialog = $.openPicker(this.getHTML(), $.proxy(this.onClose, this));
+    
+    this._bind(dialog);
 
     this._open = true;
     if(config.onOpen) config.onOpen(this);
@@ -5679,7 +5785,7 @@ Device/OS Detection
       return arr;
     })();
 
-    var p = $.extend({}, this.getConfig());
+    var p = $.extend({}, params, this.getConfig());
     $(this.input).picker(p);
   }
 
@@ -5732,7 +5838,7 @@ Device/OS Detection
       var config = {
         rotateEffect: false,  //为了性能
 
-        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), this.formatNumber(today.getMinutes())],
+        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), (this.params.minutes ? this.formatNumber(today.getMinutes()) : '00')],
 
         onChange: function (picker, values, displayValues) {
           var cols = picker.cols;
@@ -5762,6 +5868,10 @@ Device/OS Detection
           }
 
           valid && (lastValidValues = values);
+
+          if (self.params.onChange) {
+            self.params.onChange.apply(this, arguments);
+          }
         },
 
         formatValue: function (p, values, displayValues) {
@@ -5773,9 +5883,18 @@ Device/OS Detection
           {
             values: self.initYears
           },
+          // Divider
+          {
+            divider: true,
+            content: this.params.dateSplit
+          },
           // Months
           {
             values: self.initMonthes
+          },
+          {
+            divider: true,
+            content: this.params.dateSplit
           },
           // Days
           {
@@ -5785,7 +5904,7 @@ Device/OS Detection
           // Space divider
           {
             divider: true,
-            content: '  '
+            content: this.params.dateTimeSplit
           },
           // Hours
           {
@@ -5798,11 +5917,14 @@ Device/OS Detection
           // Divider
           {
             divider: true,
-            content: ':'
+            content: this.params.timeSplit
           },
           // Minutes
           {
             values: (function () {
+              if (!self.params.minutes) {
+                return ["00"];
+              }
               var arr = [];
               for (var i = 0; i <= 59; i++) { arr.push(self.formatNumber(i)); }
               return arr;
@@ -5833,6 +5955,7 @@ Device/OS Detection
     dateSplit: "-",
     timeSplit: ":",
     dateTimeSplit: " ",
+    minutes: true,  // 分钟是否可选
     min: undefined,
     max: undefined
   }
@@ -5855,27 +5978,30 @@ Device/OS Detection
     $.closePopup();
 
     popup = $(popup);
+    popup.show();
+    popup.width();
     popup.addClass("weui-popup-container-visible");
     var modal = popup.find(".weui-popup-modal");
     modal.width();
     modal.transitionEnd(function() {
       modal.trigger("open");
     });
-    modal.addClass("weui-popup-modal-visible");
   }
 
 
   $.closePopup = function(container, remove) {
-    $(".weui-popup-modal-visible").removeClass("weui-popup-modal-visible").transitionEnd(function() {
+    container = $(container || ".weui-popup-container-visible");
+    container.find('.weui-popup-modal').transitionEnd(function() {
       var $this = $(this);
-      $this.parent().removeClass("weui-popup-container-visible");
       $this.trigger("close");
-      remove && $this.parent().remove();
+      container.hide();
+      remove && container.remove();
     })
+    container.removeClass("weui-popup-container-visible")
   };
 
 
-  $(document).on("click", ".close-popup", function() {
+  $(document).on("click", ".close-popup, .weui-popup-overlay", function() {
     $.closePopup();
   })
   .on("click", ".open-popup", function() {
