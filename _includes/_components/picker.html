@@ -157,13 +157,25 @@ $("#picker-name").picker("setValue", ["2012", "12", "12"]);
     </tr>
 
   </table>
+
+  <h3 class="component-title">内联模式</h3>
+
+  <p>从 <code>V0.8.0</code> 版本开始，可以使用内联模式，只需要在初始化的时候指定一个 <code>container</code> 参数即可，picker会自动在这个容器中初始化。时间日期选择器以及地址选择器等因为继承自 picker，因此也都支持完全相同的内联模式。</p>
+
+{% highlight js %}
+$.picker({
+  input: '#input',
+  container: '#container'
+})
+{% endhighlight %}
+  <p>注意，内联模式只是指定了容器，因此 <code>input</code> 参数还是必须的，而且强烈建议通过 input 来获取用户输入的值。如果你不希望显示一个输入框，可以把它设置成 <code>type="hidden"</code>。</p>
 </article>
 
 <article class="component" id="datetime-picker" data-url='../dist/demos/datetime-picker.html'>
   <h2 class="component-title">日期时间选择器</h2>
 
   <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。</p>
-  <p>datetime-picker 定制了 onChange 和 cols 参数，请不要设置这两个参数。</p>
+  <p>注意，从 <code>V0.8.0</code> 版本开始，在日期时间选择器中几乎可以配置任何 picker 中的配置，包括 <code>onChange</code>, <code>title</code> 等</p>
   <p>datetime-picker 会自动解析 input 的 value 作为初始值，但是要注意初始值的格式一定是 <code>yyyy-mm-dd HH:MM</code>， 比如 <code>2015-12-12 08:30</code></p>
 
 {% highlight html %}
@@ -183,7 +195,11 @@ $("#picker-name").picker("setValue", ["2012", "12", "12"]);
       <th>默认值</th>
       <th>说明</th>
     </tr>
-
+    <tr>
+      <td>minutes</td>
+      <td>true</td>
+      <td>分钟是否可选，如果设置为 <code>false</code>，则用户只能选择小时，分钟默认为 <code>00</code> 并且无法修改。</td>
+    </tr>
     <tr>
       <td>min</td>
       <td>undefined</td>
@@ -196,6 +212,7 @@ $("#picker-name").picker("setValue", ["2012", "12", "12"]);
     </tr>
   </table>
 
-  <p>如果你只想选择日期，请使用 <a href='#calendar'>日历</a></p>
+  <p>如果你只想选择年月日，请使用 <a href='#calendar'>日历</a>。</p>
+  <p>从 <code>V0.8.0</code> 版本开始，日期时间选择器支持内联模式，具体请参考 <a href='#picker'>picker</a> 关于内联模式的文档。</p>
 </article>
 

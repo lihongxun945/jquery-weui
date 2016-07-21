@@ -6,6 +6,7 @@
 
 {% highlight html %}
 <div id="{{id}}" class="weui-popup-container">
+  <div class="weui-popup-overlay"></div>
   <div class="weui-popup-modal">
     你的内容放在这里...
   </div>
@@ -32,6 +33,7 @@ $("#about").popup();
 
 {% highlight html %}
 <div id="{{id}}" class="weui-popup-container popup-bottom">
+  <div class="weui-popup-overlay"></div>
   <div class="weui-popup-modal">
     你的内容放在这里...
   </div>
@@ -41,5 +43,7 @@ $("#about").popup();
   <h3>关闭 Popup</h3>
 
   <p>给任何链接加上 <code>class='close-popup'</code> 则点击之后可以关闭当前打开的 popup. 你也可以通过 <code>$.closePopup()</code> 来关闭。</p>
+
+  <p>注意，从 <code>V0.8.0</code> 版本开始，才可以可以加入 <code>.weui-popup-overlay</code> 这个半透明遮罩层。</p>
 
 </article>

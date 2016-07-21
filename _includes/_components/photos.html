@@ -91,7 +91,46 @@ pb.close(); //关闭
     </tr>
   </table>
 
-  <p> <strong>注意，从 <code>V0.7.0</code> 开始才支持此插件</strong>。</p>
   <p> <strong>注意，请不要使用上述列表没有列出来的配置，因为这些没有列出来的是下一个版本很可能会改动的，包括 <code>swiper</code> 对象可能会被删除。</strong></p>
 
+  <h3>属性和方法</h3>
+
+  <p><code>$.photoBrowser</code> 会返回一个 photos 实例，这个实例上有如下方法和属性可以使用：</p>
+  <table class="table">
+    <tr>
+      <th>方法/属性</th>
+      <th>说明</th>
+    </tr>
+    <tr>
+      <td>open(index)</td>
+      <td>打开图片浏览器，可以传入一个可选的 index 参数来指定打开后默认显示的图片(从0开始)</td>
+    </tr>
+    <tr>
+      <td>close()</td>
+      <td>关闭图片浏览器</td>
+    </tr>
+    <tr>
+      <td>slideTo(index, duration)</td>
+      <td>滚动到指定图片</td>
+    </tr>
+    <tr>
+      <td>slidePrev()</td>
+      <td>滚动到上一张图片</td>
+    </tr>
+    <tr>
+      <td>slideNext()</td>
+      <td>滚动到下一张图片</td>
+    </tr>
+    <tr>
+      <td>activeIndex</td>
+      <td>当前显示的图片</td>
+    </tr>
+    <tr>
+      <td>currentScale</td>
+      <td>当前缩放比例</td>
+    </tr>
+  </table>
+  <p>为了调用以上方法，请确保您的版本为 <code>V0.8.0</code> 或者更新。其中所有属性都是只读的，请不要随意修改。请不要调用上述未列出的任何方法，因为这些方法都是内部使用的。</p>
+
+  <p> <strong>注意，从 <code>V0.7.0</code> 开始才支持 photos 组件</strong>。</p>
 </article>
