@@ -72,7 +72,7 @@
       var config = {
         rotateEffect: false,  //为了性能
 
-        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), (this.params.minutes ? this.formatNumber(today.getMinutes()) : '00')],
+        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), (this.formatNumber(today.getMinutes()))],
 
         onChange: function (picker, values, displayValues) {
           var cols = picker.cols;
@@ -143,6 +143,9 @@
           // Hours
           {
             values: (function () {
+              if (self.params.hours) {
+                return self.params.hours;
+              }
               var arr = [];
               for (var i = 0; i <= 23; i++) { arr.push(self.formatNumber(i)); }
               return arr;
@@ -156,8 +159,8 @@
           // Minutes
           {
             values: (function () {
-              if (!self.params.minutes) {
-                return ["00"];
+              if (self.params.minutes) {
+                return self.params.minutes;
               }
               var arr = [];
               for (var i = 0; i <= 59; i++) { arr.push(self.formatNumber(i)); }
@@ -169,6 +172,10 @@
 
       var inputValue = this.input.val();
       if(inputValue) config.value = this.stringToArray(inputValue);
+      if(this.params.value) {
+        this.input.val(this.params.value);
+        config.value = this.stringToArray(this.params.value);
+      }
 
       return config;
     }
@@ -189,7 +196,9 @@
     dateSplit: "-",
     timeSplit: ":",
     dateTimeSplit: " ",
-    minutes: true,  // 分钟是否可选
+    input: undefined,
+    hours: undefined, // 小时
+    minutes: undefined,  // 分钟
     min: undefined,
     max: undefined
   }
