@@ -289,6 +289,14 @@ code {
   animation: spin 4s linear infinite;
   transform-origin: 50% 50%;
 }
+
+.thumbnail .img-wrap {
+  overflow: hidden;
+
+  img {
+  }
+}
+
 @keyframes spin {
   100% {
     -webkit-transform: rotate(360deg);
