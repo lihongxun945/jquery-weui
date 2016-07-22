@@ -3964,7 +3964,6 @@ else if (typeof define === 'function' && define.amd) {
       if(this.scaling) return false;
       var duration = (+ new Date) - this.touchStartTime;
 
-      console.log(duration, this.touchMove);
       if(duration < 200 && (!this.touchMove || Math.abs(this.touchStart.x - this.touchMove.x) <= 2 && Math.abs(this.touchStart.y - this.touchMove.y) <= 2)) {
         this.onClick();
         return;
