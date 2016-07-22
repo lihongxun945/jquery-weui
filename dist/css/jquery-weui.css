@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.7.2 
+* jQuery WeUI V0.8.0 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -620,6 +620,10 @@ body {
     width: 6.66666667%;
   }
 }
+.weui_cell_hd img {
+  display: block;
+  margin-right: 5px;
+}
 .weui_dialog,
 .weui_toast {
   -webkit-transition-duration: .2s;
@@ -949,6 +953,19 @@ body {
   transition-property: opacity, -webkit-transform;
   transition-property: transform, opacity;
   transition-property: transform, opacity, -webkit-transform;
+}
+.weui-picker-modal.picker-modal-inline {
+  height: 10.8rem;
+  opacity: 1;
+  position: static;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.weui-picker-modal.picker-modal-inline .toolbar {
+  display: none;
+}
+.weui-picker-modal.picker-columns-single .picker-items-col {
+  width: 100%;
 }
 .weui-picker-modal.weui-picker-modal-visible {
   opacity: 1;
@@ -2009,6 +2026,33 @@ button.swiper-pagination-bullet {
   -webkit-transform: scaleY(0.5);
           transform: scaleY(0.5);
 }
+.weui-popup-overlay,
+.weui-popup-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.weui-popup-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+.weui-popup-container {
+  display: none;
+}
+.weui-popup-container.weui-popup-container-visible {
+  display: block;
+}
+.weui-popup-container .weui_cells {
+  margin: 0;
+  text-align: left;
+}
 .weui-popup-modal {
   width: 100%;
   position: absolute;
@@ -2033,11 +2077,6 @@ button.swiper-pagination-bullet {
 .popup-bottom .weui-popup-modal {
   height: auto;
 }
-.weui-popup-modal.weui-popup-modal-visible {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
 .weui-popup-modal .toolbar {
   position: absolute;
   left: 0;
@@ -2051,26 +2090,13 @@ button.swiper-pagination-bullet {
   overflow: auto;
   box-sizing: border-box;
 }
-.weui-popup-overlay,
-.weui-popup-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
+.weui-popup-container-visible .weui-popup-overlay {
+  opacity: 1;
 }
-.weui-popup-container {
-  display: none;
-}
-.weui-popup-container.weui-popup-container-visible {
-  display: block;
-}
-.weui-popup-container .weui_cells {
-  margin: 0;
-  text-align: left;
+.weui-popup-container-visible .weui-popup-modal {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 .notification {
   position: fixed;
