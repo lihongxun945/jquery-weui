@@ -9,6 +9,14 @@
     var self = this;
     this.config = config;
 
+    //init empty data
+    this.data = {
+      values: '',
+      titles: '',
+      origins: [],
+      length: 0
+    };
+
     this.$input = $(input);
     this.$input.prop("readOnly", true);
 
@@ -73,6 +81,8 @@
     var data = {
       values: v,
       titles: t,
+      valuesArray: values,
+      titlesArray: titles,
       origins: origins,
       length: origins.length
     };
@@ -99,28 +109,9 @@
     }
   }
 
-
-  //更新数据
-  Select.prototype.update = function(config) {
-    this.config = $.extend({}, this.config, config);
-    this.initConfig();
-    if(this._open) {
-      $.updatePicker(this.getHTML());
-    }
-  }
-  
-  Select.prototype.open = function(values, titles) {
-
-    if(this._open) return;
-
-    this.parseInitValue();
-
-    var config = this.config;
-
-    var dialog = this.dialog = $.openPicker(this.getHTML(), $.proxy(this.onClose, this));
-
-    var self = this;
-
+  Select.prototype._bind = function(dialog) {
+    var self = this,
+        config = this.config;
     dialog.on("change", function(e) {
       var checked = dialog.find("input:checked");
       var values = checked.map(function() {
@@ -136,6 +127,28 @@
     .on("click", ".close-select", function() {
       self.close();
     });
+  }
+
+  //更新数据
+  Select.prototype.update = function(config) {
+    this.config = $.extend({}, this.config, config);
+    this.initConfig();
+    if(this._open) {
+      this._bind($.updatePicker(this.getHTML()));
+    }
+  }
+  
+  Select.prototype.open = function(values, titles) {
+
+    if(this._open) return;
+
+    this.parseInitValue();
+
+    var config = this.config;
+
+    var dialog = this.dialog = $.openPicker(this.getHTML(), $.proxy(this.onClose, this));
+    
+    this._bind(dialog);
 
     this._open = true;
     if(config.onOpen) config.onOpen(this);

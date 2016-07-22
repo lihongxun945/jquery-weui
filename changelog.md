@@ -1,3 +1,31 @@
+# V0.8.0
+
+- `weui` 版本更新为 `v0.4.3`
+- 增加了npm提供的CDN, 另外 cdnjs 正在申请:
+  - https://npmcdn.com/jquery-weui@0.7.2/dist/js/jquery-weui.min.js
+  - https://npmcdn.com/jquery-weui@0.7.2/dist/css/jquery-weui.min.css
+- 去掉了对 `$.fn.data` 方法的重写，因为这样会导致部分依赖 `data` 方法的jquery插件出错。
+- 修复了 `update` 方法在 Select 组件处在打开状态下调用时会导致绑定事件失效而无法操作的问题。
+- `Photos` 更新 `open` 方法，支持传入一个 `index` 参数设置打开时默认显示的图片。
+- 更新 `photos` 文档，支持更多的方法。
+- 更新对话框:
+  - 增加了一个 `$.login` 可以直接弹出一个登录窗。
+  - 现在在使用 `$.alert`, `$.confirm`, `$.prompt`, `$.login` 都可以传入一个 `Object` 作为参数。
+  - `$.prompt` 现在可以传入一个 `input` 参数设置默认值。
+  - `$.prompt` 和 `$.login` 打开之后都会自动 focus 输入框
+  - 统一了对话框的回调函数的`this`。
+- `popup` 增加了一个可选的 `.weui-popup-overlay` 可以在页面覆盖上一个半透明的遮罩层。
+- `picker` 更新:
+  - 如果只有一列，那么现在可以滑动整个弹层。
+  - 增加了内联模式。
+- 时间日期选择器更新：
+  - 在弹窗中加入了日期和时间的分隔符，并且是可配置的
+  - 现在可以自由定制小时和分钟的可选值。
+  - 现在可以支持更多的picker中的配置，包括 `title`, `onChange` 等。
+  - 增加了内联模式（继承自 picker）。
+- 图片浏览器增加了双击缩放。
+- 修复了 `Select` 没有任何选择时点击关闭会导致的报错。
+
 # V0.7.2 - 2016/06/21
 
 - 重写了 `Photos`，增加了手势缩放功能。

@@ -64,6 +64,18 @@ QQ 群：546452237
 
 群里更适合聊天，如果是发现bug或者有功能上的建议，推荐通过 `issue` 来讨论。
 
+# 捐助
+
+作者最近看上一个漂亮妹子，打算集资撩妹，感谢广大码友支持，您的捐助钱可能决定了作者的终身幸福 :)
+
+jQuery WeUI 是 MIT 协议的免费开源项目，不会收取任何费用。作者维护这个项目需要耗费不少精力，如果jQuery WeUI 帮到了你，你可以捐款让这个项目变得更好。当然，无论是否捐款，都感谢您对本项目的支持。
+
+**捐款是纯粹自愿的捐助行为，我将非常感谢您的捐助，但您本人并不会因为您的捐款而获得比其他不捐款用户更多的权利，望理解。**
+
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/vcode/alipay.jpg" width="250" />
+<img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/vcode/wechat.jpg" width="250" />
+
+
 # LICENSE
 
 [MIT](https://opensource.org/licenses/MIT)，尽情享受开源代码。

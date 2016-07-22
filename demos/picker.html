@@ -27,6 +27,16 @@
         </div>
       </div>
     </div>
+
+    <div class="weui_cells weui_cells_form">
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="inline" class="weui_label">内联显示</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="inline" type="text" value="">
+        </div>
+      </div>
+    </div>
+    <div id="picker-container"></div>
     <% include _foot.html %>
 
     <script>
@@ -57,6 +67,22 @@
             values: ['Amy', 'Bob', 'Cat', 'Dog', 'Ella', 'Fox', 'Google']
           }
         ]
+      });
+
+      $("#inline").picker({
+        container: '#picker-container',
+        cols: [
+          {
+            textAlign: 'center',
+            values: ['iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5S', 'iPhone 6', 'iPhone 6 Plus', 'iPad 2', 'iPad Retina', 'iPad Air', 'iPad mini', 'iPad mini 2', 'iPad mini 3']
+          }
+        ],
+        onChange: function(p, v, dv) {
+          console.log(p, v, dv);
+        },
+        onClose: function(p, v, d) {
+          console.log("close");
+        }
       });
     </script>
   </body>

@@ -19,7 +19,7 @@
       return arr;
     })();
 
-    var p = $.extend({}, this.getConfig());
+    var p = $.extend({}, params, this.getConfig());
     $(this.input).picker(p);
   }
 
@@ -72,7 +72,7 @@
       var config = {
         rotateEffect: false,  //为了性能
 
-        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), this.formatNumber(today.getMinutes())],
+        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), (this.formatNumber(today.getMinutes()))],
 
         onChange: function (picker, values, displayValues) {
           var cols = picker.cols;
@@ -102,6 +102,10 @@
           }
 
           valid && (lastValidValues = values);
+
+          if (self.params.onChange) {
+            self.params.onChange.apply(this, arguments);
+          }
         },
 
         formatValue: function (p, values, displayValues) {
@@ -113,9 +117,18 @@
           {
             values: self.initYears
           },
+          // Divider
+          {
+            divider: true,
+            content: this.params.dateSplit
+          },
           // Months
           {
             values: self.initMonthes
+          },
+          {
+            divider: true,
+            content: this.params.dateSplit
           },
           // Days
           {
@@ -125,11 +138,14 @@
           // Space divider
           {
             divider: true,
-            content: '  '
+            content: this.params.dateTimeSplit
           },
           // Hours
           {
             values: (function () {
+              if (self.params.hours) {
+                return self.params.hours;
+              }
               var arr = [];
               for (var i = 0; i <= 23; i++) { arr.push(self.formatNumber(i)); }
               return arr;
@@ -138,11 +154,14 @@
           // Divider
           {
             divider: true,
-            content: ':'
+            content: this.params.timeSplit
           },
           // Minutes
           {
             values: (function () {
+              if (self.params.minutes) {
+                return self.params.minutes;
+              }
               var arr = [];
               for (var i = 0; i <= 59; i++) { arr.push(self.formatNumber(i)); }
               return arr;
@@ -153,6 +172,10 @@
 
       var inputValue = this.input.val();
       if(inputValue) config.value = this.stringToArray(inputValue);
+      if(this.params.value) {
+        this.input.val(this.params.value);
+        config.value = this.stringToArray(this.params.value);
+      }
 
       return config;
     }
@@ -173,6 +196,9 @@
     dateSplit: "-",
     timeSplit: ":",
     dateTimeSplit: " ",
+    input: undefined,
+    hours: undefined, // 小时
+    minutes: undefined,  // 分钟
     min: undefined,
     max: undefined
   }
