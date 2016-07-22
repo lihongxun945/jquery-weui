@@ -15,7 +15,7 @@
         var result = [];
         for(var i=0;i<data.length;i++) {
           var d = data[i];
-          if(d.name === "请选择") continue;
+          if(d.name === "请选择" || d.name === "市辖区") continue;
           result.push(d.name);
         }
         if(result.length) return result;
