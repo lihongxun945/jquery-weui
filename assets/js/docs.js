@@ -132,6 +132,7 @@
     initSideMenu();
   } else if(/about/.test(location.href)) $(".navbar .link-about").addClass("active");
   else if(/cases/.test(location.href)) $(".navbar .link-cases").addClass("active");
+  else if(/download/.test(location.href)) $(".navbar .link-download").addClass("active");
   else if(/donate/.test(location.href)) $(".navbar .link-donate").addClass("active");
   else $(".navbar .link-index").addClass("active");
 }($);

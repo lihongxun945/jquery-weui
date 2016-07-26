@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<div class="about">
+  <div class="container">
+    <h2>依赖说明</h2>
+    <p>jQuery WeUI 依赖 <code>weui.css</code> 和 <code>jQuery</code>，但是请注意要使用正确的版本。</p>
+    <p>其中 weui 的版本需要和当前的jQuery WeUI 对应，如果你不确定对应版本可以去看 <a href="https://github.com/lihongxun945/jquery-weui/blob/master/changelog.md">更新日志</a> 里面的说明。或者你可以直接使用此项目中的 <code>dist/lib/weui.min.css</code>。</p>
+    <p>jQuery 的版本请至少在 <code>V1.7.0</code> 以上。</p>
+
+    <p>当然如果你不愿意自己去找依赖文件，可以直接看下面的CDN服务。</p>
+
+    <h2>使用CDN</h2>
+    <p>推荐直接使用由 <a href="http://www.bootcdn.cn/">BootCDN</a> 提供的CND服务，速度快并且很稳定：</p>
+{% highlight html %}
+<!-- head 中 -->
+<link rel="stylesheet" href="//cdn.bootcss.com/weui/0.4.2/style/weui.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/0.8.0/css/jquery-weui.min.css">
+
+<!-- body 最后 -->
+<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/0.8.0/js/jquery-weui.min.js"></script>
+
+<!-- 如果使用了某些拓展插件还需要额外的JS -->
+<script src="//cdn.bootcss.com/jquery-weui/0.8.0/js/swiper.min.js"></script>
+<script src="//cdn.bootcss.com/jquery-weui/0.8.0/js/city-picker.min.js"></script>
+{% endhighlight %}
+
+    <p>BootCDN 还提供了各个不同的版本，具体请参阅 <a href="http://www.bootcdn.cn/jquery-weui/">jQuery WeUI</a></p>
+
+    <p>BootCDN 是同步 <a href="https://cdnjs.com/">CDNJS</a> 的，jQuery WeUI 在 CDNJS 的地址是：<a href="https://cdnjs.com/libraries/jquery-weui">https://cdnjs.com/libraries/jquery-weui</a>。因为CDNJS在国内速度比较慢不建议使用，尽量用BootCDN的服务。</p>
+
+    <h2>下载到本地</h2>
+    <p>推荐通过npm获取代码: <code>npm install jquery-weui</code></p>
+    <p>如果你不会用NPM，或者不想用NPM，那么可以点击 <a href="https://github.com/lihongxun945/jquery-weui/archive/build.zip" target="_blank">jQuery WeUI 下载</a>，直接下载全部编译好的代码。</p>
+    <p>注意请不要直接下载master分支，因为在master分支只有源代码，并没有编译后的代码</p>
+
+    <h2>定制模块</h2>
+    <p>如果你想试用还未发布的最新版本或者想定制组件，建议自行clone并编译代码 <a href="https://github.com/lihongxun945/jquery-weui">jQuery WeUI</a>.</p>
+    <p>本项目使用 Gulp 编译，你可以修改<code>gulp.js</code> 以及 <code>src/less/jquery-weui.less</code> 来去掉不需要的模块，但是请注意有些模块是有依赖关系的（目前并没有任何地方声明这些依赖，你需要自己去看源码决定）。</p>
+    <p>注意其中的 <code>master</code> 分支并不包含 <code>dist</code> 目录。如果你不会编译，可以直接切换到 <code>build</code> 分支，其中的 <code>dist</code> 目录下就是全部编译好的代码。</p>
+  </div>
+</div>
