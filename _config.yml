@@ -10,7 +10,7 @@ title: jQuery WEUI
 email: lihongxun945@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   UI lib for build hybrid wechat web app.
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://jqweui.com" # the base hostname & protocol for your site
 twitter_username: lihongxun
 github_username:  lihongxun945
