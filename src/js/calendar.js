@@ -108,9 +108,6 @@
               var valueDate = new Date(p.value[i]);
               p.wrapper.find('.picker-calendar-day[data-date="' + valueDate.getFullYear() + '-' + valueDate.getMonth() + '-' + valueDate.getDate() + '"]').addClass('picker-calendar-day-selected');
           }
-          if (p.params.onChange) {
-              p.params.onChange(p, p.value, p.value.map(formatDate));
-          }
           if (p.input && p.input.length > 0) {
               if (p.params.formatValue) inputValue = p.params.formatValue(p, p.value);
               else {
@@ -122,6 +119,9 @@
               } 
               $(p.input).val(inputValue);
               $(p.input).trigger('change');
+          }
+          if (p.params.onChange) {
+              p.params.onChange(p, p.value, p.value.map(formatDate));
           }
       };
 
@@ -679,7 +679,7 @@
       }
       
       //iphone 上无法正确触发 click，会导致点击外面无法关闭
-      if (!p.inline) $(document).on('click touchend', closeOnHTMLClick);
+      if (!p.inline && p.params.closeByOutsideClick) $(document).on('click touchend', closeOnHTMLClick);
 
       // Open
       function onPickerClose() {
@@ -843,6 +843,7 @@
     touchMove: true,
     animate: true,
     closeOnSelect: true,
+    closeByOutsideClick: true,
     monthPicker: true,
     monthPickerTemplate: 
         '<div class="picker-calendar-month-picker">' +
