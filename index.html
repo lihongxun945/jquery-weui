@@ -23,8 +23,9 @@ layout: default
 
   <div class="container">
     <h2>jQuery WeUI</h2>
-    <p><a href="https://github.com/weui/weui">WeUI</a> 是微信官方团队针对微信提供的一个H5 UI库，它只提供了一组CSS组件。</p>
-    <p>jQuery WeUI 中使用的是官方WeUI的CSS代码，并提供了jQuery/Zepto版本的API实现。因为直接使用了官方的CSS，所以你不用担心跟官方版本的冲突。实际上 jQuery WeUI == WeUI + jQuery插件。</p>
+    <p>jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大的UI库，包含全部WeUI官方的CSS组件，并且额外提供了大量的拓展组件，丰富的组件库可以极大减少前端开发时间。</p>
+    <p>jQuery WeUI 的最大特点是它只提供UI组件，并不会对项目所使用的框架和其他库有任何的限制，几乎可以在任何环境下使用。无论你的项目是基于jQuery，还是 React, Angular, Vue， 你都会发现 jQuery WeUI 能非常方便的和他们结合使用。既是你的项目是一个有很悠久历史的老项目，也几乎可以做到拿来即用。</p>
+    <p>jQuery WeUI 提供了总共近<strong>30</strong> 个非常实用的组件：列表，表单，卡片，对话框，下拉刷新等。</p>
 
     <h2>为什么选择jQuery WeUI</h2>
 
@@ -35,10 +36,12 @@ layout: default
       <li>高性能的 CSS3 动画，低端手机上依然可以较流畅运行</li>
       <li>详尽完善的官方文档</li>
       <li>标准稳定的API，基本可以保证版本透明更新</li>
+      <li>基于 MIT 协议发布，免费开源</li>
     </ul>
 
-    <h2>简洁强大的API</h2>
+    <h2>简洁而不简单</h2>
 
+    <p>按钮，列表之类的组件使用更加简单，只要从官网复制下来HTML代码并粘贴到你的项目中即可。</p>
     <p>如果你使用过jQuery，那么你使用jQuery WeUI 将没有任何障碍。所有的JS组件都是标准的jQuery插件：</p>
 {% highlight js %}
 //显示一个对话框
@@ -59,4 +62,22 @@ $.actions({
   }]
 });
 {% endhighlight %}
+
+    <p>当然，前提是你需要引入相关的CSS和JS文件，具体请参考 <a href="{{ '/download' | prepend: site.baseurl }}">下载页面</a></p>
+
+    <h2>组件展示</h2>
+    <p>这里展示一些组件的截图，仅作展示之用，具体请参阅 <a href="{{ '/components' | prepend: site.baseurl }}">基础组件</a> 和 <a href="{{ '/extends' | prepend: site.baseurl }}">拓展组件</a> 页面，其中页面右侧的手机模拟器可以模拟组件的绝大多数操作(除缩放等复杂的手势外）。</p>
+
+    <div class="row screenshot">
+      <div class="col-md-4"><img src="{{ '/screenshot/grid.png' | prepend: site.baseurl }}" alt="grid"></div>
+      <div class="col-md-4"><img src="{{ '/screenshot/cell.png' | prepend: site.baseurl }}" alt="grid"></div>
+      <div class="col-md-4"><img src="{{ '/screenshot/form.png' | prepend: site.baseurl }}" alt="grid"></div>
+      <div class="col-md-4"><img src="{{ '/screenshot/dialog.png' | prepend: site.baseurl }}" alt="grid"></div>
+      <div class="col-md-4"><img src="{{ '/screenshot/select.png' | prepend: site.baseurl }}" alt="grid"></div>
+      <div class="col-md-4"><img src="{{ '/screenshot/calendar.png' | prepend: site.baseurl }}" alt="grid"></div>
+      <div class="col-md-4"><img src="{{ '/screenshot/address.png' | prepend: site.baseurl }}" alt="grid"></div>
+      <div class="col-md-4"><img src="{{ '/screenshot/actions.png' | prepend: site.baseurl }}" alt="grid"></div>
+      <div class="col-md-4"><img src="{{ '/screenshot/photos.png' | prepend: site.baseurl }}" alt="grid"></div>
+    </div>
+  </div>
 </div>

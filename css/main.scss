@@ -297,6 +297,13 @@ code {
   }
 }
 
+.screenshot {
+  img {
+    display: block;
+    margin-bottom: 40px;
+  }
+}
+
 @keyframes spin {
   100% {
     -webkit-transform: rotate(360deg);
