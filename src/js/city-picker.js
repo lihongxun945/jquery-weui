@@ -74,6 +74,12 @@
           cssClass: "col-district"
         });
 
+      var customOnChange = null;
+      if (params.onChange) {
+        customOnChange = params.onChange;
+        delete params.onChange;
+      }
+
       var config = {
 
         cssClass: "city-picker",
@@ -100,6 +106,10 @@
               currentCity = newCity;
               picker.updateValue();
             }
+          }
+
+          if (customOnChange) {
+            customOnChange(picker, values, displayValues);
           }
         },
 
