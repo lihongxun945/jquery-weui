@@ -238,7 +238,7 @@
                   p.params.onDayClick(p, day[0], dateYear, dateMonth, dateDay);
               }
               p.addValue(new Date(dateYear, dateMonth, dateDay).getTime());
-              if (p.params.closeOnSelect) p.close();
+              if (p.params.closeOnSelect && !p.params.multiple) p.close();
           }
 
           p.container.find('.picker-calendar-prev-month').on('click', p.prevMonth);

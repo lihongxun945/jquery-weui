@@ -26,6 +26,12 @@
           <input class="weui_input" id="date2" type="text" value="2016-12-12">
         </div>
       </div>
+      <div class="weui_cell">
+        <div class="weui_cell_hd"><label for="date-multiple" class="weui_label">多选</label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+          <input class="weui_input" id="date-multiple" type="text" value="2016-12-12">
+        </div>
+      </div>
     </div>
 
     <div class="demos-header">
@@ -46,9 +52,12 @@
     <script>
       $("#date").calendar();
       $("#date2").calendar();
+      $("#date-multiple").calendar({
+        multiple: true
+      });
       $("#date3").calendar({
         container: "#inline-calendar",
-        input: "#date3"
+        multiple: true
       });
     </script>
   </body>
