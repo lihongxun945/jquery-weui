@@ -98,8 +98,9 @@
           }
       };
       p.setValue = function (arrValues) {
-          p.value = arrValues;
-          p.updateValue();   
+        var date = new Date(arrValues[0]);
+        p.setYearMonth(date.getFullYear(), date.getMonth());
+        p.addValue(+ date);
       };
       p.updateValue = function () {
           p.wrapper.find('.picker-calendar-day-selected').removeClass('picker-calendar-day-selected');
@@ -813,13 +814,16 @@
         var calendar = $this.data("calendar");
 
         if(!calendar) {
-          if(!params.value && $this.val()) params.value = [$this.val()];
-          //默认显示今天
-          if(!params.value) {
-            var today = new Date();
-            params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+          if(typeof params === typeof "a") {
+          } else {
+            if(!params.value && $this.val()) params.value = [$this.val()];
+            //默认显示今天
+            if(!params.value) {
+              var today = new Date();
+              params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+            }
+            calendar = $this.data("calendar", new Calendar($.extend(p, params)));
           }
-          calendar = $this.data("calendar", new Calendar($.extend(p, params)));
         }
 
         if(typeof params === typeof "a") {
