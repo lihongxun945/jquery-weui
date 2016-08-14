@@ -49,6 +49,7 @@
 
       var config = {
         rotateEffect: false,  //为了性能
+        cssClass: 'datetime-picker',
 
         value: [today.getFullYear(), formatNumber(today.getMonth()+1), formatNumber(today.getDate()), formatNumber(today.getHours()), (formatNumber(today.getMinutes()))],
 
