@@ -33,8 +33,26 @@ layout: default
 
     <h2>下载到本地</h2>
     <p>推荐通过npm获取代码: <code>npm install jquery-weui</code></p>
-    <p>如果你不会用NPM，或者不想用NPM，那么可以点击 <a href="https://github.com/lihongxun945/jquery-weui/archive/build.zip" target="_blank">jQuery WeUI 下载</a>，直接下载全部编译好的代码。</p>
-    <p>注意请不要直接下载master分支，因为在master分支只有源代码，并没有编译后的代码</p>
+    <p>如果你不会用NPM，或者不想用NPM，那么可以点击 <a href="https://github.com/lihongxun945/jquery-weui/archive/build.zip" target="_blank">jQuery WeUI 下载 - build</a>，直接下载build分支，里面全部编译好的代码。</p>
+    <p>注意如果你不会编译，请不要直接下载master分支，因为在master分支只有源代码，并没有编译后的代码，编译后的代码在dist目录，只有 <code>build</code> 分支才有这个目录，上面的下载链接就是build分支的链接。</p>
+
+    <p>如果不知道 npm, gulp 怎么使用，请参阅一下链接：</p>
+
+    <ul>
+      <li><a href="https://www.npmjs.com/">https://www.npmjs.com/</a></li>
+      <li><a href="http://gulpjs.com/">http://gulpjs.com/</a></li>
+    </ul>
+
+    <h2>离线demo</h2>
+
+    <p>在根目录下的 <code>demos</code> 目录中的文件都是 <a href="http://www.embeddedjs.com/" target="_blank">ejs</a> 编写的源码，无法直接在浏览器中打开，需要 <code>gulp</code> 进行编译后才可以打开。</p>
+    <p>如果想本地运行demo请打开 <code>dist/demos</code> 文件夹下编译好的html文件。如果你找不到 <code>dist</code> 目录，说明你的代码没有编译，你可以执行 <code>gulp</code> 进行编译，或者切换到 <code>build</code> 分支，里面有编译好的全部代码。</p>
+
+    <h2>离线文档</h2>
+
+    <p>这个网站实际是部署在 github 上的，关于网站是如何部署的可以参阅 <a href="https://pages.github.com/">github pages</a>。因为 GFW 的原因，国内有可能访问缓慢或者无法打开，遇到这种情况最好学会科学上网。</p>
+    <p>文档全部是用 <a href="http://jekyllrb.com/" target="_blank">jekyll</a> 编写的，源码全部在 <a href="https://github.com/lihongxun945/jquery-weui/tree/gh-pages">gh-pages</a> 分支上。如果你希望本地运行文档，只要学会如何使用 jekyll 即可。</p>
+    <p>另外到目前为止我是没有放任何广告的，但是由于github pages自定义域名的时候暂时无法使用 https，所以和可能会被运营商劫持插入广告。遇到有广告弹出的情况可以打运营商的电话投诉，或者直接向工信部投诉。</p>
 
     <h2>定制模块</h2>
     <p>如果你想试用还未发布的最新版本或者想定制组件，建议自行clone并编译代码 <a href="https://github.com/lihongxun945/jquery-weui">jQuery WeUI</a>.</p>
