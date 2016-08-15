@@ -110,7 +110,9 @@
               p.wrapper.find('.picker-calendar-day[data-date="' + valueDate.getFullYear() + '-' + valueDate.getMonth() + '-' + valueDate.getDate() + '"]').addClass('picker-calendar-day-selected');
           }
           if (p.params.onChange) {
-              p.params.onChange(p, p.value, p.value.map(formatDate));
+            p.params.onChange(p, p.value.map(formatDate), p.value.map(function (d) {
+              return + new Date(typeof d === typeof 'a' ? d.split(/\D/).filter(function (a) { return !!a; }).join("-") : d);
+            }));
           }
           if (p.input && p.input.length > 0) {
               if (p.params.formatValue) inputValue = p.params.formatValue(p, p.value);
@@ -833,6 +835,7 @@
   };
 
   defaults = $.fn.calendar.prototype.defaults = {
+    value: undefined, // 通过JS赋值，注意是数组
     monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     dayNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
