@@ -156,8 +156,9 @@
             }
           }
           $(self).attr('data-code', values[values.length-1]);
+          $(self).attr('data-codes', values.join(','));
           if (params.onChange) {
-            params.onChange.call(self, values, displayValues);
+            params.onChange.call(self, picker, values, displayValues);
           }
         },
 
@@ -165,7 +166,7 @@
       };
 
       if(!this) return;
-      var p = $.extend(config, params);
+      var p = $.extend({}, params, config);
       //计算value
       var val = $(this).val();
       if (!val) val = '北京 北京市 东城区';

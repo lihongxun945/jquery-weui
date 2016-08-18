@@ -229,7 +229,7 @@
                   day = $(e.target);
               }
               if (day.length === 0) return;
-              if (day.hasClass('picker-calendar-day-selected') && !p.params.multiple) return;
+              // if (day.hasClass('picker-calendar-day-selected') && !p.params.multiple) return;
               if (day.hasClass('picker-calendar-day-disabled')) return;
               if (day.hasClass('picker-calendar-day-next')) p.nextMonth();
               if (day.hasClass('picker-calendar-day-prev')) p.prevMonth();
