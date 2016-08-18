@@ -1,6 +1,6 @@
 # V0.8.1
 
-- 修复了引用 [fastclick](https://github.com/ftlabs/fastclick) 会导致个别组件的bug，并在官方demo中加入了fastclick作为参考
+- 修复了引用 [fastclick](https://github.com/ftlabs/fastclick) 会导致个别组件的bug，并在官方demo中加入了fastclick作为参考。但是请注意 `fastclick` 需要自己引入并初始化，默认是没有的。
 - `Calendar` 更新：
   - 修复了 `calendar` 内联模式下调用 JS 方法会导致的报错。
   - 现在 `calendar` 可以多选了
