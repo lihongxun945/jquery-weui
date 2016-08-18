@@ -177,14 +177,9 @@
 
 
 .city-picker {
-  .col-province {
-    width: 5rem;
-  }
-  .col-city {
-    width: 6rem;
-  }
-  .col-district {
-    width: 5rem;
+  .picker-items-col {
+    flex: 1;
+    max-width: 7rem;
   }
 }
 
@@ -192,5 +187,11 @@
   .weui_cells {
     margin: 0;
     text-align: left;
+  }
+}
+
+.datetime-picker {
+  .picker-item {
+    text-overflow: initial;
   }
 }

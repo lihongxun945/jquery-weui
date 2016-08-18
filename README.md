@@ -29,7 +29,7 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 
 `jQuery WeUI` 的定位正如 `jQuery` 的定位：做一把锋利的小刀，而不是做一个笨重的大炮。
 
-`jQuery WeUI` 只是提供一些常用的UI控件，如果不是很复杂的项目，基本只用 `jQuery WeUI` 即可满足需求。如果项目比较复杂，或者希望实现单页应用，推荐使用 [Vue](https://github.com/vuejs/vue/) 或者 [Angular](https://angular.io/)。
+`jQuery WeUI` 只是提供一些常用的UI控件，如果不是很复杂的项目，基本只用 `jQuery WeUI` 即可满足需求。如果项目比较复杂，或者希望实现单页应用，推荐使用 [Vue](https://github.com/vuejs/vue/) 或者 [Angular](https://angular.io/)，或者可以看看我正在开发的另一个项目 [vue-mobile](https://github.com/lihongxun945/vue-mobile)
 
 # 下载
 
@@ -65,8 +65,6 @@ QQ 群：546452237
 群里更适合聊天，如果是发现bug或者有功能上的建议，推荐通过 `issue` 来讨论。
 
 # 捐助
-
-作者最近看上一个漂亮妹子，打算集资撩妹，感谢广大码友支持，您的捐助钱可能决定了作者的终身幸福 :)
 
 jQuery WeUI 是 MIT 协议的免费开源项目，不会收取任何费用。作者维护这个项目需要耗费不少精力，如果jQuery WeUI 帮到了你，你可以捐款让这个项目变得更好。当然，无论是否捐款，都感谢您对本项目的支持。
 

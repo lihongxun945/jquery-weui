@@ -3,6 +3,11 @@
   <head>
     <title>jQuery WeUI</title>
     <% include _head.html %>
+    <style>
+      .weui_label {
+        width: 70px;
+      }
+    </style>
   </head>
 
   <body ontouchstart>
@@ -17,7 +22,7 @@
       <div class="weui_cell">
         <div class="weui_cell_hd"><label for="name" class="weui_label">发出地</label></div>
         <div class="weui_cell_bd weui_cell_primary">
-          <input class="weui_input" id="start" type="text" value="湖北 武汉 武昌区">
+          <input class="weui_input" id="start" type="text" value="湖北省 武汉市 武昌区">
         </div>
       </div>
       <div class="weui_cell">
@@ -33,7 +38,7 @@
       <div class="weui_cell">
         <div class="weui_cell_hd"><label for="home-city" class="weui_label">城市</label></div>
         <div class="weui_cell_bd weui_cell_primary">
-          <input class="weui_input" id="home-city" type="text" value="">
+          <input class="weui_input" id="home-city" type="text">
         </div>
       </div>
     </div>
@@ -42,14 +47,20 @@
 
     <script>
       $("#start").cityPicker({
-        title: "选择出发地"
+        title: "选择出发地",
+        onChange: function (picker, values, displayValues) {
+          console.log(values, displayValues);
+        }
       });
       $("#end").cityPicker({
         title: "选择目的地"
       });
       $("#home-city").cityPicker({
         title: "选择目的地",
-        showDistrict: false
+        showDistrict: false,
+        onChange: function (picker, values, displayValues) {
+          console.log(values, displayValues);
+        }
       });
     </script>
   </body>

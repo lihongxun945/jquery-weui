@@ -98,8 +98,9 @@
           }
       };
       p.setValue = function (arrValues) {
-          p.value = arrValues;
-          p.updateValue();   
+        var date = new Date(arrValues[0]);
+        p.setYearMonth(date.getFullYear(), date.getMonth());
+        p.addValue(+ date);
       };
       p.updateValue = function () {
           p.wrapper.find('.picker-calendar-day-selected').removeClass('picker-calendar-day-selected');
@@ -109,7 +110,9 @@
               p.wrapper.find('.picker-calendar-day[data-date="' + valueDate.getFullYear() + '-' + valueDate.getMonth() + '-' + valueDate.getDate() + '"]').addClass('picker-calendar-day-selected');
           }
           if (p.params.onChange) {
-              p.params.onChange(p, p.value, p.value.map(formatDate));
+            p.params.onChange(p, p.value.map(formatDate), p.value.map(function (d) {
+              return + new Date(typeof d === typeof 'a' ? d.split(/\D/).filter(function (a) { return !!a; }).join("-") : d);
+            }));
           }
           if (p.input && p.input.length > 0) {
               if (p.params.formatValue) inputValue = p.params.formatValue(p, p.value);
@@ -226,7 +229,7 @@
                   day = $(e.target);
               }
               if (day.length === 0) return;
-              if (day.hasClass('picker-calendar-day-selected') && !p.params.multiple) return;
+              // if (day.hasClass('picker-calendar-day-selected') && !p.params.multiple) return;
               if (day.hasClass('picker-calendar-day-disabled')) return;
               if (day.hasClass('picker-calendar-day-next')) p.nextMonth();
               if (day.hasClass('picker-calendar-day-prev')) p.prevMonth();
@@ -237,7 +240,7 @@
                   p.params.onDayClick(p, day[0], dateYear, dateMonth, dateDay);
               }
               p.addValue(new Date(dateYear, dateMonth, dateDay).getTime());
-              if (p.params.closeOnSelect) p.close();
+              if (p.params.closeOnSelect && !p.params.multiple) p.close();
           }
 
           p.container.find('.picker-calendar-prev-month').on('click', p.prevMonth);
@@ -813,13 +816,16 @@
         var calendar = $this.data("calendar");
 
         if(!calendar) {
-          if(!params.value && $this.val()) params.value = [$this.val()];
-          //默认显示今天
-          if(!params.value) {
-            var today = new Date();
-            params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+          if(typeof params === typeof "a") {
+          } else {
+            if(!params.value && $this.val()) params.value = [$this.val()];
+            //默认显示今天
+            if(!params.value) {
+              var today = new Date();
+              params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+            }
+            calendar = $this.data("calendar", new Calendar($.extend(p, params)));
           }
-          calendar = $this.data("calendar", new Calendar($.extend(p, params)));
         }
 
         if(typeof params === typeof "a") {
@@ -829,6 +835,7 @@
   };
 
   defaults = $.fn.calendar.prototype.defaults = {
+    value: undefined, // 通过JS赋值，注意是数组
     monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     dayNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
