@@ -9,7 +9,7 @@
 
 
   <p class="component-description">地址选择器是一个定制的 <a href='#picker'>picker</a>，所以其用法和 Picker 是一样的。</p>
-  <p>同样，在使用省市区组件的时候你不能定制 <code>onChange</code> 和 <code>cols</code> 参数。</p>
+  <p>从 <code>v0.8.1+</code> 版本开始，可以设置除了 <code>cols</code> 和 <code>cssClass</code> 之外的全部picker中的参数。</p>
 
 
 {% highlight html %}
@@ -55,4 +55,11 @@ $("#city-picker").cityPicker({
 
   <p>你可以通过 <code>$.fn.cityPicker.prototype.defaults</code> 来改变默认值。</p>
 
+  <h3>地区编码</h3>
+
+  <p>从 <code>v0.8.1</code> 版本开始支持地区编码，编码来自 <a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/201401/t20140116_501070.html">国家统计局发布的数据</a>。</p>
+
+  <h3>版本升级!重要！</h3>
+
+  <p>特别注意， <code>v0.8.1+</code> 版本除了增加了地区编码之外，省市的名字也发生了变化，主要变化是加上了 '省' 和 '市' 的后缀，所以以前的数据如果用在 v0.8.1+ 版本会导致无法匹配。</p>
 </article>

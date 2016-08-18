@@ -174,9 +174,10 @@ $.picker({
 <article class="component" id="datetime-picker" data-url='../dist/demos/datetime-picker.html'>
   <h2 class="component-title">日期时间选择器</h2>
 
+  <p><code>V0.8.1</code> 做了不兼容旧版本的更新，请一定仔细阅读更新日志。这是 <code>v0.8.1</code> 的文档。</p>
   <p class="component-description">日期时间选择器是一个定制的picker，因此他的用法和picker完全一致。</p>
   <p>注意，从 <code>V0.8.0</code> 版本开始，在日期时间选择器中几乎可以配置任何 picker 中的配置，包括 <code>onChange</code>, <code>title</code> 等</p>
-  <p>datetime-picker 会自动解析 input 的 value 作为初始值，但是要注意初始值的格式一定是 <code>yyyy-mm-dd HH:MM</code>， 比如 <code>2015-12-12 08:30</code></p>
+  <p>datetime-picker 会自动解析 input 的 value 作为初始值，但是要注意初始值的格式一定要和自己定义的格式相同，不然会出现弹窗中的值和input初始值不相同的情况（因为无法解析）</p>
 
 {% highlight html %}
 <input type="text" id='datetime-picker'/>
@@ -196,35 +197,57 @@ $.picker({
       <th>说明</th>
     </tr>
     <tr>
-      <td>value</td>
+      <td>input</td>
       <td>undefined</td>
-      <td>输入框的默认值，优先级高于在 input 上通过 <code>value</code> 属性的设置。<code>V0.8.0</code> 版本起可用此配置</td>
+      <td>输入框的默认值，优先级高于在 input 上通过 <code>value</code> 属性的设置。<code>V0.8.0+</code> 版本起可用此配置</td>
     </tr>
     <tr>
       <td>minutes</td>
       <td>undefined</td>
-      <td>分钟的可选值，默认是 <code>['00' ~ '59']</code>。比如想间隔15分钟可选，那么设置成 <code>['00', '15', '30', '45']</code>。 <code>V0.8.0</code> 版本起可用此配置</td>
+      <td>分钟的可选值，默认是 <code>['00' ~ '59']</code>。比如想间隔15分钟可选，那么设置成 <code>['00', '15', '30', '45']</code>。 只在 <code>V0.8.0</code> 版本可用（更高或者更低的版本均不可用）</td>
     </tr>
     <tr>
       <td>hours</td>
       <td>undefined</td>
-      <td>小时的可选值，默认是 <code>['00' ~ '23']</code>。比如想设置成只能白天，那么设置成 <code>['08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18']</code>。 <code>V0.8.0</code> 版本起可用此配置</td>
+      <td>小时的可选值，默认是 <code>['00' ~ '23']</code>。比如想设置成只能白天，那么设置成 <code>['08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18']</code>。 只在 <code>V0.8.0</code> 版本起可用此配置（更高或者更低版本均不可用）</td>
     </tr>
     <tr>
       <td>min</td>
       <td>undefined</td>
-      <td>最小可选时间，比如 <code>2016-03-03</code>，注意格式一定要严格正确。也可以是一个函数.</td>
+      <td>最小可选时间，比如 <code>2016-03-03</code>，注意格式一定要严格正确。也可以是一个函数.但是只能是年月日不能带有时间</td>
     </tr>
     <tr>
       <td>max</td>
       <td>undefined</td>
-      <td>最大可选时间，比如 <code>2016-12-12</code>，注意格式一定要严格正确。也可以是一个函数</td>
+      <td>最大可选时间，比如 <code>2016-12-12</code>，注意格式一定要严格正确。也可以是一个函数.但是只能是年月日不能带有时间</td>
+    </tr>
+    <tr>
+      <td>times</td>
+      <td>参见源码</td>
+      <td>时间配置，这是一个 picker 的cols配置，因此可以非常灵活的配置成任意形式。 <code>V0.8.1+</code></td>
+    </tr>
+    <tr>
+      <td>yearSplit</td>
+      <td>'-'</td>
+      <td>年和月之间的分隔符</td>
+    </tr>
+    <tr>
+      <td>monthSplit</td>
+      <td>'-'</td>
+      <td>月和日之间的分隔符</td>
+    </tr>
+    <tr>
+      <td>dateSplit</td>
+      <td>''</td>
+      <td>日后面的分隔符</td>
+    </tr>
+    <tr>
+      <td>datetimeSplit</td>
+      <td>' '</td>
+      <td>日期和时间之间的分隔符</td>
     </tr>
   </table>
 
-  <p>如果你设置了 <code>hours</code> 或者 <code>minutes</code> 参数，请一定要给输入框设置一个默认值。因为如果不设置默认值，那么会自动取当前时间，这个时间很可能在你设置的可选范围之外（比如你设置了分钟只能选 <code>00</code> 和 <code>30</code>，但当前时间可能是 <code>13</code>，虽然不会报错，但是会影响体验。)</p>
-
-  <p>如果你只想选择年月日，请使用 <a href='#calendar'>日历</a>。</p>
-  <p>从 <code>V0.8.0</code> 版本开始，日期时间选择器支持内联模式，具体请参考 <a href='#picker'>picker</a> 关于内联模式的文档。</p>
+  <p>如果你只想选择年月日，建议使用 <a href='#calendar'>日历</a>。</p>
+  <p>从 <code>V0.8.0+</code> 版本开始，日期时间选择器支持内联模式，具体请参考 <a href='#picker'>picker</a> 关于内联模式的文档。</p>
 </article>
-

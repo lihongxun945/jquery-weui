@@ -27,6 +27,12 @@ $("#my-input").calendar();
     </thead>
     <tbody>
       <tr>
+        <td>multiple</td>
+        <td>boolean</td>
+        <td>false</td>
+        <td>是否多选， <code>V0.8.1+</code></td>
+      </tr>
+      <tr>
         <td>inputReadOnly</td>
         <td>boolean</td>
         <td>true</td>
@@ -164,7 +170,7 @@ $("#input").calendar("setValue", ["2012-12-12"]);  //设置日期
 $("#input").calendar("destroy");  //销毁
 {% endhighlight %}
 
-  <h4>内联日历</h4>
+  <h3>内联日历</h3>
 
   <p>在初始化 <code>Calendar</code> 的时候可以通过 <code>container</code> 参数来指定一个容器，如果把这个容器指定为页面上的一个元素，那么日历就会默认显示出来。</p>
 
@@ -177,5 +183,4 @@ $("#inline-calendar").calendar({
 {% endhighlight %}
 
 <p>如果你在内联日历的时候，不希望有一个 <code>input</code> 会显示用户的输入值，那么只需要指定一个 <code>type="hidden"</code> 的input即可。但是千万注意不能不设置 input 参数。具体请参见右侧demo的写法</p>
-
 </article>
