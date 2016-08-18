@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V0.8.0 
+* jQuery WeUI V0.8.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -4976,8 +4976,9 @@ Device/OS Detection
           }
       };
       p.setValue = function (arrValues) {
-          p.value = arrValues;
-          p.updateValue();   
+        var date = new Date(arrValues[0]);
+        p.setYearMonth(date.getFullYear(), date.getMonth());
+        p.addValue(+ date);
       };
       p.updateValue = function () {
           p.wrapper.find('.picker-calendar-day-selected').removeClass('picker-calendar-day-selected');
@@ -4987,7 +4988,9 @@ Device/OS Detection
               p.wrapper.find('.picker-calendar-day[data-date="' + valueDate.getFullYear() + '-' + valueDate.getMonth() + '-' + valueDate.getDate() + '"]').addClass('picker-calendar-day-selected');
           }
           if (p.params.onChange) {
-              p.params.onChange(p, p.value, p.value.map(formatDate));
+            p.params.onChange(p, p.value.map(formatDate), p.value.map(function (d) {
+              return + new Date(typeof d === typeof 'a' ? d.split(/\D/).filter(function (a) { return !!a; }).join("-") : d);
+            }));
           }
           if (p.input && p.input.length > 0) {
               if (p.params.formatValue) inputValue = p.params.formatValue(p, p.value);
@@ -5104,7 +5107,7 @@ Device/OS Detection
                   day = $(e.target);
               }
               if (day.length === 0) return;
-              if (day.hasClass('picker-calendar-day-selected') && !p.params.multiple) return;
+              // if (day.hasClass('picker-calendar-day-selected') && !p.params.multiple) return;
               if (day.hasClass('picker-calendar-day-disabled')) return;
               if (day.hasClass('picker-calendar-day-next')) p.nextMonth();
               if (day.hasClass('picker-calendar-day-prev')) p.prevMonth();
@@ -5115,7 +5118,7 @@ Device/OS Detection
                   p.params.onDayClick(p, day[0], dateYear, dateMonth, dateDay);
               }
               p.addValue(new Date(dateYear, dateMonth, dateDay).getTime());
-              if (p.params.closeOnSelect) p.close();
+              if (p.params.closeOnSelect && !p.params.multiple) p.close();
           }
 
           p.container.find('.picker-calendar-prev-month').on('click', p.prevMonth);
@@ -5691,13 +5694,16 @@ Device/OS Detection
         var calendar = $this.data("calendar");
 
         if(!calendar) {
-          if(!params.value && $this.val()) params.value = [$this.val()];
-          //默认显示今天
-          if(!params.value) {
-            var today = new Date();
-            params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+          if(typeof params === typeof "a") {
+          } else {
+            if(!params.value && $this.val()) params.value = [$this.val()];
+            //默认显示今天
+            if(!params.value) {
+              var today = new Date();
+              params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+            }
+            calendar = $this.data("calendar", new Calendar($.extend(p, params)));
           }
-          calendar = $this.data("calendar", new Calendar($.extend(p, params)));
         }
 
         if(typeof params === typeof "a") {
@@ -5707,6 +5713,7 @@ Device/OS Detection
   };
 
   defaults = $.fn.calendar.prototype.defaults = {
+    value: undefined, // 通过JS赋值，注意是数组
     monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
     dayNames: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
@@ -5773,6 +5780,10 @@ Device/OS Detection
 
   var defaults;
 
+  var formatNumber = function (n) {
+    return n < 10 ? "0" + n : n;
+  }
+
   var Datetime = function(input, params) {
     this.input = $(input);
     this.params = params;
@@ -5803,33 +5814,7 @@ Device/OS Detection
       var d = new Date(int_d - 1);
       return this.getDays(d.getDate());
     },
-
-    formatNumber : function (n) {
-      return n < 10 ? "0" + n : n;
-    },
-
-    formatValue : function(values, displayValues) {
-      var params = this.params;
-      return values[0] + params.dateSplit + values[1] + params.dateSplit + values[2] + params.dateTimeSplit + values[3] + params.timeSplit + values[4];
-    },
-    stringToArray: function(value) {
-      var params = this.params;
-      var tokens = value.split(params.dateTimeSplit);
-      var date = tokens[0],
-          time = tokens[1];
-      return [].concat(date.split(params.dateSplit), time ? time.split(params.timeSplit) : []);
-    },
-    arrayToDate: function(arr) {
-      var params = this.params;
-      if(arr.length === 3) return new Date(arr.join(params.dateSplit));
-      var date = new Date(arr.slice(0, 3).join(params.dateSplit));
-      //注意这种格式 "2012-12-12 12:12" 在ios上是错误的，如果用 "2012-12-12T12:12" 是对的，但是这个是标准时区而不是东八区，所以这里分别设置
-      date.setHours(arr[3]);
-      date.setMinutes(arr[4]);
-      return date;
-    },
-    getConfig : function() {
-
+    getConfig: function() {
       var today = new Date(),
           params = this.params,
           self = this,
@@ -5837,22 +5822,22 @@ Device/OS Detection
 
       var config = {
         rotateEffect: false,  //为了性能
+        cssClass: 'datetime-picker',
 
-        value: [today.getFullYear(), this.formatNumber(today.getMonth()+1), this.formatNumber(today.getDate()), this.formatNumber(today.getHours()), (this.formatNumber(today.getMinutes()))],
+        value: [today.getFullYear(), formatNumber(today.getMonth()+1), formatNumber(today.getDate()), formatNumber(today.getHours()), (formatNumber(today.getMinutes()))],
 
         onChange: function (picker, values, displayValues) {
           var cols = picker.cols;
-          var days = self.getDaysByMonthAndYear(cols[1].value, cols[0].value);
-          var currentValue = picker.cols[2].value;
+          var days = self.getDaysByMonthAndYear(values[1], values[0]);
+          var currentValue = values[2];
           if(currentValue > days.length) currentValue = days.length;
-          picker.cols[2].setValue(currentValue);
+          picker.cols[4].setValue(currentValue);
 
           //check min and max
-          
-          var current = self.arrayToDate(values);
+          var current = new Date(values[0]+'-'+values[1]+'-'+values[2]);
           var valid = true;
           if(params.min) {
-            var min = self.arrayToDate(self.stringToArray(typeof params.min === "function" ? params.min() : params.min));
+            var min = new Date(typeof params.min === "function" ? params.min() : params.min);
 
             if(current < +min) {
               picker.setValue(lastValidValues);
@@ -5860,11 +5845,11 @@ Device/OS Detection
             } 
           }
           if(params.max) {
-            var max = self.arrayToDate(self.stringToArray(typeof params.max === "function" ? params.max() : params.max));
+            var max = new Date(typeof params.max === "function" ? params.max() : params.max);
             if(current > +max) {
               picker.setValue(lastValidValues);
               valid = false;
-            } 
+            }
           }
 
           valid && (lastValidValues = values);
@@ -5875,72 +5860,61 @@ Device/OS Detection
         },
 
         formatValue: function (p, values, displayValues) {
-          return self.formatValue(values, displayValues);
+          return self.params.format(p, values, displayValues);
         },
 
         cols: [
-          // Years
-          {
-            values: self.initYears
-          },
-          // Divider
-          {
-            divider: true,
-            content: this.params.dateSplit
-          },
-          // Months
-          {
-            values: self.initMonthes
-          },
-          {
-            divider: true,
-            content: this.params.dateSplit
-          },
-          // Days
-          {
-            values: self.getDays()
-          },
-
-          // Space divider
-          {
-            divider: true,
-            content: this.params.dateTimeSplit
-          },
-          // Hours
           {
             values: (function () {
-              if (self.params.hours) {
-                return self.params.hours;
-              }
-              var arr = [];
-              for (var i = 0; i <= 23; i++) { arr.push(self.formatNumber(i)); }
-              return arr;
-            })(),
+              var years = [];
+              for (var i=1950; i<=2050; i++) years.push(i);
+              return years;
+            })()
           },
-          // Divider
           {
-            divider: true,
-            content: this.params.timeSplit
+            divider: true,  // 这是一个分隔符
+            content: params.yearSplit
           },
-          // Minutes
+          {
+            values: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+          },
+          {
+            divider: true,  // 这是一个分隔符
+            content: params.monthSplit
+          },
           {
             values: (function () {
-              if (self.params.minutes) {
-                return self.params.minutes;
-              }
-              var arr = [];
-              for (var i = 0; i <= 59; i++) { arr.push(self.formatNumber(i)); }
-              return arr;
-            })(),
-          }
+              var dates = [];
+              for (var i=1; i<=31; i++) dates.push(formatNumber(i));
+              return dates;
+            })()
+          },
+          
         ]
-      };
+      }
+
+      if (params.dateSplit) {
+        config.cols.push({
+          divider: true,
+          content: params.dateSplit
+        })
+      }
+
+      config.cols.push({
+        divider: true,
+        content: params.datetimeSplit
+      })
+
+      var times = self.params.times();
+      if (times && times.length) {
+        config.cols = config.cols.concat(times);
+      }
 
       var inputValue = this.input.val();
-      if(inputValue) config.value = this.stringToArray(inputValue);
+      if(inputValue) config.value = params.parse(inputValue);
       if(this.params.value) {
         this.input.val(this.params.value);
-        config.value = this.stringToArray(this.params.value);
+        config.value = params.parse(this.params.value);
       }
 
       return config;
@@ -5959,14 +5933,49 @@ Device/OS Detection
   };
 
   defaults = $.fn.datetimePicker.prototype.defaults = {
-    dateSplit: "-",
-    timeSplit: ":",
-    dateTimeSplit: " ",
-    input: undefined,
-    hours: undefined, // 小时
-    minutes: undefined,  // 分钟
-    min: undefined,
-    max: undefined
+    input: undefined, // 默认值
+    min: undefined, // YYYY-MM-DD 最大最小值只比较年月日，不比较时分秒
+    max: undefined,  // YYYY-MM-DD
+    yearSplit: '-',
+    monthSplit: '-',
+    dateSplit: '',  // 默认为空
+    datetimeSplit: ' ',  // 日期和时间之间的分隔符，不可为空
+    times: function () {
+      return [  // 自定义的时间
+        {
+          values: (function () {
+            var hours = [];
+            for (var i=0; i<24; i++) hours.push(formatNumber(i));
+            return hours;
+          })()
+        },
+        {
+          divider: true,  // 这是一个分隔符
+          content: ':'
+        },
+        {
+          values: (function () {
+            var minutes = [];
+            for (var i=0; i<59; i++) minutes.push(formatNumber(i));
+            return minutes;
+          })()
+        }
+      ];
+    },
+    format: function (p, values) { // 数组转换成字符串
+      return p.cols.map(function (col) {
+        return col.value || col.content;
+      }).join('');
+    },
+    parse: function (str) {
+      // 把字符串转换成数组，用来解析初始值
+      // 如果你的定制的初始值格式无法被这个默认函数解析，请自定义这个函数。比如你的时间是 '子时' 那么默认情况这个'时'会被当做分隔符而导致错误，所以你需要自己定义parse函数
+      // 默认兼容的分隔符
+      var t = str.split(this.datetimeSplit);
+      return t[0].split(/\D/).concat(t[1].split(/:|时|分|秒/)).filter(function (d) {
+        return !!d;
+      })
+    }
   }
 
 }($);
