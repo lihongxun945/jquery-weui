@@ -1,4 +1,4 @@
-# V0.8.1
+# V0.8.1 - 2016/08/16
 
 - 修复了引用 [fastclick](https://github.com/ftlabs/fastclick) 会导致个别组件的bug，并在官方demo中加入了fastclick作为参考。但是请注意 `fastclick` 需要自己引入并初始化，默认是没有的。
 - `Calendar` 更新：
