@@ -67,6 +67,9 @@
   border-top-color: @color;
 }
 */
+label > * {
+  pointer-events: none;
+}
 html {
   font-size: 20px;
 }
@@ -1169,18 +1172,19 @@ body {
   width: 100%;
   z-index: 100;
 }
-.city-picker .col-province {
-  width: 5rem;
-}
-.city-picker .col-city {
-  width: 6rem;
-}
-.city-picker .col-district {
-  width: 5rem;
+.city-picker .picker-items-col {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  max-width: 7rem;
 }
 .weui-picker-container .weui_cells {
   margin: 0;
   text-align: left;
+}
+.datetime-picker .picker-item {
+  text-overflow: initial;
 }
 .weui-select-modal {
   height: auto;
@@ -1470,6 +1474,10 @@ body {
 .picker-calendar-year-picker {
   display: block;
   line-height: 2.2rem;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 .picker-calendar-month-picker a.icon-only,
 .picker-calendar-year-picker a.icon-only {
