@@ -16506,7 +16506,7 @@ $.rawCitiesData = [
       result.push(d);
     }
     if(result.length) return result;
-    return [''];
+    return [];
   };
 
   var sub = function(data) {
@@ -16518,7 +16518,7 @@ $.rawCitiesData = [
     for(var i=0;i< raw.length;i++) {
       if(raw[i].code === d || raw[i].name === d) return sub(raw[i]);
     }
-    return [""];
+    return [];
   };
 
   var getDistricts = function(p, c) {
@@ -16631,6 +16631,7 @@ $.rawCitiesData = [
             currentProvince = newProvince;
             currentCity = newCity;
             picker.updateValue();
+            return false; // 因为数据未更新完，所以这里不进行后序的值的处理
           } else {
             if(params.showDistrict) {
               newCity = picker.cols[1].displayValue;
@@ -16643,6 +16644,7 @@ $.rawCitiesData = [
                 }));
                 currentCity = newCity;
                 picker.updateValue();
+                return false; // 因为数据未更新完，所以这里不进行后序的值的处理
               }
             }
           }
