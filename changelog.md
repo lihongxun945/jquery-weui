@@ -1,3 +1,7 @@
+# V0.8.2 - 2016/08/26
+
+*修复了地址选择器 `onChange` 事件的一个重要bug，这个bug会导致 `onChange` 的参数出现错误，请 `v0.8.1` 的用户尽快升级到 `v0.8.2`*
+
 # V0.8.1 - 2016/08/16
 
 - 修复了引用 [fastclick](https://github.com/ftlabs/fastclick) 会导致个别组件的bug，并在官方demo中加入了fastclick作为参考。但是请注意 `fastclick` 需要自己引入并初始化，默认是没有的。
