@@ -128,12 +128,13 @@
   };
 
   //如果参数过多，建议通过 config 对象进行配置，而不是传入多个参数。
-  $.prompt = function(text, title, onOK, onCancel, input) {
+  $.prompt = function(text, title, onOK, onCancel, input, placeholder) {
     var config;
     if (typeof text === 'object') {
       config = text;
     } else {
       if (typeof title === 'function') {
+        placeholder = arguments[4];
         input = arguments[3];
         onCancel = arguments[2];
         onOK = arguments[1];
@@ -143,6 +144,7 @@
         text: text,
         title: title,
         input: input,
+        placeholder: placeholder,
         onOK: onOK,
         onCancel: onCancel,
         empty: false  //allow empty
@@ -150,7 +152,7 @@
     }
 
     var modal = $.modal({
-      text: '<p class="weui-prompt-text">'+(config.text || '')+'</p><input type="text" class="weui_input weui-prompt-input" id="weui-prompt-input" value="' + (config.input || '') + '" />',
+      text: '<p class="weui-prompt-text">'+(config.text || '')+'</p><input type="text" class="weui_input weui-prompt-input" id="weui-prompt-input" value="' + (config.input || '') + '" placeholder="' + (config.placeholder || '') + '" />',
       title: config.title,
       autoClose: false,
       buttons: [
