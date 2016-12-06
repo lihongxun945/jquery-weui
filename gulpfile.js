@@ -1,3 +1,4 @@
+var yargs = require('yargs').argv;
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var header = require('gulp-header');
@@ -8,6 +9,8 @@ var ejs = require("gulp-ejs");
 var uglify = require('gulp-uglify');
 var ext_replace = require('gulp-ext-replace');
 var cssmin = require('gulp-cssmin');
+var sourcemaps = require('gulp-sourcemaps');
+var browserSync = require('browser-sync');
 
 var pkg = require("./package.json");
 
@@ -82,10 +85,27 @@ gulp.task('uglify', ["js"], function() {
 
 gulp.task('less', function () {
   return gulp.src(['./src/less/jquery-weui.less'])
-  .pipe(less())
+  .pipe(sourcemaps.init())
+  .pipe(less().on('error', function (e) {
+      console.error(e.message);
+      this.emit('end');
+  }))
   .pipe(autoprefixer())
   .pipe(header(banner))
+  .pipe(sourcemaps.write())
   .pipe(gulp.dest('./dist/css/'));
+});
+
+gulp.task('demosless', function () {
+  return gulp.src(['./demos/css/*.less'])
+  .pipe(sourcemaps.init())
+  .pipe(less().on('error', function (e) {
+      console.error(e.message);
+      this.emit('end');
+  }))
+  .pipe(autoprefixer())
+  .pipe(sourcemaps.write())
+  .pipe(gulp.dest('./dist/demos/css/'));
 });
 
 gulp.task('cssmin', ["less"], function () {
@@ -117,10 +137,25 @@ gulp.task('watch', function () {
   gulp.watch('src/js/**/*.js', ['js']);
   gulp.watch('src/less/**/*.less', ['less']);
   gulp.watch('demos/*.html', ['ejs']);
+  gulp.watch('demos/css/*.less', ['demosless']);
   gulp.watch('demos/css/*.css', ['copy']);
 });
 
 gulp.task('server', function () {
-  connect.server();
+    yargs.p = yargs.p || 8080;
+    browserSync.init({
+        server: {
+            baseDir: "./dist",
+            directory: true
+        },
+        ui: {
+            port: yargs.p + 1,
+            weinre: {
+                port: yargs.p + 2
+            }
+        },
+        port: yargs.p,
+        startPath: '/demos'
+    });
 });
-gulp.task("default", ['uglify', 'cssmin', 'copy', 'ejs']);
+gulp.task("default", ['uglify', 'cssmin', 'copy', 'ejs', 'watch', 'server']);
