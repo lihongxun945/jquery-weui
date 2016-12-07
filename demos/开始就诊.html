@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>开始就诊</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <header class="ybzy-header">
+        <h1 class="ybzy-title">颈椎病专病治疗</h1>
+    </header>
+    <div class="container">
+        <div class="ybzy-tips">
+            <div class="weui_cells_tips">
+                <p>
+                    源本中医独创颈椎病治疗鸡尾酒疗法<br/>
+                    一个疗程治愈率达90%<br/>
+                    第一疗程未治愈，第二疗程半价继续治疗，第三疗程免费
+                </p>
+            </div>
+        </div>
+        <div class="weui_cells weui_cells_access weui_cells_form ybzy-form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label for="name" class="weui_label">选择就诊人</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" id="patient" type="text" placeholder="请选择就诊人" value="">
+                </div>
+                <div class="weui_cell_ft"></div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd">
+                    <label for="name" class="weui_label">选择就诊城市</label>
+                </div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" id="city" type="text" placeholder="选择就诊城市" value="">
+                </div>
+                <div class="weui_cell_ft"></div>
+            </div>
+        </div>
+        <div class="ybzy-tips">
+            <label for="weuiAgree" class="weui-agree">
+                <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+                <span class="weui-agree__text">
+                    阅读并同意<a href="javascript:void(0);">《相关条款》</a>
+                </span>
+            </label>
+            <div class="weui_cells_tips">
+                <p>
+                    如果您有下面列出的疾病，或者其他特殊情况，您将不能参加我们的研究：<br/>
+                    1、诊断不明确，X线检查时间超过1个月<br/>
+                    2、不愿意提供个人信息，不希望进入研究的患者<br/>
+                    3、有重大精神疾患，难以控制自己的行动，无法配合的患者。.<br/>
+                    4、有手术史的患者。<br/>
+                    5、正在服用非本项目提供的药物者。<br/>
+                    6、正在接受非本项目提供的治疗者。<br/>
+                    7、属于妊娠期妇女者<br/>
+                    8、不识字，无法理解知情同意，无法自行
+                </p>
+            </div>
+        </div>
+    </div>
+    <footer class="ybzy-footer">
+        <a href="javascript:;" class="weui_btn weui_btn_warn">确认</a>
+    </footer>
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <!-- <script src="../lib/fastclick.js">
+        </script>
+        <script>
+        $(function() {
+            FastClick.attach(document.body);
+        });
+    </script> -->
+    <script src="../js/jquery-weui.js"></script>
+    <script src="../js/city-picker.js"></script>
+    <script>
+    $("#patient").select({
+        title: "选择就诊人",
+        items: ["李云迪", "宋江", "晁盖", "卢俊义", "吴用", "林冲", "鲁智深", "武松", "李逵", "阮小二", "阮小五", "阮小七"],
+        onChange: function(d) {
+            console.log(this, d);
+        },
+        onClose: function() {
+            console.log("close");
+        },
+        onOpen: function() {
+            console.log("open");
+        },
+    });
+    $("#city").cityPicker({
+        title: "选择目的地",
+        showDistrict: false,
+        onChange: function (picker, values, displayValues) {
+          console.log(values, displayValues);
+        }
+      });
+    </script>
+
+</body>
+
+</html>
