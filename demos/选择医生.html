@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>医生详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <header class="ybzy-header">
+        <h1 class="ybzy-title">就诊人李云迪：选择大夫预约就诊</h1>
+        <div class="ybzy-filter">
+            <a href="#" class="filter-item">综合排序</a>
+            <a href="#" class="filter-item">离我最近</a>
+            <a href="#" class="filter-item">评分最高</a>
+            <a href="#" id="show-actions" class="filter-item">评分最高</a>
+        </div>
+        <!--BEGIN actionSheet-->
+        <div class="weui_mask weui_actions_mask weui_mask_visible"></div>
+        <div class="weui_actionsheet weui_actionsheet_toggle" id="weui_actionsheet">
+            <div class="weui_actionsheet_title">筛选查询</div>
+            <div class="weui_actionsheet_menu" style="max-height: 300px; overflow-y: auto;">
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+                <div class="weui_actionsheet_cell">示例菜单</div>
+            </div>
+            <div class="weui_actionsheet_action weui-row">
+                <div class="weui_actionsheet_cell actionsheet_submit weui-col-50" id="actionsheet_submit">查询</div>
+                <div class="weui_actionsheet_cell actionsheet_cancel weui-col-50" id="actionsheet_cancel">取消</div>
+            </div>
+        </div>
+        <!--END actionSheet-->
+    </header>
+    <div class="ybzy-container with-ybzy-filter">
+        <div class="ybzy-doctor-list">
+            <a href="javascript:void(0);" class="weui_panel weui_panel_access">
+                <div class="weui_panel_bd">
+                    <div class="weui_media_box weui_media_appmsg">
+                        <div class="weui_media_hd">
+                            <img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt="">
+                        </div>
+                        <div class="weui_media_bd">
+                            <h4 class="weui_media_title">张长生&nbsp;医生&nbsp;<span>北京济民中医诊所</span></h4>
+                            <p class="weui_media_desc"><span class="ybzy-icon ybzy-icon-map"></span>据您<span class="yb-orange">18</span>公里&nbsp;&nbsp;北京市朝阳区</p>
+                            <p class="weui_media_desc">患者好评度<span class="yb-red">4.5</span>&nbsp;&nbsp;点评数<span class="yb-red">35</span></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="weui_panel_ft">颈椎病专科治疗面诊 <span class="yb-red">￥1600</span></div>
+            </a>
+
+            <a href="javascript:void(0);" class="weui_panel weui_panel_access">
+                <div class="weui_panel_bd">
+                    <div class="weui_media_box weui_media_appmsg">
+                        <div class="weui_media_hd">
+                            <img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt="">
+                        </div>
+                        <div class="weui_media_bd">
+                            <h4 class="weui_media_title">张长生&nbsp;医生&nbsp;<span>北京济民中医诊所</span></h4>
+                            <p class="weui_media_desc"><span class="ybzy-icon ybzy-icon-map"></span>据您<span class="yb-orange">18</span>公里&nbsp;&nbsp;北京市朝阳区</p>
+                            <p class="weui_media_desc">患者好评度<span class="yb-red">4.5</span>&nbsp;&nbsp;点评数<span class="yb-red">35</span></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="weui_panel_ft">颈椎病专科治疗面诊 <span class="yb-red">￥1600</span></div>
+            </a>
+
+            <a href="javascript:void(0);" class="weui_panel weui_panel_access">
+                <div class="weui_panel_bd">
+                    <div class="weui_media_box weui_media_appmsg">
+                        <div class="weui_media_hd">
+                            <img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt="">
+                        </div>
+                        <div class="weui_media_bd">
+                            <h4 class="weui_media_title">张长生&nbsp;医生&nbsp;<span>北京济民中医诊所</span></h4>
+                            <p class="weui_media_desc"><span class="ybzy-icon ybzy-icon-map"></span>据您<span class="yb-orange">18</span>公里&nbsp;&nbsp;北京市朝阳区</p>
+                            <p class="weui_media_desc">患者好评度<span class="yb-red">4.5</span>&nbsp;&nbsp;点评数<span class="yb-red">35</span></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="weui_panel_ft">颈椎病专科治疗面诊 <span class="yb-red">￥1600</span></div>
+            </a>
+        </div>
+        
+    </div>
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <!-- <script src="../lib/fastclick.js">
+        </script>
+        <script>
+        $(function() {
+            FastClick.attach(document.body);
+        });
+    </script> -->
+    <script src="../js/jquery-weui.js"></script>
+
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 @yb-red: #a10000;
 @yb-blue: #2d8bdc;
+@yb-orange: #ff9d7b;
 
 /* 最大显示一行，溢出省略号 */
 .txt-line-one { overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
@@ -14,6 +15,72 @@
 
 .display-flex { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: horizontal; -webkit-flex-direction: row; flex-direction: row;}
 .flex-1 { -webkit-box-flex: 1; -webkit-flex: 1; flex: 1;}
+
+._setArrow(@arrowsize, @borderColor, @borderWidth){
+    display: inline-block;
+    height: @arrowsize;
+    width: @arrowsize;
+    border-width: @borderWidth @borderWidth 0 0;
+    border-color: @borderColor;
+    border-style: solid;
+}
+.setArrow(@direction, @arrowsize, @borderColor, @borderWidth) when (@direction = top) {
+    ._setArrow(@arrowsize, @borderColor, @borderWidth);
+    transform: matrix(0.71,-0.71,0.71,0.71,0,0); // rotate(-45deg)
+}
+.setArrow(@direction, @arrowsize, @borderColor,@borderWidth) when (@direction = right) {
+    ._setArrow(@arrowsize, @borderColor, @borderWidth);
+    transform: matrix(0.71,0.71,-0.71,0.71,0,0); // rotate(45deg);
+
+    position: relative;
+    top: -2px;
+}
+.setArrow(@direction, @arrowsize, @borderColor,@borderWidth) when (@direction = down) {
+    ._setArrow(@arrowsize, @borderColor, @borderWidth);
+    transform: matrix(-0.71,0.71,-0.71,-0.71,0,0); // rotate(135deg);
+
+    position: relative;
+    top: -3px;
+}
+.setArrow(@direction, @arrowsize, @borderColor,@borderWidth) when (@direction = left) {
+    ._setArrow(@arrowsize, @borderColor, @borderWidth);
+    transform: matrix(-0.71,-0.71,0.71,-0.71,0,0); // rotate(-135deg);
+
+    position: relative;
+    top: -2px;
+}
+.arrow-t {
+    content: " ";
+    .setArrow(top, 6px, #C8C8CD, 2px);
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 2px;
+}
+.arrow-b {
+    content: " ";
+    .setArrow(down, 6px, #C8C8CD, 2px);
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 2px;
+}
+.arrow-l {
+    content: " ";
+    .setArrow(left, 6px, #C8C8CD, 2px);
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 2px;
+}
+.arrow-r {
+    content: " ";
+    .setArrow(right, 6px, #C8C8CD, 2px);
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    right: 2px;
+}
 
 @font-face {
   font-family: 'ybzyicon';  /* project id 197148 */
@@ -166,3 +233,26 @@ body { background: #efefef; }
 		}
 	}
 }
+
+.ybzy-filter {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
