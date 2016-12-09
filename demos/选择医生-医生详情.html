@@ -69,6 +69,77 @@
                 <div class="weui_cell_ft">￥3000</div>
             </a>
         </div>
+        <!--BEGIN actionSheet-->
+        <div id="actionSheet_wrap">
+            <div class="weui_mask weui_actions_mask weui_mask_visible"></div>
+            <div class="weui_actionsheet weui_actionsheet_toggle" id="weui_actionsheet">
+                <div class="weui_actionsheet_menu">
+                    <div class="weui_panel weui_panel_access ybzy-reserve-panel">
+                        <div class="weui_panel_hd">
+                            中医诊断 远程诊断
+                            <div class="reserve-price">诊断费用<span class="yb-red">￥150</span></div>
+                        </div>
+                        <div class="weui_panel_bd">
+                            <div class="reserve-hd">
+                                <div class="reserve-hd-t"><span class="ybzy-icon ybzy-icon-date"></span>可预约时间：</div>
+                                <div class="reserve-hd-date">今天08月12日（周五）</div>
+                            </div>
+                            <table class="ybzy-reserve-table weui_cells_radio">
+                                <tr>
+                                    <th></th>
+                                    <td>上午</td>
+                                    <td>下午</td>
+                                    <td>晚上</td>
+                                </tr>
+                                <tr>
+                                    <th><div class="item"><p>08-15</p>周一</div></th>
+                                    <td>
+                                        <label for="x11" class="reserve-radio">
+                                            <input id="x11" type="radio" name="radio1" class="reserve-radio-checkbox">
+                                            <span class="reserve-radio-text">预约</span>
+                                        </label>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th><div class="item"><p>08-18</p>周四</div></th>
+                                    <td></td>
+                                    <td>
+                                        <label for="x12" class="reserve-radio">
+                                            <input id="x12" type="radio" name="radio1" class="reserve-radio-checkbox">
+                                            <span class="reserve-radio-text">预约</span>
+                                        </label>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th><div class="item"><p>08-22</p>周一</div></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <th><div class="item"><p>08-25</p>周四</div></th>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <label for="x13" class="reserve-radio">
+                                            <input id="x13" type="radio" name="radio1" class="reserve-radio-checkbox">
+                                            <span class="reserve-radio-text">预约</span>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui_actionsheet_action">
+                    <div class="weui_actionsheet_cell actionsheet_submit" id="actionsheet_submit">预约</div>
+                </div>
+            </div>
+        </div>
+        <!--END actionSheet-->
 
         <div class="weui_cells_title ybzy-cells-title">授权专科项目</div>
         <div class="weui_cells weui_cells_access ybzy-price-list">
@@ -142,11 +213,11 @@
                         <div class="reply-form">
                             <div class="list list-inset">
                                 <label class="item item-input" style="display: block;">
-                                    <textarea placeholder="回复评论"></textarea>
+                                    <textarea class="weui_textarea" placeholder="请输入评论" rows="3"></textarea>
                                 </label>
                                 <div class="reply-btn">
-                                    <button class="button button-small">
-                                        <i class="icon ion-ios-compose-outline"></i>回复患者
+                                    <button class="weui_btn weui_btn_mini weui_btn_primary">
+                                        回复患者
                                     </button>
                                 </div> 
                             </div>
@@ -171,11 +242,11 @@
                         <div class="reply-form">
                             <div class="list list-inset reply-input">
                                 <label class="item item-input" style="display: none;">
-                                    <textarea placeholder="Comments"></textarea>
+                                    <textarea class="weui_textarea" placeholder="请输入评论" rows="3"></textarea>
                                 </label>
                                 <div class="reply-btn">
-                                    <button class="button button-small">
-                                        <i class="icon ion-ios-compose-outline"></i>回复患者
+                                    <button class="weui_btn weui_btn_mini weui_btn_primary">
+                                        回复患者
                                     </button>
                                 </div>                       
                             </div>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>预约就诊</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <div class="ybzy-container">
+        <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+                <h3>中医科就诊包年合约</h3>
+            </div>
+            <div class="weui-form-preview__bd">
+                <p>
+                    <label class="weui-form-preview__label">张长生 医生</label>
+                    <span class="weui-form-preview__value">北京济民中医诊所</span>
+                </p>
+                <p>
+                    <label class="weui-form-preview__label">中医诊断包年服务费</label>
+                    <span class="weui-form-preview__value">￥30000.00</span>
+                </p>
+                <p>
+                    <label class="weui-form-preview__label">可就诊次数</label>
+                    <span class="weui-form-preview__value">100次</span>
+                </p>
+            </div>
+        </div>
+
+        <article class="weui_article ybzy-article">
+            <section>
+                <section>
+                    <p>本人特色简介：毕业于北京大学医学部（北京大学泌尿外科研究所，北大医院）并获泌尿外科学医学博士学位。擅长泌尿系肿瘤的微创治疗，复杂肿瘤的开放性手术治疗，泌尿系腔内治疗及晚期肿瘤的综合治疗。一直从事泌尿外科临床医疗、教学和科研工作。</p>
+                </section>
+            </section>
+        </article>
+
+        <label for="weuiAgree" class="weui-agree">
+            <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+            <span class="weui-agree__text">同意该包年服务合约条款</span>
+        </label>
+        
+    </div>
+
+    <footer class="ybzy-footer">
+        <a href="javascript:;" class="weui_btn weui_btn_warn">支付合约金</a>
+    </footer>
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <script src="../js/jquery-weui.js"></script>
+    <script>
+    $(document).on("click", "#show-actions", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "取消关注",
+                className: "color-danger",
+                onClick: function() {
+                    $.alert("已取消关注");
+                }
+            }]
+        });
+    });
+    </script>
+
+
+</body>
+
+</html>

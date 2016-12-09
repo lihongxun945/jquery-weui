@@ -2,6 +2,10 @@
 @yb-blue: #2d8bdc;
 @yb-orange: #ff9d7b;
 
+.yb-red { color: @yb-red;}
+.yb-blue { color: @yb-blue;}
+.yb-orange { color: @yb-orange;}
+
 /* 最大显示一行，溢出省略号 */
 .txt-line-one { overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
 /* 最大显示两行，溢出省略号 */
@@ -173,6 +177,97 @@ body { background: #efefef; }
     }
 }
 
+.weui-form-preview{
+    position: relative;
+    background-color: #FFFFFF;
+    &:before{
+        .t-line;
+    }
+    &:after{
+        .b-line;
+    }
+}
+.weui-form-preview__hd{
+    position: relative;
+    padding: 10px 15px;
+    text-align: right;
+    line-height: 2.5em;
+    &:after{
+        .b-line;
+        left: 15px;
+    }
+    .weui-form-preview__value{
+        font-style: normal;
+        font-size: 1.6em;
+    }
+}
+.weui-form-preview__bd{
+    padding: 10px 15px;
+    font-size: .9em;
+    text-align: right;
+    color: #999;
+    line-height: 2;
+}
+.weui-form-preview__ft{
+    position: relative;
+    line-height: 50px;
+    display: flex;
+    &:after {
+        .t-line;
+    }
+}
+.weui-form-preview__label{
+    float: left;
+    margin-right: 1em;
+    min-width: 4em;
+    color: #999;
+    text-align: justify;
+    text-align-last: justify;
+}
+.weui-form-preview__value{
+    display: block;
+    overflow: hidden;
+    word-break:normal;
+    word-wrap: break-word;
+}
+.weui-form-preview__btn {
+    position: relative;
+    display: block;
+    flex: 1;
+    color: #3CC51F;
+    text-align: center;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    button&{
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        font-size: inherit;
+    }
+    &:active {
+        background-color: #eee;
+    }
+    &:after {
+        .l-line;
+    }
+    &:first-child {
+        &:after {
+            display: none;
+        }
+    }
+}
+.weui-form-preview__btn_default {
+    color: #999;
+}
+.weui-form-preview__btn_primary {
+    color: #0BB20C;
+}
+
+
+.ybzy-doctor-list {
+	.weui_panel {
+		display: block;
+	}
+}
 
 /* 评论 */
 .ybzy-discuss {
@@ -222,10 +317,6 @@ body { background: #efefef; }
 						.item-input { padding: 6px 8px 5px; margin-bottom: 5px;}
 						.reply-btn {
 							text-align: right;
-							.button {
-								background: #fff; border: lighten(@yb-red,20%) solid 1px; border-radius: 24px; padding-left: 10px; padding-right: 10px; color: @yb-red; font-size: 13px;
-								.icon { margin-right: 4px;}
-							}
 						}
 					}
 				}
@@ -235,6 +326,122 @@ body { background: #efefef; }
 }
 
 .ybzy-filter {}
+.ybzy-actions-items {}
+
+/* 预约表 */
+.ybzy-reserve-panel {
+	.weui_panel_hd {
+		font-size: 19px; color: #333; line-height: 30px;
+		.reserve-price {
+			float: right; color: #999; font-size: 15px;
+		}
+	}
+	.weui_panel_bd {
+		padding: 10px 15px 20px;
+		.reserve-hd {
+			.display-flex; line-height: 24px; font-size: 15px;
+			& > div { .flex-1; white-space: nowrap; }
+			.reserve-hd-t {
+				margin-bottom: 5px;
+				.ybzy-icon { color: @yb-orange; font-size: 17px; margin-right: 5px; }
+			}
+			.reserve-hd-date {
+				text-align: right; color: @yb-orange;
+			}
+		}
+		.ybzy-reserve-table {
+			border: #e0e0e0 solid 1px; width: 100%; max-height: 100%; border-collapse: collapse; border-spacing: 0; box-sizing: border-box; font-size: 15px; border-radius: 2px;
+			th,td {
+				border: 1px solid #e0e0e0; padding: 8px; line-height: 1.4; white-space: nowrap; text-align: center;
+			}
+			th {
+				background: #ededed; font-weight: normal; max-width: 60px;
+				p { color: #828282; }
+			}
+			td {
+				.reserve-radio {
+					display: block; padding: .5em 5px; font-size :15px;
+					.reserve-radio-text{
+					    color: #999;
+					}
+					input:checked + .reserve-radio-text { color: @yb-orange;}
+					.reserve-radio-checkbox{
+					    appearance: none;
+					    outline: 0;
+					    font-size: 0;
+
+					    border: 1px solid #D1D1D1;
+					    background-color: #FFFFFF;
+					    border-radius: 3px;
+					    width: 15px;
+					    height: 15px;
+					    line-height: 15px;
+					    position: relative;
+
+					    vertical-align: 0;
+					    top: 2px;
+
+					    &:checked{
+					    	background-color: @yb-orange; border-color: @yb-orange;
+					        &:before{
+					            font-family: "weui";
+					            font-style: normal;
+					            font-weight: normal;
+					            font-variant: normal;
+					            text-transform: none;
+					            text-align: center;
+					            speak: none;
+					            display: inline-block;
+					            vertical-align: middle;
+					            text-decoration: inherit;
+					            content: "\EA08";
+					            color: #fff;
+					            font-size: 15px;
+
+					            position: absolute;
+					            top: 50%;
+					            left: 50%;
+					            transform: translate(-50%,-48%) scale(.73);
+					            -webkit-transform: translate(-50%,-48%) scale(.73);
+					        }
+					    }
+					    &:disabled{
+					        background-color:#E1E1E1;
+					        &:before{
+					            color:#ADADAD;
+					        }
+					    }
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* 退款详情 */
+.shtx-schedule {
+    margin-top: 0;
+    .weui_cell_bd {
+        p span { font-size: 0.9rem; margin-right: 0.5em;}
+        .shtx-schedule-list { 
+            border-left: #8ee4cc solid 1px; padding-left: 1rem; margin-left: 0.5rem;
+            .item {
+                border-bottom:#eee solid 1px; padding: 0.5em 0; position: relative;
+                &:last-child { border-bottom: none;}
+                &:before { width: 0.55rem; height: 0.55rem; background: #8ee4cc; border-radius: 0.4rem; content:""; display: block; position: absolute; left: -1.32rem; top: 1rem;}
+                &:first-child:before { background: #1dbd91 ; width: 0.75rem; height: 0.75rem; border:#bbebde solid 0.2rem; border-radius: 1rem; left: -1.6rem; top: 0.8rem;}
+                p {
+                    line-height: 1rem; color: #999;
+                    &.schedule-t { font-size: 0.9rem; color: #1dbd91; }
+                    &.schedule-c { font-size: 0.8rem; }
+                    &.schedule-d { font-size: 0.8rem; }
+                    span { margin: 0 0.2rem; color: #1dbd91;}
+                }
+            }
+        }
+    }
+}
 
 
 

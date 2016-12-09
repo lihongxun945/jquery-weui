@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>预约就诊</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <div class="weui_cells shtx-schedule">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="date-table">
+                    <div class="items">
+                        <div class="item item-t">退款金额</div>
+                        <div class="item item-c"><span class="warn">17.6元</span></div>
+                    </div>
+                    <div class="items">
+                        <div class="item item-t">退回账户</div>
+                        <div class="item item-c">财付通账户</div>
+                    </div>
+                    <div class="items">
+                        <div class="item item-t">到账时间</div>
+                        <div class="item item-c">已到账</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <p><span>退款进度跟踪</span></p>
+            </div>
+        </div>
+
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="shtx-schedule-list">
+                    <div class="item">
+                        <p class="schedule-t">已到账</p>
+                        <p class="schedule-c">财付通已将17.6元返还至您的财付通账户，如有疑问，请使用交易号<span>2015122412001234</span>拨打财付通客服<span>0755-86013860</span>咨询</p>
+                        <p class="schedule-d">2015年11月8日 19:23:11</p>
+                    </div>
+                    <div class="item">
+                        <p class="schedule-t">财付通审核通过</p>
+                        <p class="schedule-c">您的资金已转至财付通处理</p>
+                        <p class="schedule-d">2015年11月8日 15:43:45</p>
+                    </div>
+                    <div class="item">
+                        <p class="schedule-t">生活天下审核通过</p>
+                        <p class="schedule-c">已将退款申请提交至财付通</p>
+                        <p class="schedule-d">2015年11月8日 11:26:19</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="ybzy-footer">
+        <a href="javascript:;" class="weui_btn weui_btn_warn">支付合约金</a>
+    </footer>
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <script src="../js/jquery-weui.js"></script>
+    <script>
+    $(document).on("click", "#show-actions", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "取消关注",
+                className: "color-danger",
+                onClick: function() {
+                    $.alert("已取消关注");
+                }
+            }]
+        });
+    });
+    </script>
+
+
+</body>
+
+</html>
