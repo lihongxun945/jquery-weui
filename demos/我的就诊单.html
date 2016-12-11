@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>选择医生</title>
+    <title>我的就诊单</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -14,44 +14,39 @@
 
 <body ontouchstart>
     <header class="ybzy-header">
-        <h1 class="ybzy-title">就诊人李云迪：选择大夫预约就诊</h1>
         <div class="ybzy-filter">
-            <a href="#" class="filter-item">综合排序</a>
-            <a href="#" class="filter-item">离我最近</a>
-            <a href="#" class="filter-item">评分最高</a>
-            <a href="#" id="show-actions" class="filter-actions">筛选</a>
+            <a href="#" id="show-actions" class="filter-actions">筛选就诊单</a>
         </div>
         <!--BEGIN actionSheet-->
         <div id="actionSheet_wrap">
             <div class="weui_mask weui_actions_mask weui_mask_visible"></div>
             <div class="weui_actionsheet weui_actionsheet_toggle" id="weui_actionsheet">
-                <div class="weui_actionsheet_title">筛选查询</div>
+                <div class="weui_actionsheet_title">筛选就诊单</div>
                 <div class="weui_actionsheet_menu" style="max-height: 300px; overflow-y: auto;">
                     <div class="ybzy-actions-items">
-                        <div class="ybzy-actions-t">选择诊疗项目</div>
                         <div class="ybzy-actions-c">
-                            <span class="ybzy-actions-item active">全部诊疗项</span>
-                            <span class="ybzy-actions-item">中医面诊</span>
-                            <span class="ybzy-actions-item">中医远程</span>
-                            <span class="ybzy-actions-item">颈椎病专病治疗面诊</span>
-                            <span class="ybzy-actions-item">健康成长远程</span>
+                            <span class="ybzy-actions-item active">全部订单</span>
+                            <span class="ybzy-actions-item">正在处治</span>
+                            <span class="ybzy-actions-item">已处治完成</span>
                         </div>
                     </div>
                     <div class="ybzy-actions-items">
-                        <div class="ybzy-actions-t">选择城市</div>
+                        <div class="ybzy-actions-t">选择患者</div>
                         <div class="ybzy-actions-c">
-                            <span class="ybzy-actions-item active">全国</span>
-                            <span class="ybzy-actions-item">北京</span>
-                            <span class="ybzy-actions-item">上海</span>
-                            <span class="ybzy-actions-item">天津</span>
+                            <span class="ybzy-actions-item active">所有患者</span>
+                            <span class="ybzy-actions-item">李云迪</span>
+                            <span class="ybzy-actions-item">张巧云</span>
                         </div>
                     </div>
                     <div class="ybzy-actions-items">
-                        <div class="ybzy-actions-t">诊所类型</div>
+                        <div class="ybzy-actions-t">就诊时间</div>
                         <div class="ybzy-actions-c">
-                            <span class="ybzy-actions-item active">全部诊所</span>
-                            <span class="ybzy-actions-item">个人工作室</span>
-                            <span class="ybzy-actions-item">实体诊所</span>
+                            <span class="ybzy-actions-item active">所有时间</span>
+                            <span class="ybzy-actions-item">最近一周</span>
+                            <span class="ybzy-actions-item">最近一个月</span>
+                            <span class="ybzy-actions-item">最近三个月</span>
+                            <span class="ybzy-actions-item">最近一年</span>
+                            <span class="ybzy-actions-item">一年以上</span>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>我的合约医生</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <div class="yb-contract-status">
+        <div class="contract-time">合约到期时间<span>2017-11-11</span></div>
+        <div class="contract-num">剩余就诊次数<span>30次</span></div>
+    </div>
+    <% include _ybzy-doctor-detail.html %>
+
+    <% include _ybzy-discuss.html %>
+    
+    <div class="weui_cells_title ybzy-cells-title">历史合约医生</div>
+    <div class="weui_panel weui_panel_access ybzy-doctor-detail">
+        <div class="weui_panel_bd">
+            <div class="yb-contract-status">
+                <div class="contract-t">合约状态</div>
+                <div class="contract-c">退款停用</div>
+            </div>
+            <div class="weui_media_box weui_media_appmsg doctor-info">
+                <div class="weui_media_hd">
+                    <img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt="">
+                </div>
+                <div class="weui_media_bd">
+                    <h4 class="weui_media_title">
+                        张长生 医生
+                        <div class="doctor-follow">
+                            <div class="unfollow" id="doctor-unfollow1" style="">+关注</div>
+                            <div class="follow" id="doctor-follow1" style="display: none;">已关注</div>
+                        </div>
+                    </h4>
+                    <p class="weui_media_desc">正在排队人数<span class="yb-red">3人</span></p>
+                    <p class="weui_media_desc">患者好评度<span class="yb-red">4.5</span></p>
+                </div>
+            </div>
+
+            <div class="yb-contract-status">
+                <div class="contract-t">合约状态</div>
+                <div class="contract-c">退款停用</div>
+            </div>
+            <div class="weui_media_box weui_media_appmsg doctor-info">
+                <div class="weui_media_hd">
+                    <img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt="">
+                </div>
+                <div class="weui_media_bd">
+                    <h4 class="weui_media_title">
+                        张长生 医生
+                        <div class="doctor-follow">
+                            <div class="unfollow" id="doctor-unfollow2" style="">+关注</div>
+                            <div class="follow" id="doctor-follow2" style="display: none;">已关注</div>
+                        </div>
+                    </h4>
+                    <p class="weui_media_desc">正在排队人数<span class="yb-red">3人</span></p>
+                    <p class="weui_media_desc">患者好评度<span class="yb-red">4.5</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <!-- <script src="../lib/fastclick.js">
+        </script>
+        <script>
+        $(function() {
+            FastClick.attach(document.body);
+        });
+    </script> -->
+    <script src="../js/jquery-weui.js"></script>
+    <script>
+    $(document).on("click", "#doctor-unfollow", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "关注该医生",
+                className: "color-danger",
+                onClick: function() {
+                    $("#doctor-unfollow").hide();
+                    $("#doctor-follow").show();
+                    $.alert("已关注该医生");
+                }
+            }]
+        });
+    });
+    $(document).on("click", "#doctor-follow", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "取消关注",
+                className: "color-danger",
+                onClick: function() {
+                    $("#doctor-unfollow").show();
+                    $("#doctor-follow").hide();
+                    $.alert("已取消关注");
+                }
+            }]
+        });
+    });
+    $(document).on("click", "#doctor-unfollow1", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "关注该医生",
+                className: "color-danger",
+                onClick: function() {
+                    $("#doctor-unfollow1").hide();
+                    $("#doctor-follow1").show();
+                    $.alert("已关注该医生");
+                }
+            }]
+        });
+    });
+    $(document).on("click", "#doctor-follow1", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "取消关注",
+                className: "color-danger",
+                onClick: function() {
+                    $("#doctor-unfollow1").show();
+                    $("#doctor-follow1").hide();
+                    $.alert("已取消关注");
+                }
+            }]
+        });
+    });
+    $(document).on("click", "#doctor-unfollow2", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "关注该医生",
+                className: "color-danger",
+                onClick: function() {
+                    $("#doctor-unfollow2").hide();
+                    $("#doctor-follow2").show();
+                    $.alert("已关注该医生");
+                }
+            }]
+        });
+    });
+    $(document).on("click", "#doctor-follow2", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "取消关注",
+                className: "color-danger",
+                onClick: function() {
+                    $("#doctor-unfollow2").show();
+                    $("#doctor-follow2").hide();
+                    $.alert("已取消关注");
+                }
+            }]
+        });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#toggle-discuss").click(function() {
+            $(".ybzy-discuss").slideToggle(function() {
+                $("#toggle-discuss").toggleClass("active");
+            });
+        });
+    });
+    </script>
+
+
+
+</body>
+
+</html>

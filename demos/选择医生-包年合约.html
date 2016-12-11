@@ -13,32 +13,42 @@
 </head>
 
 <body ontouchstart>
-    <div class="ybzy-container">
-        <div class="weui-form-preview">
-            <div class="weui-form-preview__hd">
-                <h3>中医科就诊包年合约</h3>
-            </div>
-            <div class="weui-form-preview__bd">
-                <p>
-                    <label class="weui-form-preview__label">张长生 医生</label>
-                    <span class="weui-form-preview__value">北京济民中医诊所</span>
-                </p>
-                <p>
-                    <label class="weui-form-preview__label">中医诊断包年服务费</label>
-                    <span class="weui-form-preview__value">￥30000.00</span>
-                </p>
-                <p>
-                    <label class="weui-form-preview__label">可就诊次数</label>
-                    <span class="weui-form-preview__value">100次</span>
-                </p>
-            </div>
+    <div class="weui-form-preview ybzy-order">
+        <div class="weui-form-preview__hd">
+            <h3>中医科就诊包年合约</h3>
         </div>
-
-        <article class="weui_article ybzy-article">
+        <div class="weui-form-preview__bd">
+            <p>
+                <label class="weui-form-preview__label">张长生 医生</label>
+                <span class="weui-form-preview__value">北京济民中医诊所</span>
+            </p>
+            <p>
+                <label class="weui-form-preview__label">中医诊断包年服务费</label>
+                <span class="weui-form-preview__value">￥30000.00</span>
+            </p>
+            <p>
+                <label class="weui-form-preview__label">可就诊次数</label>
+                <span class="weui-form-preview__value">100次</span>
+            </p>
+        </div>
+    </div>
+    <div class="weui_cells weui_cells_form">
+        <article class="weui_article ybzy-detail-article">
             <section>
                 <section>
-                    <p>本人特色简介：毕业于北京大学医学部（北京大学泌尿外科研究所，北大医院）并获泌尿外科学医学博士学位。擅长泌尿系肿瘤的微创治疗，复杂肿瘤的开放性手术治疗，泌尿系腔内治疗及晚期肿瘤的综合治疗。一直从事泌尿外科临床医疗、教学和科研工作。</p>
-                </section>
+                    <p><span>&nbsp; &nbsp; 条款正文中加粗显示的文字内容为免除本公司保险责任的条款，请注意仔细阅读。</span></p>
+                    <p><span>&nbsp; &nbsp; 第一条 保险合同构成</span></p>
+                    <p><span>&nbsp; &nbsp; 本保险合同（以下简称“本合同”）由保险单或其它保险凭证及所附条款、投保单等与本合同有关的投保文件、合法有效的声明、批注、批单、其它书面协议构成。</span></p>
+                    <p><span>&nbsp;</span></p>
+                    <p><span>&nbsp; &nbsp; 第二条 保险合同成立与生效</span></p>
+                    <p><span>&nbsp; &nbsp; 投保人提出保险申请、本公司同意承保，本合同成立。</span></p>
+                    <p><span>&nbsp; &nbsp; 本合同自本公司同意承保、收取保险费并签发保险单开始生效，具体生效日以保险单所载的日期为准。</span></p>
+                    <p><span>&nbsp;</span></p>
+                    <p><span>&nbsp; &nbsp; 第三条 保险责任</span></p>
+                    <p><span>&nbsp; &nbsp; 在本合同有效期内，本公司承担下列保险责任：</span></p>
+                    <p><span>&nbsp; &nbsp; 被保险人因遭受意外事故或疾病，经医院确诊必须住院治疗的，本公司就其每次住院发生的、符合当地社会基本医疗保险规定的合理医疗费用，按本合同约定的支付范围和支付比例给付补充住院医疗保险金。</span></p>
+                    <p><span>&nbsp; &nbsp; 被保险人不论一次或多次住院治疗，本公司均按上述约定给付补充住院医疗保险金，但累计给付金额以被保险人的补充住院医疗保险金额为限，累计给付金额达到其保险金额时，保险责任终止。</span></p>
+                </section>          
             </section>
         </article>
 
@@ -46,32 +56,13 @@
             <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
             <span class="weui-agree__text">同意该包年服务合约条款</span>
         </label>
-        
+        <div class="weui_btn_area">
+            <a href="javascript:;" class="weui_btn weui_btn_warn">支付合约金</a>
+        </div>
     </div>
-
-    <footer class="ybzy-footer">
-        <a href="javascript:;" class="weui_btn weui_btn_warn">支付合约金</a>
-    </footer>
 
     <script src="../lib/jquery-2.1.4.js"></script>
     <script src="../js/jquery-weui.js"></script>
-    <script>
-    $(document).on("click", "#show-actions", function() {
-        $.actions({
-            title: "选择操作",
-            onClose: function() {
-                console.log("close");
-            },
-            actions: [{
-                text: "取消关注",
-                className: "color-danger",
-                onClick: function() {
-                    $.alert("已取消关注");
-                }
-            }]
-        });
-    });
-    </script>
 
 
 </body>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>预约就诊</title>
+    <title>查看物流</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -69,24 +69,6 @@
 
     <script src="../lib/jquery-2.1.4.js"></script>
     <script src="../js/jquery-weui.js"></script>
-    <script>
-    $(document).on("click", "#show-actions", function() {
-        $.actions({
-            title: "选择操作",
-            onClose: function() {
-                console.log("close");
-            },
-            actions: [{
-                text: "取消关注",
-                className: "color-danger",
-                onClick: function() {
-                    $.alert("已取消关注");
-                }
-            }]
-        });
-    });
-    </script>
-
 
 </body>
 

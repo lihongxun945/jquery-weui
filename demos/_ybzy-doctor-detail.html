@@ -1,0 +1,158 @@
+<div class="weui_panel weui_panel_access ybzy-doctor-detail">
+    <div class="weui_panel_bd">
+        <div class="weui_media_box weui_media_appmsg doctor-info">
+            <div class="weui_media_hd">
+                <img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt="">
+            </div>
+            <div class="weui_media_bd">
+                <h4 class="weui_media_title">
+                    张长生 医生
+                    <div class="doctor-follow">
+                        <div class="unfollow" id="doctor-unfollow" style="">+关注</div>
+                        <div class="follow" id="doctor-follow" style="display: none;">已关注</div>
+                    </div>
+                </h4>
+                <p class="weui_media_desc">正在排队人数<span class="yb-red">3人</span></p>
+                <p class="weui_media_desc">患者好评度<span class="yb-red">4.5</span></p>
+            </div>
+        </div>
+        <div class="weui_media_box weui_media_appmsg doctor-position">
+            <div class="weui_media_hd">
+                <img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt="">
+            </div>
+            <div class="weui_media_bd">
+                <h4 class="weui_media_title"><span class="ybzy-icon ybzy-icon-map"></span> 北京济民中医诊所</h4>
+                <p class="weui_media_desc">北京市朝阳区建外街道东三环中路39-16号CBD国际大厦底商 16号铺</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="weui_cells_title ybzy-cells-title">诊断项目</div>
+<div class="weui_cells weui_cells_access ybzy-price-list">
+    <a class="weui_cell" href="javascript:;">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>中医诊断 <span>远程诊断</span></p>
+        </div>
+        <div class="weui_cell_ft">￥150</div>
+    </a>
+    <a class="weui_cell" href="javascript:;">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>中医诊断 <span>面诊服务</span></p>
+        </div>
+        <div class="weui_cell_ft">￥200</div>
+    </a>
+    <a class="weui_cell" href="javascript:;">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>中医诊断 <span>包年合约服务</span></p>
+        </div>
+        <div class="weui_cell_ft">￥3000</div>
+    </a>
+</div>
+<!--BEGIN actionSheet-->
+<div id="actionSheet_wrap" style="display: none;">
+    <div class="weui_mask weui_actions_mask weui_mask_visible"></div>
+    <div class="weui_actionsheet weui_actionsheet_toggle" id="weui_actionsheet">
+        <div class="weui_actionsheet_menu">
+            <div class="weui_panel weui_panel_access ybzy-reserve-panel">
+                <div class="weui_panel_hd">
+                    中医诊断 远程诊断
+                    <div class="reserve-price">诊断费用<span class="yb-red">￥150</span></div>
+                </div>
+                <div class="weui_panel_bd">
+                    <div class="reserve-hd">
+                        <div class="reserve-hd-t"><span class="ybzy-icon ybzy-icon-date"></span>可预约时间：</div>
+                        <div class="reserve-hd-date">今天08月12日（周五）</div>
+                    </div>
+                    <table class="ybzy-reserve-table weui_cells_radio">
+                        <tr>
+                            <th></th>
+                            <td>上午</td>
+                            <td>下午</td>
+                            <td>晚上</td>
+                        </tr>
+                        <tr>
+                            <th><div class="item"><p>08-15</p>周一</div></th>
+                            <td>
+                                <label for="x11" class="reserve-radio">
+                                    <input id="x11" type="radio" name="radio1" class="reserve-radio-checkbox">
+                                    <span class="reserve-radio-text">预约</span>
+                                </label>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th><div class="item"><p>08-18</p>周四</div></th>
+                            <td></td>
+                            <td>
+                                <label for="x12" class="reserve-radio">
+                                    <input id="x12" type="radio" name="radio1" class="reserve-radio-checkbox">
+                                    <span class="reserve-radio-text">预约</span>
+                                </label>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th><div class="item"><p>08-22</p>周一</div></th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th><div class="item"><p>08-25</p>周四</div></th>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <label for="x13" class="reserve-radio">
+                                    <input id="x13" type="radio" name="radio1" class="reserve-radio-checkbox">
+                                    <span class="reserve-radio-text">预约</span>
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="weui_actionsheet_action">
+            <div class="weui_actionsheet_cell actionsheet_submit" id="actionsheet_submit">预约</div>
+        </div>
+    </div>
+</div>
+<!--END actionSheet-->
+
+<div class="weui_cells_title ybzy-cells-title">授权专科项目</div>
+<div class="weui_cells weui_cells_access ybzy-price-list">
+    <a class="weui_cell" href="javascript:;">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>好好成长基金健康成长项目</p>
+            <div class="price-deta">
+                <div class="price-item">远程诊断<span class="price-free">公益免费</span></div>
+            </div>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a>
+    <a class="weui_cell" href="javascript:;">
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>颈椎病专科治疗</p>
+            <div class="price-deta">
+                <div class="price-item">面诊服务<span>￥200</span></div>
+                <div class="price-item">环境费<span>￥200</span></div>
+                <div class="price-item">药费<span>￥200</span></div>
+                <div class="price-item">治疗费<span>￥200</span></div>
+                <div class="price-item">技术授权费<span>￥200</span></div>
+            </div>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a>
+</div>
+
+<div class="weui_cells_title ybzy-cells-title">医生简介</div>
+<article class="weui_article ybzy-detail-article">
+    <section>
+        <section>
+            <p>本人特色简介：毕业于北京大学医学部（北京大学泌尿外科研究所，北大医院）并获泌尿外科学医学博士学位。擅长泌尿系肿瘤的微创治疗，复杂肿瘤的开放性手术治疗，泌尿系腔内治疗及晚期肿瘤的综合治疗。一直从事泌尿外科临床医疗、教学和科研工作。</p>
+        </section>
+    </section>
+</article>
