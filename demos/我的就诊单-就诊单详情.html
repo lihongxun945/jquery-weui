@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>就诊单详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <div class="ybzy-inquiry-detail">
+        <div class="ybzy-inquiry-item">
+            <div class="inquiry-hd">
+                <div class="inquiry-name">就诊人：李云迪</div>
+                <div class="inquiry-date">就诊时间：2016-08-20</div>
+            </div>
+            <div class="inquiry-bd">
+                <div class="weui-row">
+                    <div class="weui-col-50">性别：女</div>
+                    <div class="weui-col-50">年龄：23岁</div>
+                    <div class="weui-col-50">就诊订单号：11123</div>
+                    <div class="weui-col-50">科室：颈椎病专科</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ybzy-inquiry-item">
+            <div class="inquiry-hd">
+                <div class="ybzy-cells-toggle" id="toggle-inquiry-01">
+                    <div class="toggle-t">支付信息</div>
+                    <div class="toggle-arrow"></div>
+                </div>
+            </div>
+            <div class="inquiry-bd" id="inquiry-hd-01">
+                <div class="weui-form-preview">
+                    <div class="weui-form-preview__bd">
+                        <p>
+                            <label class="weui-form-preview__label">支付诊费：￥300</label>
+                            <span class="weui-form-preview__value">2016-08-20 13:00</span>
+                        </p>
+                        <p>
+                            <label class="weui-form-preview__label">支付药费：￥300</label>
+                            <span class="weui-form-preview__value">2016-08-20 13:00</span>
+                        </p>
+                        <p>
+                            <label class="weui-form-preview__label">支付治疗费：￥200</label>
+                            <span class="weui-form-preview__value">2016-08-20 13:00</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ybzy-inquiry-item">
+            <div class="inquiry-hd">
+                <div class="ybzy-cells-toggle" id="toggle-inquiry-02">
+                    <div class="toggle-t">支付信息</div>
+                    <div class="toggle-arrow"></div>
+                </div>
+            </div>
+            <div class="inquiry-bd" id="inquiry-hd-02">
+                <div class="weui-form-preview">
+                    <div class="weui-form-preview__bd">
+                        <p>
+                            <label class="weui-form-preview__label">医生</label>
+                            <span class="weui-form-preview__value">张长生 医生</span>
+                        </p>
+                        <p>
+                            <label class="weui-form-preview__label">诊所</label>
+                            <span class="weui-form-preview__value">北京济民中医诊所</span>
+                        </p>
+                        <p>
+                            <label class="weui-form-preview__label">地址</label>
+                            <span class="weui-form-preview__value">北京市朝阳区建外街道东三环中路39-16号CBD国际大厦底商 16号铺</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="inquiry-ft">
+                请您于 2016--8-12 下午 14：:0——18:00到北京济民中医诊所就诊
+            </div>
+        </div>
+    </div>
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <script src="../js/jquery-weui.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#toggle-inquiry-01").click(function() {
+            $("#inquiry-hd-01").slideToggle(function() {
+                $(this).toggleClass("active");
+            });
+        });
+        $("#toggle-inquiry-02").click(function() {
+            $("#inquiry-hd-02").slideToggle(function() {
+                $(this).toggleClass("active");
+            });
+        });
+    });
+    </script>
+
+</body>
+
+</html>
