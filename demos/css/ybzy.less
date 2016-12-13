@@ -610,11 +610,11 @@ body { background: #efefef; height: 100%; }
 }
 
 /* 退款详情 */
-.shtx-schedule {
+.ybzy-schedule {
     margin-top: 0;
     .weui_cell_bd {
         p span { font-size: 0.9rem; margin-right: 0.5em;}
-        .shtx-schedule-list { 
+        .ybzy-schedule-list { 
             border-left: #8ee4cc solid 1px; padding-left: 1rem; margin-left: 0.5rem;
             .item {
                 border-bottom:#eee solid 1px; padding: 0.5em 0; position: relative;
@@ -633,7 +633,26 @@ body { background: #efefef; height: 100%; }
     }
 }
 
-
+/* 就诊单详情 */
+.ybzy-inquiry-detail {
+    .ybzy-inquiry-item {
+        background: #fff; margin-top: 10px;
+        &:first-child { margin-top: 0;}
+        .inquiry-hd {}
+        .inquiry-bd {
+            .inquiry-table {
+                display: table;
+                .inquiry-row {
+                    display: table-row;
+                    .inquiry-cell {
+                        display: table-cell;
+                    }
+                }
+            }
+        }
+        .inquiry-ft {}
+    }
+}
 
 
 
