@@ -123,9 +123,9 @@ a.ybzy-link-red {
 .ybzy-icon-waiting:before { content: "\e60b"; }/* 受理中 */
 .ybzy-icon-map:before { content: "\e63e"; }/* 地图 */
 .ybzy-icon-good:before { content: "\e610"; }/* 好评 */
-.ybzy-icon-good-on:before { content: "\e60f"; }/* 好评选中 */
-.ybzy-icon-bad:before { content: "\e60e"; }/* 差评 */
-.ybzy-icon-ban-on:before { content: "\e60d"; }/* 差评选中 */
+.ybzy-icon-good-on:before { content: "\e60e"; }/* 好评选中 */
+.ybzy-icon-bad:before { content: "\e60f"; }/* 差评 */
+.ybzy-icon-bad-on:before { content: "\e60d"; }/* 差评选中 */
 .ybzy-icon-date:before { content: "\e73f"; }/* 日期 */
 .ybzy-icon-msg:before { content: "\e616"; }/* 消息 */
 
@@ -609,24 +609,46 @@ body { background: #efefef; height: 100%; }
     }
 }
 
-/* 退款详情 */
+
+
+/* 物流详情 */
 .ybzy-schedule {
-    margin-top: 0;
-    .weui_cell_bd {
-        p span { font-size: 0.9rem; margin-right: 0.5em;}
-        .ybzy-schedule-list { 
-            border-left: #8ee4cc solid 1px; padding-left: 1rem; margin-left: 0.5rem;
-            .item {
-                border-bottom:#eee solid 1px; padding: 0.5em 0; position: relative;
-                &:last-child { border-bottom: none;}
-                &:before { width: 0.55rem; height: 0.55rem; background: #8ee4cc; border-radius: 0.4rem; content:""; display: block; position: absolute; left: -1.32rem; top: 1rem;}
-                &:first-child:before { background: #1dbd91 ; width: 0.75rem; height: 0.75rem; border:#bbebde solid 0.2rem; border-radius: 1rem; left: -1.6rem; top: 0.8rem;}
-                p {
-                    line-height: 1rem; color: #999;
-                    &.schedule-t { font-size: 0.9rem; color: #1dbd91; }
-                    &.schedule-c { font-size: 0.8rem; }
-                    &.schedule-d { font-size: 0.8rem; }
-                    span { margin: 0 0.2rem; color: #1dbd91;}
+    .weui_panel {
+        .weui_panel_bd {
+            .weui_media_box {
+                .weui_media_hd {
+                    .weui_media_appmsg_thumb {
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+    }
+    .weui_cells {
+        margin-top: 10px;
+        .weui_cell_bd {
+            p {
+                font-size: 15px;
+                span { color: @yb-blue; }
+            }
+            .ybzy-schedule-list { 
+                position: relative; padding-left: 20px; margin-left: 8px;
+                &:before { .l-line; left: -1px; top: 14px; bottom: 5px; z-index: 3}
+                .item {
+                    border-bottom:#eee solid 1px; padding: 8px 0; position: relative;
+                    &:last-child { border-bottom: none;}
+                    &:before { width: 9px; height: 9px; background: #d8d8d8; border-radius: 9px; content:""; display: block; position: absolute; left: -25px; top: 12px; z-index: 4;}
+                    &:first-child:before { background: @yb-blue ; width: 11px; height: 11px; border: lighten(@yb-blue, 30%) solid 3px; border-radius: 11px; left: -29px; top: 10px; z-index: 5;}
+                    p {
+                        line-height: 1rem; color: #999;
+                        &.schedule-t { font-size: 15px; color: #1dbd91; }
+                        &.schedule-c { font-size: 15px; }
+                        &.schedule-d { font-size: 13px; }
+                        span { margin: 0 0.2rem; color: #1dbd91;}
+                    }
+                    &:first-child {
+                        p.schedule-c { color: @yb-blue;}
+                    }
                 }
             }
         }
@@ -651,6 +673,38 @@ body { background: #efefef; height: 100%; }
             }
         }
         .inquiry-ft {}
+    }
+}
+
+/*评论*/
+.ybzy-comment {
+    .ybzy-comment-box {
+        margin-top: 10px; background: #fff;
+        .comment-textarea {
+            .weui_cells {
+                margin-top: 0;
+                &:before,&:after { display: none;}
+                .weui_cell { padding-right: 0;}
+            }
+        }
+    
+        .comment-select {
+            padding: 20px 0; .display-flex; border-bottom: #eee solid 1px;
+            .comment-select-item {
+                .flex-1; text-align: center; color: #787878;
+                .comment-good.on { color: #d22d2d;}
+                .comment-medium.on { color: #f6b22c;}
+                .comment-bad.on { color: #555;}
+            }
+        }
+    }
+    
+    .ybzy-comment-star {
+        margin-top: 10px;
+    }
+
+    .comment-btn {
+        margin: 15px;
     }
 }
 

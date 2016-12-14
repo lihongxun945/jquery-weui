@@ -1,0 +1,52 @@
+{
+  "author": "Washington Botelho",
+
+  "bugs": {
+    "url": "https://github.com/wbotelhos/raty/issues"
+  },
+
+  "contributors" : ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
+  "demos"        : ["demo.html"],
+
+  "dependencies" : {
+    "jquery": "2"
+  },
+
+  "description": "jQuery Raty - A Star Rating Plugin",
+
+  "devDependencies": {
+    "karma": "0.12",
+    "karma-chrome-launcher": "0.1",
+    "karma-firefox-launcher": "0.1",
+    "karma-ie-launcher": "0.1",
+    "karma-opera-launcher": "0.1",
+    "karma-phantomjs-launcher": "0.1",
+    "karma-safari-launcher": "0.1",
+
+    "karma-jasmine": "0.2"
+  },
+
+  "directories": {
+    "lib"  : "lib",
+    "test" : "spec"
+  },
+
+  "engines"     : { "node" : "0.10" },
+  "homepage"    : "https://github.com/wbotelhos/raty",
+  "keywords"    : ["classificacao", "classificar", "javascript", "jquery", "library", "plugin", "rating", "raty", "star", "staring", "votar", "voto"],
+  "license"     : "MIT",
+  "main"        : "lib/jquery.raty.js",
+  "maintainers" : ["Washington Botelho <wbotelhos@gmail.com> (http://wbotelhos.com)"],
+  "name"        : "raty-js",
+
+  "repository": {
+    "type" : "git",
+    "url"  : "https://github.com/wbotelhos/raty"
+  },
+
+  "scripts": {
+    "test": "node_modules/karma/bin/karma start spec/karma.conf.js"
+  },
+
+  "version": "2.7.1"
+}

@@ -38,6 +38,13 @@ gulp.task('js', function(cb) {
     .on("end", end);
 
   gulp.src([
+    './www/lib/raty/lib/jquery.raty.js'
+  ])
+    .pipe(concat({ path: 'raty.js'}))
+    .pipe(gulp.dest('./dist/js/'))
+    .on("end", end);
+
+  gulp.src([
     './src/js/swiper.jquery.js',
     './src/js/swiper-wrap.js',
     './src/js/photos.js'
@@ -71,7 +78,6 @@ gulp.task('js', function(cb) {
     .pipe(gulp.dest('./dist/js/'))
     .on("end", end);
 
-  
 });
 
 gulp.task('uglify', ["js"], function() {

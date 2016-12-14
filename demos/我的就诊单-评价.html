@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>评价</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <div class="ybzy-comment">
+        <div class="weui_panel weui_panel_access">
+            <div class="weui_panel_bd">
+                <div class="weui_media_box weui_media_appmsg">
+                    <div class="weui_media_hd">
+                        <img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt="">
+                    </div>
+                    <div class="weui_media_bd">
+                        <h4 class="weui_media_title">张长生 医生</h4>
+                        <p class="weui_media_desc">北京济民中医诊所</p>
+                        <p class="weui_media_desc">为您提供<span class="yb-red">颈椎病专病诊疗</span>服务</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ybzy-comment-box">
+            <div class="comment-textarea">
+                <div class="weui_cells weui_cells_form">
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <textarea class="weui_textarea" placeholder="请您对此课程进行评价！" rows="3"></textarea>
+                            <div class="weui_textarea_counter"><span>0</span>/200</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="comment-select">
+                <div class="comment-select-item">
+                    <div class="comment-good on"><span class="ybzy-icon ybzy-icon-good-on"></span>好评</div>
+                </div>
+                <div class="comment-select-item">
+                    <div class="comment-medium"><span class="ybzy-icon ybzy-icon-good"></span>中评</div>
+                </div>
+                <div class="comment-select-item">
+                    <div class="comment-bad"><span class="ybzy-icon ybzy-icon-bad"></span>差评</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui_cells ybzy-comment-star">
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    诊疗服务评分
+                </div>
+                <div class="weui_cell_ft">满意请给<span class="yb-red">5</span>星</div>
+            </div>
+
+            <div class="weui_cell">
+                <div class="weui_cell_bd weui_cell_primary">
+                    <div class="weui-row">
+                        <div class="weui-col-40">治疗效果</div>
+                        <div class="weui-col-60"><div id="star1"></div></div>
+                    </div>
+                    <div class="weui-row">
+                        <div class="weui-col-40">服务态度</div>
+                        <div class="weui-col-60"><div id="star2"></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="comment-btn">
+            <a href="javascript:;" class="weui_btn weui_btn_warn">发表评论</a>
+        </div>
+
+    </div>
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <script src="../js/jquery-weui.js"></script>
+    <script src="../js/raty.js"></script>
+    <script>
+        $('#star1').raty({
+            starOff      : './images/star-off.png',
+            starOn       : './images/star-on.png'
+        });
+        $('#star2').raty({
+            starOff      : './images/star-off.png',
+            starOn       : './images/star-on.png'
+        });
+    </script>
+
+</body>
+
+</html>
