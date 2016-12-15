@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>个人中心</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <div class="ybzy-uc">
+        <div class="ybzy-uc-hd">
+            <div class="uc-avatar"><img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt=""></div>
+            <div class="uc-name">爱德华多</div>
+        </div>
+        <div class="ybzy-uc-bd">
+            <div class="weui_cells weui_cells_access">
+                <a class="weui_cell" href="javascript:;">
+                    <div class="weui_cell_hd">
+                        <span class="ybzy-icon ybzy-icon-inquiry"></span>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>cell standard</p>
+                    </div>
+                    <div class="weui_cell_ft">说明文字</div>
+                </a>
+                <a class="weui_cell" href="javascript:;">
+                    <div class="weui_cell_hd">
+                        <span class="ybzy-icon ybzy-icon-user"></span>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>cell standard</p>
+                    </div>
+                    <div class="weui_cell_ft">说明文字</div>
+                </a>
+            </div>
+
+            <div class="weui_cells weui_cells_access">
+                <a class="weui_cell" href="javascript:;">
+                    <div class="weui_cell_hd">
+                        <span class="ybzy-icon ybzy-icon-msglist"></span>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>cell standard</p>
+                    </div>
+                    <div class="weui_cell_ft">说明文字</div>
+                </a>
+                <a class="weui_cell" href="javascript:;">
+                    <div class="weui_cell_hd">
+                        <span class="ybzy-icon ybzy-icon-address"></span>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>cell standard</p>
+                    </div>
+                    <div class="weui_cell_ft">说明文字</div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <!-- <script src="../lib/fastclick.js">
+        </script>
+        <script>
+        $(function() {
+            FastClick.attach(document.body);
+        });
+    </script> -->
+    <script src="../js/jquery-weui.js"></script>
+    <script>
+    $(document).on("click", "#doctor-unfollow", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "关注该医生",
+                className: "color-danger",
+                onClick: function() {
+                    $("#doctor-unfollow").hide();
+                    $("#doctor-follow").show();
+                    $.alert("已关注该医生");
+                }
+            }]
+        });
+    });
+    $(document).on("click", "#doctor-follow", function() {
+        $.actions({
+            title: "选择操作",
+            onClose: function() {
+                console.log("close");
+            },
+            actions: [{
+                text: "取消关注",
+                className: "color-danger",
+                onClick: function() {
+                    $("#doctor-unfollow").show();
+                    $("#doctor-follow").hide();
+                    $.alert("已取消关注");
+                }
+            }]
+        });
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#toggle-discuss").click(function() {
+            $(".ybzy-discuss").slideToggle(function() {
+                $("#toggle-discuss").toggleClass("active");
+            });
+        });
+    });
+    </script>
+
+
+
+</body>
+
+</html>

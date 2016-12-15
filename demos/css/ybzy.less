@@ -100,11 +100,11 @@ a.ybzy-link-red {
 
 @font-face {
   font-family: 'ybzyicon';  /* project id 197148 */
-  src: url('//at.alicdn.com/t/font_yg6f2awy76p9cnmi.eot');
-  src: url('//at.alicdn.com/t/font_yg6f2awy76p9cnmi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_yg6f2awy76p9cnmi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_yg6f2awy76p9cnmi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_yg6f2awy76p9cnmi.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.eot');
+  src: url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.woff') format('woff'),
+  url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.svg#iconfont') format('svg');
 }
                     
 .ybzy-icon {
@@ -128,6 +128,10 @@ a.ybzy-link-red {
 .ybzy-icon-bad-on:before { content: "\e60d"; }/* 差评选中 */
 .ybzy-icon-date:before { content: "\e73f"; }/* 日期 */
 .ybzy-icon-msg:before { content: "\e616"; }/* 消息 */
+.ybzy-icon-inquiry:before { content: "\e624"; }/* 就诊单 */
+.ybzy-icon-user:before { content: "\e601"; }/* 就诊人 */
+.ybzy-icon-msglist:before { content: "\e6c6"; }/* 消息中心 */
+.ybzy-icon-address:before { content: "\e60a"; }/* 地址 */
 
 body { background: #efefef; height: 100%; }
 
@@ -678,18 +682,37 @@ body { background: #efefef; height: 100%; }
 
 /*评论*/
 .ybzy-comment {
-    .ybzy-comment-box {
-        margin-top: 10px; background: #fff;
-        .comment-textarea {
-            .weui_cells {
-                margin-top: 0;
-                &:before,&:after { display: none;}
-                .weui_cell { padding-right: 0;}
+    .ybzy-comment-doctor {
+        .weui_panel_bd {
+            .weui_media_box {
+                &.weui_media_appmsg .weui_media_hd {
+                    width: 80px; height: 80px; line-height: 80px;
+                    .weui_media_appmsg_thumb { border-radius: 4px;}
+                }
+                .weui_media_desc {
+                    font-size: 15px; line-height: 1.4;
+                }
             }
         }
-    
+    }
+    .ybzy-comment-box {
+        background: #fff;
+        .comment-textarea {
+            margin-top: 10px;
+            &:before,&:after { display: none;}
+            .weui_cell {
+                &:before,&:after { display: none;}
+            }
+            .weui_textarea {
+                font-size: 17px;
+            }
+            .weui_textarea_counter {
+                font-size: 15px;
+            }
+        }
         .comment-select {
-            padding: 20px 0; .display-flex; border-bottom: #eee solid 1px;
+            position: relative; padding: 20px 0; .display-flex; border-bottom: #eee solid 1px;
+            &:before { .t-line;}
             .comment-select-item {
                 .flex-1; text-align: center; color: #787878;
                 .comment-good.on { color: #d22d2d;}
@@ -698,11 +721,20 @@ body { background: #efefef; height: 100%; }
             }
         }
     }
-    
     .ybzy-comment-star {
         margin-top: 10px;
+        .weui_cell {
+            .weui_cell_bd {
+                .weui-row {
+                    padding: 5px 0; color: #555;
+                    .star-cell {
+                        text-align: right;
+                    }
+                }
+            }
+            .weui_cell_ft { font-size: 15px;}
+        }
     }
-
     .comment-btn {
         margin: 15px;
     }

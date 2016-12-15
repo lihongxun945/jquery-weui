@@ -14,7 +14,7 @@
 
 <body ontouchstart>
     <div class="ybzy-comment">
-        <div class="weui_panel weui_panel_access">
+        <div class="weui_panel weui_panel_access ybzy-comment-doctor">
             <div class="weui_panel_bd">
                 <div class="weui_media_box weui_media_appmsg">
                     <div class="weui_media_hd">
@@ -30,17 +30,30 @@
         </div>
 
         <div class="ybzy-comment-box">
-            <div class="comment-textarea">
-                <div class="weui_cells weui_cells_form">
-                    <div class="weui_cell">
-                        <div class="weui_cell_bd weui_cell_primary">
-                            <textarea class="weui_textarea" placeholder="请您对此课程进行评价！" rows="3"></textarea>
-                            <div class="weui_textarea_counter"><span>0</span>/200</div>
+            <div class="weui_cells weui_cells_form comment-textarea">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <textarea class="weui_textarea" placeholder="写下您的诊疗体会和治疗效果感受，您的评价对其他患友很重要" rows="3"></textarea>
+                        <div class="weui_textarea_counter"><span>0</span>/200</div>
+                    </div>
+                </div>
+
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <div class="weui_uploader">
+                            <div class="weui_uploader_bd">
+                                <ul class="weui_uploader_files">
+                                    <li class="weui_uploader_file" style="background-image:url(http://shp.qpic.cn/weixinsrc_pic/pScBR7sbqjOBJomcuvVJ6iacVrbMJaoJZkFUIq4nzQZUIqzTKziam7ibg/)"></li>
+                                </ul>
+                                <div class="weui_uploader_input_wrp">
+                                    <input class="weui_uploader_input" type="file" accept="image/*" multiple="">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
+    
             <div class="comment-select">
                 <div class="comment-select-item">
                     <div class="comment-good on"><span class="ybzy-icon ybzy-icon-good-on"></span>好评</div>
@@ -66,11 +79,11 @@
                 <div class="weui_cell_bd weui_cell_primary">
                     <div class="weui-row">
                         <div class="weui-col-40">治疗效果</div>
-                        <div class="weui-col-60"><div id="star1"></div></div>
+                        <div class="weui-col-60"><div id="star1" class="star-cell"></div></div>
                     </div>
                     <div class="weui-row">
                         <div class="weui-col-40">服务态度</div>
-                        <div class="weui-col-60"><div id="star2"></div></div>
+                        <div class="weui-col-60"><div id="star2" class="star-cell"></div></div>
                     </div>
                 </div>
             </div>
