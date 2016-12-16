@@ -329,6 +329,23 @@ body { background: #efefef; height: 100%; }
     }
 }
 
+.ybzy-article {
+    .article-title {
+        position: relative; margin-bottom: 25px; padding-bottom: 8px;
+        &:after {
+            .b-line;
+        }
+        h1 { margin-bottom: 4px; font-size: 21px; line-height: 28px; color: @yb-red;}
+        .article-info {
+            font-size: 14px; color: #999;
+            span { margin: 0 3px;}
+        }
+    }
+    section {
+        color: #444;
+    }
+}
+
 .ybzy-doctor-list {
 	.weui_panel {
 		display: block;
@@ -740,8 +757,42 @@ body { background: #efefef; height: 100%; }
     }
 }
 
+/* 个人中心 */
+.ybzy-uc {
+    .ybzy-uc-hd {
+        background-color: @yb-red; background: center center no-repeat; background-size: cover; padding: 30px 15px 15px; text-align: center;
+        .uc-avatar {
+            background: center center no-repeat; height: 96px; width: 96px; border-radius: 96px; background-size: cover; border: #fff solid 1px; margin: 0 auto 5px;
+        }
+        .uc-name { display: inline-block; color: #fff; font-size: 17px; line-height: 24px;}
+    }
+    .ybzy-uc-bd {
+        .weui_cells {
+            margin-top: 10px;
+            .weui_cell {
+                .weui_cell_hd {
+                    line-height: 24px; text-align: center; color: #fff; border-radius: 4px; padding: 0 2px; margin-right: 10px;
+                    &.s1 { background: #f98dbc;}
+                    &.s2 { background: #f7ab8c;}
+                    &.s3 { background: #90cfff;}
+                    &.s4 { background: #91aaf8;}
+                    &.s5 { background: #f79893;}
+                    &.s6 { background: #81d6d0;}
+                }
+            }
+        }
+    }
+}
 
-
+/* 个人中心 消息中心 */
+.ybzy-uc-msg {
+    .weui_media_box {
+        display: block;
+        .weui_media_desc {
+            font-size: 15px; color: #787878;
+        }
+    }
+}
 
 
 

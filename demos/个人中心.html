@@ -14,50 +14,52 @@
 
 <body ontouchstart>
     <div class="ybzy-uc">
-        <div class="ybzy-uc-hd">
-            <div class="uc-avatar"><img class="weui_media_appmsg_thumb" src="images/eduardo.jpg" alt=""></div>
+        <div class="ybzy-uc-hd" style=" background-image: url('images/bg01.jpg'); ">
+            <div class="uc-avatar" style=" background-image: url('images/eduardo.jpg'); "></div>
             <div class="uc-name">爱德华多</div>
         </div>
         <div class="ybzy-uc-bd">
             <div class="weui_cells weui_cells_access">
                 <a class="weui_cell" href="javascript:;">
-                    <div class="weui_cell_hd">
+                    <div class="weui_cell_hd s1">
                         <span class="ybzy-icon ybzy-icon-inquiry"></span>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <p>cell standard</p>
+                        <p>我的就诊单</p>
                     </div>
-                    <div class="weui_cell_ft">说明文字</div>
+                    <div class="weui_cell_ft"></div>
                 </a>
                 <a class="weui_cell" href="javascript:;">
-                    <div class="weui_cell_hd">
+                    <div class="weui_cell_hd s2">
                         <span class="ybzy-icon ybzy-icon-user"></span>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <p>cell standard</p>
+                        <p>就诊人管理</p>
                     </div>
-                    <div class="weui_cell_ft">说明文字</div>
+                    <div class="weui_cell_ft"></div>
                 </a>
             </div>
 
             <div class="weui_cells weui_cells_access">
                 <a class="weui_cell" href="javascript:;">
-                    <div class="weui_cell_hd">
+                    <div class="weui_cell_hd s5">
                         <span class="ybzy-icon ybzy-icon-msglist"></span>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <p>cell standard</p>
+                        <p>消息中心</p>
                     </div>
-                    <div class="weui_cell_ft">说明文字</div>
+                    <div class="weui_cell_ft"></div>
                 </a>
+            </div>
+            <div class="weui_cells weui_cells_access">
                 <a class="weui_cell" href="javascript:;">
-                    <div class="weui_cell_hd">
+                    <div class="weui_cell_hd s6">
                         <span class="ybzy-icon ybzy-icon-address"></span>
                     </div>
                     <div class="weui_cell_bd weui_cell_primary">
-                        <p>cell standard</p>
+                        <p>管理收货地址</p>
                     </div>
-                    <div class="weui_cell_ft">说明文字</div>
+                    <div class="weui_cell_ft"></div>
                 </a>
             </div>
 
@@ -65,60 +67,7 @@
     </div>
 
     <script src="../lib/jquery-2.1.4.js"></script>
-    <!-- <script src="../lib/fastclick.js">
-        </script>
-        <script>
-        $(function() {
-            FastClick.attach(document.body);
-        });
-    </script> -->
     <script src="../js/jquery-weui.js"></script>
-    <script>
-    $(document).on("click", "#doctor-unfollow", function() {
-        $.actions({
-            title: "选择操作",
-            onClose: function() {
-                console.log("close");
-            },
-            actions: [{
-                text: "关注该医生",
-                className: "color-danger",
-                onClick: function() {
-                    $("#doctor-unfollow").hide();
-                    $("#doctor-follow").show();
-                    $.alert("已关注该医生");
-                }
-            }]
-        });
-    });
-    $(document).on("click", "#doctor-follow", function() {
-        $.actions({
-            title: "选择操作",
-            onClose: function() {
-                console.log("close");
-            },
-            actions: [{
-                text: "取消关注",
-                className: "color-danger",
-                onClick: function() {
-                    $("#doctor-unfollow").show();
-                    $("#doctor-follow").hide();
-                    $.alert("已取消关注");
-                }
-            }]
-        });
-    });
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $("#toggle-discuss").click(function() {
-            $(".ybzy-discuss").slideToggle(function() {
-                $("#toggle-discuss").toggleClass("active");
-            });
-        });
-    });
-    </script>
-
 
 
 </body>
