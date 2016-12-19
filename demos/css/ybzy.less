@@ -311,6 +311,9 @@ body { background: #efefef; height: 100%; }
     .ybzy-title {
         background: @yb-red; color: #fff; text-align: center; height: 42px; overflow: hidden; .txt-line-one; font-size: 17px; line-height: 42px; font-weight: normal;
     }
+    .ybzy-filter {
+        height: 40px;
+    }
 }
 .ybzy-footer {
     position: fixed; z-index: 2; bottom: 0; left: 0; right: 0; height: 42px;
@@ -326,6 +329,9 @@ body { background: #efefef; height: 100%; }
     }
     &.with-ft {
         border-bottom: #efefef solid 42px;
+    }
+    &.with-ybzy-filter {
+        border-top: #efefef solid 82px;
     }
 }
 
@@ -371,8 +377,60 @@ body { background: #efefef; height: 100%; }
 	}
 }
 
+/* 医生详情 */
 .ybzy-doctor-detail {
     margin-top: 0;
+    .weui_media_appmsg {
+        .weui_media_hd {
+            .weui_media_appmsg_thumb { border-radius: 4px;}
+        }
+        .weui_media_bd {
+            .weui_media_title {
+                .doctor-follow {
+                    float: right;
+                    .unfollow {
+                        display: block; padding: 0 8px 1px; border: @yb-red solid 1px; border-radius: 20px; line-height: 20px; color: @yb-red; font-size: 13px;
+                    }
+                    .follow {
+                        display: block; padding: 0 8px 1px; border: @yb-green solid 1px; border-radius: 20px; line-height: 20px; color: @yb-green; font-size: 13px;
+                    }
+                }
+                .ybzy-icon {
+                    font-size: 17px; color: #555;
+                }
+            }
+            .weui_media_desc {
+                line-height: 18px;
+            }
+        }
+    }
+}
+.ybzy-price-list {
+    .weui_cell {
+        .weui_cell_bd {
+            .price-deta {
+                .price-item {
+                    display: inline-block; white-space: nowrap; margin-right: 15px; color: #999; font-size: 15px; line-height: 18px;
+                    span {
+                        margin-left: 5px; color: @yb-red;
+                        &.price-free { color: @yb-green;}
+                    }
+                }
+            }
+        }
+        .weui_cell_ft {
+            color: @yb-red;
+        }
+    }
+}
+.ybzy-detail-article {
+    section {
+        margin-bottom: 0; font-size: 15px;
+        p {
+            margin: 0 0 10px;
+            &:last-child { margin-bottom: 0;}
+        }
+    }
 }
 
 /* 合约医生状态栏 */
@@ -436,7 +494,7 @@ body { background: #efefef; height: 100%; }
 			}
 		}
 		.discuss-body {
-			margin-left: 48px; font-size: 13px; color: #444;
+			margin-left: 48px; font-size: 15px; color: #444;
 			.discuss-cont {
 				line-height: 18px;
 			}

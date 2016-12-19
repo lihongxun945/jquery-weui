@@ -33,7 +33,7 @@
     </script> -->
     <script src="../js/jquery-weui.js"></script>
     <script>
-    $(document).on("click", "#doctor-unfollow", function() {
+    $("#doctor-unfollow").click(function() {
         $.actions({
             title: "选择操作",
             onClose: function() {
@@ -50,7 +50,7 @@
             }]
         });
     });
-    $(document).on("click", "#doctor-follow", function() {
+    $("#doctor-follow").click(function() {
         $.actions({
             title: "选择操作",
             onClose: function() {
