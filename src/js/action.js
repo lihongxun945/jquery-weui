@@ -64,7 +64,7 @@
     hide();
   }
 
-  $(document).on("click", ".weui_actions_mask", function() {
+  $(".weui_actions_mask").click(function() {
     $.closeActions();
   });
 

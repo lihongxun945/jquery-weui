@@ -1,6 +1,6 @@
-@yb-red: #a10000;
+@yb-red: #b21700;
 @yb-blue: #2d8bdc;
-@yb-orange: #ff9d7b;
+@yb-orange: #ff7e51;
 @yb-yellow: #d28700;
 @yb-green: #1aa100;
 @weuiBtnFontColor:#FFFFFF;
@@ -100,11 +100,11 @@ a.ybzy-link-red {
 
 @font-face {
   font-family: 'ybzyicon';  /* project id 197148 */
-  src: url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.eot');
-  src: url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.woff') format('woff'),
-  url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_4qozrmcp9ut5u3di.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.eot');
+  src: url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.svg#iconfont') format('svg');
 }
                     
 .ybzy-icon {
@@ -132,6 +132,7 @@ a.ybzy-link-red {
 .ybzy-icon-user:before { content: "\e601"; }/* 就诊人 */
 .ybzy-icon-msglist:before { content: "\e6c6"; }/* 消息中心 */
 .ybzy-icon-address:before { content: "\e60a"; }/* 地址 */
+.ybzy-icon-filter:before { content: "\e730"; }/* 筛选 */
 
 body { background: #efefef; height: 100%; }
 
@@ -305,6 +306,10 @@ body { background: #efefef; height: 100%; }
     background: #fff;
 }
 
+.weui_btn_area {
+    margin: 20px 15px 15px;
+}
+
 /* 头部、底部以及页面包含头部和底部时yb-container的样式 */
 .ybzy-header {
     position: fixed; z-index: 1; top: 0; left: 0; right: 0;
@@ -312,7 +317,24 @@ body { background: #efefef; height: 100%; }
         background: @yb-red; color: #fff; text-align: center; height: 42px; overflow: hidden; .txt-line-one; font-size: 17px; line-height: 42px; font-weight: normal;
     }
     .ybzy-filter {
-        height: 40px;
+        position: relative; height: 40px; .display-flex; background: #fff;
+        &:after { .b-line; }
+        .filter-item {
+            position: relative; .flex-1; padding: 0 5px; box-sizing: border-box; line-height: 40px; text-align: center; white-space: nowrap; color: #555;
+            &:after {
+                .arrow-b; position: relative; margin-left: 5px; right: 0; top: -3px;
+            }
+            &.active {
+                color: @yb-red;
+                &:after { .arrow-t; position: relative; margin-left: 5px; right: 0;}
+            }
+        }
+        .filter-actions {
+            position: relative; padding: 0 5px; box-sizing: border-box; line-height: 40px; text-align: center; white-space: nowrap; color: #555;
+            &:after {
+                .ybzy-icon; content: "\e730"; font-size: 17px;
+            }
+        }
     }
 }
 .ybzy-footer {
@@ -371,9 +393,22 @@ body { background: #efefef; height: 100%; }
     margin-top: 10px;
 }
 
+/* 医生列表 */
 .ybzy-doctor-list {
-	.weui_panel {
-		display: block;
+	a.weui_panel {
+		display: block; color: #333;
+        .weui_panel_bd {
+            .weui_media_appmsg {
+                .weui_media_appmsg_thumb { border-radius: 4px;}
+                .weui_media_desc {
+                    line-height: 18px; color: #787878;
+                    .ybzy-icon {
+                        font-size: 15px;
+                    }
+                    span { margin: 0 3px;}
+                }
+            }
+        }
 	}
 }
 
@@ -419,7 +454,7 @@ body { background: #efefef; height: 100%; }
             }
         }
         .weui_cell_ft {
-            color: @yb-red;
+            color: @yb-red; font-size: 15px;
         }
     }
 }
@@ -528,8 +563,27 @@ body { background: #efefef; height: 100%; }
 	}
 }
 
-.ybzy-filter {}
-.ybzy-actions-items {}
+.weui_actionsheet_menu {
+    .ybzy-actions-items {
+        position: relative; padding: 10px 10px 5px; color: #555;
+        &:after {
+            .b-line; left: 10px;
+
+        }
+        &:last-child:after { display: none;}
+        .ybzy-actions-t {
+            margin-bottom: 8px;
+        }
+        .ybzy-actions-c {
+            .ybzy-actions-item {
+                display: inline-block; margin: 0 10px 10px 0; background: #f2f2f2; border-radius: 5px; font-size: 14px; padding: 1px 8px; white-space: nowrap;
+                &.active {
+                    background: @yb-orange; color: #fff;
+                }
+            }
+        }
+    }
+}
 
 /* 预约表 */
 .ybzy-reserve-panel {
@@ -620,6 +674,22 @@ body { background: #efefef; height: 100%; }
 	}
 }
 
+/* 挂号支付 */
+.ybzy-payment {
+    .ybyz-payment-hd {
+        background: @yb-red; padding: 10px;
+        .payment-title {
+            position: relative; background: #f8f3ea; margin-bottom: 10px;
+            &:after {
+                content: ""; position: absolute; bottom: -4px; display: block; width:100%; height: 5px; background-size: 10px 5px; background-color: #f8f3ea; background-position: 0 100%; background-repeat: repeat-x;
+                    background-image:
+                    -webkit-gradient(linear, 50% 0, 0 100%, from(transparent), color-stop(.5, transparent), color-stop(.5, @yb-red), to(@yb-red)),
+                    -webkit-gradient(linear, 50% 0, 100% 100%, from(transparent), color-stop(.5, transparent), color-stop(.5, @yb-red), to(@yb-red));
+            }
+        }
+    }
+}
+
 /* 订单 */
 .ybzy-order {
     .weui-form-preview__hd {
@@ -700,6 +770,7 @@ body { background: #efefef; height: 100%; }
 /* 消息样式 */
 .ybzy-msg {
     .weui_icon_area {
+        margin-bottom: 10px;
         .ybzy-icon {
             font-size: 96px;
             &.ybzy-icon-waiting { color: @yb-red;}
