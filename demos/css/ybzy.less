@@ -317,7 +317,7 @@ body { background: #efefef; height: 100%; }
         background: @yb-red; color: #fff; text-align: center; height: 42px; overflow: hidden; .txt-line-one; font-size: 17px; line-height: 42px; font-weight: normal;
     }
     .ybzy-filter {
-        position: relative; height: 40px; .display-flex; background: #fff;
+        position: relative; height: 40px; .display-flex; justify-content: center; background: #fff;
         &:after { .b-line; }
         .filter-item {
             position: relative; .flex-1; padding: 0 5px; box-sizing: border-box; line-height: 40px; text-align: center; white-space: nowrap; color: #555;
@@ -354,6 +354,9 @@ body { background: #efefef; height: 100%; }
     }
     &.with-ybzy-filter {
         border-top: #efefef solid 82px;
+    }
+    &.with-only-ybzy-filter {
+        border-top: #efefef solid 40px;
     }
 }
 
@@ -679,13 +682,25 @@ body { background: #efefef; height: 100%; }
     .ybyz-payment-hd {
         background: @yb-red; padding: 10px;
         .payment-title {
-            position: relative; background: #f8f3ea; margin-bottom: 10px;
+            position: relative; background: #f8f3ea; margin-bottom: 10px; width: 100%;
             &:after {
                 content: ""; position: absolute; bottom: -4px; display: block; width:100%; height: 5px; background-size: 10px 5px; background-color: #f8f3ea; background-position: 0 100%; background-repeat: repeat-x;
                     background-image:
                     -webkit-gradient(linear, 50% 0, 0 100%, from(transparent), color-stop(.5, transparent), color-stop(.5, @yb-red), to(@yb-red)),
                     -webkit-gradient(linear, 50% 0, 100% 100%, from(transparent), color-stop(.5, transparent), color-stop(.5, @yb-red), to(@yb-red));
             }
+            & > div {
+                display: table-cell; padding: 12px; vertical-align: middle;
+            }
+            .payment-name {
+                width: 3000px; padding-right: 5px;
+            }
+            .payment-price {
+                white-space: nowrap; padding-left: 5px; color: @yb-red;
+            }
+        }
+        .payment-info {
+            padding: 5px 10px; color: #fff; font-size: 15px; line-height: 20px;
         }
     }
 }
@@ -824,24 +839,91 @@ body { background: #efefef; height: 100%; }
     }
 }
 
+/* 就诊单 */
+.ybzy-inquiry-list {
+    .ybzy-inquiry-item {
+        background: #fff; margin-top: 10px;
+        &:first-child { margin-top: 0;}
+        .inquiry-hd {
+            position: relative; .display-flex; white-space: nowrap; padding: 8px 15px;
+            &:before { .t-line;}
+            .inquiry-name {
+                .flex-1;
+            }
+            .inquiry-status {
+                color: @yb-orange;
+            }
+        }
+        .inquiry-bd {
+            .weui-form-preview__value {
+                span { margin-left: 5px;}
+            }
+        }
+        .inquiry-ft {
+            padding: 10px 15px; text-align: right; line-height: normal; box-sizing: border-box;
+            a {
+                display: inline-block; line-height: 1.9; font-size: 14px; padding: 0 0.75em; box-sizing: border-box; overflow: hidden; margin-top: 0; color: #555;
+            }
+            a.weui_btn_plain_warn {
+                color: @yb-red;
+                &:after {
+                    border: @yb-red solid 1px;
+                }
+            }
+        }
+    }
+}
+
 /* 就诊单详情 */
 .ybzy-inquiry-detail {
     .ybzy-inquiry-item {
         background: #fff; margin-top: 10px;
         &:first-child { margin-top: 0;}
-        .inquiry-hd {}
+        .inquiry-hd {
+            .inquiry-hd-title {
+                position: relative; padding: 10px 15px; .display-flex; white-space: nowrap;
+                &:before { .t-line;}
+                .inquiry-name {
+                    .flex-1;
+                }
+                .inquiry-status {
+                    color: @yb-orange;
+                }
+            }
+        }
         .inquiry-bd {
+            position: relative; padding: 10px 15px;
+            &:before { .t-line;}
+            &:after { .b-line;}
+            .weui-row {
+                & > div {
+                    padding: 3px 0; line-height: 20px; font-size: 15px;
+                    h4 { margin-top: 5px;}
+                }
+            }
             .inquiry-table {
-                display: table;
+                display: table; width: 100%;
                 .inquiry-row {
                     display: table-row;
                     .inquiry-cell {
-                        display: table-cell;
+                        display: table-cell; padding: 3px 0; line-height: 20px; font-size: 15px;
+                        &.inquiry-cell-th {
+                            white-space: nowrap; padding-right: 5px; color: #666;
+                        }
+                        &.inquiry-cell-td {
+                            width: 3000px; text-align: right;
+                            .inquiry-cell-date {
+                                color: #787878; font-size: 14px; margin-left: 5px;
+                            }
+                        }
                     }
                 }
             }
         }
-        .inquiry-ft {}
+        .inquiry-ft {
+            position: relative; font-size: 15px; color: #787878; line-height: 20px; padding: 10px 15px;
+            &:after { .b-line;}
+        }
     }
 }
 
@@ -941,11 +1023,6 @@ body { background: #efefef; height: 100%; }
         }
     }
 }
-
-
-
-
-
 
 
 
