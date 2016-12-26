@@ -31,6 +31,8 @@
       </div>
       <div class="weui_tab_bd">
 
+        <input type="text" id="a">
+        
       </div>
 
       <div class="weui_tabbar">
@@ -70,5 +72,11 @@
 </script>
 <script src="../js/jquery-weui.js"></script>
 
+    <script>
+      $("#a").select({
+        title: "选择职业",
+        items: ["法官", "医生", "猎人", "学生", "记者", "其他"]
+      });
+    </script>
   </body>
 </html>
