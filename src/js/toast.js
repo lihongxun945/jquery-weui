@@ -4,7 +4,6 @@
   var defaults;
   
   var show = function(html, className) {
-
     className = className || "";
     var mask = $("<div class='weui_mask_transparent'></div>").appendTo(document.body);
 

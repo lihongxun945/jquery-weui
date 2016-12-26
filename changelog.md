@@ -1,3 +1,9 @@
+# V0.8.3 - 2016/12/26
+
+- 修复了 [时间日期](http://jqweui.com/extends#datetime-picker) 选择器中缺少 59 秒的bug
+- 修复了 [地址选择器](http://jqweui.com/extends#city-picker) 在选择 `东莞` 和 `中山市` 的时候出现的JS错误。
+- 修复了标签页和Select的遮挡问题。
+
 # V0.8.2 - 2016/08/26
 
 *修复了地址选择器 `onChange` 事件的一个重要bug，这个bug会导致 `onChange` 的参数出现错误，请 `v0.8.1` 的用户尽快升级到 `v0.8.2`*
@@ -32,8 +38,8 @@
 
 - `weui` 版本更新为 `v0.4.3`
 - 增加了npm提供的CDN, 另外 cdnjs 正在申请(更新：请参阅官网上的下载文档，不要使用下面的npm cdn，因为npm在国内很慢）:
-  - https://npmcdn.com/jquery-weui@0.7.2/dist/js/jquery-weui.min.js
-  - https://npmcdn.com/jquery-weui@0.7.2/dist/css/jquery-weui.min.css
+  - https://unpkg.com/jquery-weui@0.7.2/dist/js/jquery-weui.min.js
+  - https://unpkg.com/jquery-weui@0.7.2/dist/css/jquery-weui.min.css
 - 去掉了对 `$.fn.data` 方法的重写，因为这样会导致部分依赖 `data` 方法的jquery插件出错。
 - 修复了 `update` 方法在 Select 组件处在打开状态下调用时会导致绑定事件失效而无法操作的问题。
 - `Photos` 更新 `open` 方法，支持传入一个 `index` 参数设置打开时默认显示的图片。
