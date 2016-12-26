@@ -3479,7 +3479,6 @@ if (typeof define === 'function' && define.amd) {
   var defaults;
   
   var show = function(html, className) {
-
     className = className || "";
     var mask = $("<div class='weui_mask_transparent'></div>").appendTo(document.body);
 
@@ -4046,10 +4045,11 @@ Device/OS Detection
               col.wrapper.html(newItemsHTML);
               col.items = col.wrapper.find('.picker-item');
               col.calcSize();
-              col.setValue(col.values[0], 0, true);
+              col.setValue(col.values[0] || '', 0, true);
               col.initEvents();
           };
           col.calcSize = function () {
+              if (!col.values.length) return;
               if (p.params.rotateEffect) {
                   col.container.removeClass('picker-items-col-absolute');
                   if (!col.width) col.container.css({width:''});
@@ -4093,6 +4093,7 @@ Device/OS Detection
               if (typeof transition === 'undefined') transition = '';
               var newActiveIndex = col.wrapper.find('.picker-item[data-picker-value="' + newValue + '"]').index();
               if(typeof newActiveIndex === 'undefined' || newActiveIndex === -1) {
+                  col.value = col.displayValue = newValue;
                   return;
               }
               var newTranslate = -newActiveIndex * itemHeight + maxTranslate;
@@ -5956,7 +5957,7 @@ Device/OS Detection
         {
           values: (function () {
             var minutes = [];
-            for (var i=0; i<59; i++) minutes.push(formatNumber(i));
+            for (var i=0; i<60; i++) minutes.push(formatNumber(i));
             return minutes;
           })()
         }
