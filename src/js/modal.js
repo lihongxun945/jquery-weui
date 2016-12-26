@@ -10,18 +10,18 @@
     var buttons = params.buttons;
 
     var buttonsHtml = buttons.map(function(d, i) {
-      return '<a href="javascript:;" class="weui_btn_dialog ' + (d.className || "") + '">' + d.text + '</a>';
+      return '<a href="javascript:;" class="weui-dialog__btn ' + (d.className || "") + '">' + d.text + '</a>';
     }).join("");
 
-    var tpl = '<div class="weui_dialog">' +
-                '<div class="weui_dialog_hd"><strong class="weui_dialog_title">' + params.title + '</strong></div>' +
-                ( params.text ? '<div class="weui_dialog_bd">'+params.text+'</div>' : '')+
-                '<div class="weui_dialog_ft">' + buttonsHtml + '</div>' +
+    var tpl = '<div class="weui-dialog">' +
+                '<div class="weui-dialog__hd"><strong class="weui-dialog__title">' + params.title + '</strong></div>' +
+                ( params.text ? '<div class="weui-dialog__bd">'+params.text+'</div>' : '')+
+                '<div class="weui-dialog__ft">' + buttonsHtml + '</div>' +
               '</div>';
     
     var dialog = $.openModal(tpl, onOpen);
 
-    dialog.find(".weui_btn_dialog").each(function(i, e) {
+    dialog.find(".weui-dialog__btn").each(function(i, e) {
       var el = $(e);
       el.click(function() {
         //先关闭对话框，再调用回调函数
@@ -37,7 +37,7 @@
   };
 
   $.openModal = function(tpl, onOpen) {
-    var mask = $("<div class='weui_mask'></div>").appendTo(document.body);
+    var mask = $("<div class='weui-mask'></div>").appendTo(document.body);
     mask.show();
 
     var dialog = $(tpl).appendTo(document.body);
@@ -49,18 +49,18 @@
     }   
 
     dialog.show();
-    mask.addClass("weui_mask_visible");
-    dialog.addClass("weui_dialog_visible");
+    mask.addClass("weui-mask_visible");
+    dialog.addClass("weui-dialog_visible");
 
 
     return dialog;
   }
 
   $.closeModal = function() {
-    $(".weui_mask_visible").removeClass("weui_mask_visible").transitionEnd(function() {
+    $(".weui-mask_visible").removeClass("weui-mask_visible").transitionEnd(function() {
       $(this).remove();
     });
-    $(".weui_dialog_visible").removeClass("weui_dialog_visible").transitionEnd(function() {
+    $(".weui-dialog_visible").removeClass("weui-dialog_visible").transitionEnd(function() {
       $(this).remove();
     });
   };
@@ -150,7 +150,7 @@
     }
 
     var modal = $.modal({
-      text: '<p class="weui-prompt-text">'+(config.text || '')+'</p><input type="text" class="weui_input weui-prompt-input" id="weui-prompt-input" value="' + (config.input || '') + '" />',
+      text: '<p class="weui-prompt-text">'+(config.text || '')+'</p><input type="text" class="weui-input weui-prompt-input" id="weui-prompt-input" value="' + (config.input || '') + '" />',
       title: config.title,
       autoClose: false,
       buttons: [
@@ -207,8 +207,8 @@
 
     var modal = $.modal({
       text: '<p class="weui-prompt-text">'+(config.text || '')+'</p>' +
-            '<input type="text" class="weui_input weui-prompt-input" id="weui-prompt-username" value="' + (config.username || '') + '" placeholder="输入用户名" />' +
-            '<input type="password" class="weui_input weui-prompt-input" id="weui-prompt-password" value="' + (config.password || '') + '" placeholder="输入密码" />',
+            '<input type="text" class="weui-input weui-prompt-input" id="weui-prompt-username" value="' + (config.username || '') + '" placeholder="输入用户名" />' +
+            '<input type="password" class="weui-input weui-prompt-input" id="weui-prompt-password" value="' + (config.password || '') + '" placeholder="输入密码" />',
       title: config.title,
       autoClose: false,
       buttons: [

@@ -5,18 +5,18 @@
   
   var show = function(html, className) {
     className = className || "";
-    var mask = $("<div class='weui_mask_transparent'></div>").appendTo(document.body);
+    var mask = $("<div class='weui-mask_transparent'></div>").appendTo(document.body);
 
-    var tpl = '<div class="weui_toast ' + className + '">' + html + '</div>';
+    var tpl = '<div class="weui-toast ' + className + '">' + html + '</div>';
     var dialog = $(tpl).appendTo(document.body);
 
     dialog.show();
-    dialog.addClass("weui_toast_visible");
+    dialog.addClass("weui-toast_visible");
   };
 
   var hide = function(callback) {
-    $(".weui_mask_transparent").remove();
-    $(".weui_toast_visible").removeClass("weui_toast_visible").transitionEnd(function() {
+    $(".weui-mask_transparent").remove();
+    $(".weui-toast_visible").removeClass("weui-toast_visible").transitionEnd(function() {
       var $this = $(this);
       $this.remove();
       callback && callback($this);
@@ -29,13 +29,13 @@
     }
     var className;
     if(style == "cancel") {
-      className = "weui_toast_cancel";
+      className = "weui-toast_cancel";
     } else if(style == "forbidden") {
-      className = "weui_toast_forbidden";
+      className = "weui-toast_forbidden";
     } else if(style == "text") {
-      className = "weui_toast_text";
+      className = "weui-toast_text";
     }
-    show('<i class="weui_icon_toast"></i><p class="weui_toast_content">' + (text || "已经完成") + '</p>', className);
+    show('<i class="weui-icon-success-no-circle weui-icon_toast"></i><p class="weui-toast_content">' + (text || "已经完成") + '</p>', className);
 
     setTimeout(function() {
       hide(callback);
@@ -44,11 +44,9 @@
 
   $.showLoading = function(text) {
     var html = '<div class="weui_loading">';
-    for(var i=0;i<12;i++) {
-      html += '<div class="weui_loading_leaf weui_loading_leaf_' + i + '"></div>';
-    }
+    html += '<i class="weui-loading weui-icon_toast"></i>';
     html += '</div>';
-    html += '<p class="weui_toast_content">' + (text || "数据加载中") + '</p>';
+    html += '<p class="weui-toast_content">' + (text || "数据加载中") + '</p>';
     show(html, 'weui_loading_toast');
   }
 
@@ -57,7 +55,7 @@
   }
 
   var toastDefaults = $.toast.prototype.defaults = {
-    duration: 2000
+    duration: 2500
   }
 
 }($);
