@@ -1,3 +1,7 @@
+# V0.8.3 - 2016/12
+
+- 修复了 [时间日期](http://jqweui.com/extends#datetime-picker) 选择器中缺少 59 秒的bug
+
 # V0.8.2 - 2016/08/26
 
 *修复了地址选择器 `onChange` 事件的一个重要bug，这个bug会导致 `onChange` 的参数出现错误，请 `v0.8.1` 的用户尽快升级到 `v0.8.2`*
