@@ -118,10 +118,11 @@
               col.wrapper.html(newItemsHTML);
               col.items = col.wrapper.find('.picker-item');
               col.calcSize();
-              col.setValue(col.values[0], 0, true);
+              col.setValue(col.values[0] || '', 0, true);
               col.initEvents();
           };
           col.calcSize = function () {
+              if (!col.values.length) return;
               if (p.params.rotateEffect) {
                   col.container.removeClass('picker-items-col-absolute');
                   if (!col.width) col.container.css({width:''});
@@ -165,6 +166,7 @@
               if (typeof transition === 'undefined') transition = '';
               var newActiveIndex = col.wrapper.find('.picker-item[data-picker-value="' + newValue + '"]').index();
               if(typeof newActiveIndex === 'undefined' || newActiveIndex === -1) {
+                  col.value = col.displayValue = newValue;
                   return;
               }
               var newTranslate = -newActiveIndex * itemHeight + maxTranslate;

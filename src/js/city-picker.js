@@ -157,7 +157,9 @@
               }
             }
           }
-          $(self).attr('data-code', values[values.length-1]);
+          //如果最后一列是空的，那么取倒数第二列
+          var len = (values[values.length-1] ? values.length - 1 : values.length - 2)
+          $(self).attr('data-code', values[len]);
           $(self).attr('data-codes', values.join(','));
           if (params.onChange) {
             params.onChange.call(self, picker, values, displayValues);

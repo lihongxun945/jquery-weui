@@ -1,6 +1,7 @@
 # V0.8.3 - 2016/12
 
 - 修复了 [时间日期](http://jqweui.com/extends#datetime-picker) 选择器中缺少 59 秒的bug
+- 修复了 [地址选择器](http://jqweui.com/extends#city-picker) 在选择 `东莞` 和 `中山市` 的时候出现的JS错误。
 
 # V0.8.2 - 2016/08/26
 
