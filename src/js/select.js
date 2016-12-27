@@ -232,29 +232,29 @@
       </div>\
       </div>',
     radioTemplate:
-      '<div class="weui_cells weui_cells_radio">\
+      '<div class="weui-cells weui-cells_radio">\
         {{#items}}\
-        <label class="weui_cell weui_check_label" for="weui-select-id-{{this.title}}">\
-          <div class="weui_cell_bd weui_cell_primary">\
+        <label class="weui-cell weui-check_label" for="weui-select-id-{{this.title}}">\
+          <div class="weui-cell__bd weui-cell_primary">\
             <p>{{this.title}}</p>\
           </div>\
-          <div class="weui_cell_ft">\
-            <input type="radio" class="weui_check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}">\
-            <span class="weui_icon_checked"></span>\
+          <div class="weui-cell__ft">\
+            <input type="radio" class="weui-check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}">\
+            <span class="weui-icon-checked"></span>\
           </div>\
         </label>\
         {{/items}}\
       </div>',
     checkboxTemplate:
-      '<div class="weui_cells weui_cells_checkbox">\
+      '<div class="weui-cells weui-cells_checkbox">\
         {{#items}}\
-        <label class="weui_cell weui_check_label" for="weui-select-id-{{this.title}}">\
-          <div class="weui_cell_bd weui_cell_primary">\
+        <label class="weui-cell weui-check_label" for="weui-select-id-{{this.title}}">\
+          <div class="weui-cell__bd weui-cell_primary">\
             <p>{{this.title}}</p>\
           </div>\
-          <div class="weui_cell_ft">\
-            <input type="checkbox" class="weui_check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}" >\
-            <span class="weui_icon_checked"></span>\
+          <div class="weui-cell__ft">\
+            <input type="checkbox" class="weui-check" name="weui-select" id="weui-select-id-{{this.title}}" value="{{this.value}}" {{#if this.checked}}checked="checked"{{/if}} data-title="{{this.title}}" >\
+            <span class="weui-icon-checked"></span>\
           </div>\
         </label>\
         {{/items}}\

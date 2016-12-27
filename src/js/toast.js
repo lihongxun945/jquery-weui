@@ -27,15 +27,17 @@
     if(typeof style === "function") {
       callback = style;
     }
-    var className;
+    var className, iconClassName = 'weui-icon-success-no-circle';
     if(style == "cancel") {
       className = "weui-toast_cancel";
+      iconClassName = 'weui-icon-cancel'
     } else if(style == "forbidden") {
       className = "weui-toast_forbidden";
+      iconClassName = 'weui-icon-warn'
     } else if(style == "text") {
       className = "weui-toast_text";
     }
-    show('<i class="weui-icon-success-no-circle weui-icon_toast"></i><p class="weui-toast_content">' + (text || "已经完成") + '</p>', className);
+    show('<i class="' + iconClassName + ' weui-icon_toast"></i><p class="weui-toast_content">' + (text || "已经完成") + '</p>', className);
 
     setTimeout(function() {
       hide(callback);
