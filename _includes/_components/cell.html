@@ -1,133 +1,123 @@
-<article id="cell" class='component' data-url="cell.html">
+<article id="cell" class='component' data-url="../dist/demos/cell.html">
   <h2>列表</h2>
 
-  <p>Cell，列表视图，用于将信息以列表的结构显示在页面上，是wap上最常用的内容结构。Cell由多个section组成，每个section包括section header <code>weui_cells_title</code> 以及 <code>cellsweui_cells</code>。</p>
+  <p>Cell，列表视图，用于将信息以列表的结构显示在页面上，是wap上最常用的内容结构。Cell由多个section组成，每个section包括section header <code>weui-cells_title</code> 以及 <code>weui-cells</code>。</p>
 
-  <p>cell由 <code>thumbnailweui_cell_hd</code>、<code>bodyweui_cell_bd</code>、<code>accessoryweui_cell_ft</code>三部分组成，cell采用自适应布局，在需要自适应的部分加上 <code>classweui_cell_primary</code> 即可：</p>
+  <p>cell由 <code>thumbnailweui-cell__hd</code>、<code>bodyweui-cell__bd</code>、<code>accessoryweui-cell__ft</code>三部分组成，cell采用自适应布局：</p>
   <h3>简单列表</h3>
 
 {% highlight html %}
-<div class="weui_cells">
-  <div class="weui_cell">
-    <div class="weui_cell_bd weui_cell_primary">
+<div class="weui-cells">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
       <p>标题文字</p>
     </div>
-    <div class="weui_cell_ft">
-      说明文字
+    <div class="weui-cell__ft">说明文字</div>
+  </div>
+</div>
+{% endhighlight %}
+
+  <h3>带图标的列表</h3>
+
+{% highlight html %}
+<div class="weui-cells">
+  <div class="weui-cell">
+    <div class="weui-cell__hd"><img src=""></div>
+    <div class="weui-cell__bd">
+      <p>标题文字</p>
     </div>
+    <div class="weui-cell__ft">说明文字</div>
+  </div>
+  <div class="weui-cell">
+    <div class="weui-cell__hd"><img src=""></div>
+    <div class="weui-cell__bd">
+      <p>标题文字</p>
+    </div>
+    <div class="weui-cell__ft">说明文字</div>
   </div>
 </div>
 {% endhighlight %}
 </article>
 
-<article class='component' data-url="cell-icon.html">
-  <h3>带图标的列表</h3>
-
-
-{% highlight html %}
-<div class="weui_cells weui_cells_access">
-  <a class="weui_cell" href="javascript:;">
-    <div class="weui_cell_hd">
-      <img src="" alt="icon" style="width:20px;margin-right:5px;display:block">
-    </div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <p>cell standard</p>
-    </div>
-    <div class="weui_cell_ft">
-      说明文字
-    </div>
-  </a>
-  <a class="weui_cell" href="javascript:;">
-    <div class="weui_cell_hd">
-      <img src="" alt="icon" style="width:20px;margin-right:5px;display:block">
-    </div>
-    <div class="weui_cell_bd weui_cell_primary">
-      <p>cell standard</p>
-    </div>
-    <div class="weui_cell_ft">
-      说明文字
-    </div>
-  </a>
-</div>
-{% endhighlight %}
-</article>
-
-
-<article class='component' data-url="cell-link.html">
   <h3>带链接的列表</h3>
 
-
 {% highlight html %}
-<div class="weui_cells weui_cells_access">
-  <a class="weui_cell" href="javascript:;">
-    <div class="weui_cell_bd weui_cell_primary">
+<div class="weui-cells">
+  <a class="weui-cell weui-cell_access" href="javascript:;">
+    <div class="weui-cell__bd">
       <p>cell standard</p>
     </div>
-    <div class="weui_cell_ft">说明文字</div>
+    <div class="weui-cell__ft">
+    </div>
   </a>
-  <a class="weui_cell" href="javascript:;">
-    <div class="weui_cell_bd weui_cell_primary">
+  <a class="weui-cell weui-cell_access" href="javascript:;">
+    <div class="weui-cell__bd">
       <p>cell standard</p>
     </div>
-    <div class="weui_cell_ft">说明文字</div>
+    <div class="weui-cell__ft">
+    </div>
   </a>
 </div>
 {% endhighlight %}
 </article>
 
 
-<article class='component' data-url="cell-radio.html">
   <h3>单选列表</h3>
 
 {% highlight html %}
-<div class="weui_cells weui_cells_radio">
-  <label class="weui_cell weui_check_label" for="x11">
-    <div class="weui_cell_bd weui_cell_primary">
+<div class="weui-cells weui-cells_radio">
+  <label class="weui-cell weui-check__label" for="x11">
+    <div class="weui-cell__bd">
       <p>cell standard</p>
     </div>
-    <div class="weui_cell_ft">
-      <input type="radio" class="weui_check" name="radio1" id="x11">
-      <span class="weui_icon_checked"></span>
+    <div class="weui-cell__ft">
+      <input type="radio" class="weui-check" name="radio1" id="x11">
+      <span class="weui-icon-checked"></span>
     </div>
   </label>
-  <label class="weui_cell weui_check_label" for="x12">
+  <label class="weui-cell weui-check__label" for="x12">
 
-    <div class="weui_cell_bd weui_cell_primary">
+    <div class="weui-cell__bd">
       <p>cell standard</p>
     </div>
-    <div class="weui_cell_ft">
-      <input type="radio" name="radio1" class="weui_check" id="x12" checked="checked">
-      <span class="weui_icon_checked"></span>
+    <div class="weui-cell__ft">
+      <input type="radio" name="radio1" class="weui-check" id="x12" checked="checked">
+      <span class="weui-icon-checked"></span>
     </div>
   </label>
+  <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+    <div class="weui-cell__bd">添加更多</div>
+  </a>
 </div>
 {% endhighlight %}
 </article>
 
 
-<article class='component' data-url="cell-checkbox.html">
   <h3>复选列表</h3>
 
 {% highlight html %}
-<div class="weui_cells weui_cells_checkbox">
-  <label class="weui_cell weui_check_label" for="s11">
-    <div class="weui_cell_hd">
-      <input type="checkbox" class="weui_check" name="checkbox1" id="s11" checked="checked">
-      <i class="weui_icon_checked"></i>
+<div class="weui-cells weui-cells_checkbox">
+  <label class="weui-cell weui-check__label" for="s11">
+    <div class="weui-cell__hd">
+      <input type="checkbox" class="weui-check" name="checkbox1" id="s11" checked="checked">
+      <i class="weui-icon-checked"></i>
     </div>
-    <div class="weui_cell_bd weui_cell_primary">
+    <div class="weui-cell__bd">
       <p>standard is dealt for u.</p>
     </div>
   </label>
-  <label class="weui_cell weui_check_label" for="s12">
-    <div class="weui_cell_hd">
-      <input type="checkbox" name="checkbox1" class="weui_check" id="s12">
-      <i class="weui_icon_checked"></i>
+  <label class="weui-cell weui-check__label" for="s12">
+    <div class="weui-cell__hd">
+      <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+      <i class="weui-icon-checked"></i>
     </div>
-    <div class="weui_cell_bd weui_cell_primary">
+    <div class="weui-cell__bd">
       <p>standard is dealicient for u.</p>
     </div>
   </label>
+  <a href="javascript:void(0);" class="weui-cell weui-cell_link">
+    <div class="weui-cell__bd">添加更多</div>
+  </a>
 </div>
 {% endhighlight %}
 </article>

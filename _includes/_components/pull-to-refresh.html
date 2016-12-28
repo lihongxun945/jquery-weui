@@ -1,4 +1,4 @@
-<article id="pull-to-refresh" class='component' data-url="pull-to-refresh.html">
+<article id="pull-to-refresh" class='component' data-url="../dist/demos/ptr.html">
   <h2>下拉刷新</h2>
   <p>原生滚动实现的下拉刷新。</p>
   <p>为了使用下拉刷新，首先你需要在被下拉的容器的最顶部加上下拉状态的代码(这里我们在 <code>document.body</code> 上进行下拉刷新)：</p>
@@ -7,12 +7,12 @@
 {% highlight html %}
 <body>
   <!-- body 顶部加上如下代码 -->
-  <div class="weui-pull-to-refresh-layer">
-    <div class="pull-to-refresh-arrow"></div> <!-- 上下拉动的时候显示的箭头 -->
-    <div class="pull-to-refresh-preloader"></div> <!-- 正在刷新的菊花 -->
-    <div class="down">下拉刷新</div><!-- 下拉过程显示的文案 -->
-    <div class="up">释放刷新</div><!-- 下拉超过50px显示的文案 -->
-    <div class="refresh">正在刷新...</div><!-- 正在刷新时显示的文案 -->
+  <div class="weui-pull-to-refresh__layer">
+    <div class='weui-pull-to-refresh__arrow'></div>
+    <div class='weui-pull-to-refresh__preloader'></div>
+    <div class="down">下拉刷新</div>
+    <div class="up">释放刷新</div>
+    <div class="refresh">正在刷新</div>
   </div>
 
   <!-- 其他内容 -->
@@ -59,57 +59,65 @@ $(document.body).pullToRefreshDone();
 
 </article>
 
-<article class='component' data-url="pull-to-refresh-with-navbar.html">
+<article class='component' data-url="../dist/demos/pull-to-refresh-with-navbar.html">
   <h3>下拉刷新结合TAB</h3>
-  <p>可以在每一个 <code>.weui_tab_bd_item</code> 都初始化一个独立的下拉刷新：</p>
+  <p>可以在每一个 <code>.weui-tab_bd-item</code> 都初始化一个独立的下拉刷新：</p>
 
 
 {% highlight html %}
-<div class="weui_tab" id='page-ptr-navbar'>
-  <div class="weui_navbar">
-    <a href='#tab1' class="weui_navbar_item weui_bar_item_on">
+<div class="weui-tab">
+  <div class="weui-navbar">
+    <div class="weui-navbar__item weui-navbar__item--on" href="#tab1">
       选项一
-    </a>
-    <a href='#tab2' class="weui_navbar_item">
+    </div>
+    <div class="weui-navbar__item" href="#tab2">
       选项二
-    </a>
-    <a href='#tab3' class="weui_navbar_item">
+    </div>
+    <div class="weui-navbar__item" href="#tab3">
       选项三
-    </a>
+    </div>
   </div>
-  <div class="weui_tab_bd">
-    <div id="tab1" class="weui_tab_bd_item weui_tab_bd_item_active">
-      <div class="weui-pull-to-refresh-layer">
-        <div class="pull-to-refresh-arrow"></div>
-        <div class="pull-to-refresh-preloader"></div>
+  <div class="weui-tab__bd">
+    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active weui-pull-to-refresh">
+      <div class="weui-pull-to-refresh__layer">
+        <div class='weui-pull-to-refresh__arrow'></div>
+        <div class='weui-pull-to-refresh__preloader'></div>
         <div class="down">下拉刷新</div>
         <div class="up">释放刷新</div>
-        <div class="refresh">正在刷新...</div>
+        <div class="refresh">正在刷新</div>
       </div>
       <h1 class="doc-head">页面一</h1>
+      <div class="content-padded">
+        ...
+      </div>
     </div>
-    <div id="tab2" class="weui_tab_bd_item">
-      <div class="weui-pull-to-refresh-layer">
-        <div class="pull-to-refresh-arrow"></div>
-        <div class="pull-to-refresh-preloader"></div>
+    <div id="tab2" class="weui-tab__bd-item weui-pull-to-refresh">
+      <div class="weui-pull-to-refresh__layer">
+        <div class='weui-pull-to-refresh__arrow'></div>
+        <div class='weui-pull-to-refresh__preloader'></div>
         <div class="down">下拉刷新</div>
         <div class="up">释放刷新</div>
-        <div class="refresh">正在刷新...</div>
+        <div class="refresh">正在刷新</div>
       </div>
       <h1 class="doc-head">页面二</h1>
+      <div class="content-padded">
+        ...
+      </div>
     </div>
-    <div id="tab3" class="weui_tab_bd_item">
-      <div class="weui-pull-to-refresh-layer">
-        <div class="pull-to-refresh-arrow"></div>
-        <div class="pull-to-refresh-preloader"></div>
+    <div id="tab3" class="weui-tab__bd-item weui-pull-to-refresh">
+      <div class="weui-pull-to-refresh__layer">
+        <div class='weui-pull-to-refresh__arrow'></div>
+        <div class='weui-pull-to-refresh__preloader'></div>
         <div class="down">下拉刷新</div>
         <div class="up">释放刷新</div>
-        <div class="refresh">正在刷新...</div>
+        <div class="refresh">正在刷新</div>
       </div>
-      <h1 class="doc-head">页面三</h1>
+      <div class="content-padded">
+        <h1 class="doc-head">页面三</h1>
+        ...
+      </div>
     </div>
   </div>
-</div>
-{% endhighlight %}
+  {% endhighlight %}
 
 </article>

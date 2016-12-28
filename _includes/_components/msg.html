@@ -1,22 +1,27 @@
-<article class='component' data-url="msg.html" id='msg'>
+<article class='component' data-url="../dist/demos/msg.html" id='msg'>
   <h2>消息页面</h2>
   <p>结果页通常来说可以认为进行一系列操作步骤后，作为流程结束的总结性页面。结果页的作用主要是告知用户操作处理结果以及必要的相关细节（可用于确认之前的操作是否有误）等信息；若该流程用于开启或关闭某些重要功能，可在结果页增加与该功能相关的描述性内容；除此之外，结果页也可以承载一些附加价值操作，例如提供抽奖、关注公众号等功能入口。</p>
 
 {% highlight html %}
-<div class="weui_msg">
-  <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
-  <div class="weui_text_area">
-    <h2 class="weui_msg_title">操作成功</h2>
-    <p class="weui_msg_desc">内容详情，可根据实际需要安排</p>
+<div class="weui-msg">
+  <div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
+  <div class="weui-msg__text-area">
+    <h2 class="weui-msg__title">操作成功</h2>
+    <p class="weui-msg__desc">内容详情，可根据实际需要安排，如果换行则不超过规定长度，居中展现<a href="javascript:void(0);">文字链接</a></p>
   </div>
-  <div class="weui_opr_area">
-    <p class="weui_btn_area">
-      <a href="javascript:;" class="weui_btn weui_btn_primary">确定</a>
-      <a href="javascript:;" class="weui_btn weui_btn_default">取消</a>
+  <div class="weui-msg__opr-area">
+    <p class="weui-btn-area">
+      <a href="javascript:;" class="weui-btn weui-btn_primary">推荐操作</a>
+      <a href="javascript:;" class="weui-btn weui-btn_default">辅助操作</a>
     </p>
   </div>
-  <div class="weui_extra_area">
-    <a href="">查看详情</a>
+  <div class="weui-msg__extra-area">
+    <div class="weui-footer">
+      <p class="weui-footer__links">
+        <a href="javascript:void(0);" class="weui-footer__link">底部链接文本</a>
+      </p>
+      <p class="weui-footer__text">Copyright © 2008-2016 weui.io</p>
+    </div>
   </div>
 </div>
 {% endhighlight %}

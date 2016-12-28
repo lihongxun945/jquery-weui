@@ -1,18 +1,18 @@
-<article id="loading" class='component' data-url="loading.html">
+<article id="loading" class='component' data-url="../dist/demos/loadmore.html">
   <h2>Loading</h2>
-  <p>显示一个正在加载的提示。</p>
+  <p>纯静态，显示一个正在加载的提示。</p>
 
-  <p>Loading 只能通过 JavaScript 进行调用:</p>
-
-{% highlight js %}
-$.showLoading();
-$.showLoading("正在加载...");
-{% endhighlight %}
-
-  <p>Loading 不会自动消失，在加载完成后通过如下方法关闭:</p>
-
-{% highlight js %}
-$.hideLoading();
+{% highlight html%}
+<div class="weui-loadmore">
+  <i class="weui-loading"></i>
+  <span class="weui-loadmore__tips">正在加载</span>
+</div>
+<div class="weui-loadmore weui-loadmore_line">
+  <span class="weui-loadmore__tips">暂无数据</span>
+</div>
+<div class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+  <span class="weui-loadmore__tips"></span>
+</div>
 {% endhighlight %}
 
 </article>

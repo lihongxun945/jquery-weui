@@ -1,13 +1,13 @@
-<article id="infinite" class='component' data-url="infinite.html">
+<article id="infinite" class='component' data-url="../dist/demos/infinite.html">
   <h2>滚动加载</h2>
   <p>当用户滚动到页面底部的时候加载更多内容。</p>
 
   <p>首先你需要把一段显示加载状态的代码放入需要滚动加载的容器中，这里我们默认是 document.body，加载指示器的代码如下：</p>
 
 {% highlight html %}
-<div class="weui-infinite-scroll">
-  <div class="infinite-preloader"></div><!-- 菊花 -->
-  正在加载... <!-- 文案，可以自行修改 -->
+<div class="weui-loadmore">
+  <i class="weui-loading"></i>
+  <span class="weui-loadmore__tips">正在加载</span>
 </div>
 {% endhighlight %}
 
@@ -55,7 +55,7 @@ $(document.body).infinite().on("infinite", function() {
 </article>
 
 
-<article class='component' data-url="infinite-with-navbar.html">
+<article class='component' data-url="../dist/demos/infinite-with-navbar.html">
   <h3>滚动加载结合TAB</h3>
   <p>同样可以在每一个 <code>.weui_tab_bd_item</code> 都初始化一个独立的滚动加载：</p>
 

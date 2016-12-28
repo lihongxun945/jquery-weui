@@ -1,28 +1,25 @@
-<article id="searchbar" class='component' data-url="searchbar.html">
+<article id="searchbar" class='component' data-url="../dist/demos/searchbar.html">
   <h2>搜索栏</h2>
 
   <p>搜索栏，类似于微信原生的搜索栏，应用于常见的搜索场景。</p>
 
 
 {% highlight html %}
-<div class="weui_search_bar" id="search_bar">
-  <form class="weui_search_outer">
-    <div class="weui_search_inner">
-      <i class="weui_icon_search"></i>
-      <input type="search" class="weui_search_input" id="search_input" placeholder="搜索" required/>
-      <a href="javascript:" class="weui_icon_clear" id="search_clear"></a>
+<div class="weui-search-bar" id="searchBar">
+  <form class="weui-search-bar__form">
+    <div class="weui-search-bar__box">
+      <i class="weui-icon-search"></i>
+      <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+      <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
     </div>
-    <label for="search_input" class="weui_search_text" id="search_text">
-      <i class="weui_icon_search"></i>
+    <label class="weui-search-bar__label" id="searchText">
+      <i class="weui-icon-search"></i>
       <span>搜索</span>
     </label>
   </form>
-  <a href="javascript:" class="weui_search_cancel" id="search_cancel">取消</a>
+  <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
 </div>
 {% endhighlight %}
 
-<p><code>weui_search_cancel</code> 和 <code>weui_search_outer</code> 是宽度自适应的，具体的文案可以根据需要确定。<code>weui_search_cancel</code> 在搜索栏获得焦点的时候显示，在其他时间都是隐藏的。</p>
-
-<p><code>weui_search_cancel</code> 的显示和隐藏是通过在最顶层 <code>weui_search_bar</code> 添加/删除 <code>weui_search_focusing</code> 类来实现。</p>
-
+<p>通过在 <code>weui-search-bar</code> 上添加 <code>weui-search-bar_focusing</code> 来实现状态切换</p>
 </article>

@@ -1,0 +1,34 @@
+<article id="slider" class='component' data-url="../dist/demos/slider.html">
+  <h2>Slider</h2>
+  <p>用来显示和输入百分比数据，如果没有用JS进行初始化，则为只读。</p>
+
+{% highlight html%}
+<div class="weui-slider">
+  <div class="weui-slider__inner">
+    <div style="width: 30%;" class="weui-slider__track"></div>
+    <div style="left: 30%;" class="weui-slider__handler"></div>
+  </div>
+</div>
+{% endhighlight %}
+
+  <h3>JS初始化</h3>
+  <p>使用 <code>$('#slider').slider()</code> 进行初始化。</p>
+  <p>初始化的时候可以传入一个回调函数，当用户进行滑动操作的时候会触发这个回调函数。</p>
+
+{% highlight html%}
+<div class="weui-slider-box" id="slider1">
+  <div class="weui-slider">
+    <div id="sliderInner" class="weui-slider__inner">
+      <div id="sliderTrack" style="width: 75%;" class="weui-slider__track"></div>
+      <div id="sliderHandler" style="left: 75%;" class="weui-slider__handler"></div>
+    </div>
+  </div>
+  <div id="sliderValue" class="weui-slider-box__value">75</div>
+</div>
+<script>
+  $('#slide1').slider(function (percent) {
+    console.log(percent)
+  })
+</script>
+{% endhighlight %}
+</article>

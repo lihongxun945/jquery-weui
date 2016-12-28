@@ -1,99 +1,35 @@
-<article id="panel" class='component' data-url="panel.html">
-  <h2>卡片</h2>
-  <p>Panelweui_panel由head（可选）、body、foot（可选）三部分组成，主要承载了图文组合列表weui_media_appmsg、文字组合列表weui_media_text以及小图文组合列表weui_media_text。</p>
-  <p>body部分根据不同业务可自定义不同的内容。foot部分默认支持“查看更多”的样式，需要在weui_panel扩展一个weui_panel_access的类。</p>
+<article id="panel" class='component' data-url="../dist/demos/panel.html">
+  <h2>面板</h2>
 
 {% highlight html %}
-{% endhighlight %}
-
-  <p>卡片有很多不同的组合形式</p>
-
-  <p>包括封面图、标题与描述，封面图居左，与文字垂直居中对齐，示例代码如下：</p>
-
-{% highlight html %}
-<div class="weui_panel weui_panel_access">
-  <div class="weui_panel_hd">图文组合列表</div>
-  <div class="weui_panel_bd">
-    <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
-      <div class="weui_media_hd">
-        <img class="weui_media_appmsg_thumb" src="" alt="">
+<div class="weui-panel weui-panel_access">
+  <div class="weui-panel__hd">图文组合列表</div>
+  <div class="weui-panel__bd">
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="">
       </div>
-      <div class="weui_media_bd">
-        <h4 class="weui_media_title">标题一</h4>
-        <p class="weui_media_desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">标题一</h4>
+        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
       </div>
     </a>
-    <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
-      <div class="weui_media_hd">
-        <img class="weui_media_appmsg_thumb" src="" alt="">
+    <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+      <div class="weui-media-box__hd">
+        <img class="weui-media-box__thumb" src="">
       </div>
-      <div class="weui_media_bd">
-        <h4 class="weui_media_title">标题二</h4>
-        <p class="weui_media_desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+      <div class="weui-media-box__bd">
+        <h4 class="weui-media-box__title">标题二</h4>
+        <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
       </div>
     </a>
   </div>
-  <a class="weui_panel_ft" href="javascript:void(0);">查看更多</a>
-</div>
-{% endhighlight %}
-
-
-<p>文字列表：包括标题与描述，可附加相关信息，例如来源、日期等，示例代码如下：</p>
-
-{% highlight html %}
-<div class="weui_panel weui_panel_access">
-  <div class="weui_panel_hd">文字组合列表</div>
-  <div class="weui_panel_bd">
-    <div class="weui_media_box weui_media_text">
-      <h4 class="weui_media_title">标题一</h4>
-      <p class="weui_media_desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-    </div>
-    <div class="weui_media_box weui_media_text">
-      <h4 class="weui_media_title">标题二</h4>
-      <p class="weui_media_desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-    </div>
-  </div>
-  <a href="javascript:void(0);" class="weui_panel_ft">查看更多</a>
-</div>
-{% endhighlight %}
-
-{% highlight html %}
-<div class="weui_panel">
-  <div class="weui_panel_hd">文字列表附来源</div>
-  <div class="weui_panel_bd">
-    <div class="weui_media_box weui_media_text">
-      <h4 class="weui_media_title">标题一</h4>
-      <p class="weui_media_desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
-      <ul class="weui_media_info">
-        <li class="weui_media_info_meta">文字来源</li>
-        <li class="weui_media_info_meta">时间</li>
-        <li class="weui_media_info_meta weui_media_info_meta_extra">其它信息</li>
-      </ul>
-    </div>
+  <div class="weui-panel__ft">
+    <a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+      <div class="weui-cell__bd">查看更多</div>
+      <span class="weui-cell__ft"></span>
+    </a>    
   </div>
 </div>
 {% endhighlight %}
-
-<p>小图文组合列表，示例代码如下：</p>
-
-{% highlight html %}
-<div class="weui_panel">
-  <div class="weui_panel_hd">小图文组合列表</div>
-  <div class="weui_panel_bd">
-    <div class="weui_media_box weui_media_small_appmsg">
-      <div class="weui_cells weui_cells_access">
-        <a class="weui_cell" href="javascript:;">
-          <div class="weui_cell_hd"><img src=""></div>
-          <div class="weui_cell_bd weui_cell_primary">
-            <p>文字标题</p>
-          </div>
-          <span class="weui_cell_ft"></span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-{% endhighlight %}
-
-
 </article>

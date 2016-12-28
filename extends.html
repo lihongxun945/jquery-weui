@@ -17,7 +17,7 @@ layout: default
       <div class="device">
         <div class="status-bar"></div>
         <div class="window" id="window">
-          <iframe src="{{ "/docs-demos/pull-to-refresh.html" | prepend: site.baseurl }}" width="320" height="549" frameborder="0"></iframe>
+          <iframe src="{{ "/dist/demos/ptr.html" | prepend: site.baseurl }}" width="320" height="549" frameborder="0"></iframe>
           <div id="qrcode"></div>
         </div>
         <div id="qrcode-btn"></div>
@@ -26,7 +26,6 @@ layout: default
     <div class="docs-col">
       {% include _components/pull-to-refresh.html %}
       {% include _components/infinite.html %}
-      {% include _components/col.html %}
       {% include _components/swiper.html %}
       {% include _components/photos.html %}
       {% include _components/calendar.html %}
