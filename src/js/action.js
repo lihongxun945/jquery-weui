@@ -42,12 +42,12 @@
 
     mask.show();
     dialog.show();
-    mask.addClass("weui-mask_visible");
+    mask.addClass("weui-mask--visible");
     dialog.addClass("weui-actionsheet_toggle");
   };
 
   var hide = function() {
-    $(".weui-mask").removeClass("weui-mask_visible").transitionEnd(function() {
+    $(".weui-mask").removeClass("weui-mask--visible").transitionEnd(function() {
       $(this).remove();
     });
     $(".weui-actionsheet").removeClass("weui-actionsheet_toggle").transitionEnd(function() {
