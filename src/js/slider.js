@@ -6,7 +6,6 @@
     this.handler = this.container.find('.weui-slider__handler')
     this.track = this.container.find('.weui-slider__track')
     this.value = this.container.find('.weui-slider-box__value')
-    console.log(this.value)
     this.bind()
     if (typeof arg === 'function') {
       this.callback = arg
@@ -25,7 +24,6 @@
     this.start = $.getTouchPosition(e)
     this.width = this.container.find('.weui-slider__inner').width()
     this.left = parseInt(this.container.find('.weui-slider__handler').css('left'))
-    console.log(this.percent)
     this.touching = true
   }
 
