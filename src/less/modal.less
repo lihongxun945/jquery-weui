@@ -27,7 +27,7 @@
     }
   }
 
-  &.weui-dialog_visible, &.weui-toast_visible {
+  &.weui-dialog--visible, &.weui-toast--visible {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
@@ -65,7 +65,7 @@
   transform: scale(0.9) translate3d(-50%, 0, 0);
   transform-origin: left;
 
-  &.weui-toast_visible {
+  &.weui-toast--visible {
     transform: scale(1) translate3d(-50%, 0, 0);
   }
 
@@ -82,7 +82,7 @@
   opacity: 0;
   transition-duration: .3s;
   visibility: hidden;
-  &.weui-mask_visible {
+  &.weui-mask--visible {
     opacity: 1;
     visibility: visible;
   }

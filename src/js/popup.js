@@ -16,8 +16,8 @@
     popup = $(popup);
     popup.show();
     popup.width();
-    popup.addClass("weui-popup-container-visible");
-    var modal = popup.find(".weui-popup-modal");
+    popup.addClass("weui-popup__container--visible");
+    var modal = popup.find(".weui-popup__modal");
     modal.width();
     modal.transitionEnd(function() {
       modal.trigger("open");
@@ -26,25 +26,25 @@
 
 
   $.closePopup = function(container, remove) {
-    container = $(container || ".weui-popup-container-visible");
-    container.find('.weui-popup-modal').transitionEnd(function() {
+    container = $(container || ".weui-popup__container--visible");
+    container.find('.weui-popup__modal').transitionEnd(function() {
       var $this = $(this);
       $this.trigger("close");
       container.hide();
       remove && container.remove();
     })
-    container.removeClass("weui-popup-container-visible")
+    container.removeClass("weui-popup__container--visible")
   };
 
 
-  $(document).on("click", ".close-popup, .weui-popup-overlay", function() {
+  $(document).on("click", ".close-popup, .weui-popup__overlay", function() {
     $.closePopup();
   })
   .on("click", ".open-popup", function() {
     $($(this).data("target")).popup();
   })
-  .on("click", ".weui-popup-container", function(e) {
-    if($(e.target).hasClass("weui-popup-container")) $.closePopup();
+  .on("click", ".weui-popup__container", function(e) {
+    if($(e.target).hasClass("weui-popup__container")) $.closePopup();
   })
 
   $.fn.popup = function() {

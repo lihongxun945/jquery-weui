@@ -11,12 +11,12 @@
     var dialog = $(tpl).appendTo(document.body);
 
     dialog.show();
-    dialog.addClass("weui-toast_visible");
+    dialog.addClass("weui-toast--visible");
   };
 
   var hide = function(callback) {
     $(".weui-mask_transparent").remove();
-    $(".weui-toast_visible").removeClass("weui-toast_visible").transitionEnd(function() {
+    $(".weui-toast--visible").removeClass("weui-toast--visible").transitionEnd(function() {
       var $this = $(this);
       $this.remove();
       callback && callback($this);
@@ -32,10 +32,10 @@
       className = "weui-toast_cancel";
       iconClassName = 'weui-icon-cancel'
     } else if(style == "forbidden") {
-      className = "weui-toast_forbidden";
+      className = "weui-toast--forbidden";
       iconClassName = 'weui-icon-warn'
     } else if(style == "text") {
-      className = "weui-toast_text";
+      className = "weui-toast--text";
     }
     show('<i class="' + iconClassName + ' weui-icon_toast"></i><p class="weui-toast_content">' + (text || "已经完成") + '</p>', className);
 

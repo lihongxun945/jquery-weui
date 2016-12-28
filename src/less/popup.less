@@ -1,4 +1,4 @@
-.weui-popup-overlay, .weui-popup-container {
+.weui-popup__overlay, .weui-popup__container {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -9,26 +9,26 @@
   z-index: 10;
 }
 
-.weui-popup-overlay {
+.weui-popup__overlay {
   background-color: rgba(0, 0, 0, .6);
   opacity: 0;
   transition: opacity .3s;
 }
 
-.weui-popup-container {
+.weui-popup__container {
   display: none;
 
-  &.weui-popup-container-visible {
+  &.weui-popup__container--visible {
     display: block;
   }
 
-  .weui_cells {
+  .weui-cells {
     margin: 0;
     text-align: left;
   }
 }
 
-.weui-popup-modal {
+.weui-popup__modal {
   width: 100%;
   position: absolute;
   z-index: 100;
@@ -67,12 +67,12 @@
   }
 }
 
-.weui-popup-container-visible {
+.weui-popup__container--visible {
   .weui-popup-overlay {
     opacity: 1;
   }
 
-  .weui-popup-modal {
+  .weui-popup__modal {
     opacity: 1;
     transform: translate3d(0,0,0);
   }

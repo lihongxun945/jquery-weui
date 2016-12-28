@@ -49,18 +49,18 @@
     }   
 
     dialog.show();
-    mask.addClass("weui-mask_visible");
-    dialog.addClass("weui-dialog_visible");
+    mask.addClass("weui-mask--visible");
+    dialog.addClass("weui-dialog--visible");
 
 
     return dialog;
   }
 
   $.closeModal = function() {
-    $(".weui-mask_visible").removeClass("weui-mask_visible").transitionEnd(function() {
+    $(".weui-mask--visible").removeClass("weui-mask--visible").transitionEnd(function() {
       $(this).remove();
     });
-    $(".weui-dialog_visible").removeClass("weui-dialog_visible").transitionEnd(function() {
+    $(".weui-dialog--visible").removeClass("weui-dialog--visible").transitionEnd(function() {
       $(this).remove();
     });
   };
