@@ -7,7 +7,7 @@
 - 更新到 weui v1.1.0, 增加了大量新组建，命名方式全部采用 [BEM](http://getbem.com/), weui 的更新日志请参阅 `https://github.com/weui/weui/blob/master/CHANGELOG.md`
 - jqweui 拓展组件部分采用 BEM 命名规范
 
-对于仍然使用旧版的用户，旧版文档地址: 
+对于仍然使用旧版的用户，旧版文档地址: http://old.jqweui.com/
 
 # V0.8.3 - 2016/12/26
 
