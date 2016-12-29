@@ -1,10 +1,14 @@
 .weui-tabbar__item {
   position: relative;
+
+  &.weui-bar__item--on .weui-tabbar__label {
+    color: @color-primary;
+  }
 }
 .weui-navbar__item {
   color: #888;
 
-  &.weui-navbar__item--on {
+  &.weui-bar__item--on {
     color: #666;
     background-color: #f1f1f1;
   }
