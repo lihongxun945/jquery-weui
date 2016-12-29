@@ -1,22 +1,29 @@
-.weui_tab {
-  overflow: hidden;
+.weui-tabbar__item {
+  position: relative;
 }
-.weui_navbar_item {
+.weui-navbar__item {
   color: #888;
 
-  &.weui_bar_item_on {
+  &.weui-navbar__item--on {
     color: #666;
+    background-color: #f1f1f1;
   }
 }
 
-.weui_tab_bd {
-  .weui_tab_bd_item {
+.weui-tab__bd {
+  box-sizing: border-box;
+  height: 100%;
+  .weui-tab__bd-item {
     display: none;
     height: 100%;
     overflow: auto;
 
-    &.weui_tab_bd_item_active {
+    &.weui-tab__bd-item--active {
       display: block;
     }
   }
+}
+
+.weui-navbar + .weui-tab__bd {
+  padding-top: 50px;
 }

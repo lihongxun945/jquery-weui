@@ -2,7 +2,7 @@
 +function ($) {
   "use strict";
 
-  var ITEM_ON = "weui_bar_item_on";
+  var ITEM_ON = "weui-navbar__item--on";
 
   var showTab = function(a) {
     var $a = $(a);
@@ -14,16 +14,16 @@
     $a.parent().find("."+ITEM_ON).removeClass(ITEM_ON);
     $a.addClass(ITEM_ON);
 
-    var bd = $a.parents(".weui_tab").find(".weui_tab_bd");
+    var bd = $a.parents(".weui-tab").find(".weui-tab__bd");
 
-    bd.find(".weui_tab_bd_item_active").removeClass("weui_tab_bd_item_active");
+    bd.find(".weui-tab__bd-item--active").removeClass("weui-tab__bd-item--active");
 
-    $(href).addClass("weui_tab_bd_item_active");
+    $(href).addClass("weui-tab__bd-item--active");
   }
 
   $.showTab = showTab;
 
-  $(document).on("click", ".weui_tabbar_item, .weui_navbar_item", function(e) {
+  $(document).on("click", ".weui-navbar__item, .weui-tabbar__item", function(e) {
     var $a = $(e.currentTarget);
     var href = $a.attr("href");
     if($a.hasClass(ITEM_ON)) return;
@@ -35,4 +35,3 @@
   });
 
 }($);
-

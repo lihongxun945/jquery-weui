@@ -1,3 +1,14 @@
+# V1.0.0 - 2016/12/28
+对应 weui 版本为 v1.1.0
+
+*注意，因为 weui 更新了命名规则，所以 v1.0.0 开始，不兼容 v0.8.3 以及更低的版本*
+建议老项目如果没有特别需要，不要盲目升级到 v1.0.0, V0.8.3 代码和文档都不会删除，请放心使用。 新项目请尽量使用 v1.0.0 版本
+
+- 更新到 weui v1.1.0, 增加了大量新组建，命名方式全部采用 [BEM](http://getbem.com/), weui 的更新日志请参阅 `https://github.com/weui/weui/blob/master/CHANGELOG.md`
+- jqweui 拓展组件部分采用 BEM 命名规范
+
+对于仍然使用旧版的用户，旧版文档地址: http://old.jqweui.com/
+
 # V0.8.3 - 2016/12/26
 
 - 修复了 [时间日期](http://jqweui.com/extends#datetime-picker) 选择器中缺少 59 秒的bug

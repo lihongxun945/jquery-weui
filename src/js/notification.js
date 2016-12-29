@@ -48,9 +48,9 @@
 
   $.notification = $.noti = function(params) {
     params = $.extend({}, defaults, params);
-    noti = $(".notification");
+    noti = $(".weui-notification");
     if(!noti[0]) { // create a new notification
-      noti = $('<div class="notification"></div>').appendTo(document.body);
+      noti = $('<div class="weui-notification"></div>').appendTo(document.body);
       attachEvents(noti);
     }
 
@@ -63,7 +63,7 @@
 
     noti.show();
 
-    noti.addClass("notification-in");
+    noti.addClass("weui-notification--in");
     noti.data("params", params);
 
     var startTimeout = function() {
@@ -73,7 +73,7 @@
       }
 
       timeout = setTimeout(function() {
-        if(noti.hasClass("touching")) {
+        if(noti.hasClass("weui-notification--touching")) {
           startTimeout();
         } else {
           $.closeNotification();
@@ -88,12 +88,12 @@
   $.closeNotification = function() {
     timeout && clearTimeout(timeout);
     timeout = null;
-    var noti = $(".notification").removeClass("notification-in").transitionEnd(function() {
+    var noti = $(".weui-notification").removeClass("weui-notification--in").transitionEnd(function() {
       $(this).remove();
     });
 
     if(noti[0]) {
-      var params = $(".notification").data("params");
+      var params = $(".weui-notification").data("params");
       if(params && params.onClose) {
         params.onClose(params.data);
       }
@@ -108,13 +108,13 @@
     onClick: undefined,
     onClose: undefined,
     data: undefined,
-    tpl:  '<div class="notification-inner">' +
-            '{{#if media}}<div class="notification-media">{{media}}</div>{{/if}}' +
-            '<div class="notification-content">' +
-            '{{#if title}}<div class="notification-title">{{title}}</div>{{/if}}' +
-            '{{#if text}}<div class="notification-text">{{text}}</div>{{/if}}' +
+    tpl:  '<div class="weui-notification__inner">' +
+            '{{#if media}}<div class="weui-notification__media">{{media}}</div>{{/if}}' +
+            '<div class="weui-notification__content">' +
+            '{{#if title}}<div class="weui-notification__title">{{title}}</div>{{/if}}' +
+            '{{#if text}}<div class="weui-notification__text">{{text}}</div>{{/if}}' +
             '</div>' +
-            '<div class="notification-handle-bar"></div>' +
+            '<div class="weui-notification__handle-bar"></div>' +
           '</div>'
   };
 

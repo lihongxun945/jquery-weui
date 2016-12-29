@@ -11,20 +11,20 @@
     }
     duration = duration || 3000;
     var className = type ? 'bg-' + type : 'bg-danger';
-    var $t = $('.weui_toptips').remove();
-    $t = $('<div class="weui_toptips"></div>').appendTo(document.body);
+    var $t = $('.weui-toptips').remove();
+    $t = $('<div class="weui-toptips"></div>').appendTo(document.body);
     $t.html(text);
-    $t[0].className = 'weui_toptips ' + className
+    $t[0].className = 'weui-toptips ' + className
 
     clearTimeout(timeout);
 
-    if(!$t.hasClass('weui_toptips_visible')) {
+    if(!$t.hasClass('weui-toptips_visible')) {
       $t.show().width();
-      $t.addClass('weui_toptips_visible');
+      $t.addClass('weui-toptips_visible');
     }
 
     timeout = setTimeout(function() {
-      $t.removeClass('weui_toptips_visible').transitionEnd(function() {
+      $t.removeClass('weui-toptips_visible').transitionEnd(function() {
         $t.remove();
       });
     }, duration);
