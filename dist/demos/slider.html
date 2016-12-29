@@ -13,17 +13,42 @@
 <link rel="stylesheet" href="../css/jquery-weui.css">
 <link rel="stylesheet" href="css/demos.css">
 
+
+    <style>
+      .swiper-container {
+        width: 100%;
+      } 
+
+      .swiper-container img {
+        display: block;
+        width: 100%;
+      }
+    </style>
   </head>
 
   <body ontouchstart>
-
     <header class='demos-header'>
-      <h1 class="demos-title">Notification</h1>
+      <h1 class="demos-title">Slider</h1>
     </header>
-
     <div class='demos-content-padded'>
-      <a href="javascript:;" id='show-notification' class="weui-btn weui-btn_primary">显示通知</a>
+      <div class="weui-slider" id='slider1'>
+        <div class="weui-slider__inner">
+          <div style="width: 0;" class="weui-slider__track"></div>
+          <div style="left: 0;" class="weui-slider__handler"></div>
+        </div>
+      </div>
+      <br>
+      <div class="weui-slider-box" id='slider2'>
+        <div class="weui-slider">
+          <div id="sliderInner" class="weui-slider__inner">
+            <div id="sliderTrack" style="width: 75%;" class="weui-slider__track"></div>
+            <div id="sliderHandler" style="left: 75%;" class="weui-slider__handler"></div>
+          </div>
+        </div>
+        <div id="sliderValue" class="weui-slider-box__value">75</div>
+      </div>
     </div>
+
     <script src="../lib/jquery-2.1.4.js"></script>
 <script src="../lib/fastclick.js"></script>
 <script>
@@ -34,19 +59,9 @@
 <script src="../js/jquery-weui.js"></script>
 
     <script>
-      $(document).on("click", "#show-notification", function() {
-        $.noti({
-          title: "中奖啦！",
-          text: "点击领取腾讯撸啊撸杯二等奖！",
-          media: "<img src='./images/present.png' />",
-          data: {
-            message: "逗你玩的!"
-          },
-          time: 3000,
-          onClick: function(data) {
-            $.alert(data.message);
-          }
-        });
+      $('#slider1').slider();
+      $('#slider2').slider(function (per) {
+        console.log(per);
       });
     </script>
   </body>

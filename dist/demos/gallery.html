@@ -17,15 +17,13 @@
 
   <body ontouchstart>
 
-
-    <header class='demos-header'>
-      <h1 class="demos-title">Toptip</h1>
-    </header>
-
-    <div class='demos-content-padded'>
-      <a href="javascript:;" id='show-success' class="weui-btn weui-btn_primary">显示成功</a>
-      <a href="javascript:;" id='show-error' class="weui-btn weui-btn_primary">显示失败</a>
-      <a href="javascript:;" id='show-warning' class="weui-btn weui-btn_primary">显示警告</a>
+    <div class="weui-gallery" style="display: block">
+      <span class="weui-gallery__img" style="background-image: url(./images/pic_article.png);"></span>
+      <div class="weui-gallery__opr">
+        <a href="javascript:" class="weui-gallery__del">
+          <i class="weui-icon-delete weui-icon_gallery-delete"></i>
+        </a>
+      </div>
     </div>
     <script src="../lib/jquery-2.1.4.js"></script>
 <script src="../lib/fastclick.js"></script>
@@ -36,17 +34,5 @@
 </script>
 <script src="../js/jquery-weui.js"></script>
 
-    <script>
-      $(document)
-      .on('click', '#show-success', function() {
-        $.toptip('操作成功', 'success');
-      })
-      .on('click', '#show-error', function() {
-        $.toptip('操作失败', 'error');
-      })
-      .on('click', '#show-warning', function() {
-        $.toptip('警告', 'warning');
-      })
-    </script>
   </body>
 </html>
