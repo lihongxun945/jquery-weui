@@ -15,8 +15,8 @@
   Slider.prototype.bind = function () {
     this.container
       .on($.touchEvents.start, $.proxy(this.touchStart, this))
-      .on($.touchEvents.move, $.proxy(this.touchMove, this))
       .on($.touchEvents.end, $.proxy(this.touchEnd, this));
+    $(document.body).on($.touchEvents.move, $.proxy(this.touchMove, this)) // move even outside container
   }
 
   Slider.prototype.touchStart = function (e) {
