@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.0.0-rc.0 
+* jQuery WeUI V1.0.0-rc.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -835,10 +835,13 @@ body {
 .weui-tabbar__item {
   position: relative;
 }
+.weui-tabbar__item.weui-bar__item--on .weui-tabbar__label {
+  color: #04BE02;
+}
 .weui-navbar__item {
   color: #888;
 }
-.weui-navbar__item.weui-navbar__item--on {
+.weui-navbar__item.weui-bar__item--on {
   color: #666;
   background-color: #f1f1f1;
 }
@@ -2297,6 +2300,12 @@ button.swiper-pagination-bullet {
 }
 .weui-toast--forbidden .weui-icon_toast {
   color: #f6383a;
+}
+.weui-toast--text {
+  min-height: initial;
+  font-size: 18px;
+  padding: 8px 0;
+  top: 40%;
 }
 .weui-toast--text .weui-icon_toast {
   display: none;

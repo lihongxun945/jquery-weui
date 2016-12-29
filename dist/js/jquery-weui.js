@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.0.0-rc.0 
+* jQuery WeUI V1.0.0-rc.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -3765,7 +3765,7 @@ if (typeof define === 'function' && define.amd) {
 +function ($) {
   "use strict";
 
-  var ITEM_ON = "weui-navbar__item--on";
+  var ITEM_ON = "weui-bar__item--on";
 
   var showTab = function(a) {
     var $a = $(a);
@@ -3803,13 +3803,15 @@ if (typeof define === 'function' && define.amd) {
 + function($) {
   "use strict";
 
-  $(document).on("click", ".weui-search-bar__label", function(e) {
+  $(document).on("click touchstart", ".weui-search-bar__label", function(e) {
     $(e.target).parents(".weui-search-bar").addClass("weui-search-bar_focusing").find('input').focus();
   }) 
+  /*
   .on("blur", ".weui-search-bar__input", function(e) {
     var $input = $(e.target);
     if(!$input.val()) $input.parents(".weui-search-bar").removeClass("weui-search-bar_focusing");
   })
+  */
   .on("click", ".weui-search-bar__cancel-btn", function(e) {
     var $input = $(e.target).parents(".weui-search-bar").removeClass("weui-search-bar_focusing").find(".weui-search-bar__input").val("").blur();
   })
@@ -6209,8 +6211,8 @@ Device/OS Detection
   Slider.prototype.bind = function () {
     this.container
       .on($.touchEvents.start, $.proxy(this.touchStart, this))
-      .on($.touchEvents.move, $.proxy(this.touchMove, this))
       .on($.touchEvents.end, $.proxy(this.touchEnd, this));
+    $(document.body).on($.touchEvents.move, $.proxy(this.touchMove, this)) // move even outside container
   }
 
   Slider.prototype.touchStart = function (e) {
