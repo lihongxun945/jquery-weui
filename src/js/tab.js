@@ -2,7 +2,7 @@
 +function ($) {
   "use strict";
 
-  var ITEM_ON = "weui-navbar__item--on";
+  var ITEM_ON = "weui-bar__item--on";
 
   var showTab = function(a) {
     var $a = $(a);
