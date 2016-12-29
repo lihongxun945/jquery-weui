@@ -51,10 +51,42 @@
 </div>
 {% endhighlight %}
 
-  <p><code>.weui_tab</code> 作为外层容器，高度撑满它的父容器的高度，<code>.weui_tab_bd</code> 作为 <code>tab</code> 的主体内容，占据除了 <code>.weui_tabbar</code> 以外的全部父容器的高度，<code>.weui_tabbar</code> 则为底部的导航栏。而 <code>.weui_tabbar_item</code> 为 <code>.weui_tabbar</code> 的子元素，表示一个导航区，建议不超过 5 个。</p>
+  <p><code>.weui-tab</code> 作为外层容器，高度撑满它的父容器的高度，<code>.weui-tab__bd</code> 作为 <code>tab</code> 的主体内容，占据除了 <code>.weui-tabbar</code> 以外的全部父容器的高度，<code>.weui-tabbar</code> 则为底部的导航栏。而 <code>.weui-tabbar__item</code> 为 <code>.weui-tabbar</code> 的子元素，表示一个导航区，建议不超过 5 个。</p>
     
-  <p>图标 <code>.weui_tabbar_icon</code> 约定尺寸为 24px * 24px ，二倍即 48px * 48px。</p>
+  <p>图标 <code>.weui-tabbar__icon</code> 约定尺寸为 27px * 27px ，二倍即 54px * 54px。</p>
 
-  <p>关于 active 态，开发者根据需要，给当前激活的 <code>.weui_tabbar_item</code> 添加标示的 <code>.weui_bar_item_on</code> 类名，然后控制文字颜色和图标变化。</p>
+  <p>关于 active 态，开发者根据需要，给当前激活的 <code>.weui-tabbar__item</code> 添加标示的 <code>.weui-bar__item--on</code> 类名，然后控制文字颜色和图标变化。</p>
+
+  <h3>自动切换</h3>
+
+  <p>在正确的HTML结构前提下，给 <code>.weui-tabbar__item</code> 或者 <code>.weui-navbar__item</code> 加上 <code>href="#id"</code> 指向一个 <code>.weui-tab__bd-item</code>，即可实现点击的时候自动切换。但是请自行确保初始状态的一致。</p>
+
+  <p>基本结构如下所示：</p>
+
+{% highlight html %}
+
+<!-- 容器 -->
+<div class="weui-tab">
+  <div class="weui-tab__bd">
+    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+      <h1>页面一</h1>
+    </div>
+    <div id="tab2" class="weui-tab__bd-item">
+      <h1>页面二</h1>
+    </div>
+    ...
+  </div>
+
+  <div class="weui-tabbar">
+    <a href="#tab1" class="weui-tabbar__item weui_bar__item_on">
+      ...
+    </a>
+    <a href="#tab2" class="weui-tabbar__item">
+      ...
+    </a>
+    ...
+  </div>
+</div>
+{% endhighlight %}
 
 </article>
