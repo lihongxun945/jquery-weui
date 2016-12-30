@@ -3,6 +3,7 @@
 @yb-orange: #ff7e51;
 @yb-yellow: #d28700;
 @yb-green: #1aa100;
+@yb-blue-gray: #82c6cf;
 @weuiBtnFontColor:#FFFFFF;
 @weuiBtnDisabledFontColor:rgba(255,255,255,.6);
 @weuiBtnActiveFontColor:rgba(255,255,255,.4);
@@ -12,6 +13,7 @@
 .yb-orange { color: @yb-orange;}
 .yb-yellow { color: @yb-yellow;}
 .yb-green { color: @yb-green;}
+.yb-blue-gray { color: @yb-blue-gray;}
 
 a.ybzy-link-red {
     color: @yb-red;
@@ -100,11 +102,11 @@ a.ybzy-link-red {
 
 @font-face {
   font-family: 'ybzyicon';  /* project id 197148 */
-  src: url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.eot');
-  src: url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.woff') format('woff'),
-  url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_ktqt2l5jv6jsv2t9.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_39zi5q8vh5dygb9.eot');
+  src: url('//at.alicdn.com/t/font_39zi5q8vh5dygb9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_39zi5q8vh5dygb9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_39zi5q8vh5dygb9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_39zi5q8vh5dygb9.svg#iconfont') format('svg');
 }
                     
 .ybzy-icon {
@@ -133,6 +135,23 @@ a.ybzy-link-red {
 .ybzy-icon-msglist:before { content: "\e6c6"; }/* 消息中心 */
 .ybzy-icon-address:before { content: "\e60a"; }/* 地址 */
 .ybzy-icon-filter:before { content: "\e730"; }/* 筛选 */
+
+.ybzy-icon-nav01:before { content: "\e61f"; }/* 肺病 */
+.ybzy-icon-nav02:before { content: "\e619"; }/* 妇科 */
+.ybzy-icon-nav03:before { content: "\e61a"; }/* 儿科 */
+.ybzy-icon-nav04:before { content: "\e615"; }/* 医生处方 */
+.ybzy-icon-nav05:before { content: "\e617"; }/* 治疗日记 */
+.ybzy-icon-process01:before { content: "\e614"; }/* 挂号就诊 */
+.ybzy-icon-process02:before { content: "\e618"; }/* 专业问诊 */
+.ybzy-icon-process03:before { content: "\e61d"; }/* 在线诊断 */
+.ybzy-icon-process04:before { content: "\e61b"; }/* 处方推送 */
+.ybzy-icon-process05:before { content: "\e61e"; }/* 划价取药 */
+.ybzy-icon-process06:before { content: "\e61c"; }/* 配送药品 */
+.ybzy-icon-logo:before { content: "\e609"; }/* 源本中医logo */
+.ybzy-icon-tabbar01:before { content: "\e612"; }/* 就诊开始 */
+.ybzy-icon-tabbar02:before { content: "\e613"; }/* 划价取药 */
+.ybzy-icon-tabbar03:before { content: "\e60c"; }/* 个人中心 */
+.ybzy-icon-tabbar04:before { content: "\e611"; }/* 源本服务 */
 
 body { background: #efefef; height: 100%; }
 
@@ -165,6 +184,17 @@ body { background: #efefef; height: 100%; }
     &:not(.weui_btn_disabled):active {
         color: @weuiBtnActiveFontColor;
         background-color: darken(@yb-yellow, 5%);
+    }
+}
+
+.weui_btn_blue-gray {
+    background-color: darken(@yb-blue-gray, 10%);
+    &:not(.weui_btn_disabled):visited {
+        color: @weuiBtnFontColor;
+    }
+    &:not(.weui_btn_disabled):active {
+        color: @weuiBtnActiveFontColor;
+        background-color: darken(darken(@yb-blue-gray, 15%), 5%);
     }
 }
 
@@ -1024,12 +1054,181 @@ body { background: #efefef; height: 100%; }
     }
 }
 
+/*问诊*/
+.yb-inquiry-ques {
+    padding: 15px; width: 100%; height: 100%; box-sizing: border-box; background-color: #fff; overflow: auto; 
+    .yb-inquiry-ques-hd {
+        display: table; width: 100%;
+        .yb-inquiry-ques-title {
+            font-size: 13px; min-width: 30%; text-align: center; color: #888; margin-bottom: 20px;
+            h3 { color: @yb-blue-gray; font-size: 19px; font-weight: normal;}
+            p { color: #888;}
+        }
+        .yb-inquiry-ques-progress {
+            .display-flex; margin: 0 auto 30px; width: 80%; line-height: 16px; white-space: nowrap; font-size: 13px; justify-content: center;
+            .progress-bar {
+                .flex-1; margin: 4px 10px; padding: 0px; background-color: #d7d7d7; height: 6px; border-radius: 6px; 
+                .progress-inner-bar { position: relative; height: 6px; background-color: #78bdc4; border-radius: 6px;
+                    span { position: absolute; top: 8px; right: -13px; color: #999; font-size: 13px;}
+                }
+            }
+        }
+    }
+    .yb-inquiry-ques-bd {
+        padding: 0 10px;
+        .ques-check-box {
+            margin-bottom: 20px;
+            h4 { font-size: 17px; color: #333;}
+            .ques-check-radio {
+                margin-bottom: 10px;
+                .item { display: inline-block; padding: 5px; margin: 0 10px;}
+                .ques-radio { display: none;}
+                .ques-radio-label { padding: 3px 11px 2px; margin: 0; font-size: 15px; color: #555; white-space: nowrap; border:#ccc solid 1px; border-radius: 5px;}
+                .ques-radio-label:before,.ques-radio-label:after { display: none;}
+                input.ques-radio:checked+.ques-radio-label { background-color: #8c312e; color: #fff; font-weight: lighter; border:#8c312e solid 1px;}
+            }
+            .ques-check-extra {
+                padding: 10px; background-color: #f6f6f6; border:#eee solid 1px; border-radius: 10px;
+                .ybzy-detail-checkbox {
+                    .detail-checkbox-label {
+                        .detail-check {
+                            top: 5px;
+                            &:checked ~ .checkbox-bd { color: @yb-red; }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
+/* 滚动翻页 */
+.ybzy-page-scroll {
+    height: 100%; width: 100%;
+    .section-wrap {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        transition: transform 1s cubic-bezier(0.86, 0, 0.03, 1);
+        -webkit-transition: -webkit-transform 1s cubic-bezier(0.86, 0, 0.03, 1);
+        -ms-transition: -ms-transform 1s cubic-bezier(0.86, 0, 0.03, 1);
+        -moz-transition: -moz-transform 1s cubic-bezier(0.86, 0, 0.03, 1);
+        -o-transition: -o-transform 1s cubic-bezier(0.86, 0, 0.03, 1);
+    }
+    
+    .section-wrap .section {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    
+    .section-btn {
+        position: fixed; right: 2px; top: 0; bottom: 0; height: 100%; margin: 0; padding: 0; .display-flex; -webkit-flex-direction: column; flex-direction: column; -webkit-justify-content: center; justify-content: center;
+    }
+    
+    .section-btn .item {
+        margin-bottom: 15px; background: @yb-blue-gray; text-align: center; color: #fff; cursor: pointer; width: 22px; height: 22px; line-height: 22px; border-radius: 22px; font-size: 14px;
+    }
+    
+    .section-btn .item.cur {
+        background: darken(@yb-blue-gray, 20%);
+    }
+    
+    .go-btn {
+        opacity: 1;
+        webkit-animation: go-btn 3s cubic-bezier(0.5, 0, 0.1, 1)infinite;
+        -webkit-animation: go-btn 3s cubic-bezier(0.5, 0, 0.1, 1)infinite;
+        -ms-animation: go-btn 3s cubic-bezier(0.5, 0, 0.1, 1)infinite;
+        -moz-animation: go-btn 3s cubic-bezier(0.5, 0, 0.1, 1)infinite;
+        -o-animation: go-btn 3s cubic-bezier(0.5, 0, 0.1, 1)infinite;
+        position: absolute;
+        bottom: 5px;
+        left: 50%;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        line-height: 30px;
+        text-align: center;
+        font-size: 24px;
+        color: darken(@yb-blue-gray, 20%);
+        border: 1px solid @yb-blue-gray;
+        cursor: pointer;
+        overflow: hidden;
+        margin-left: -15px;
+        &:after {
+            .arrow-b; right: 50%; margin-top: -6px; margin-right: -4px; border-color: darken(@yb-blue-gray, 20%);
+        }
+    }
+    
+    .go-btn:hover {
+        animation-play-state: paused;
+        -webkit-animation-play-state: paused;
+        -ms-animation-play-state: paused;
+        -moz-animation-play-state: paused;
+        -o-animation-play-state: paused;
+    }
+    
+    @keyframes go-btn {
+        0%,100% { bottom: 5px; opacity: 1;}
+        50% { bottom: 20px; opacity: .5; }
+    }
+    
+    @-webkit-keyframes go-btn {
+        0%,100% { bottom: 5px; opacity: 1;}
+        50% { bottom: 20px; opacity: .5; }
+    }
+    
+    @-ms-keyframes go-btn {
+        0%,100% { bottom: 5px; opacity: 1;}
+        50% { bottom: 20px; opacity: .5; }
+    }
+    
+    @-moz-keyframes go-btn {
+        0%,100% { bottom: 5px; opacity: 1;}
+        50% { bottom: 20px; opacity: .5; }
+    }
+    
+    @-o-keyframes go-btn {
+        0%,100% { bottom: 5px; opacity: 1;}
+        50% { bottom: 20px; pacity: .5;; }
+    }
+}
 
+/* 首页 */
+.banner { margin-bottom: 10px;}
+.banner img { width:100%; height:auto; background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2);}
 
+.yb-nav {}
+.yb-nav .item { background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2); margin-bottom:10px;}
+.yb-nav .item:after { visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
+.yb-nav a.register-doctor { display:block; box-sizing: border-box; width: 33%; float: left; padding:15px 5px; text-align:center;  color:#333; font-size:1.2rem; text-decoration:none; background: url("/images/gh_bg.png") left bottom no-repeat; background-size: 33% auto;}
+.yb-nav a.register-doctor p img { width:100%; height:auto;}
+.yb-nav a.register-doctor i.ybfont { display: inline-block; background:#be0909; color:#fff; border-radius:4rem; padding:.25rem; vertical-align: bottom; margin-bottom:.2em; width: 3.6rem; height: 3.6rem; line-height: 3.2rem; font-size: 2.4rem;}
+.yb-nav .yb-nav-r { }
 
-
-
+.yb-nav .yb-nav-r a { display:block; box-sizing: border-box; width: 50%; float: left; padding:20px 15px;  font-size:1.2rem; color:#333;}
+.yb-nav .yb-nav-r a i { background:#be0909; color:#fff; border-radius:3px; padding:.15em; vertical-align:middle; margin-right:.15em; width: 2.4rem; height: 2.4rem; font-size: 1.8rem; float: left}
+.km-nova .yb-nav-r a p { font-size:.8rem; margin:0; color:#9b9281; white-space: nowrap;}
+.yb-nav a.register-doctor:active,.yb-nav .yb-nav-r a:active { background:#f3efda;}
+/*就医流程3*/
+.yb-process { background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2);}
+.yb-process .process-title { text-align: center;}
+.yb-process .process-title h3 { display: block; margin: 0 0.5rem; padding: 1rem 0.4rem 1.2rem; color: #a10000; font-size: 1.2rem;}
+.yb-process .process-cnt { padding:0.2rem 0.5rem 1.5rem; }
+.yb-process .process-cnt .item { height: 100px; position: relative;}
+.yb-process .process-cnt .item .process-line { position: absolute; z-index: 5; height: 1px; background-color: #d0d0d0; left: 0; right: 0; width: 100%; top: 50%;}
+.yb-process .process-cnt .item .process-line .p1,.yb-process .process-cnt .item .process-line .p2 { position: absolute; height: 5px; width: 5px; background-color: #333; border-radius: 5px; top: -2px;}
+.yb-process .process-cnt .item .process-line .p1 { left: 0;}
+.yb-process .process-cnt .item .process-line .p2 { right: 0}
+.yb-process .process-cnt .item:after { display: block; height: 0; overflow: hidden; clear: both; content: ""}
+.yb-process .process-cnt .items { position: relative; z-index: 10; width: 16%; float: left; text-align: center;}
+.yb-process .process-cnt .items .process-cell { display: block; padding: 0;}
+.yb-process .process-cnt .items .p-point { padding: 5px;}
+.yb-process .process-cnt .items .p-point:after { content: ""; display: inline-block; background-color: #cc7a73; height:4px; width: 4px; border-radius: 5px; overflow: hidden; border:#fff 2px solid; box-shadow: 0 0 0 1px #a9a9a9;}
+.yb-process .process-cnt .items .ybfont { display: inline-block; color:#a10000; border-radius:4px; width: 42px; height: 42px; padding:5px; vertical-align: bottom; font-size: 2rem;}
+.yb-process .process-cnt .items .p-name { margin: 0; font-size: 0.8rem; white-space: nowrap; height: 24px; line-height: 24px;}
 
 
 

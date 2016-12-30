@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>专业问诊</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="../lib/weui.min.css">
+    <link rel="stylesheet" href="../css/jquery-weui.css">
+    <link rel="stylesheet" href="css/ybzy.css">
+</head>
+
+<body ontouchstart>
+    <style type="text/css">
+        html,body { width: 100%; height: 100%; overflow: hidden; }
+        
+        .put-section-0 {
+            transform: translateY(0);
+            -webkit-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -o-transform: translateY(0);
+        }
+        
+        .put-section-1 {
+            transform: translateY(-100%);
+            -webkit-transform: translateY(-100%);
+            -ms-transform: translateY(-100%);
+            -moz-transform: translateY(-100%);
+            -o-transform: translateY(-100%);
+        }
+        
+        .put-section-2 {
+            transform: translateY(-200%);
+            -webkit-transform: translateY(-200%);
+            -ms-transform: translateY(-200%);
+            -moz-transform: translateY(-200%);
+            -o-transform: translateY(-200%);
+        }
+        
+        .put-section-3 {
+            transform: translateY(-300%);
+            -webkit-transform: translateY(-300%);
+            -ms-transform: translateY(-300%);
+            -moz-transform: translateY(-300%);
+            -o-transform: translateY(-300%);
+        }
+        
+        .put-section-4 {
+            transform: translateY(-400%);
+            -webkit-transform: translateY(-400%);
+            -ms-transform: translateY(-400%);
+            -moz-transform: translateY(-400%);
+            -o-transform: translateY(-400%);
+        }
+        .put-section-5 {
+            transform: translateY(-500%);
+            -webkit-transform: translateY(-500%);
+            -ms-transform: translateY(-500%);
+            -moz-transform: translateY(-500%);
+            -o-transform: translateY(-500%);
+        }
+        .put-section-5 {
+            transform: translateY(-600%);
+            -webkit-transform: translateY(-600%);
+            -ms-transform: translateY(-600%);
+            -moz-transform: translateY(-600%);
+            -o-transform: translateY(-600%);
+        }
+        .put-section-5 {
+            transform: translateY(-700%);
+            -webkit-transform: translateY(-700%);
+            -ms-transform: translateY(-700%);
+            -moz-transform: translateY(-700%);
+            -o-transform: translateY(-700%);
+        }
+        .put-section-5 {
+            transform: translateY(-800%);
+            -webkit-transform: translateY(-800%);
+            -ms-transform: translateY(-800%);
+            -moz-transform: translateY(-800%);
+            -o-transform: translateY(-800%);
+        }
+        .put-section-5 {
+            transform: translateY(-900%);
+            -webkit-transform: translateY(-900%);
+            -ms-transform: translateY(-900%);
+            -moz-transform: translateY(-900%);
+            -o-transform: translateY(-900%);
+        }
+    </style>
+    <div class="ybzy-page-scroll">
+        <div class="section-wrap">
+            <div class="section section-1">
+                <div class="yb-inquiry-ques">
+                    <div class="yb-inquiry-ques-hd">
+                        <div class="yb-inquiry-ques-title">
+                            <h3>睡眠质量</h3>
+                            <p>睡觉佳，睡眠期间不醒，做梦少</p>
+                        </div>
+                        <div class="yb-inquiry-ques-progress">
+                            <div class="progress-count">进度3/9</div>
+                            <div class="progress-bar">
+                                <div class="progress-inner-bar" style="width: 50%;"><span>50%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yb-inquiry-ques-bd">
+                        <div class="ques-check-box">
+                            <h4>1.睡眠质量</h4>
+                            <div class="ques-check-radio">
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio1" id="q11"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q11" >睡眠质量好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio1" id="q12"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q12">睡眠质量 不好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio1" id="q13"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q13">睡眠质量 不好</label>
+                                </div>
+                            </div>
+                            <div class="ybzy-detail-form ques-check-extra">
+                                <div class="ybzy-detail-checkbox">
+                                    <label for="x11" class="detail-checkbox-label">
+                                        <input id="x11" type="checkbox" name="checkbox1" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">不易入睡</div>
+                                    </label>
+                                    <label for="x12" class="detail-checkbox-label">
+                                        <input id="x12" type="checkbox" name="checkbox1" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">多梦</div>
+                                    </label>
+                                    <label for="x13" class="detail-checkbox-label">
+                                        <input id="x13" type="checkbox" name="checkbox1" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">睡眠浅易醒</div>
+                                    </label>
+                                    <label for="x14" class="detail-checkbox-label">
+                                        <input id="x14" type="checkbox" name="checkbox1" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">（嗜睡）睡不醒</div>
+                                    </label>
+                                    <label for="x15" class="detail-checkbox-label">
+                                        <input id="x15" type="checkbox" name="checkbox1" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">夜尿</div>
+                                    </label>
+                                    <label for="x16" class="detail-checkbox-label">
+                                        <input id="x16" type="checkbox" name="checkbox1" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">打呼噜</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section section-2">
+                <div class="yb-inquiry-ques">
+                    <div class="yb-inquiry-ques-hd">
+                        <div class="yb-inquiry-ques-title">
+                            <h3>睡眠质量</h3>
+                            <p>睡觉佳，睡眠期间不醒，做梦少</p>
+                        </div>
+                        <div class="yb-inquiry-ques-progress">
+                            <div class="progress-count">进度3/9</div>
+                            <div class="progress-bar">
+                                <div class="progress-inner-bar" style="width: 50%;"><span>50%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yb-inquiry-ques-bd">
+                        <div class="ques-check-box">
+                            <h4>2.睡眠质量</h4>
+                            <div class="ques-check-radio">
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio2" id="q21"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q21" >睡眠质量好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio2" id="q22"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q22">睡眠质量 不好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio2" id="q23"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q23">睡眠质量 不好</label>
+                                </div>
+                            </div>
+                            <div class="ybzy-detail-form ques-check-extra">
+                                <div class="ybzy-detail-checkbox">
+                                    <label for="x21" class="detail-checkbox-label">
+                                        <input id="x21" type="checkbox" name="checkbox2" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">不易入睡</div>
+                                    </label>
+                                    <label for="x22" class="detail-checkbox-label">
+                                        <input id="x22" type="checkbox" name="checkbox2" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">多梦</div>
+                                    </label>
+                                    <label for="x23" class="detail-checkbox-label">
+                                        <input id="x23" type="checkbox" name="checkbox2" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">睡眠浅易醒</div>
+                                    </label>
+                                    <label for="x24" class="detail-checkbox-label">
+                                        <input id="x24" type="checkbox" name="checkbox2" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">（嗜睡）睡不醒</div>
+                                    </label>
+                                    <label for="x25" class="detail-checkbox-label">
+                                        <input id="x25" type="checkbox" name="checkbox2" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">夜尿</div>
+                                    </label>
+                                    <label for="x26" class="detail-checkbox-label">
+                                        <input id="x26" type="checkbox" name="checkbox2" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">打呼噜</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="section section-3">
+                <div class="yb-inquiry-ques">
+                    <div class="yb-inquiry-ques-hd">
+                        <div class="yb-inquiry-ques-title">
+                            <h3>睡眠质量</h3>
+                            <p>睡觉佳，睡眠期间不醒，做梦少</p>
+                        </div>
+                        <div class="yb-inquiry-ques-progress">
+                            <div class="progress-count">进度3/9</div>
+                            <div class="progress-bar">
+                                <div class="progress-inner-bar" style="width: 50%;"><span>50%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yb-inquiry-ques-bd">
+                        <div class="ques-check-box">
+                            <h4>3.睡眠质量</h4>
+                            <div class="ques-check-radio">
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio3" id="q31"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q31" >睡眠质量好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio3" id="q32"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q32">睡眠质量 不好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio3" id="q33"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q33">睡眠质量 不好</label>
+                                </div>
+                            </div>
+                            <div class="ybzy-detail-form ques-check-extra">
+                                <div class="ybzy-detail-checkbox">
+                                    <label for="x31" class="detail-checkbox-label">
+                                        <input id="x31" type="checkbox" name="checkbox3" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">不易入睡</div>
+                                    </label>
+                                    <label for="x32" class="detail-checkbox-label">
+                                        <input id="x32" type="checkbox" name="checkbox3" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">多梦</div>
+                                    </label>
+                                    <label for="x33" class="detail-checkbox-label">
+                                        <input id="x33" type="checkbox" name="checkbox3" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">睡眠浅易醒</div>
+                                    </label>
+                                    <label for="x34" class="detail-checkbox-label">
+                                        <input id="x34" type="checkbox" name="checkbox3" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">（嗜睡）睡不醒</div>
+                                    </label>
+                                    <label for="x35" class="detail-checkbox-label">
+                                        <input id="x35" type="checkbox" name="checkbox3" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">夜尿</div>
+                                    </label>
+                                    <label for="x36" class="detail-checkbox-label">
+                                        <input id="x36" type="checkbox" name="checkbox3" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">打呼噜</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="section section-4">
+                <div class="yb-inquiry-ques">
+                    <div class="yb-inquiry-ques-hd">
+                        <div class="yb-inquiry-ques-title">
+                            <h3>睡眠质量</h3>
+                            <p>睡觉佳，睡眠期间不醒，做梦少</p>
+                        </div>
+                        <div class="yb-inquiry-ques-progress">
+                            <div class="progress-count">进度3/9</div>
+                            <div class="progress-bar">
+                                <div class="progress-inner-bar" style="width: 50%;"><span>50%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yb-inquiry-ques-bd">
+                        <div class="ques-check-box">
+                            <h4>4.睡眠质量</h4>
+                            <div class="ques-check-radio">
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio4" id="q41"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q41" >睡眠质量好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio4" id="q42"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q42">睡眠质量 不好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio4" id="q43"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q43">睡眠质量 不好</label>
+                                </div>
+                            </div>
+                            <div class="ybzy-detail-form ques-check-extra">
+                                <div class="ybzy-detail-checkbox">
+                                    <label for="x41" class="detail-checkbox-label">
+                                        <input id="x41" type="checkbox" name="checkbox4" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">不易入睡</div>
+                                    </label>
+                                    <label for="x42" class="detail-checkbox-label">
+                                        <input id="x42" type="checkbox" name="checkbox4" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">多梦</div>
+                                    </label>
+                                    <label for="x43" class="detail-checkbox-label">
+                                        <input id="x43" type="checkbox" name="checkbox4" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">睡眠浅易醒</div>
+                                    </label>
+                                    <label for="x44" class="detail-checkbox-label">
+                                        <input id="x44" type="checkbox" name="checkbox4" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">（嗜睡）睡不醒</div>
+                                    </label>
+                                    <label for="x45" class="detail-checkbox-label">
+                                        <input id="x45" type="checkbox" name="checkbox4" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">夜尿</div>
+                                    </label>
+                                    <label for="x46" class="detail-checkbox-label">
+                                        <input id="x46" type="checkbox" name="checkbox4" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">打呼噜</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="section section-5">
+                <div class="yb-inquiry-ques">
+                    <div class="yb-inquiry-ques-hd">
+                        <div class="yb-inquiry-ques-title">
+                            <h3>睡眠质量</h3>
+                            <p>睡觉佳，睡眠期间不醒，做梦少</p>
+                        </div>
+                        <div class="yb-inquiry-ques-progress">
+                            <div class="progress-count">进度3/9</div>
+                            <div class="progress-bar">
+                                <div class="progress-inner-bar" style="width: 50%;"><span>50%</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yb-inquiry-ques-bd">
+                        <div class="ques-check-box">
+                            <h4>5.睡眠质量</h4>
+                            <div class="ques-check-radio">
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio5" id="q51"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q51" >睡眠质量好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio5" id="q52"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q52">睡眠质量 不好</label>
+                                </div>
+                                <div class="item">
+                                    <input type="radio" class="ques-radio" name="radio5" id="q53"/>
+                                    <label class="ques-radio-label" class="ques-label" for="q53">睡眠质量 不好</label>
+                                </div>
+                            </div>
+                            <div class="ybzy-detail-form ques-check-extra">
+                                <div class="ybzy-detail-checkbox">
+                                    <label for="x51" class="detail-checkbox-label">
+                                        <input id="x51" type="checkbox" name="checkbox5" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">不易入睡</div>
+                                    </label>
+                                    <label for="x52" class="detail-checkbox-label">
+                                        <input id="x52" type="checkbox" name="checkbox5" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">多梦</div>
+                                    </label>
+                                    <label for="x53" class="detail-checkbox-label">
+                                        <input id="x53" type="checkbox" name="checkbox5" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">睡眠浅易醒</div>
+                                    </label>
+                                    <label for="x54" class="detail-checkbox-label">
+                                        <input id="x54" type="checkbox" name="checkbox5" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">（嗜睡）睡不醒</div>
+                                    </label>
+                                    <label for="x55" class="detail-checkbox-label">
+                                        <input id="x55" type="checkbox" name="checkbox5" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">夜尿</div>
+                                    </label>
+                                    <label for="x56" class="detail-checkbox-label">
+                                        <input id="x56" type="checkbox" name="checkbox5" class="checkbox-hd detail-check">
+                                        <div class="checkbox-bd">打呼噜</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="weui_btn_area" style=" margin-bottom: 40px; ">
+                            <a href="javascript:;" class="weui_btn weui_btn_blue-gray">提交</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-btn">
+            <div class="item cur">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+        </div>
+        <div class="go-btn"></div>
+    </div>
+
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+    <script src="../js/jquery-weui.js"></script>
+    <script src="../lib/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script>
+    $(function() {
+        var btn_index = 0;
+        /*右边按钮点击*/
+        $('.section-btn .item').each(function(index) {
+            $(this).click(function() {
+                btn_index = index;
+                scroller();
+            })
+        });
+        /*翻页按钮点击*/
+        $('.go-btn').one('click', btn_go);
+
+        function btn_go() {
+            go_up();
+            scroller();
+            setTimeout(function() {
+                $('.go-btn').one('click', btn_go)
+            }, 1000)
+        };
+        /*响应鼠标*/
+        $('.section-wrap').one('mousewheel', mouse_);
+
+        function mouse_(event) {
+            if (event.deltaY < 0) {
+                go_up()
+            } else {
+                go_down()
+            }
+            scroller();
+            setTimeout(function() {
+                $('.section-wrap').one('mousewheel', mouse_)
+            }, 1000)
+        };
+
+        /*当前页面赋值*/
+        function go_up() {
+            btn_index++;
+            if (btn_index == $('.section-btn .item').length) {
+                btn_index = $('.section-btn .item').length - 1
+            };
+        }
+
+        function go_down() {
+            btn_index--;
+            if (btn_index < 0) {
+                btn_index = 0
+            };
+        }
+
+        /*页面滑动*/
+        function scroller() {
+            $('.section-btn .item').eq(btn_index).addClass('cur').siblings().removeClass('cur');
+            $('.section-wrap').attr("class", "section-wrap").addClass(function() {
+                return "put-section-" + btn_index;
+            }).find('.section').eq(btn_index).find('.title').addClass('active');
+        };
+
+        /*响应键盘上下键*/
+        $(document).one('keydown', keyaction);
+
+        function keyaction(event) {
+            var e = event || window.event;
+            var key = e.keyCode || e.which || e.charCode;
+            switch (key) {
+                case 38:
+                    go_down();
+                    scroller();
+                    break;
+                case 40:
+                    go_up();
+                    scroller();
+                    break;
+            };
+            setTimeout(function() {
+                $(document).one('keydown', keyaction)
+            }, 1000)
+        }
+
+
+    })
+    </script>
+</body>
+
+</html>
