@@ -1197,39 +1197,81 @@ body { background: #efefef; height: 100%; }
 }
 
 /* 首页 */
-.banner { margin-bottom: 10px;}
-.banner img { width:100%; height:auto; background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2);}
+.yb-banner {
+    margin-bottom: 10px;
+    img { width:100%; height:auto; vertical-align: middle; background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2);}
+}
 
-.yb-nav {}
-.yb-nav .item { background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2); margin-bottom:10px;}
-.yb-nav .item:after { visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
-.yb-nav a.register-doctor { display:block; box-sizing: border-box; width: 33%; float: left; padding:15px 5px; text-align:center;  color:#333; font-size:1.2rem; text-decoration:none; background: url("/images/gh_bg.png") left bottom no-repeat; background-size: 33% auto;}
-.yb-nav a.register-doctor p img { width:100%; height:auto;}
-.yb-nav a.register-doctor i.ybfont { display: inline-block; background:#be0909; color:#fff; border-radius:4rem; padding:.25rem; vertical-align: bottom; margin-bottom:.2em; width: 3.6rem; height: 3.6rem; line-height: 3.2rem; font-size: 2.4rem;}
-.yb-nav .yb-nav-r { }
-
-.yb-nav .yb-nav-r a { display:block; box-sizing: border-box; width: 50%; float: left; padding:20px 15px;  font-size:1.2rem; color:#333;}
-.yb-nav .yb-nav-r a i { background:#be0909; color:#fff; border-radius:3px; padding:.15em; vertical-align:middle; margin-right:.15em; width: 2.4rem; height: 2.4rem; font-size: 1.8rem; float: left}
-.km-nova .yb-nav-r a p { font-size:.8rem; margin:0; color:#9b9281; white-space: nowrap;}
-.yb-nav a.register-doctor:active,.yb-nav .yb-nav-r a:active { background:#f3efda;}
+.yb-nav {
+    .item {
+        background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2); margin-bottom:10px;
+        &:after { visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
+    }
+    .yb-nav-r {
+        padding: 0 10px;
+        a {
+            display:block; box-sizing: border-box; width: 50%; float: left; padding:20px 5px; font-size:19px; line-height: 24px; color:#333;
+            .ybzy-icon { background:#be0909; color:#fff; border-radius:3px; padding:5px; vertical-align:middle; text-align: center; margin-right:5px; width: 28px; height: 28px; line-height: 28px; font-size: 28px; float: left}
+            p { font-size:12px; margin:0; line-height: 16px; color:#9b9281; white-space: nowrap;}
+            &:active { background:#f3efda;}
+        }
+    }
+}
 /*就医流程3*/
-.yb-process { background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2);}
-.yb-process .process-title { text-align: center;}
-.yb-process .process-title h3 { display: block; margin: 0 0.5rem; padding: 1rem 0.4rem 1.2rem; color: #a10000; font-size: 1.2rem;}
-.yb-process .process-cnt { padding:0.2rem 0.5rem 1.5rem; }
-.yb-process .process-cnt .item { height: 100px; position: relative;}
-.yb-process .process-cnt .item .process-line { position: absolute; z-index: 5; height: 1px; background-color: #d0d0d0; left: 0; right: 0; width: 100%; top: 50%;}
-.yb-process .process-cnt .item .process-line .p1,.yb-process .process-cnt .item .process-line .p2 { position: absolute; height: 5px; width: 5px; background-color: #333; border-radius: 5px; top: -2px;}
-.yb-process .process-cnt .item .process-line .p1 { left: 0;}
-.yb-process .process-cnt .item .process-line .p2 { right: 0}
-.yb-process .process-cnt .item:after { display: block; height: 0; overflow: hidden; clear: both; content: ""}
-.yb-process .process-cnt .items { position: relative; z-index: 10; width: 16%; float: left; text-align: center;}
-.yb-process .process-cnt .items .process-cell { display: block; padding: 0;}
-.yb-process .process-cnt .items .p-point { padding: 5px;}
-.yb-process .process-cnt .items .p-point:after { content: ""; display: inline-block; background-color: #cc7a73; height:4px; width: 4px; border-radius: 5px; overflow: hidden; border:#fff 2px solid; box-shadow: 0 0 0 1px #a9a9a9;}
-.yb-process .process-cnt .items .ybfont { display: inline-block; color:#a10000; border-radius:4px; width: 42px; height: 42px; padding:5px; vertical-align: bottom; font-size: 2rem;}
-.yb-process .process-cnt .items .p-name { margin: 0; font-size: 0.8rem; white-space: nowrap; height: 24px; line-height: 24px;}
-
-
+.yb-process {
+    background:#f8f5e6; box-shadow:0 0 2px rgba(0, 0, 0, 0.2);
+    .process-title {
+        text-align: center;
+        h3 { display: block; margin: 0 10px; padding: 10px 0; color: @yb-red; font-size: 19px; font-weight: normal;}
+    }
+    .process-cnt {
+        position: relative; padding: 5px 10px 20px;
+        .process-line {
+            position: absolute; z-index: 5; height: 1px; background-color: #d0d0d0; left: 10px; right: 10px; top: 56px; z-index: 1;
+            .p1,.p2 { position: absolute; height: 5px; width: 5px; background-color: #333; border-radius: 5px; top: -2px;}
+            .p1 { left: 0;}
+            .p2 { right: 0}
+        }
+        .item {
+            position: relative; .display-flex; height: 100px; z-index: 10;
+            &:after { display: block; height: 0; overflow: hidden; clear: both; content: "";}
+            .items {
+                position: relative; .flex-1; text-align: center;
+                .process-cell { display: block; padding: 0;}
+                .p-point {
+                    padding: 5px; height: 8px; line-height: 8px; vertical-align: top;
+                    &:after { content: ""; display: block; background-color: #cc7a73; height:4px; width: 4px; border-radius: 5px; overflow: hidden; border:#fff 2px solid; box-shadow: 0 0 0 1px #a9a9a9; margin: 0 auto;}
+                }
+                .ybzy-icon { display: inline-block; color: @yb-red; border-radius:4px; width: 32px; height: 32px; padding:5px; vertical-align: bottom; font-size: 30px;}
+                .p-name { margin: 0; font-size: 12px; white-space: nowrap; height: 24px; line-height: 24px;}
+            }
+        }
+    }
+}
+.yb-index-doctor {
+    .index-doctor-hd {
+        position: relative; padding: 8px 15px; line-height: 24px; overflow: hidden;
+        .index-doctor-title {
+            color: @yb-red; font-size: 17px; float: left;
+        }
+        .index-doctor-more {
+            color: #9b9281; font-size: 15px; float: right;
+        }
+        &:before {
+            .b-line;
+        }
+    }
+    .index-doctor-bd {
+        .display-flex; padding: 10px;
+        .cell {
+            text-align: center; padding: 0 5px; color: #333;
+            .doctor-img {
+                margin-bottom: 4px;
+                img { vertical-align: middle; border-radius: 5px; width: 56px; height: 56px; }
+            }
+            .doctor-name { line-height: 20px; font-size: 13px;}
+        }
+    }
+}
 
 
