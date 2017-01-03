@@ -8,7 +8,7 @@ $.rawCitiesData = [
     "sub": [
       {
         "name": "北京市",
-        "code": "110000",
+        "code": "110100",
         "sub":[
             {
               "name":"东城区",
@@ -84,7 +84,7 @@ $.rawCitiesData = [
     "sub": [
       {
         "name": "天津市",
-        "code": "120000",
+        "code": "120100",
         "sub":[
             {
               "name":"和平区",
@@ -3596,7 +3596,7 @@ $.rawCitiesData = [
     "sub": [
       {
         "name":"上海市",
-        "code": "310000",
+        "code": "310100",
         "sub":[
             {
               "name":"黄浦区",
@@ -10578,7 +10578,7 @@ $.rawCitiesData = [
     "sub": [
       {
         "name": "重庆市",
-        "code": "500000",
+        "code": "500100",
         "sub":[
             {
               "name":"万州区",
