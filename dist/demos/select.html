@@ -141,20 +141,23 @@
             description: "额外的数据5"
           },
           {
-            title: "撸管",
+            title: "睡觉",
             value: 6,
             description: "额外的数据6"
           },
         ],
         beforeClose: function(values, titles) {
           if(values.indexOf("6") !== -1) {
-            $.toast("不能选撸管", "cancel");
+            $.toast("不能选睡觉", "cancel");
             return false;
           }
           return true;
         },
         onChange: function(d) {
           console.log(this, d);
+        },
+        onClose: function (d) {
+          console.log('close')
         }
       });
     </script>
