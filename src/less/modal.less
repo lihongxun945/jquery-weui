@@ -1,12 +1,13 @@
 .weui-dialog, .weui-toast {
   transition-duration: .2s;
   opacity: 0;
-  transform: scale(.9);
+  transform: scale(.9) translate(-50%,-50%);
+  transform-origin: 0 0;
   visibility: hidden;
   margin: 0;
-  left: 10%;
-  top: 30%;
+  top: 45%;
   z-index: 2000;
+
   .weui-dialog__btn.default {
     color: @color-text-secondary;
   }
@@ -30,20 +31,11 @@
   &.weui-dialog--visible, &.weui-toast--visible {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .weui-dialog {
-    left: 32.5%;
+    transform: scale(1) translate(-50%,-50%);
   }
 }
 
 .weui-toast {
-  left: 50%;
-  top: 35%;
-  margin-left: -3.8em;
 }
 
 .weui-toast_forbidden {
