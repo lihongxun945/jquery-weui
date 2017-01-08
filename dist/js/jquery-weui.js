@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.0.0-rc.0 
+* jQuery WeUI V1.0.0 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -4737,7 +4737,7 @@ Device/OS Detection
       });
       self.updateInputValue(values, titles);
 
-      if(config.autoClose && !config.multi) $.closePicker();
+      if(config.autoClose && !config.multi) self.close();
     })
     .on("click", ".close-select", function() {
       self.close();
@@ -4761,7 +4761,7 @@ Device/OS Detection
 
     var config = this.config;
 
-    var dialog = this.dialog = $.openPicker(this.getHTML(), $.proxy(this.onClose, this));
+    var dialog = this.dialog = $.openPicker(this.getHTML()); // onclose 在 Select 中处理
     
     this._bind(dialog);
 

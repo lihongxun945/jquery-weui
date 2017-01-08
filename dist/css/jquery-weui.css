@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.0.0-rc.0 
+* jQuery WeUI V1.0.0 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -632,12 +632,13 @@ body {
   -webkit-transition-duration: .2s;
           transition-duration: .2s;
   opacity: 0;
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
+  -webkit-transform: scale(0.9) translate(-50%, -50%);
+          transform: scale(0.9) translate(-50%, -50%);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
   visibility: hidden;
   margin: 0;
-  left: 10%;
-  top: 30%;
+  top: 45%;
   z-index: 2000;
 }
 .weui-dialog .weui-dialog__btn.default,
@@ -669,18 +670,8 @@ body {
 .weui-toast.weui-toast--visible {
   opacity: 1;
   visibility: visible;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-@media screen and (min-width: 1024px) {
-  .weui-dialog {
-    left: 32.5%;
-  }
-}
-.weui-toast {
-  left: 50%;
-  top: 35%;
-  margin-left: -3.8em;
+  -webkit-transform: scale(1) translate(-50%, -50%);
+          transform: scale(1) translate(-50%, -50%);
 }
 .weui-toast_forbidden {
   color: #F76260;
