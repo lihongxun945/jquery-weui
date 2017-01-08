@@ -122,7 +122,7 @@
       });
       self.updateInputValue(values, titles);
 
-      if(config.autoClose && !config.multi) $.closePicker();
+      if(config.autoClose && !config.multi) self.close();
     })
     .on("click", ".close-select", function() {
       self.close();
@@ -146,7 +146,7 @@
 
     var config = this.config;
 
-    var dialog = this.dialog = $.openPicker(this.getHTML(), $.proxy(this.onClose, this));
+    var dialog = this.dialog = $.openPicker(this.getHTML()); // onclose 在 Select 中处理
     
     this._bind(dialog);
 
