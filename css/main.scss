@@ -322,3 +322,19 @@ code {
     transform-origin: 50% 50%;
   }
 }
+
+// new year theme
+
+.header {
+  background-color: #c03;
+  border-width: 0;
+  li > a {
+    color: #ddd!important;
+    &:hover {
+      color: white!important;
+    }
+  }
+  li.active a {
+    background-color: red!important;
+  }
+}
