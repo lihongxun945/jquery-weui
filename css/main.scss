@@ -323,18 +323,30 @@ code {
   }
 }
 
-// new year theme
+.yq {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
 
-.header {
-  background-color: #c03;
-  border-width: 0;
-  li > a {
-    color: #ddd!important;
-    &:hover {
-      color: white!important;
-    }
+  img {
+    width: 140px;
+    height: 140px;
   }
-  li.active a {
-    background-color: red!important;
+
+  p {
+    margin: 8px 0;
+  }
+
+  .yq-des {
+    width: 300px;
+    padding: 10px;
+  }
+
+  i {
+    text-decoration: none;
+    color: #999;
   }
 }
