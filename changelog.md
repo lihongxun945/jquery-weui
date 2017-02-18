@@ -1,6 +1,6 @@
 # v1.0.1 - 2016/02/18
 
-对应 weui 版本为 v1.1.0
+对应 weui 版本为 `v1.1.1`
 
 修复bug：
 
@@ -13,6 +13,8 @@
 更新功能：
 
 - toast 现在第二个参数可以是一个时间
+
+[weui.css v1.1.1 的更新请点这里](https://github.com/weui/weui/blob/master/CHANGELOG.md)
 
 # v1.0.0 - 2016/01/08
 
