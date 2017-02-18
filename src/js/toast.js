@@ -28,6 +28,7 @@
       callback = style;
     }
     var className, iconClassName = 'weui-icon-success-no-circle';
+    var duration = toastDefaults.duration;
     if(style == "cancel") {
       className = "weui-toast_cancel";
       iconClassName = 'weui-icon-cancel'
@@ -36,12 +37,14 @@
       iconClassName = 'weui-icon-warn'
     } else if(style == "text") {
       className = "weui-toast--text";
+    } else if(typeof style === typeof 1) {
+      duration = style
     }
     show('<i class="' + iconClassName + ' weui-icon_toast"></i><p class="weui-toast_content">' + (text || "已经完成") + '</p>', className);
 
     setTimeout(function() {
       hide(callback);
-    }, toastDefaults.duration);
+    }, duration);
   }
 
   $.showLoading = function(text) {

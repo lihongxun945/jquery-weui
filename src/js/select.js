@@ -4,6 +4,8 @@
 
   var defaults;
 
+  var selects = [];
+
   var Select = function(input, config) {
 
     var self = this;
@@ -25,7 +27,7 @@
     config = this.config;
 
     this.$input.click($.proxy(this.open, this));
-
+    selects.push(this)
   }
 
   Select.prototype.initConfig = function() {
@@ -142,11 +144,20 @@
 
     if(this._open) return;
 
+    // open picker 会默认关掉其他的，但是 onClose 不会被调用，所以这里先关掉其他select
+    for (var i = 0; i < selects.length; i++ ) {
+      var s = selects[i];
+      if (s === this) continue;
+      if (s._open) {
+        if(!s.close()) return false; // 其他的select由于某些条件限制关闭失败。
+      }
+    }
+
     this.parseInitValue();
 
     var config = this.config;
 
-    var dialog = this.dialog = $.openPicker(this.getHTML()); // onclose 在 Select 中处理
+    var dialog = this.dialog = $.openPicker(this.getHTML());
     
     this._bind(dialog);
 
@@ -155,6 +166,7 @@
   }
 
   Select.prototype.close = function(callback, force) {
+    if (!this._open) return false;
     var self = this,
         beforeClose = this.config.beforeClose;
 
@@ -180,6 +192,8 @@
       self.onClose();
       callback && callback();
     });
+
+    return true
   }
 
   Select.prototype.onClose = function() {

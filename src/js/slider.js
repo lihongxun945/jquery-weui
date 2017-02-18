@@ -28,7 +28,7 @@
   }
 
   Slider.prototype.touchMove = function (e) {
-    if (!this.touching) return false
+    if (!this.touching) return true
     var p = $.getTouchPosition(e)
     var distance = p.x - this.start.x
     var left = distance + this.left

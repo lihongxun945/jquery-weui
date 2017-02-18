@@ -47,8 +47,8 @@ jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大�
 
 可用的 gulp 命令如下：
 
-- `gulp` 编译所有的代码
-- `gulp watch` 进入watch 模式
+- `gulp` 进入开发模式，同时打开 `watch` 和 `server`任务
+- `gulp build` 编译压缩代码
 
 # 分支说明
 
