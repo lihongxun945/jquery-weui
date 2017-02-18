@@ -124,4 +124,5 @@ gulp.task('watch', function () {
 gulp.task('server', function () {
   connect.server();
 });
-gulp.task("default", ['uglify', 'cssmin', 'copy', 'ejs']);
+gulp.task("default", ['watch', 'server']);
+gulp.task("build", ['uglify', 'cssmin', 'copy', 'ejs']);

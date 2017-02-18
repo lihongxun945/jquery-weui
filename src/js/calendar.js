@@ -7,6 +7,11 @@
   "use strict";
   var rtl = false;
   var defaults;
+  var isSameDate = function (a, b) {
+    var a = new Date(a),
+      b = new Date(b);
+    return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
+  }
   var Calendar = function (params) {
       var p = this;
       params = params || {};
@@ -80,7 +85,7 @@
               if (!p.value) p.value = [];
               var inValuesIndex;
               for (var i = 0; i < p.value.length; i++) {
-                  if (new Date(value).getTime() === new Date(p.value[i]).getTime()) {
+                  if (isSameDate(value, p.value[i])) {
                       inValuesIndex = i;
                   }
               }
