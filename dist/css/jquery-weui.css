@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.0.0 
+* jQuery WeUI V1.0.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -1158,7 +1158,7 @@ body {
           flex: 1;
   max-width: 7rem;
 }
-.weui-picker-container .weui_cells {
+.weui-picker-container .weui-cells {
   margin: 0;
   text-align: left;
 }
@@ -2295,7 +2295,8 @@ button.swiper-pagination-bullet {
 .weui-toast--text {
   min-height: initial;
   font-size: 18px;
-  padding: 8px 0;
+  padding: 8px 16px;
+  width: auto;
   top: 40%;
 }
 .weui-toast--text .weui-icon_toast {
