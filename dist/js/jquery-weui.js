@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.0.0 
+* jQuery WeUI V1.0.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -3503,6 +3503,7 @@ if (typeof define === 'function' && define.amd) {
       callback = style;
     }
     var className, iconClassName = 'weui-icon-success-no-circle';
+    var duration = toastDefaults.duration;
     if(style == "cancel") {
       className = "weui-toast_cancel";
       iconClassName = 'weui-icon-cancel'
@@ -3511,12 +3512,14 @@ if (typeof define === 'function' && define.amd) {
       iconClassName = 'weui-icon-warn'
     } else if(style == "text") {
       className = "weui-toast--text";
+    } else if(typeof style === typeof 1) {
+      duration = style
     }
     show('<i class="' + iconClassName + ' weui-icon_toast"></i><p class="weui-toast_content">' + (text || "已经完成") + '</p>', className);
 
     setTimeout(function() {
       hide(callback);
-    }, toastDefaults.duration);
+    }, duration);
   }
 
   $.showLoading = function(text) {
@@ -4517,6 +4520,7 @@ Device/OS Detection
           p.close();
           if (p.params.input && p.input.length > 0) {
               p.input.off('click focus', openOnInput);
+              $(p.input).data('picker', null);
           }
           $('html').off('click', closeOnHTMLClick);
           $(window).off('resize', resizeCols);
@@ -4600,7 +4604,7 @@ Device/OS Detection
         params = params || {};
         var inputValue = $this.val();
         if(params.value === undefined && inputValue !== "") {
-          params.value = params.cols.length > 1 ? inputValue.split(" ") : [inputValue];
+          params.value = (params.cols && params.cols.length > 1) ? inputValue.split(" ") : [inputValue];
         }
         var p = $.extend({input: this}, params);
         picker = new Picker(p);
@@ -4618,6 +4622,8 @@ Device/OS Detection
   "use strict";
 
   var defaults;
+
+  var selects = [];
 
   var Select = function(input, config) {
 
@@ -4640,7 +4646,7 @@ Device/OS Detection
     config = this.config;
 
     this.$input.click($.proxy(this.open, this));
-
+    selects.push(this)
   }
 
   Select.prototype.initConfig = function() {
@@ -4757,11 +4763,20 @@ Device/OS Detection
 
     if(this._open) return;
 
+    // open picker 会默认关掉其他的，但是 onClose 不会被调用，所以这里先关掉其他select
+    for (var i = 0; i < selects.length; i++ ) {
+      var s = selects[i];
+      if (s === this) continue;
+      if (s._open) {
+        if(!s.close()) return false; // 其他的select由于某些条件限制关闭失败。
+      }
+    }
+
     this.parseInitValue();
 
     var config = this.config;
 
-    var dialog = this.dialog = $.openPicker(this.getHTML()); // onclose 在 Select 中处理
+    var dialog = this.dialog = $.openPicker(this.getHTML());
     
     this._bind(dialog);
 
@@ -4770,6 +4785,7 @@ Device/OS Detection
   }
 
   Select.prototype.close = function(callback, force) {
+    if (!this._open) return false;
     var self = this,
         beforeClose = this.config.beforeClose;
 
@@ -4795,6 +4811,8 @@ Device/OS Detection
       self.onClose();
       callback && callback();
     });
+
+    return true
   }
 
   Select.prototype.onClose = function() {
@@ -4887,6 +4905,11 @@ Device/OS Detection
   "use strict";
   var rtl = false;
   var defaults;
+  var isSameDate = function (a, b) {
+    var a = new Date(a),
+      b = new Date(b);
+    return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
+  }
   var Calendar = function (params) {
       var p = this;
       params = params || {};
@@ -4960,7 +4983,7 @@ Device/OS Detection
               if (!p.value) p.value = [];
               var inValuesIndex;
               for (var i = 0; i < p.value.length; i++) {
-                  if (new Date(value).getTime() === new Date(p.value[i]).getTime()) {
+                  if (isSameDate(value, p.value[i])) {
                       inValuesIndex = i;
                   }
               }
@@ -6224,7 +6247,7 @@ Device/OS Detection
   }
 
   Slider.prototype.touchMove = function (e) {
-    if (!this.touching) return false
+    if (!this.touching) return true
     var p = $.getTouchPosition(e)
     var distance = p.x - this.start.x
     var left = distance + this.left
