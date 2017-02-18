@@ -589,6 +589,7 @@
           p.close();
           if (p.params.input && p.input.length > 0) {
               p.input.off('click focus', openOnInput);
+              $(p.input).data('picker', null);
           }
           $('html').off('click', closeOnHTMLClick);
           $(window).off('resize', resizeCols);
@@ -672,7 +673,7 @@
         params = params || {};
         var inputValue = $this.val();
         if(params.value === undefined && inputValue !== "") {
-          params.value = params.cols.length > 1 ? inputValue.split(" ") : [inputValue];
+          params.value = (params.cols && params.cols.length > 1) ? inputValue.split(" ") : [inputValue];
         }
         var p = $.extend({input: this}, params);
         picker = new Picker(p);
