@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="../lib/weui.min.css">
+<link rel="stylesheet" href="../css/jquery-weui.css">
+<link rel="stylesheet" href="css/demos.css">
+
+  </head>
+
+  <body ontouchstart>
+    <div class="weui_cell">
+      <div class="weui_cell_hd"><label for="province" class="weui_label">省份</label></div>
+      <div class="weui_cell_bd weui_cell_primary">
+        <input class="weui_input" id="province" type="text" value="{$province}" readonly="" data-values="{$userinfo['province']}">
+      </div>
+    </div>              
+    <div class="weui_cell">
+      <div class="weui_cell_hd"><label for="city" class="weui_label">城市</label></div>
+      <div class="weui_cell_bd weui_cell_primary">
+        <input class="weui_input" id="city" type="text" value="{$city}" readonly="" data-values="{$userinfo['city']}">
+      </div>
+    </div>              
+
+    <div class="weui_cell">
+      <div class="weui_cell_hd"><label for="school" class="weui_label">学校</label></div>
+      <div class="weui_cell_bd weui_cell_primary">
+        <input class="weui_input" id="school" type="text" value="{$school}" readonly="" data-values="{$userinfo['school']}">
+      </div>
+    </div>
+    <script>
+      $("#province").select({
+        title: "请选择您所在的省份",
+        items: {$province_cate},
+
+      });   
+
+      $("#city").select({
+        title: "请选择您所在的城市",
+        items: [{
+          title: "未选择",
+          value: 0
+        }],
+        onOpen: function(){
+          $.post("{php echo $this->createMobileUrl('my',array('op'=>'get_cate'));}",{
+            cate_id:$('#province').data("values")
+          },function(result) {
+            if (!result.errno) {
+              console.log(result);
+              $("#city").select("update", {
+                items:result.message.message.cate_data
+              })
+            }
+          },'json');      
+
+        }
+      });
+
+
+      $("#school").select({
+        title: "请选择您所在的学校",
+        items: [{
+          title: "未选择",
+          value: 0
+        }],
+        onOpen: function(){
+          $.post("{php echo $this->createMobileUrl('my',array('op'=>'get_cate'));}",{
+            cate_id:$('#city').data("values")
+          },function(result) {
+            if (!result.errno) {
+              console.log(result);
+              $("#school").select("update", {
+                items:result.message.message.cate_data
+              })
+            }
+          },'json');
+        }     
+      });
+    </script> 
+  </body>
+</html>

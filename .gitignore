@@ -2,7 +2,6 @@
 *.swo
 *.log
 node_modules
-dist/
 .package/
 .sass-cache/
 .DS_Store
