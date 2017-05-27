@@ -65,6 +65,40 @@
 
   $.fn.cityPicker = function(params) {
     params = $.extend({}, defaults, params);
+    var whiteList = params.whiteList || []; //白名单配置
+    if(!!whiteList && whiteList.length > 0){
+      var genWhiteListProvinceSubData = function(code,subArray){
+          var res = [];
+          for(var i in whiteList){
+            if(whiteList[i].code == code){
+              if(!!whiteList[i].sub && whiteList[i].sub.length > 0){
+                for(var o in subArray){
+                  if($.inArray(subArray[o].code, whiteList[i].sub) != -1){
+                    res.push(subArray[o]);
+                  }
+                }
+              }else{
+                res = subArray;
+              }
+              break;
+            }
+          }
+          return res;
+      };
+      var whiteListProvince = whiteList.map(function(d){return d.code});
+      var renderCitiesData = [];
+      for(var i in raw){
+        if($.inArray(raw[i].code,whiteListProvince) != -1){
+            var province = {
+              name:raw[i].name,
+              code:raw[i].code,
+              sub:genWhiteListProvinceSubData(raw[i].code,raw[i].sub)
+            };
+            renderCitiesData.push(province);
+        }
+      }
+      if(renderCitiesData.length != 0) raw = renderCitiesData;
+    }
     return this.each(function() {
       var self = this;
       
