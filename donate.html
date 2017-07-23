@@ -153,15 +153,17 @@ layout: default
       <tr> <td>**迪卡</td> <td>￥8.88</td> <td></td> <td>2016-06-21</td> </tr>
       <tr> <td>李*青</td> <td>￥8.88</td> <td></td> <td>2016-06-21</td> </tr>
     </table>
-    <p>总计约 ￥<strong id="sum">calculating...</strong></p>
+    <p>总计约 ￥<strong id="sum">calculating...</strong> 元</p>
     <script>
-      var sum = $("table td:nth-child(2)").map((i,d) => {
-        const s = d.innerHTML.replace('￥', '')
-        return(parseFloat(s))
-      }).toArray().reduce((sum, value) => {
-        return sum + value;
-      }, 0)
-      $('#sum').html(sum)
+      window.onload = function () {
+        var sum = $("table td:nth-child(2)").map((i,d) => {
+          const s = d.innerHTML.replace('￥', '')
+          return(parseFloat(s))
+        }).toArray().reduce((sum, value) => {
+          return sum + value;
+        }, 0)
+        $('#sum').html(sum.toFixed(2))
+      }
     </script>
   </div>
 </div>
