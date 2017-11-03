@@ -1,3 +1,3 @@
 # Website for jQuery WeUI
 
-jqweui.com
+[jqweui.com](https://jqweui.com)
