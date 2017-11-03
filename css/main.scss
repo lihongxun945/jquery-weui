@@ -323,13 +323,24 @@ code {
   }
 }
 
-.yq {
+.pop {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-bottom: 20px;
   border-bottom: 1px solid #ccc;
   font-size: 12px;
+
+  .pop-item {
+    display: flex;
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin: 0 10px;
+  }
+
+  .placeholder {
+    opacity: .6;
+  }
 
   img {
     display: block;
@@ -340,9 +351,9 @@ code {
     margin: 8px 0;
   }
 
-  .yq-des {
-    width: 300px;
-    padding: 10px;
+  .pop-des {
+    width: 250px;
+    padding: 7px 10px;
   }
 
   i {
@@ -354,4 +365,26 @@ code {
 .update-time {
   font-size: 18px;
   color: #aaa;
+}
+
+.brand-header .container,
+.brand-header .container-fluid {
+  position: relative;
+}
+
+.brand-pop {
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  color: 999;
+  border: 1px solid #ccc;
+  top: 50%;
+  right: 120px;
+  margin-top: -60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    color: #999;
+  }
 }
