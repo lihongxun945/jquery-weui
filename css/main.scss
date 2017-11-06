@@ -331,6 +331,14 @@ code {
   border-bottom: 1px solid #ccc;
   font-size: 12px;
 
+  .pop-img {
+    display: flex;
+
+    img + img {
+      margin-left: 8px;
+    }
+  }
+
   .pop-item {
     display: flex;
     border: 1px solid #ddd;
