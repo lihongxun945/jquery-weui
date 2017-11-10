@@ -16,7 +16,7 @@
     var titleHtml = "";
     
     if (params.title) {
-      titleHtml = '<div class="weui-actionsheet__title">' + params.title + '</div>';
+      titleHtml = '<div class="weui-actionsheet__title"><p class="weui-actionsheet__title-text">' + params.title + '</p></div>';
     }
 
     var tpl = '<div class="weui-actionsheet " id="weui-actionsheet">'+
