@@ -360,13 +360,23 @@ code {
   }
 
   .pop-des {
-    width: 250px;
+    width: 240px;
     padding: 7px 10px;
+    line-height: 150%;
   }
 
-  i {
+  h3 a {
+    font-size: 18px;
+    color: #555;
+  }
+
+  i, i a {
     text-decoration: none;
     color: #999;
+  }
+
+  a:hover {
+    text-decoration: underline!important;
   }
 }
 
