@@ -72,7 +72,7 @@
   }
 
   Swipeout.prototype.attachEvents = function() {
-    var el = this.container;
+    var el = this.mover;
     el.on($.touchEvents.start, $.proxy(this.touchStart, this));
     el.on($.touchEvents.move, $.proxy(this.touchMove, this));
     el.on($.touchEvents.end, $.proxy(this.touchEnd, this));
