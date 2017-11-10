@@ -1,0 +1,30 @@
+<article class="component active" id="swipeout" data-url='../dist/demos/swipeout.html'>
+  <h2 class="component-title">滑动删除(Swipeout)</h2>
+
+<p>Swipeout 可以在列表的某一项中向左滑动出现操作按钮，类似微信聊天列表中的滑动功能。</p>
+
+<p><strong>从 <code>V1.1.0</code> 版本开始可用</strong></p>
+
+<h3>初始化</h3>
+
+<p>默认情况下，当页面加载完成后，会自动初始化带有 <code>.weui-cell_swiped</code> 类的列表条目，此时不需要做任何手动初始化。</p>
+<p>如果你是动态生成的DOM，或者在JS加载之后的DOM，那么这样初始化:</p>
+
+{% highlight js %}
+$('.weui-cell_swiped').swipeout()
+{% endhighlight %}
+
+  <h3>方法</h3>
+  <p>你可以手动调用方法来打开或者关闭</p>
+
+{% highlight js %}
+$('.weui-cell_swiped').swipeout('open') //打开
+$('.weui-cell_swiped').swipeout('close') //关闭
+{% endhighlight %}
+
+  <p><strong>但是请注意，只能同时打开一个swipeout，如果你同时打开多个，之后最后一个会被打开</strong></p>
+
+  <h3>事件</h3>
+  <p>无论是用户操作，还是调用JS打开或者关闭，都会触发事件，分别是 <code>swipeout-open</code> 和 <code>swipeout-close</code></p>
+
+</article>
