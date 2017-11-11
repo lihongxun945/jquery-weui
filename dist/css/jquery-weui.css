@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.0.1 
+* jQuery WeUI V1.1.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -105,16 +105,20 @@ body {
 .weui-row {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   -webkit-box-lines: multiple;
   -moz-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-align: start;
   -ms-flex-align: start;
+  -webkit-align-items: flex-start;
   align-items: flex-start;
 }
 .weui-row > [class*="col-"] {
@@ -629,7 +633,7 @@ body {
   transition: transform .3s;
   transition: transform .3s, -webkit-transform .3s;
 }
-.touching .weui-cell__bd {
+.swipeout-touching .weui-cell__bd {
   -webkit-transition: none;
   transition: none;
 }
@@ -896,6 +900,7 @@ body {
   height: 2.2rem;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   text-align: center;
 }
@@ -983,9 +988,11 @@ body {
 .weui-picker-modal .picker-items {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   width: 100%;
   padding: 0;
@@ -1016,9 +1023,11 @@ body {
   color: #3d4145;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
+  -webkit-align-items: center;
   align-items: center;
 }
 .weui-picker-modal .picker-items-col-wrapper {
@@ -1154,6 +1163,7 @@ body {
 }
 .city-picker .picker-items-col {
   -webkit-box-flex: 1;
+  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   max-width: 7rem;
@@ -1194,6 +1204,7 @@ body {
   background: #f7f7f8;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   font-size: 11px;
   box-sizing: border-box;
@@ -1229,8 +1240,9 @@ body {
 .picker-calendar-week-days .picker-calendar-week-day {
   -webkit-flex-shrink: 1;
   -ms-flex: 0 1 auto;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
   width: 14.28571429%;
   width: calc(100% / 7);
   line-height: 17px;
@@ -1255,9 +1267,11 @@ body {
 .picker-calendar-month {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-box-orient: vertical;
   -ms-flex-direction: column;
+  -webkit-flex-direction: column;
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -1270,11 +1284,13 @@ body {
   height: calc(100% / 6);
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-flex-shrink: 1;
   -ms-flex: 0 1 auto;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
   width: 100%;
   position: relative;
 }
@@ -1311,16 +1327,20 @@ body {
 .picker-calendar-day {
   -webkit-flex-shrink: 1;
   -ms-flex: 0 1 auto;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
+  -webkit-justify-content: center;
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
+  -webkit-align-items: center;
   align-items: center;
   box-sizing: border-box;
   width: 14.28571429%;
@@ -1356,19 +1376,23 @@ body {
 .picker-calendar-year-picker {
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
+  -webkit-align-items: center;
   align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   width: 50%;
   max-width: 200px;
   -webkit-flex-shrink: 10;
   -ms-flex: 0 10 auto;
-  -ms-flex-negative: 10;
-      flex-shrink: 10;
+  -webkit-flex-shrink: 10;
+      -ms-flex-negative: 10;
+          flex-shrink: 10;
 }
 .picker-calendar-month-picker a.icon-only,
 .picker-calendar-year-picker a.icon-only {
@@ -1378,8 +1402,9 @@ body {
 .picker-calendar-year-picker span {
   -webkit-flex-shrink: 1;
   -ms-flex: 0 1 auto;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
+  -webkit-flex-shrink: 1;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
   position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1441,6 +1466,7 @@ body {
   display: block;
   line-height: 2.2rem;
   -webkit-box-flex: 1;
+  -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
@@ -1506,6 +1532,7 @@ i.icon.icon-prev {
 .swiper-container-vertical > .swiper-wrapper {
   -webkit-box-orient: vertical;
   -ms-flex-direction: column;
+  -webkit-flex-direction: column;
   flex-direction: column;
 }
 .swiper-wrapper {
@@ -1515,6 +1542,7 @@ i.icon.icon-prev {
   z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-transition-property: -webkit-transform;
   transition-property: -webkit-transform;
@@ -1531,6 +1559,7 @@ i.icon.icon-prev {
   -webkit-box-lines: multiple;
   -moz-box-lines: multiple;
   -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 .swiper-container-free-mode > .swiper-wrapper {
@@ -1541,8 +1570,9 @@ i.icon.icon-prev {
 .swiper-slide {
   -webkit-flex-shrink: 0;
   -ms-flex: 0 0 auto;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
   width: 100%;
   height: 100%;
   position: relative;
@@ -1555,6 +1585,7 @@ i.icon.icon-prev {
 .swiper-container-autoheight .swiper-wrapper {
   -webkit-box-align: start;
   -ms-flex-align: start;
+  -webkit-align-items: flex-start;
   align-items: flex-start;
   -webkit-transition-property: -webkit-transform, height;
   -webkit-transition-property: height, -webkit-transform;
@@ -2073,9 +2104,11 @@ button.swiper-pagination-bullet {
   padding: .4rem .6rem 1rem .6rem;
   display: -webkit-box;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   -webkit-box-align: start;
   -ms-flex-align: start;
+  -webkit-align-items: flex-start;
   align-items: flex-start;
 }
 .weui-notification .weui-notification__content {
@@ -2154,9 +2187,11 @@ button.swiper-pagination-bullet {
 .weui-photo-browser-modal .photo-container {
   height: 100%;
   display: -webkit-box;
+  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
+  -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
