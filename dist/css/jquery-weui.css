@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.1.0 
+* jQuery WeUI V1.1.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -633,7 +633,7 @@ body {
   transition: transform .3s;
   transition: transform .3s, -webkit-transform .3s;
 }
-.touching .weui-cell__bd {
+.swipeout-touching .weui-cell__bd {
   -webkit-transition: none;
   transition: none;
 }
