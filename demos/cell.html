@@ -22,6 +22,33 @@
             </div>
             <div class="weui-cell__ft">说明文字</div>
           </div>
+          <div class="weui-cell weui-cell_swiped">
+            <div class="weui-cell__bd" style="transform: translateX(-136px)">
+              <div class="weui-cell">
+                <div class="weui-cell__bd">
+                  <p>左滑列表</p>
+                </div>
+                <div class="weui-cell__ft">向左滑动试试</div>
+              </div>
+            </div>
+            <div class="weui-cell__ft">
+              <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout" href="javascript:">删除</a>
+              <a class="weui-swiped-btn weui-swiped-btn_default close-swipeout" href="javascript:">关闭</a>
+            </div>
+          </div>
+          <div class="weui-cell weui-cell_swiped">
+            <div class="weui-cell__bd">
+              <div class="weui-cell">
+                <div class="weui-cell__bd">
+                  <p>左滑列表</p>
+                </div>
+                <div class="weui-cell__ft">向左滑动试试</div>
+              </div>
+            </div>
+            <div class="weui-cell__ft">
+              <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout" href="javascript:">删除</a>
+            </div>
+          </div>
         </div>
         <div class="weui-cells__title">带图标、说明的列表项</div>
         <div class="weui-cells">
@@ -147,5 +174,14 @@
       </div>
     </div>
     <% include _foot.html %>
+
+    <script>
+      $('.delete-swipeout').click(function () {
+        $(this).parents('.weui-cell').remove()
+      })
+      $('.close-swipeout').click(function () {
+        $(this).parents('.weui-cell').swipeout('close')
+      })
+    </script>
   </body>
 </html>

@@ -10,8 +10,8 @@
     var tpl = '<div class="weui-toast ' + className + '">' + html + '</div>';
     var dialog = $(tpl).appendTo(document.body);
 
-    dialog.show();
     dialog.addClass("weui-toast--visible");
+    dialog.show();
   };
 
   var hide = function(callback) {

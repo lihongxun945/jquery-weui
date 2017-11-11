@@ -1,4 +1,16 @@
-# v1.0.1 - 2016/02/18
+# v1.1.0 - 2017/11/10
+
+对应 微信官方 weui 版本为 `v1.1.2`
+
+新增功能：
+- 在列表中增加了滑动删除功能
+
+修复bug:
+- 无
+
+[weui.css v1.1.2 的更新请点这里](https://github.com/weui/weui/blob/master/CHANGELOG.md)
+
+# v1.0.1 - 2017/02/18
 
 对应 weui 版本为 `v1.1.1`
 
@@ -16,7 +28,7 @@
 
 [weui.css v1.1.1 的更新请点这里](https://github.com/weui/weui/blob/master/CHANGELOG.md)
 
-# v1.0.0 - 2016/01/08
+# v1.0.0 - 2017/01/08
 
 对应 weui 版本为 v1.1.0
 
