@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.0.1 
+* jQuery WeUI V1.1.0 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -626,6 +626,16 @@ body {
 .weui-cell__hd img {
   display: block;
   margin-right: 5px;
+}
+.weui-cell_swiped .weui-cell__bd {
+  -webkit-transition: -webkit-transform .3s;
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+.touching .weui-cell__bd {
+  -webkit-transition: none;
+  transition: none;
 }
 .weui-dialog,
 .weui-toast {
@@ -1992,28 +2002,6 @@ button.swiper-pagination-bullet {
 }
 .weui-actionsheet {
   z-index: 10000;
-}
-.weui-actionsheet .weui-actionsheet__title {
-  padding: 8px 0;
-  text-align: center;
-  font-size: 16px;
-  color: #999;
-  background-color: #f4f4f4;
-  position: relative;
-}
-.weui-actionsheet .weui-actionsheet__title:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  border-top: 1px solid #d9d9d9;
-  color: #d9d9d9;
-  -webkit-transform-origin: 0 100%;
-          transform-origin: 0 100%;
-  -webkit-transform: scaleY(0.5);
-          transform: scaleY(0.5);
 }
 .weui-popup__overlay,
 .weui-popup__container {
