@@ -26,11 +26,7 @@
     var transform =  this.mover.css('transform').match(/-?[\d\.]+/g)
     if (transform && transform.length) this.startX = parseInt(transform[4])
     this.diffX = this.diffY = 0;
-    //close others
-    var self = this
-    cache.forEach(function (s) {
-      if (s !== self) s.close()
-    })
+    this._closeOthers()
   };
 
   Swipeout.prototype.touchMove= function(e) {
@@ -67,6 +63,7 @@
   }
 
   Swipeout.prototype.open = function() {
+    this._closeOthers()
     this.mover.css("transform", "translate3d(" + (-this.limit) + "px, 0, 0)");
     this.container.trigger('swipeout-open');
   }
@@ -76,7 +73,14 @@
     el.on($.touchEvents.start, $.proxy(this.touchStart, this));
     el.on($.touchEvents.move, $.proxy(this.touchMove, this));
     el.on($.touchEvents.end, $.proxy(this.touchEnd, this));
-  };
+  }
+  Swipeout.prototype._closeOthers = function() {
+    //close others
+    var self = this
+    cache.forEach(function (s) {
+      if (s !== self) s.close()
+    })
+  }
 
   var swipeout = function(el) {
     return new Swipeout(el);
