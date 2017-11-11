@@ -7,6 +7,7 @@
   "use strict";
 
   var cache = [];
+  var TOUCHING = 'swipeout-touching'
 
   var Swipeout = function(el) {
     this.container = $(el);
@@ -18,25 +19,26 @@
 
   Swipeout.prototype.touchStart = function(e) {
     var p = $.getTouchPosition(e);
-    this.start = false;
-    this.container.addClass("touching");
+    this.container.addClass(TOUCHING);
     this.start = p;
     this.startX = 0;
     this.startTime = + new Date;
     var transform =  this.mover.css('transform').match(/-?[\d\.]+/g)
     if (transform && transform.length) this.startX = parseInt(transform[4])
     this.diffX = this.diffY = 0;
-    //close others
-    var self = this
-    cache.forEach(function (s) {
-      if (s !== self) s.close()
-    })
+    this._closeOthers()
   };
 
   Swipeout.prototype.touchMove= function(e) {
-    if(!this.start) return false;
+    if(!this.start) return true;
     var p = $.getTouchPosition(e);
     this.diffX = p.x - this.start.x;
+    this.diffY = p.y - this.start.y;
+    if (Math.abs(this.diffX) < Math.abs(this.diffY)) { // 说明是上下方向在拖动
+      this.close()
+      this.start = false
+      return true;
+    }
     e.preventDefault();
     e.stopPropagation();
     var x = this.diffX + this.startX
@@ -45,8 +47,8 @@
     this.mover.css("transform", "translate3d("+x+"px, 0, 0)");
   };
   Swipeout.prototype.touchEnd = function() {
+    if (!this.start) return true;
     this.start = false;
-    this.container.removeClass("touching");
     var x = this.diffX + this.startX
     var t = new Date - this.startTime;
     if (this.diffX < -5 && t < 200) { // 向左快速滑动，则打开
@@ -62,11 +64,14 @@
 
 
   Swipeout.prototype.close = function() {
+    this.container.removeClass(TOUCHING);
     this.mover.css("transform", "translate3d(0, 0, 0)");
     this.container.trigger('swipeout-close');
   }
 
   Swipeout.prototype.open = function() {
+    this.container.removeClass(TOUCHING);
+    this._closeOthers()
     this.mover.css("transform", "translate3d(" + (-this.limit) + "px, 0, 0)");
     this.container.trigger('swipeout-open');
   }
@@ -76,7 +81,14 @@
     el.on($.touchEvents.start, $.proxy(this.touchStart, this));
     el.on($.touchEvents.move, $.proxy(this.touchMove, this));
     el.on($.touchEvents.end, $.proxy(this.touchEnd, this));
-  };
+  }
+  Swipeout.prototype._closeOthers = function() {
+    //close others
+    var self = this
+    cache.forEach(function (s) {
+      if (s !== self) s.close()
+    })
+  }
 
   var swipeout = function(el) {
     return new Swipeout(el);
