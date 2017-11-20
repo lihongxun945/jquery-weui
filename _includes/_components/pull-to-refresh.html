@@ -2,6 +2,7 @@
   <h2>下拉刷新</h2>
   <p>原生滚动实现的下拉刷新。</p>
   <p>为了使用下拉刷新，首先你需要在被下拉的容器的最顶部加上下拉状态的代码(这里我们在 <code>document.body</code> 上进行下拉刷新)：</p>
+  <p><strong>特别强调：下拉刷新一定要在真正发生滚动的那个元素上初始化，如果你发现下拉刷新导致页面无法滚动，那么几乎可以肯定是你初始化的容易搞错了，这个问题请不要随意发Issue。</strong></p>
 
 
 {% highlight html %}
@@ -24,7 +25,10 @@
   <p>然后通过JS初始化下拉刷新：</p>
 
 {% highlight js %}
-$(document.body).pullToRefresh();
+$(document.body).pullToRefresh(function () {
+// 下拉刷新触发时执行的操作放这里。
+// 从 v1.1.2 版本才支持回调函数，之前的版本只能通过事件监听
+});
 {% endhighlight %}
 
   <p>注意，从 <code>v0.4.0</code> 版本之后，你可以在任何 DIV 内初始化下拉刷新操作。并且同一个页面可以初始化多个下拉刷新。</p>
@@ -57,8 +61,69 @@ $(document.body).pullToRefreshDone();
 
   <p>后续会在用户下拉的三个步骤都触发对应的事件，方便细粒度控制下拉刷新。</p>
 
+  <h3>初始化参数</h3>
+  <p>
+  注意，这里的初始化参数都是 <code>v1.1.2</code> 才开始支持的。
+  </p>
+  <p>在初始化的时候有两种方式：可以直接传入一个回调函数，或者传入一个对象</p>
+
+  <p>直接传入回调函数，则会在下拉刷新事件触发的时候执行这个回调。和监听 <code>pull-to-refresh</code> 事件是一样的效果，不过写起来更加方便而已。</p>
+
+{% highlight js %}
+$(document.body).pullToRefresh(function () {
+// 下拉刷新触发时执行的操作放这里。
+// 从 v1.1.2 版本才支持回调函数，之前的版本只能通过事件监听
+});
+{% endhighlight %}
+
+  <p>你还可以选择传入一个对象，会有更多的配置可选：</p>
+
+{% highlight js %}
+$(document.body).pullToRefresh({
+onRefresh: function () { /* 当下拉刷新触发的时候执行的回调 */ },
+onPull: function (percent) { /* 用户下拉过程中会触发，接收一个百分比表示用户下拉的比例 */ },
+distance: 50 /* 下拉刷新的触发距离， 注意，如果你重新定义了这个值，那么你需要重载一部分CSS才可以，请参考下面的自定义样式部分 */
+});
+{% endhighlight %}
+
+  <h3>JS 方法</h3>
+  <p>除了用户手势触发，也可以通过JS方法来触发刷新操作：</p>
+{% highlight js %}
+$('xxxx').pullToRefresh('triggerPullToRefresh')
+{% endhighlight %}
+
+
 </article>
 
+<article class='component' data-url="../dist/demos/ptr-custom.html">
+  <h3>自定义样式</h3>
+  <p>下拉刷新组件提供了灵活的配置，你完全可以根据自己的需求去定义下拉的样式。这里提供一个简单的球形示例可供大家参考。</p>
+  <p>需要注意的是：</p>
+  <ol>
+    <li>如果你定义了 distance 参数值，那么 相关的CSS也需要被重载，具体方式可以参见右侧demo的源码。下拉刷新的很多逻辑都在CSS中，如果你不熟悉请不要随便修改 distance 以免导致页面的样式错误。</li>
+    <li>onPull 会在用户滑动的时候不断触发，请不要做复杂的DOM操作以免导致页面卡顿。</li>
+    <li>onPull 的 percent 是一个百分比的值，如果用户拉动距离超过 distance 那么这个值是会超过 100 的，这是正常的。如果你不希望显示一个大于100的数值请参考右侧demo的做法。</li>
+  </ol>
+  <p>JS 部分代码如下：</p>
+{% highlight js %}
+var $circle = $("#circle")
+$(document.body).pullToRefresh({
+  distance: 80,
+  onRefresh: function() {
+    setTimeout(function() {
+      $("#time").text(new Date);
+      $(document.body).pullToRefreshDone();
+    }, 2000);
+  },
+  onPull: function (percent) {
+    if (percent > 100) percent = 100
+    $circle.html(percent);
+    $circle.css('background-image', 'linear-gradient(0deg, #3cc51f ' + percent + '%, #3cc51f ' + percent + '%, transparent 50%, transparent 100%)')
+  }
+});
+{% endhighlight %}
+
+</article>
 <article class='component' data-url="../dist/demos/pull-to-refresh-with-navbar.html">
   <h3>下拉刷新结合TAB</h3>
   <p>可以在每一个 <code>.weui-tab_bd-item</code> 都初始化一个独立的下拉刷新：</p>
