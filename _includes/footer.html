@@ -14,3 +14,9 @@
 <script src="{{ "/dist/lib/jquery-2.1.4.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/assets/bootstrap/js/bootstrap.js" | prepend: site.baseurl }}"></script>
 <script src="{{ "/assets/js/docs.js" | prepend: site.baseurl }}"></script>
+
+<script>
+  $('.pop').click(function () {
+    ga('send', 'event', 'Pop', 'click')
+  })
+</script>
