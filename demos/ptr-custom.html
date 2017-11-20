@@ -8,14 +8,17 @@
   <body ontouchstart>
 
     <div class="weui-pull-to-refresh__layer">
-      <div class='weui-pull-to-refresh__arrow'></div>
-      <div class='weui-pull-to-refresh__preloader'></div>
-      <div class="down">下拉刷新</div>
-      <div class="up">释放刷新</div>
-      <div class="refresh">正在刷新</div>
+      <div class="circle-wrap">
+        <div id="circle" class="circle">0%</div>
+      </div>
+      <div class="status">
+        <div class="down">下拉刷新</div>
+        <div class="up">释放刷新</div>
+        <div class="refresh">正在刷新</div>
+      </div>
     </div>
 
-    <h1 class="demos-title">下拉刷新</h1>
+    <h1 class="demos-title">定制下拉刷新</h1>
     <p>Time: <span id="time">下拉我试试</span></p>
     <p>
       <a href="javascript:;" class="weui-btn weui-btn_primary" id="trigger">通过JS触发下拉刷新</a>
@@ -26,12 +29,53 @@
       <% } %>
     </div>
     <% include _foot.html %>
+    <style>
+      .weui-pull-to-refresh {
+        margin-top: -80px;
+        transition: transform .4s;
+      }
+
+      .weui-pull-to-refresh.refreshing {
+        transform: translate3d(0, 80px, 0);
+      }
+      .weui-pull-to-refresh__layer {
+        padding: 20px 0 0 0;
+        height: 60px;
+        line-height: 60px;
+      }
+      .status {
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+      }
+      .circle-wrap {
+        line-height: 100%;
+      }
+      .circle {
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        font-size: 12px;
+        display: inline-block;
+        border: 1px solid #3cc51f;
+      }
+    </style>
     <script>
-      $(document.body).pullToRefresh(function() {
-        setTimeout(function() {
-          $("#time").text(new Date);
-          $(document.body).pullToRefreshDone();
-        }, 2000);
+      var $circle = $("#circle")
+      $(document.body).pullToRefresh({
+        distance: 80,
+        onRefresh: function() {
+          setTimeout(function() {
+            $("#time").text(new Date);
+            $(document.body).pullToRefreshDone();
+          }, 2000);
+        },
+        onPull: function (percent) {
+          if (percent > 100) percent = 100
+          $circle.html(percent);
+          $circle.css('background-image', 'linear-gradient(0deg, #3cc51f ' + percent + '%, #3cc51f ' + percent + '%, transparent 50%, transparent 100%)')
+        }
       });
       $("#trigger").click(function () {
         $(document.body).pullToRefresh('triggerPullToRefresh')
