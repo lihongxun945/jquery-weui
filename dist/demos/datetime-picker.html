@@ -51,6 +51,12 @@
           <input class="weui-input" id="time-format" type="text" value="2012年12月12日 12时13分">
         </div>
       </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="time-format" class="weui-label">限制年月</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="years-monthes" type="text" value="2017-06-20 12:00">
+        </div>
+      </div>
     </div>
 
     <div class="weui-cells weui-cells_form">
@@ -170,6 +176,14 @@
           console.log(values);
         }
       })
+      $("#years-monthes").datetimePicker({
+        title: '限定年月',
+        years: [2017, 2018],
+        monthes: ['06', '07'],
+        onChange: function (picker, values, displayValues) {
+          console.log(values);
+        }
+      });
     </script>
   </body>
 </html>
