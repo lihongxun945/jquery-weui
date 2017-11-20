@@ -827,7 +827,7 @@
             //默认显示今天
             if(!params.value) {
               var today = new Date();
-              params.value = [today.getFullYear() + "-" + format(today.getMonth() + 1) + "-" + format(today.getDate())];
+              params.value = [today.getFullYear() + "/" + format(today.getMonth() + 1) + "/" + format(today.getDate())];
             }
             calendar = $this.data("calendar", new Calendar($.extend(p, params)));
           }
@@ -848,7 +848,7 @@
     firstDay: 1, // First day of the week, Monday
     weekendDays: [0, 6], // Sunday and Saturday
     multiple: false,
-    dateFormat: 'yyyy-mm-dd',
+    dateFormat: 'yyyy/mm/dd',
     direction: 'horizontal', // or 'vertical'
     minDate: null,
     maxDate: null,
