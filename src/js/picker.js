@@ -670,7 +670,7 @@
       
       var picker = $this.data("picker");
       if(!picker) {
-        params = params || {};
+        params = $.extend({ input: this }, params || {}) // https://github.com/lihongxun945/jquery-weui/issues/432
         var inputValue = $this.val();
         if(params.value === undefined && inputValue !== "") {
           params.value = (params.cols && params.cols.length > 1) ? inputValue.split(" ") : [inputValue];

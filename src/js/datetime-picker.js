@@ -13,15 +13,11 @@
 
   var Datetime = function(input, params) {
     this.input = $(input);
-    this.params = params;
+    this.params = params || {};
 
-    this.initMonthes = ('01 02 03 04 05 06 07 08 09 10 11 12').split(' ');
+    this.initMonthes = params.monthes
 
-    this.initYears = (function () {
-      var arr = [];
-      for (var i = 1950; i <= 2030; i++) { arr.push(i); }
-      return arr;
-    })();
+    this.initYears = params.years
 
     var p = $.extend({}, params, this.getConfig());
     $(this.input).picker(p);
@@ -92,18 +88,14 @@
 
         cols: [
           {
-            values: (function () {
-              var years = [];
-              for (var i=1950; i<=2050; i++) years.push(i);
-              return years;
-            })()
+            values: this.initYears
           },
           {
             divider: true,  // 这是一个分隔符
             content: params.yearSplit
           },
           {
-            values: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
+            values: this.initMonthes
           },
           {
             divider: true,  // 这是一个分隔符
@@ -167,6 +159,12 @@
     monthSplit: '-',
     dateSplit: '',  // 默认为空
     datetimeSplit: ' ',  // 日期和时间之间的分隔符，不可为空
+    monthes: ('01 02 03 04 05 06 07 08 09 10 11 12').split(' '),
+    years: (function () {
+      var arr = [];
+      for (var i = 1950; i <= 2030; i++) { arr.push(i); }
+      return arr;
+    })(),
     times: function () {
       return [  // 自定义的时间
         {
