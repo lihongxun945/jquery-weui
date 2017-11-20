@@ -40,11 +40,12 @@
     var p = $.getTouchPosition(e);
     this.diffX = p.x - this.start.x;
     this.diffY = p.y - this.start.y;
+    if (Math.abs(this.diffX) > Math.abs(this.diffY)) return true; // 说明是左右方向的拖动
     if(this.diffY < 0) return;
     this.container.addClass("touching");
     e.preventDefault();
     e.stopPropagation();
-    this.diffY = Math.pow(this.diffY, 0.8);
+    this.diffY = Math.pow(this.diffY, 0.75);
     this.container.css("transform", "translate3d(0, "+this.diffY+"px, 0)");
     this.triggerPull(this.diffY)
   };
