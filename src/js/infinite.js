@@ -5,6 +5,21 @@
 +function ($) {
   "use strict";
 
+  // fix https://github.com/lihongxun945/jquery-weui/issues/442
+  // chrome will always return 0, when use document.body.scrollTop
+  // https://stackoverflow.com/questions/43717316/google-chrome-document-body-scrolltop-always-returns-0
+  var getOffset = function (container) {
+    var tagName = container[0].tagName.toUpperCase()
+    var scrollTop 
+    if (tagName === 'BODY' || tagName === 'HTML') {
+      scrollTop = container.scrollTop() || $(window).scrollTop()
+    } else {
+      scrollTop = container.scrollTop()
+    }
+    var offset = container.scrollHeight() - ($(window).height() + scrollTop)
+    console.log(offset)
+    return offset
+  }
 
   var Infinite = function(el, distance) {
     this.container = $(el);
@@ -15,10 +30,7 @@
 
   Infinite.prototype.scroll = function() {
     var container = this.container;
-    var offset = container.scrollHeight() - ($(window).height() + container.scrollTop());
-    if(offset <= this.distance) {
-      container.trigger("infinite");
-    }
+    this._check();
   }
 
   Infinite.prototype.attachEvents = function(off) {
@@ -28,6 +40,12 @@
   };
   Infinite.prototype.detachEvents = function(off) {
     this.attachEvents(true);
+  }
+  Infinite.prototype._check = function() {
+    var offset = getOffset(this.container);
+    if(Math.abs(offset) <= this.distance) {
+      this.container.trigger("infinite");
+    }
   }
 
   var infinite = function(el) {
