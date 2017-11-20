@@ -126,6 +126,7 @@
 
       if(config.autoClose && !config.multi) self.close();
     })
+    .trigger('change')
     .on("click", ".close-select", function() {
       self.close();
     });
