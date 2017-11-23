@@ -400,8 +400,16 @@ code {
   right: 120px;
   margin-top: -60px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #999;
+  font-size: 14px;
+
+  &:visited {
+    color: #999;
+  }
+
   a {
     color: #999;
   }
