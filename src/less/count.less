@@ -1,0 +1,62 @@
+@import './variables.less';
+
+@btnSize: 21px;
+
+.weui-count {
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+
+  .weui-count__btn {
+    @s: 11px;
+
+    height: @btnSize;
+    width: @btnSize;
+    line-height: @btnSize;
+    display: inline-block;
+    position: relative;
+    border: 1px solid @color-primary;
+    border-radius: 50%;
+    vertical-align: -6px;
+
+    &:after, &:before {
+      content: " ";
+      position: absolute;
+      height: 1px;
+      width: @s;
+      background-color: @color-primary;
+      left: 50%;
+      top: 50%;
+      margin-left: -@s/2;
+    }
+
+    &:after {
+      height: @s;
+      width: 1px;
+      margin-top: -@s/2;
+      margin-left: -1px;
+    }
+  }
+
+  .weui-count__decrease {
+    &:after {
+      display: none;
+    }
+  }
+
+  .weui-count__increase {
+    background-color: @color-primary;
+    &:after, &:before {
+      background-color: white;
+    }
+  }
+
+  .weui-count__number {
+    background-color: transparent;
+    font-size: .8rem;
+    border: 0;
+    width: 1.3rem;
+    text-align: center;
+    color: @color-text-secondary;
+  }
+}
