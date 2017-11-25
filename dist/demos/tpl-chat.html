@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="../lib/weui.min.css">
+<link rel="stylesheet" href="../css/jquery-weui.css">
+<link rel="stylesheet" href="css/demos.css">
+
+  </head>
+
+  <body ontouchstart>
+    <div class="page__pd">
+      <div class="weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form" action="#">
+          <div class="weui-search-bar__box">
+            <i class="weui-icon-search"></i>
+            <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+            <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+          </div>
+          <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+            <i class="weui-icon-search"></i>
+            <span>搜索</span>
+          </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+      </div>
+      <div class="weui-panel weui-panel_access">
+        <div class="weui-panel__bd">
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar.jpg" alt="">
+              <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span>
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                刘亦菲
+                <span class="weui-media-box__title-after">下午8:12</span>
+              </h4>
+              <p class="weui-media-box__desc">小李明天早上帮我带两个包子，一个猪肉粉丝和一个奶黄包</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar2.jpg" alt="">
+              <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">3</span>
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                Baby
+                <span class="weui-media-box__title-after">下午7:23</span>
+              </h4>
+              <p class="weui-media-box__desc">晚上约吗？</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar3.jpg" alt="">
+              <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">99+</span>
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                江户川-元芳
+                <span class="weui-media-box__title-after">上午10:15</span>
+              </h4>
+              <p class="weui-media-box__desc">真相只有一个</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                刘亦菲
+                <span class="weui-media-box__title-after">下午8:12</span>
+              </h4>
+              <p class="weui-media-box__desc">小李明天早上帮我带两个包子，一个猪肉粉丝和一个奶黄包</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar2.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                Baby
+                <span class="weui-media-box__title-after">下午7:23</span>
+              </h4>
+              <p class="weui-media-box__desc">晚上约吗？</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar3.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                江户川-元芳
+                <span class="weui-media-box__title-after">上午10:15</span>
+              </h4>
+              <p class="weui-media-box__desc">真相只有一个</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                刘亦菲
+                <span class="weui-media-box__title-after">下午8:12</span>
+              </h4>
+              <p class="weui-media-box__desc">小李明天早上帮我带两个包子，一个猪肉粉丝和一个奶黄包</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar2.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                Baby
+                <span class="weui-media-box__title-after">下午7:23</span>
+              </h4>
+              <p class="weui-media-box__desc">晚上约吗？</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar3.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                江户川-元芳
+                <span class="weui-media-box__title-after">上午10:15</span>
+              </h4>
+              <p class="weui-media-box__desc">真相只有一个</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                刘亦菲
+                <span class="weui-media-box__title-after">下午8:12</span>
+              </h4>
+              <p class="weui-media-box__desc">小李明天早上帮我带两个包子，一个猪肉粉丝和一个奶黄包</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar2.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                Baby
+                <span class="weui-media-box__title-after">下午7:23</span>
+              </h4>
+              <p class="weui-media-box__desc">晚上约吗？</p>
+            </div>
+          </a>
+          <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+              <img class="weui-media-box__thumb" src="images/avatar3.jpg" alt="">
+            </div>
+            <div class="weui-media-box__bd">
+              <h4 class="weui-media-box__title">
+                江户川-元芳
+                <span class="weui-media-box__title-after">上午10:15</span>
+              </h4>
+              <p class="weui-media-box__desc">真相只有一个</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <style>
+      .weui-panel {
+        margin: 0;
+      }
+      .weui-media-box {
+        padding: 8px 15px;
+      }
+      .weui-panel__bd .weui-media-box__hd {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        position: relative;
+      }
+      .weui-media-box__desc {
+        -webkit-line-clamp: 1;
+      }
+      .weui-media-box__title {
+        margin-top: -4px;
+      }
+    </style>
+    <script src="../lib/jquery-2.1.4.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="../js/jquery-weui.js"></script>
+
+    <script>
+    </script>
+  </body>
+</html>

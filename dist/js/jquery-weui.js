@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.1.2 
+* jQuery WeUI V1.2.0 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -6343,7 +6343,6 @@ Device/OS Detection
   var Swipeout = function(el) {
     this.container = $(el);
     this.mover = this.container.find('>.weui-cell__bd')
-    this.limit = this.container.find('>.weui-cell__ft').width() || 68;
     this.attachEvents();
     cache.push(this)
   }
@@ -6358,6 +6357,7 @@ Device/OS Detection
     if (transform && transform.length) this.startX = parseInt(transform[4])
     this.diffX = this.diffY = 0;
     this._closeOthers()
+    this.limit = this.container.find('>.weui-cell__ft').width() || 68; // 因为有的时候初始化的时候元素是隐藏的（比如在对话框内），所以在touchstart的时候计算宽度而不是初始化的时候
   };
 
   Swipeout.prototype.touchMove= function(e) {

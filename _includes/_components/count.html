@@ -1,0 +1,22 @@
+<article id="count" class='component' data-url="../dist/demos/count.html">
+<h2>Count 计数器</h2>
+<p>从 <code>V1.2.0</code> 开始加入了计数器组件。可以用来显示和修改数值，比如可以用在购物车显示商品数目。</p>
+<p>因为计数器的JS逻辑比较简单，所以这里只提供了一个CSS组件，如果你需要写对应的JS代码可以参考如下代码：</p>
+
+{% highlight js %}
+var MAX = 99, MIN = 1;
+$('.weui-count__decrease').click(function (e) {
+  var $input = $(e.currentTarget).parent().find('.weui-count__number');
+  var number = parseInt($input.val() || "0") - 1
+  if (number < MIN) number = MIN;
+  $input.val(number)
+})
+$('.weui-count__increase').click(function (e) {
+  var $input = $(e.currentTarget).parent().find('.weui-count__number');
+  var number = parseInt($input.val() || "0") + 1
+  if (number > MAX) number = MAX;
+  $input.val(number)
+})
+{% endhighlight %}
+
+</article>
