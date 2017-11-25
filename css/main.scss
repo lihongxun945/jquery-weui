@@ -183,11 +183,7 @@ article {
 }
 
 .logo {
-  float: left;
-
-  img {
-    width: 250px;
-  }
+  
 }
 
 footer {
@@ -236,12 +232,20 @@ code {
 
 .home {
   .brand-header .container {
-    padding-top: 30px;
+    padding-top: 20px;
+    font-size: 16px;
 
     .logo {
-      margin-top: -25px;
+      float: left;
       margin-right: 40px;
+
+      img {
+        width: 250px;
+      }
     }
+  }
+  .container-inner {
+    margin-left: 300px;
   }
 }
 
@@ -268,6 +272,35 @@ code {
     height: 24px;
     border: 0;
     display: inline-block;
+  }
+}
+
+.brand-links {
+  font-size: 14px;
+  a {
+    color: #999;
+    text-decoration: none;
+    &:hover {
+      color: #2a7ae2;
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+    height: 30px;
+  }
+
+  li {
+    float: left;
+    padding: 4px 15px;
+  }
+
+  li + li {
+    border-left: 1px solid #ccc;
   }
 }
 
@@ -380,6 +413,12 @@ code {
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .pop {
+    flex-direction: column;
+  }
+}
+
 .update-time {
   font-size: 18px;
   color: #aaa;
@@ -414,6 +453,7 @@ code {
     color: #999;
   }
 }
+
 
 .footer-inner {
   width: 400px;
