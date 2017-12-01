@@ -278,7 +278,7 @@ code {
 .brand-links {
   font-size: 14px;
   a {
-    color: #999;
+    color: #666;
     text-decoration: none;
     &:hover {
       color: #2a7ae2;
@@ -288,7 +288,7 @@ code {
     list-style: none;
     margin: 0;
     padding: 0;
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     border-radius: 5px;
     display: inline-block;
     height: 30px;
@@ -300,7 +300,7 @@ code {
   }
 
   li + li {
-    border-left: 1px solid #ccc;
+    border-left: 1px solid #aaa;
   }
 }
 
