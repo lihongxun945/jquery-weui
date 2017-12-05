@@ -53,8 +53,8 @@
       var self = this;
       this.modal.show().height();
       this.modal.addClass('weui-photo-browser-modal-visible');
+      this.initParams();
       this.container.addClass('swiper-container-visible').transitionEnd(function() {
-        self.initParams();
         if(self.config.onOpen) {
           self.config.onOpen.call(self);
         }
