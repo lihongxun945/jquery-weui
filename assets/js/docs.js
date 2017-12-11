@@ -134,5 +134,6 @@
   else if(/cases/.test(location.href)) $(".navbar .link-cases").addClass("active");
   else if(/download/.test(location.href)) $(".navbar .link-download").addClass("active");
   else if(/donate/.test(location.href)) $(".navbar .link-donate").addClass("active");
+  else if(/resource/.test(location.href)) $(".navbar .link-resource").addClass("active");
   else $(".navbar .link-index").addClass("active");
 }($);
