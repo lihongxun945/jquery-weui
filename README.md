@@ -1,7 +1,7 @@
 # jQuery WeUI - 打造微信公众号开发的瑞士军刀
 
 <p align="center">
-  <a href="http://lihongxun945.github.io/jquery-weui/">
+  <a href="http://jqweui.com/">
     <img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/logo.png" width="250" />
   </a>
 </p>
@@ -10,7 +10,7 @@
 
 jQuery WeUI 是专为微信公众账号开发而设计的一个简洁而强大的UI库，包含全部WeUI官方的CSS组件，并且额外提供了大量的拓展组件，丰富的组件库可以极大减少前端开发时间。
 
-更多文档请参阅官网： [http://lihongxun945.github.io/jquery-weui/](http://lihongxun945.github.io/jquery-weui/)
+更多文档请参阅官网： [http://jqweui.com/](http://jqweui.com/)
 
 微信扫描二维码立刻体验：
 
@@ -72,6 +72,10 @@ jQuery WeUI 是 MIT 协议的免费开源项目，不会收取任何费用。作
 
 <img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/vcode/alipay.jpg" width="250" />
 <img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/vcode/wechat.jpg" width="250" />
+
+# 赞助商
+
+- [多会](https://www.duohui.co/)
 
 
 # LICENSE
