@@ -10,7 +10,16 @@
     <p>
     jQuery WeUI @author 言川 @time 2016/01/11
     </p>
-    <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+    <div class="cn-only">
+      <p>
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011202001503">
+          <img src="/images/beian.png" style="float:left;">
+          <span style="float:left;">沪公网安备 31011202001503号</span>
+        </a>
+        <a href="http://www.miitbeian.gov.cn/">浙ICP备16003227号</a>
+      </p>
+      <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a></p>
+    </div>
   </div>
 </footer>
 
@@ -22,4 +31,12 @@
   $('.pop').click(function () {
     ga('send', 'event', 'Pop', 'click')
   })
+</script>
+
+<script>
+  if (/jqweui\.cn/.test(location.host)) {
+    $(document.body).addClass('cn')
+  } else {
+    $(document.body).addClass('en')
+  }
 </script>

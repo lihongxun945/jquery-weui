@@ -207,7 +207,7 @@ footer {
     }
   }
 
-  a {
+  a, a:visited {
     color: #999;
   }
 
@@ -471,4 +471,20 @@ code {
   img {
     width: 100px;
   }
+}
+
+.cn-only {
+  display: none!important;
+}
+
+.cn .cn-only {
+  display: block!important;
+}
+
+.en-only {
+  display: none!important;
+}
+
+.en .en-only {
+  display: block!important;
 }
