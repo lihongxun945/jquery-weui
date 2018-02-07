@@ -311,7 +311,8 @@
               dayIndex = 0 + (p.params.firstDay - 1),    
               today = new Date().setHours(0,0,0,0),
               minDate = p.params.minDate ? new Date(p.params.minDate).getTime() : null,
-              maxDate = p.params.maxDate ? new Date(p.params.maxDate).getTime() : null;
+              maxDate = p.params.maxDate ? new Date(p.params.maxDate).getTime() : null,
+              disabled;
 
           if (p.value && p.value.length) {
               for (i = 0; i < p.value.length; i++) {
@@ -348,12 +349,17 @@
                   // Selected
                   if (currentValues.indexOf(dayDate) >= 0) addClass += ' picker-calendar-day-selected';
                   // Weekend
-                  if (p.params.weekendDays.indexOf(col - 1) >= 0) {
+                  if (col>5) {
                       addClass += ' picker-calendar-day-weekend';
                   }
                   // Disabled
                   if ((minDate && dayDate < minDate) || (maxDate && dayDate > maxDate)) {
                       addClass += ' picker-calendar-day-disabled';   
+                  }
+                  if (p.params.disabled) {
+                      if (p.dateInRange(dayDate, p.params.disabled)) {
+                          addClass += ' picker-calendar-day-disabled';
+                      }
                   }
 
                   dayDate = new Date(dayDate);
@@ -583,6 +589,57 @@
       };
       p.prevYear = function () {
           p.setYearMonth(p.currentYear - 1);
+      };
+
+      // Scan Dates Range
+      p.dateInRange = function (dayDate, range) {
+          var match = false;
+          var i;
+          if (!range) return false;
+          if ($.isArray(range)) {
+              for (i = 0; i < range.length; i ++) {
+                  if (range[i].from || range[i].to) {
+                      if (range[i].from && range[i].to) {
+                          if ((dayDate <= new Date(range[i].to).getTime()) && (dayDate >= new Date(range[i].from).getTime())) {
+                              match = true;
+                          }
+                      }
+                      else if (range[i].from) {
+                          if (dayDate >= new Date(range[i].from).getTime()) {
+                              match = true;
+                          }
+                      }
+                      else if (range[i].to) {
+                          if (dayDate <= new Date(range[i].to).getTime()) {
+                              match = true;
+                          }
+                      }
+                  } else if (dayDate === new Date(range[i]).getTime()) {
+                      match = true;
+                  }
+              }
+          }
+          else if (range.from || range.to) {
+              if (range.from && range.to) {
+                  if ((dayDate <= new Date(range.to).getTime()) && (dayDate >= new Date(range.from).getTime())) {
+                      match = true;
+                  }
+              }
+              else if (range.from) {
+                  if (dayDate >= new Date(range.from).getTime()) {
+                      match = true;
+                  }
+              }
+              else if (range.to) {
+                  if (dayDate <= new Date(range.to).getTime()) {
+                      match = true;
+                  }
+              }
+          }
+          else if (typeof range === 'function') {
+              match = range(new Date(dayDate));
+          }
+          return match;
       };
       
 
@@ -852,6 +909,7 @@
     direction: 'horizontal', // or 'vertical'
     minDate: null,
     maxDate: null,
+    disabled: null,
     touchMove: true,
     animate: true,
     closeOnSelect: true,
