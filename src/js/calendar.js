@@ -344,7 +344,7 @@
                   // Selected
                   if (currentValues.indexOf(dayDate) >= 0) addClass += ' picker-calendar-day-selected';
                   // Weekend
-                  if (p.params.weekendDays.indexOf(col - 1) >= 0) {
+                  if (col>5) {
                       addClass += ' picker-calendar-day-weekend';
                   }
                   // Disabled
