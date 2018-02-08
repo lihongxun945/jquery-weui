@@ -306,7 +306,8 @@
               dayIndex = 0 + (p.params.firstDay - 1),    
               today = new Date().setHours(0,0,0,0),
               minDate = p.params.minDate ? new Date(p.params.minDate).getTime() : null,
-              maxDate = p.params.maxDate ? new Date(p.params.maxDate).getTime() : null;
+              maxDate = p.params.maxDate ? new Date(p.params.maxDate).getTime() : null,
+              disabled;
 
           if (p.value && p.value.length) {
               for (i = 0; i < p.value.length; i++) {
@@ -343,12 +344,18 @@
                   // Selected
                   if (currentValues.indexOf(dayDate) >= 0) addClass += ' picker-calendar-day-selected';
                   // Weekend
-                  if (p.params.weekendDays.indexOf(col - 1) >= 0) {
+                  if (col>5) {
                       addClass += ' picker-calendar-day-weekend';
                   }
                   // Disabled
                   if ((minDate && dayDate < minDate) || (maxDate && dayDate > maxDate)) {
                       addClass += ' picker-calendar-day-disabled';   
+                  }
+                  // Disable certain date in range or list.
+                  if (p.params.disabled) {
+                      if ( p.params.disabled.includes(formatDate(dayDate)) ) {
+                          addClass += ' picker-calendar-day-disabled';
+                      }
                   }
 
                   dayDate = new Date(dayDate);
@@ -847,6 +854,7 @@
     direction: 'horizontal', // or 'vertical'
     minDate: null,
     maxDate: null,
+    disabled: null,
     touchMove: true,
     animate: true,
     closeOnSelect: true,
