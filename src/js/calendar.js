@@ -351,8 +351,9 @@
                   if ((minDate && dayDate < minDate) || (maxDate && dayDate > maxDate)) {
                       addClass += ' picker-calendar-day-disabled';   
                   }
+                  // Disable certain date in range or list.
                   if (p.params.disabled) {
-                      if (p.dateInRange(dayDate, p.params.disabled)) {
+                      if ( p.params.disabled.includes(formatDate(dayDate)) ) {
                           addClass += ' picker-calendar-day-disabled';
                       }
                   }
