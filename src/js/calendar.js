@@ -586,57 +586,6 @@
       p.prevYear = function () {
           p.setYearMonth(p.currentYear - 1);
       };
-
-      // Scan Dates Range
-      p.dateInRange = function (dayDate, range) {
-          var match = false;
-          var i;
-          if (!range) return false;
-          if ($.isArray(range)) {
-              for (i = 0; i < range.length; i ++) {
-                  if (range[i].from || range[i].to) {
-                      if (range[i].from && range[i].to) {
-                          if ((dayDate <= new Date(range[i].to).getTime()) && (dayDate >= new Date(range[i].from).getTime())) {
-                              match = true;
-                          }
-                      }
-                      else if (range[i].from) {
-                          if (dayDate >= new Date(range[i].from).getTime()) {
-                              match = true;
-                          }
-                      }
-                      else if (range[i].to) {
-                          if (dayDate <= new Date(range[i].to).getTime()) {
-                              match = true;
-                          }
-                      }
-                  } else if (dayDate === new Date(range[i]).getTime()) {
-                      match = true;
-                  }
-              }
-          }
-          else if (range.from || range.to) {
-              if (range.from && range.to) {
-                  if ((dayDate <= new Date(range.to).getTime()) && (dayDate >= new Date(range.from).getTime())) {
-                      match = true;
-                  }
-              }
-              else if (range.from) {
-                  if (dayDate >= new Date(range.from).getTime()) {
-                      match = true;
-                  }
-              }
-              else if (range.to) {
-                  if (dayDate <= new Date(range.to).getTime()) {
-                      match = true;
-                  }
-              }
-          }
-          else if (typeof range === 'function') {
-              match = range(new Date(dayDate));
-          }
-          return match;
-      };
       
 
       // HTML Layout
