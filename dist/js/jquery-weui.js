@@ -1,5 +1,5 @@
 /** 
-* jQuery WeUI V1.2.0 
+* jQuery WeUI V1.2.1 
 * By 言川
 * http://lihongxun945.github.io/jquery-weui/
  */
@@ -3491,11 +3491,20 @@ if (typeof define === 'function' && define.amd) {
 
   var hide = function(callback) {
     $(".weui-mask_transparent").remove();
-    $(".weui-toast--visible").removeClass("weui-toast--visible").transitionEnd(function() {
+    var done = false;
+    var $el = $(".weui-toast--visible").removeClass("weui-toast--visible").transitionEnd(function() {
       var $this = $(this);
       $this.remove();
-      callback && callback($this);
+      callback && callback();
+      done = true
     });
+
+    setTimeout(function () {
+      if (!done) {
+        $el.remove()
+        callback && callback();
+      }
+    }, 1000)
   }
 
   $.toast = function(text, style, callback) {
