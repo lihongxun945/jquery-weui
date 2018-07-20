@@ -1,3 +1,8 @@
+# v1.2.1 - 2018/07/20
+更新了微信官方weui的版本 `v1.1.3`，微信官方更新日志：https://github.com/Tencent/weui/blob/master/CHANGELOG.md
+
+- 修复了 `图片浏览器` 第一次调用 `open(index)` 且 `index !== initIndex` 时会出现的bug #369
+
 # v1.2.0 - 2017/11/25
 
 - 增加了一个计数器组件。
