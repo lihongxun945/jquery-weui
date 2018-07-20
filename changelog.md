@@ -1,7 +1,12 @@
 # v1.2.1 - 2018/07/20
+
 更新了微信官方weui的版本 `v1.1.3`，微信官方更新日志：https://github.com/Tencent/weui/blob/master/CHANGELOG.md
 
-- 修复了 `图片浏览器` 第一次调用 `open(index)` 且 `index !== initIndex` 时会出现的bug #369
+Bug 修复:
+
+- #369: 修复了 `图片浏览器` 第一次调用 `open(index)` 且 `index !== initIndex` 时会出现的bug
+- #302：修复了特定情况下 `toast` 组件可能没有在消失后删除DOM的问题
+- #169: 图片浏览器中的图片默认居中显示
 
 # v1.2.0 - 2017/11/25
 
