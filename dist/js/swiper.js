@@ -3860,15 +3860,15 @@ else if (typeof define === 'function' && define.amd) {
       this.modal.addClass('weui-photo-browser-modal-visible');
       this.container.addClass('swiper-container-visible').transitionEnd(function() {
         self.initParams();
+        if(index !== undefined) {
+          self.slideTo(index);
+        }
         if(self.config.onOpen) {
           self.config.onOpen.call(self);
         }
       });
 
       this._open = true;
-      if(index !== undefined) {
-        this.slideTo(index, 0);
-      }
     },
 
     close: function() {
@@ -4046,7 +4046,7 @@ else if (typeof define === 'function' && define.amd) {
         this.wrapper.transitionEnd(function() {
           callback && callback();
         });
-        this.wrapper.transition(duration || 0).transform('translate3d(' + this.wrapperTransform + 'px, 0, 0)');
+        this.wrapper.transition(duration || defaults.duration).transform('translate3d(' + this.wrapperTransform + 'px, 0, 0)');
       }
     },
 
@@ -4129,6 +4129,7 @@ else if (typeof define === 'function' && define.amd) {
     initIndex: 0, //打开时默认显示第几张
     maxScale: 3,
     onSlideChange: undefined,
+    duration: 200, // 默认动画时间，如果没有在调用函数的时候指定，则使用这个值
     tpl: '<div class="weui-photo-browser-modal">\
             <div class="swiper-container">\
               <div class="swiper-wrapper">\
