@@ -488,3 +488,10 @@ code {
 .en .en-only {
   display: block!important;
 }
+
+.secret {
+  font-size: 12px;
+  code {
+    font-size: 12px;
+  }
+}
