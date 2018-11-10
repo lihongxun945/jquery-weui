@@ -11,7 +11,7 @@
   Photos.prototype = {
     initConfig: function (config) {
       this.config = $.extend({}, defaults, config);
-      this.activeIndex = this.lastActiveIndex = this.config.initIndex;
+      this.activeIndex = this.lastActiveIndex = parseInt(this.config.initIndex);
 
       this.config.items = this.config.items.map(function(d, i) {
         if(typeof d === typeof 'a') {
