@@ -78,11 +78,6 @@ jQuery WeUI 是 MIT 协议的免费开源项目，不会收取任何费用。作
 <img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/vcode/alipay.jpg" width="250" />
 <img src="https://raw.githubusercontent.com/lihongxun945/jquery-weui/master/vcode/wechat.jpg" width="250" />
 
-# 赞助商
-
-- [多会](https://www.duohui.co/)
-
-
 # LICENSE
 
 [MIT](https://opensource.org/licenses/MIT)，尽情享受开源代码。
