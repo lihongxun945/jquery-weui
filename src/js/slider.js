@@ -15,15 +15,17 @@
   Slider.prototype.bind = function () {
     this.container
       .on($.touchEvents.start, $.proxy(this.touchStart, this))
+      .on($.touchEvents.move, $.proxy(this.touchMove, this))
       .on($.touchEvents.end, $.proxy(this.touchEnd, this));
-    $(document.body).on($.touchEvents.move, $.proxy(this.touchMove, this)) // move even outside container
+    
   }
 
   Slider.prototype.touchStart = function (e) {
     e.preventDefault()
     this.start = $.getTouchPosition(e)
     this.width = this.container.find('.weui-slider__inner').width()
-    this.left = parseInt(this.container.find('.weui-slider__handler').css('left'))
+    var per = parseInt(this.container.find('.weui-slider__handler').css('left') ) 
+    this.left = this.width * per /100;
     this.touching = true
   }
 
