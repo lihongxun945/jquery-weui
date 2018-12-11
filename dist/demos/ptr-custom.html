@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>下拉刷新</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="../lib/weui.min.css">
+<link rel="stylesheet" href="../css/jquery-weui.css">
+<link rel="stylesheet" href="css/demos.css">
+
+  </head>
+
+  <body ontouchstart>
+
+    <div class="weui-pull-to-refresh__layer">
+      <div class="circle-wrap">
+        <div id="circle" class="circle">0%</div>
+      </div>
+      <div class="status">
+        <div class="down">下拉刷新</div>
+        <div class="up">释放刷新</div>
+        <div class="refresh">正在刷新</div>
+      </div>
+    </div>
+
+    <h1 class="demos-title">定制下拉刷新</h1>
+    <p>Time: <span id="time">下拉我试试</span></p>
+    <p>
+      <a href="javascript:;" class="weui-btn weui-btn_primary" id="trigger">通过JS触发下拉刷新</a>
+    </p>
+    <div id="list" class='demos-content-padded'>
+      
+      <p>《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》是最权威、最经典的人工智能教材，已被全世界100多个国家的1200多所大学用作教材。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》的最新版全面而系统地介绍了人工智能的理论和实践，阐述了人工智能领域的核心内容，并深入介绍了各个主要的研究方向。全书分为七大部分：第Ⅰ部分“人工智能”，第Ⅱ部分“问题求解”，第Ⅲ部分“知识、推理与规划”，第Ⅳ部分“不确定知识与推理”，第Ⅴ部分“学习”，第Ⅵ部分“通信、感知与行动”，第Ⅶ部分“结论”。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》既详细介绍了人工智能的基本概念、思想和算法，还描述了其各个研究方向最前沿的进展，同时收集整理了详实的历史文献与事件。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》适合于不同层次和领域的研究人员及学生，是高等院校本科生和研究生人工智能课的首选教材，也是相关领域的科研与工程技术人员的重要参考书。</p>
+      
+      <p>《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》是最权威、最经典的人工智能教材，已被全世界100多个国家的1200多所大学用作教材。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》的最新版全面而系统地介绍了人工智能的理论和实践，阐述了人工智能领域的核心内容，并深入介绍了各个主要的研究方向。全书分为七大部分：第Ⅰ部分“人工智能”，第Ⅱ部分“问题求解”，第Ⅲ部分“知识、推理与规划”，第Ⅳ部分“不确定知识与推理”，第Ⅴ部分“学习”，第Ⅵ部分“通信、感知与行动”，第Ⅶ部分“结论”。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》既详细介绍了人工智能的基本概念、思想和算法，还描述了其各个研究方向最前沿的进展，同时收集整理了详实的历史文献与事件。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》适合于不同层次和领域的研究人员及学生，是高等院校本科生和研究生人工智能课的首选教材，也是相关领域的科研与工程技术人员的重要参考书。</p>
+      
+      <p>《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》是最权威、最经典的人工智能教材，已被全世界100多个国家的1200多所大学用作教材。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》的最新版全面而系统地介绍了人工智能的理论和实践，阐述了人工智能领域的核心内容，并深入介绍了各个主要的研究方向。全书分为七大部分：第Ⅰ部分“人工智能”，第Ⅱ部分“问题求解”，第Ⅲ部分“知识、推理与规划”，第Ⅳ部分“不确定知识与推理”，第Ⅴ部分“学习”，第Ⅵ部分“通信、感知与行动”，第Ⅶ部分“结论”。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》既详细介绍了人工智能的基本概念、思想和算法，还描述了其各个研究方向最前沿的进展，同时收集整理了详实的历史文献与事件。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》适合于不同层次和领域的研究人员及学生，是高等院校本科生和研究生人工智能课的首选教材，也是相关领域的科研与工程技术人员的重要参考书。</p>
+      
+      <p>《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》是最权威、最经典的人工智能教材，已被全世界100多个国家的1200多所大学用作教材。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》的最新版全面而系统地介绍了人工智能的理论和实践，阐述了人工智能领域的核心内容，并深入介绍了各个主要的研究方向。全书分为七大部分：第Ⅰ部分“人工智能”，第Ⅱ部分“问题求解”，第Ⅲ部分“知识、推理与规划”，第Ⅳ部分“不确定知识与推理”，第Ⅴ部分“学习”，第Ⅵ部分“通信、感知与行动”，第Ⅶ部分“结论”。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》既详细介绍了人工智能的基本概念、思想和算法，还描述了其各个研究方向最前沿的进展，同时收集整理了详实的历史文献与事件。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》适合于不同层次和领域的研究人员及学生，是高等院校本科生和研究生人工智能课的首选教材，也是相关领域的科研与工程技术人员的重要参考书。</p>
+      
+      <p>《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》是最权威、最经典的人工智能教材，已被全世界100多个国家的1200多所大学用作教材。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》的最新版全面而系统地介绍了人工智能的理论和实践，阐述了人工智能领域的核心内容，并深入介绍了各个主要的研究方向。全书分为七大部分：第Ⅰ部分“人工智能”，第Ⅱ部分“问题求解”，第Ⅲ部分“知识、推理与规划”，第Ⅳ部分“不确定知识与推理”，第Ⅴ部分“学习”，第Ⅵ部分“通信、感知与行动”，第Ⅶ部分“结论”。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》既详细介绍了人工智能的基本概念、思想和算法，还描述了其各个研究方向最前沿的进展，同时收集整理了详实的历史文献与事件。《世界著名计算机教材精选·人工智能:一种现代的方法(第3版)》适合于不同层次和领域的研究人员及学生，是高等院校本科生和研究生人工智能课的首选教材，也是相关领域的科研与工程技术人员的重要参考书。</p>
+      
+    </div>
+    <script src="../lib/jquery-2.1.4.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="../js/jquery-weui.js"></script>
+
+    <style>
+      .weui-pull-to-refresh {
+        margin-top: -80px;
+        transition: transform .4s;
+      }
+
+      .weui-pull-to-refresh.refreshing {
+        transform: translate3d(0, 80px, 0);
+      }
+      .weui-pull-to-refresh__layer {
+        padding: 20px 0 0 0;
+        height: 60px;
+        line-height: 60px;
+      }
+      .status {
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+      }
+      .circle-wrap {
+        line-height: 100%;
+      }
+      .circle {
+        height: 40px;
+        line-height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        font-size: 12px;
+        display: inline-block;
+        border: 1px solid #3cc51f;
+      }
+    </style>
+    <script>
+      var $circle = $("#circle")
+      $(document.body).pullToRefresh({
+        distance: 80,
+        onRefresh: function() {
+          setTimeout(function() {
+            $("#time").text(new Date);
+            $(document.body).pullToRefreshDone();
+          }, 2000);
+        },
+        onPull: function (percent) {
+          if (percent > 100) percent = 100
+          $circle.html(percent);
+          $circle.css('background-image', 'linear-gradient(0deg, #3cc51f ' + percent + '%, #3cc51f ' + percent + '%, transparent 50%, transparent 100%)')
+        }
+      });
+      $("#trigger").click(function () {
+        $(document.body).pullToRefresh('triggerPullToRefresh')
+      })
+    </script>
+  </body>
+
+</html>

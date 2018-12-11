@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="../lib/weui.min.css">
+<link rel="stylesheet" href="../css/jquery-weui.css">
+<link rel="stylesheet" href="css/demos.css">
+
+    <style>
+      .weui-label {
+        width: 70px;
+      }
+    </style>
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">City Picker</h1>
+    </header>
+
+    
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="name" class="weui-label">发出地</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="start" type="text" value="湖北省 武汉市 武昌区">
+        </div>
+      </div>
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="date" class="weui-label">目的地</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="end" type="text" value="">
+        </div>
+      </div>
+    </div>
+
+    <h2 class="demos-second-title">只选择城市</h2>
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label for="home-city" class="weui-label">城市</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" id="home-city" type="text">
+        </div>
+      </div>
+    </div>
+    <script src="../lib/jquery-2.1.4.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="../js/jquery-weui.js"></script>
+
+    <script src="../js/city-picker.js"></script>
+
+    <script>
+      $("#start").cityPicker({
+        title: "选择出发地",
+        onChange: function (picker, values, displayValues) {
+          console.log(values, displayValues);
+        }
+      });
+      $("#end").cityPicker({
+        title: "选择目的地"
+      });
+      $("#home-city").cityPicker({
+        title: "选择目的地",
+        showDistrict: false,
+        onChange: function (picker, values, displayValues) {
+          console.log(values, displayValues);
+        }
+      });
+    </script>
+  </body>
+</html>

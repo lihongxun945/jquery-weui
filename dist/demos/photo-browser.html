@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="../lib/weui.min.css">
+<link rel="stylesheet" href="../css/jquery-weui.css">
+<link rel="stylesheet" href="css/demos.css">
+
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">Photo Browser</h1>
+    </header>
+
+    <div class='demos-content-padded'>
+      <a href="javascript:;" class="weui-btn weui-btn_primary" id="pb1">只有图片</a>
+      <a href="javascript:;" class="weui-btn weui-btn_primary" id="pb2">带说明文案</a>
+    </div>
+
+    <script src="../lib/jquery-2.1.4.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="../js/jquery-weui.js"></script>
+
+    <script src="../js/swiper.js"></script>
+
+    <script>
+
+      var pb1 = $.photoBrowser({
+        items: [
+          "./images/swiper-1.jpg",
+          "./images/swiper-2.jpg",
+          "./images/swiper-3.jpg",
+          "./images/swiper-4.jpg"
+        ],
+
+        onSlideChange: function(index) {
+          console.log(this, index);
+        },
+
+        onOpen: function() {
+          console.log("onOpen", this);
+        },
+        onClose: function() {
+          console.log("onClose", this);
+        }
+      });
+      $("#pb1").click(function() {
+        pb1.open(2);
+      });
+      var pb2 = $.photoBrowser({
+        items: [
+          {
+            image: "./images/swiper-1.jpg",
+            caption: "尝试 Vue.js 最简单的方法是使用 JSFiddle Hello World 例子。在浏览器新标签页中打开它，跟着我们查看一些基础示例。如果你喜欢用包管理器下载/安装，查看安装教程。"
+          },
+          {
+            image: "./images/swiper-2.jpg",
+            caption: "组件（Component）是 Vue.js 最强大的功能之一。"
+          },
+          {
+            image: "./images/swiper-3.jpg",
+            caption: "组件可以扩展 HTML 元素，封装可重用的代码"
+          },
+          {
+            image: "./images/swiper-4.jpg",
+            caption: "在较高层面上，组件是自定义元素，Vue.js 的编译器为它添加特殊功能。在有些情况下，组件也可以是原生 HTML 元素的形式，以 is 特性扩展。"
+          }
+        ],
+        initIndex: 2
+      });
+      $("#pb2").click(function() {
+        pb2.open();
+      });
+    </script>
+  </body>
+</html>

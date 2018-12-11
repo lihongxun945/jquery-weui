@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="../lib/weui.min.css">
+<link rel="stylesheet" href="../css/jquery-weui.css">
+<link rel="stylesheet" href="css/demos.css">
+
+  </head>
+
+  <body ontouchstart>
+    <header class='demos-header'>
+      <h1 class="demos-title">Count/计数器</h1>
+    </header>
+    <div class="bd">
+      <div class="page__bd">
+        <div class="weui-cells__title">带计数器的列表项</div>
+        <div class="weui-cells">
+          <div class="weui-cell">
+            <div class="weui-cell__bd">
+              <p>优衣库轻薄羽绒服</p>
+            </div>
+            <div class="weui-cell__ft">
+              <div class="weui-count">
+                <a class="weui-count__btn weui-count__decrease"></a>
+                <input class="weui-count__number" type="number" value="1" />
+                <a class="weui-count__btn weui-count__increase"></a>
+              </div>
+            </div>
+          </div>
+          <div class="weui-cell">
+            <div class="weui-cell__hd"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAAVFBMVEXx8fHMzMzr6+vn5+fv7+/t7e3d3d2+vr7W1tbHx8eysrKdnZ3p6enk5OTR0dG7u7u3t7ejo6PY2Njh4eHf39/T09PExMSvr6+goKCqqqqnp6e4uLgcLY/OAAAAnklEQVRIx+3RSRLDIAxE0QYhAbGZPNu5/z0zrXHiqiz5W72FqhqtVuuXAl3iOV7iPV/iSsAqZa9BS7YOmMXnNNX4TWGxRMn3R6SxRNgy0bzXOW8EBO8SAClsPdB3psqlvG+Lw7ONXg/pTld52BjgSSkA3PV2OOemjIDcZQWgVvONw60q7sIpR38EnHPSMDQ4MjDjLPozhAkGrVbr/z0ANjAF4AcbXmYAAAAASUVORK5CYII=" alt="" style="width:20px;margin-right:5px;display:block"></div>
+            <div class="weui-cell__bd">
+              <p>三叶草男士运动鞋</p>
+            </div>
+            <div class="weui-cell__ft">
+              <div class="weui-count">
+                <a class="weui-count__btn weui-count__decrease"></a>
+                <input class="weui-count__number" type="number" value="2" />
+                <a class="weui-count__btn weui-count__increase"></a>
+              </div>
+            </div>
+          </div>
+          <div class="weui-cell weui-cell_swiped">
+            <div class="weui-cell__bd">
+              <div class="weui-cell">
+                <div class="weui-cell__bd">
+                  <p>可滑动删除</p>
+                </div>
+                <div class="weui-cell__ft">
+                  <div class="weui-count">
+                    <a class="weui-count__btn weui-count__decrease"></a>
+                    <input class="weui-count__number" type="number" value="1" />
+                    <a class="weui-count__btn weui-count__increase"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="weui-cell__ft">
+              <a class="weui-swiped-btn weui-swiped-btn_warn delete-swipeout" href="javascript:">删除</a>
+              <a class="weui-swiped-btn weui-swiped-btn_default close-swipeout" href="javascript:">关闭</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 在单选和复选模式下有些问题，无法选择 -->
+        <!--
+        <div class="weui-cells weui-cells_checkbox">
+          <label class="weui-cell weui-check__label" for="s12">
+            <div class="weui-cell__hd">
+              <input type="checkbox" name="checkbox1" class="weui-check" id="s12">
+              <i class="weui-icon-checked"></i>
+            </div>
+            <div class="weui-cell__bd">
+              <p>带多选按钮</p>
+            </div>
+            <div class="weui-cell__ft">
+              <div class="weui-count">
+                <a class="weui-count__btn weui-count__decrease"></a>
+                <input class="weui-count__number" type="number" value="1" />
+                <a class="weui-count__btn weui-count__increase"></a>
+              </div>
+            </div>
+          </label>
+        </div>
+        -->
+      </div>
+    </div>
+    <script src="../lib/jquery-2.1.4.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="../js/jquery-weui.js"></script>
+
+    <script>
+      var MAX = 99, MIN = 1;
+      $('.weui-count__decrease').click(function (e) {
+        var $input = $(e.currentTarget).parent().find('.weui-count__number');
+        var number = parseInt($input.val() || "0") - 1
+        if (number < MIN) number = MIN;
+        $input.val(number)
+      })
+      $('.weui-count__increase').click(function (e) {
+        var $input = $(e.currentTarget).parent().find('.weui-count__number');
+        var number = parseInt($input.val() || "0") + 1
+        if (number > MAX) number = MAX;
+        $input.val(number)
+      })
+
+      $('.delete-swipeout').click(function () {
+        $(this).parents('.weui-cell').remove()
+      })
+      $('.close-swipeout').click(function () {
+        $(this).parents('.weui-cell').swipeout('close')
+      })
+    </script>
+  </body>
+</html>

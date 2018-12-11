@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="../lib/weui.min.css">
+<link rel="stylesheet" href="../css/jquery-weui.css">
+<link rel="stylesheet" href="css/demos.css">
+
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">Action Sheet</h1>
+    </header>
+
+    <div class='demos-content-padded'>
+      <a href="javascript:;" id='show-actions' class="weui-btn weui-btn_primary">显示 ActionSheet</a>
+      <a href="javascript:;" id='show-actions-bg' class="weui-btn weui-btn_primary">自定义背景色</a>
+    </div>
+    <script src="../lib/jquery-2.1.4.js"></script>
+<script src="../lib/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="../js/jquery-weui.js"></script>
+
+    <script>
+      $(document).on("click", "#show-actions", function() {
+        $.actions({
+          title: "选择操作",
+          onClose: function() {
+            console.log("close");
+          },
+          actions: [
+            {
+              text: "发布",
+              className: "color-primary",
+              onClick: function() {
+                $.alert("发布成功");
+              }
+            },
+            {
+              text: "编辑",
+              className: "color-warning",
+              onClick: function() {
+                $.alert("你选择了“编辑”");
+              }
+            },
+            {
+              text: "删除",
+              className: 'color-danger',
+              onClick: function() {
+                $.alert("你选择了“删除”");
+              }
+            }
+          ]
+        });
+      });
+
+      $(document).on("click", "#show-actions-bg", function() {
+        $.actions({
+          actions: [
+            {
+              text: "发布",
+              className: "bg-primary",
+            },
+            {
+              text: "编辑",
+              className: "bg-warning",
+            },
+            {
+              text: "删除",
+              className: 'bg-danger',
+            }
+          ]
+        });
+      });
+    </script>
+  </body>
+</html>
