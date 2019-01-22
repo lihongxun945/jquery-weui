@@ -32,12 +32,18 @@
     }, 1000)
   }
 
-  $.toast = function(text, style, callback) {
-    if(typeof style === "function") {
+  $.toast = function(text, style, callback, ms) {
+    if (typeof style === "function") {
+      ms = callback;
       callback = style;
+    } else if (typeof style === typeof 1) {
+      ms = style;
+    } else if (typeof callback === typeof 1) {
+      ms = callback;
+      callback = null
     }
     var className, iconClassName = 'weui-icon-success-no-circle';
-    var duration = toastDefaults.duration;
+    var duration = ms ? ms : toastDefaults.duration;
     if(style == "cancel") {
       className = "weui-toast_cancel";
       iconClassName = 'weui-icon-cancel'
