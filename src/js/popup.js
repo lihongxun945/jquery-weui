@@ -30,9 +30,9 @@
     container.find('.weui-popup__modal').transitionEnd(function() {
       var $this = $(this);
       $this.trigger("close");
-      container.hide();
       remove && container.remove();
-    })
+    });
+    container.hide();
     container.removeClass("weui-popup__container--visible")
   };
 
