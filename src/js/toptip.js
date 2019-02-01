@@ -3,7 +3,7 @@
 
   var timeout;
 
-  $.toptip = function(text, duration, type) {
+  $.toptip = function(text, duration, type,callback) {
     if(!text) return;
     if(typeof duration === typeof "a") {
       type = duration;
@@ -26,6 +26,9 @@
     timeout = setTimeout(function() {
       $t.removeClass('weui-toptips_visible').transitionEnd(function() {
         $t.remove();
+        if (typeof callback === "function") {
+           callback();
+		    }
       });
     }, duration);
   }
