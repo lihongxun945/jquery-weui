@@ -635,7 +635,9 @@
     dialog.width(); //通过取一次CSS值，强制浏览器不能把上下两行代码合并执行，因为合并之后会导致无法出现动画。
 
     dialog.addClass("weui-picker-modal-visible");
-
+    
+    dialog[0].addEventListener('mousewheel',function(e){e.preventDefault();}); //picker选项区域禁止鼠标滚动，方便添加电脑端鼠标滚动选择
+    
     callback && container.on("close", callback);
 
     return dialog;
