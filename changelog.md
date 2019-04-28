@@ -1,3 +1,7 @@
+# v1.2.2 - 2019/04/29
+更新了最新城市数据
+
+
 # v1.2.1 - 2018/07/20
 
 更新了微信官方weui的版本 `v1.1.3`，微信官方更新日志：https://github.com/Tencent/weui/blob/master/CHANGELOG.md
