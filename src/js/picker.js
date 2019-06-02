@@ -370,12 +370,33 @@
               var value = $(this).attr('data-picker-value');
               col.setValue(value);
           }
+        
+          function handleWheel(e){
+              allowItemClick = false;
+              $.cancelAnimationFrame(animationFrameId);
+              
+              var delta = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) || (e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1));
+              var newPickerVal, valuecurrent, currentElement = $(col.items[col.activeIndex]);
+              newPickerVal = valuecurrent = currentElement.attr('data-picker-value');
+              if(delta>0 && (col.activeIndex !== 0)){
+                  newPickerVal = currentElement.prev().attr('data-picker-value');
+              }else if(delta<0 && (col.activeIndex !== (col.items.length-1))){
+                  newPickerVal = currentElement.next().attr('data-picker-value');
+              }
+              (newPickerVal!=valuecurrent)&&col.setValue(newPickerVal);
+              
+              // Allow click
+              setTimeout(function () {
+                  allowItemClick = true;
+              }, 100);
+          }
 
           col.initEvents = function (detach) {
               var method = detach ? 'off' : 'on';
               col.container[method]($.touchEvents.start, handleTouchStart);
               col.container[method]($.touchEvents.move, handleTouchMove);
               col.container[method]($.touchEvents.end, handleTouchEnd);
+              col.container[method]("wheel mousewheel DOMMouseScroll", handleWheel);
               col.items[method]('click', handleClick);
           };
           col.destroyEvents = function () {
@@ -635,6 +656,8 @@
     dialog.width(); //通过取一次CSS值，强制浏览器不能把上下两行代码合并执行，因为合并之后会导致无法出现动画。
 
     dialog.addClass("weui-picker-modal-visible");
+    
+    dialog[0].addEventListener('mousewheel',function(e){e.preventDefault();}); //picker选项区域禁止鼠标滚动
 
     callback && container.on("close", callback);
 

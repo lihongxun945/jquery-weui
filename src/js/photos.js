@@ -51,8 +51,6 @@
       }
 
       var self = this;
-      this.modal.show().height();
-      this.modal.addClass('weui-photo-browser-modal-visible');
       this.container.addClass('swiper-container-visible').transitionEnd(function() {
         self.initParams();
         if(index !== undefined) {
@@ -62,6 +60,8 @@
           self.config.onOpen.call(self);
         }
       });
+      this.modal.show().height();
+      this.modal.addClass('weui-photo-browser-modal-visible');
 
       this._open = true;
     },
